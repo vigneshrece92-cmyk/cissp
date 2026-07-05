@@ -2451,10 +2451,7 @@ function initApp() {
   renderChecklist();
   renderStudyLogs();
   renderActiveFlashcard();
-  initBookReader();
   initCheatSheet();
-  initCertMikeReader();
-  initMindMapsReader();
   initGames();
   initDailyChallenge();
   initAITutor();
@@ -2651,17 +2648,20 @@ function switchTab(tabId) {
   if (tabId === "pdf-library") {
     const selector = document.getElementById("pdf-library-select");
     if (selector) {
-      if (selector.value === "concept" && pdfDoc) {
-        renderBookPage(bookPageNum);
-      } else if (selector.value === "certmike" && certmikePdfDoc) {
-        renderCertMikePage(certmikePageNum);
+      if (selector.value === "concept") {
+        initBookReader();
+        if (pdfDoc) renderBookPage(bookPageNum);
+      } else if (selector.value === "certmike") {
+        initCertMikeReader();
+        if (certmikePdfDoc) renderCertMikePage(certmikePageNum);
       }
     }
   }
   if (tabId === "mindmaps") {
     initMindMapExplorer();
-    if (document.getElementById("btn-mindmaps-pdf")?.classList.contains("active-game-tab") && mindmapsPdfDoc) {
-      renderMindMapsPage(mindmapsPageNum);
+    if (document.getElementById("btn-mindmaps-pdf")?.classList.contains("active-game-tab")) {
+      initMindMapsReader();
+      if (mindmapsPdfDoc) renderMindMapsPage(mindmapsPageNum);
     }
   }
   if (tabId === "games") {
@@ -3267,8 +3267,11 @@ let pdfDoc = null,
     bookCanvas = document.getElementById('book-canvas'),
     bookCtx = bookCanvas ? bookCanvas.getContext('2d') : null;
 
+let bookReaderLoadingStarted = false;
 function initBookReader() {
   if (!bookCanvas) return;
+  if (bookReaderLoadingStarted) return;
+  bookReaderLoadingStarted = true;
 
   // Configure worker Src required by PDF.js
   pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js';
@@ -3489,8 +3492,11 @@ let certmikePdfDoc = null,
     certmikeCanvas = document.getElementById('certmike-canvas'),
     certmikeCtx = certmikeCanvas ? certmikeCanvas.getContext('2d') : null;
 
+let certMikeLoadingStarted = false;
 function initCertMikeReader() {
   if (!certmikeCanvas) return;
+  if (certMikeLoadingStarted) return;
+  certMikeLoadingStarted = true;
 
   const pdfUrl = 'certmike_cheat_sheet.txt';
 
@@ -3584,8 +3590,11 @@ let mindmapsPdfDoc = null,
     mindmapsCanvas = document.getElementById('mindmaps-canvas'),
     mindmapsCtx = mindmapsCanvas ? mindmapsCanvas.getContext('2d') : null;
 
+let mindMapsLoadingStarted = false;
 function initMindMapsReader() {
   if (!mindmapsCanvas) return;
+  if (mindMapsLoadingStarted) return;
+  mindMapsLoadingStarted = true;
 
   const pdfUrl = 'matheus_mindmaps.txt';
 
@@ -6189,6 +6198,10 @@ function initMindMapExplorer() {
     expBtn.classList.remove("active-game-tab");
     pdfWrapper.classList.remove("hidden");
     expWrapper.classList.add("hidden");
+    initMindMapsReader();
+    if (mindmapsPdfDoc) {
+      renderMindMapsPage(mindmapsPageNum);
+    }
   });
 
   expBtn?.addEventListener("click", () => {
