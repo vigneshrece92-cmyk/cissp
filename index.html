@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>CISSP Pro Exam Prep Portal | Free Comprehensive Study Center</title>
+  <!-- Google Fonts & Font Awesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css?v=5.0">
+  <!-- PDF.js Ebook Reader Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+  <!-- Google Identity Services (GIS) for Google Sign-In -->
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+  <!-- Background Elements -->
+  <div class="bg-glow bg-glow-1"></div>
+  <div class="bg-glow bg-glow-2"></div>
+
+  <!-- Sidebar Navigation -->
+  <nav class="sidebar">
+    <div class="brand">
+      <div class="brand-icon">
+        <i class="fa-solid fa-shield-halved"></i>
+      </div>
+      <div class="brand-text">
+        <h1>CISSP<span>PRO</span></h1>
+        <p>Exam Prep Suite</p>
+      </div>
+    </div>
+    <ul class="nav-links">
+      <li class="active" data-tab="dashboard"><i class="fa-solid fa-chart-line"></i><span>Dashboard</span></li>
+      <li data-tab="ai-tutor"><i class="fa-solid fa-robot"></i><span>AI Study Tutor</span></li>
+      <li data-tab="practice"><i class="fa-solid fa-laptop-code"></i><span>Practice Simulator</span></li>
+      <li data-tab="guides"><i class="fa-solid fa-book-open"></i><span>Domain Guides</span></li>
+      <li data-tab="cheatsheet"><i class="fa-solid fa-scroll"></i><span>Interactive Cheat Sheet</span></li>
+      <li data-tab="pdf-library"><i class="fa-solid fa-file-pdf"></i><span>PDF Library</span></li>
+      <li data-tab="mindmaps"><i class="fa-solid fa-diagram-project"></i><span>CISSP Mind Maps</span></li>
+      <li data-tab="games"><i class="fa-solid fa-gamepad"></i><span>Study Games</span></li>
+      <li data-tab="memory"><i class="fa-solid fa-brain"></i><span>Memory Palace</span></li>
+      <li data-tab="flashcards"><i class="fa-solid fa-clone"></i><span>Flashcards</span></li>
+      <li data-tab="planner"><i class="fa-solid fa-calendar-days"></i><span>Study Planner</span></li>
+    </ul>
+    <div class="sidebar-footer" id="auth-header-container" style="display: flex; align-items: center; justify-content: flex-end;">
+      <button class="theme-toggle-btn" id="theme-toggle-btn" title="Toggle Light/Dark Theme">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+      <button class="btn btn-secondary login-trigger-btn" id="header-signin-btn" style="padding: 5px 12px; font-size: 11px; height: 30px; border-radius: 6px; border-color: rgba(255,255,255,0.08); display: flex; align-items: center; gap: 6px;">
+        <i class="fa-solid fa-user-lock"></i> Member Sign-In
+      </button>
+    </div>
+  </nav>
+
+  <!-- Main Content Container -->
+  <main class="main-content">
+    
+    <!-- ======================================================= -->
+    <!-- 1. DASHBOARD TAB -->
+    <!-- ======================================================= -->
+    <section id="dashboard" class="tab-content active">
+      <header class="tab-header">
+        <div>
+          <h2>CISSP Command Center & Study Hub</h2>
+          <p>Welcome to your ultimate preparation portal. Master the 8 security domains, track your readiness metrics, and conquer the CISSP exam.</p>
+        </div>
+        <div class="countdown-container">
+          <i class="fa-regular fa-clock"></i>
+          <span id="countdown-text">Calculating Target Date...</span>
+        </div>
+      </header>
+
+      <!-- Executive Analytics (Overall Readiness & Domain Stands) moved to bottom of dashboard -->
+
+      <!-- Row 1.5: Question of the Day & Streak Tracker -->
+      <div class="card glass daily-challenge-card" id="daily-challenge-card">
+        <!-- Populated dynamically via app.js -->
+      </div>
+
+      <!-- Row 2: What is CISSP? & Requirements Tracker (2-Column Grid) -->
+      <div class="intro-grid">
+        <div class="card glass">
+          <h3>What is CISSP?</h3>
+          <p style="font-size: 13px; color: var(--text-muted); line-height: 1.5; margin-top: 10px;">
+            The Certified Information Systems Security Professional (CISSP) is the gold standard of information security certifications globally. Directed by senior leadership and executives, the CISSP is not a technical configuration exam; it is a <strong>risk management, governance, and business-focused assessment</strong> designed to validate your capability to architect, design, and manage an organization's security posture. 
+          </p>
+          <p style="font-size: 13px; color: var(--text-muted); line-height: 1.5; margin-top: 10px;">
+            Holding the credential is a gateway to leadership roles like Chief Information Security Officer (CISO), Security Director, Security Architect, and Lead Consultant.
+          </p>
+        </div>
+
+        <div class="card glass">
+          <h3>Certification Requirements</h3>
+          <ul class="req-list">
+            <li>
+              <i class="fa-solid fa-circle-check"></i>
+              <div>
+                <strong>Professional Experience:</strong> 5 years of cumulative paid work experience in 2 or more of the 8 domains.
+              </div>
+            </li>
+            <li>
+              <i class="fa-solid fa-circle-check"></i>
+              <div>
+                <strong>Degree Waiver:</strong> 1-year waiver available for holding a 4-year college degree or a recognized credential (e.g. Security+, CISA, CEH).
+              </div>
+            </li>
+            <li>
+              <i class="fa-solid fa-circle-check"></i>
+              <div>
+                <strong>Endorsement:</strong> Pass the exam and receive endorsement from an active (ISC)² member in good standing within 9 months.
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Row 3: Interactive Study Roadmap Infographic -->
+      <div class="card glass roadmap-container">
+        <h3>Interactive Study Roadmap</h3>
+        <p style="font-size: 12.5px; color: var(--text-muted);">Follow these 4 phases to transition from a student to an exam-ready professional.</p>
+        
+        <div class="roadmap-timeline">
+          <div class="roadmap-step">
+            <div class="step-num">1</div>
+            <div class="step-title">Core Foundation</div>
+            <div class="step-desc">Study textbooks (OSG/AIO). Understand core concepts, CIA triad, security policies, and governance frameworks.</div>
+          </div>
+          <div class="roadmap-step">
+            <div class="step-num">2</div>
+            <div class="step-title">Domain Deep-Dive</div>
+            <div class="step-desc">Read the <strong>Domain Guides</strong> and practice <strong>Flashcards</strong>. Make extensive study checklists in the planner.</div>
+          </div>
+          <div class="roadmap-step">
+            <div class="step-num">3</div>
+            <div class="step-title">Simulator Grinding</div>
+            <div class="step-desc">Grind scenario-based questions in the <strong>Practice Simulator</strong>. Review rationales and study the <strong>Cheat Sheet</strong>.</div>
+          </div>
+          <div class="roadmap-step">
+            <div class="step-num">4</div>
+            <div class="step-title">Final Sprint</div>
+            <div class="step-desc">Review high-res <strong>Mind Maps</strong>, practice formula calculations, and read Mike Chapple's <strong>CertMike Guide</strong>.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 4: CAT Exam Difficulty & Details -->
+      <div class="card glass diff-card">
+        <h3>Exam Difficulty & Structure</h3>
+        <p style="font-size: 13px; color: var(--text-muted); line-height: 1.5; margin-top: 6px;">
+          The English CISSP exam uses <strong>Computerized Adaptive Testing (CAT)</strong>. The testing engine continuously assesses your capabilities. If you answer correctly, you receive harder questions. If you answer incorrectly, you receive easier questions. The exam adjusts dynamically and concludes when it is mathematically certain whether you have passed or failed.
+        </p>
+        <div class="diff-badges-grid">
+          <div class="diff-badge-item">
+            <span>125 - 175</span>
+            <p>Questions Scale</p>
+          </div>
+          <div class="diff-badge-item">
+            <span>4 Hours</span>
+            <p>Time Limit</p>
+          </div>
+          <div class="diff-badge-item">
+            <span>700 / 1000</span>
+            <p>Passing Grade</p>
+          </div>
+          <div class="diff-badge-item">
+            <span>~20%</span>
+            <p>First-Time Pass Rate</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 5: Elite Exam Tips & Tricks -->
+      <div class="card glass" style="margin-bottom: 20px;">
+        <h3>Elite Manager-Level Exam Tips</h3>
+        <p style="font-size: 12.5px; color: var(--text-muted); margin-bottom: 14px;">The CISSP is a management exam. Keep these strategic rules in mind when answering questions:</p>
+        <div class="tips-grid">
+          <div class="tip-card">
+            <div class="tip-icon"><i class="fa-solid fa-briefcase"></i></div>
+            <div class="tip-details">
+              <h4 style="display: flex; align-items: center; gap: 6px;">
+                Think Like a Manager
+                <button class="tts-play-btn tip-speak-btn" data-tip-id="1" title="Read tip aloud"><i class="fa-solid fa-volume-low"></i></button>
+              </h4>
+              <p>You are an advisor/risk consultant, not a technician. Do not fix problems yourself. Look for policy, business continuity, or process solutions.</p>
+            </div>
+          </div>
+          <div class="tip-card">
+            <div class="tip-icon"><i class="fa-solid fa-heart-pulse"></i></div>
+            <div class="tip-details">
+              <h4 style="display: flex; align-items: center; gap: 6px;">
+                Safety First
+                <button class="tts-play-btn tip-speak-btn" data-tip-id="2" title="Read tip aloud"><i class="fa-solid fa-volume-low"></i></button>
+              </h4>
+              <p>Human safety is always the absolute priority. If any question involves life safety, select the option that protects human life first.</p>
+            </div>
+          </div>
+          <div class="tip-card">
+            <div class="tip-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+            <div class="tip-details">
+              <h4 style="display: flex; align-items: center; gap: 6px;">
+                Identify Qualifiers
+                <button class="tts-play-btn tip-speak-btn" data-tip-id="3" title="Read tip aloud"><i class="fa-solid fa-volume-low"></i></button>
+              </h4>
+              <p>Search for keywords like <em>MOST</em>, <em>LEAST</em>, <em>BEST</em>, <em>FIRST</em>, or <em>NOT</em>. These words completely change what the question is asking.</p>
+            </div>
+          </div>
+          <div class="tip-card">
+            <div class="tip-icon"><i class="fa-solid fa-shield"></i></div>
+            <div class="tip-details">
+              <h4 style="display: flex; align-items: center; gap: 6px;">
+                Security is an Enabler
+                <button class="tts-play-btn tip-speak-btn" data-tip-id="4" title="Read tip aloud"><i class="fa-solid fa-volume-low"></i></button>
+              </h4>
+              <p>Security is not there to restrict the business; it is there to support and enable business objectives. Align security goals with leadership.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 5: Executive Analytics (Overall Readiness & Domain Stands) -->
+      <div class="dashboard-grid" style="margin-bottom: 20px;">
+        <!-- Progress Circular Card -->
+        <div class="card glass circular-progress-card">
+          <h3>Overall Readiness Score</h3>
+          <div class="progress-circle-container">
+            <svg class="progress-ring" width="160" height="160">
+              <circle class="progress-ring__circle-bg" stroke="#1e293b" stroke-width="12" fill="transparent" r="70" cx="80" cy="80"/>
+              <circle class="progress-ring__circle" id="overall-circle" stroke="var(--primary)" stroke-width="12" stroke-dasharray="439.8" stroke-dashoffset="439.8" stroke-linecap="round" fill="transparent" r="70" cx="80" cy="80"/>
+            </svg>
+            <div class="progress-value">
+              <span id="readiness-pct">0%</span>
+              <p id="readiness-label">Begin Study</p>
+            </div>
+          </div>
+          <div class="readiness-stats">
+            <div>
+              <span id="total-study-hours">0h</span>
+              <p>Studied</p>
+            </div>
+            <div>
+              <span id="average-score-lbl">0%</span>
+              <p>Avg Quiz</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Domain Standings Grid -->
+        <div class="card glass domain-standings-card">
+          <h3>Domain-wise Progress</h3>
+          <div class="domain-bars" id="domain-progress-bars">
+            <!-- Dynamically populated via app.js -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 6: Interactive Triggers (Preserved Mock Exam Card) -->
+      <div class="action-panel">
+        <div class="action-card card glass primary-gradient">
+          <div class="action-icon">
+            <i class="fa-solid fa-graduation-cap"></i>
+          </div>
+          <div>
+            <h3>Launch Simulated Mock Test</h3>
+            <p>Start a full-length, scenario-based mock exam to test your end-to-end knowledge.</p>
+            <button class="btn btn-light start-mock-btn">Start Mock Exam</button>
+          </div>
+        </div>
+        <div class="action-card card glass">
+          <div class="action-icon secondary">
+            <i class="fa-solid fa-calculator"></i>
+          </div>
+          <div>
+            <h3>Interactive Risk Calculator</h3>
+            <p>Go to the Memory Palace tab to use formulas for ALE, ARO, and symmetric key combinations.</p>
+            <button class="btn btn-secondary nav-to-memory">Open Calculators</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Section with Visitor Counter -->
+      <footer class="app-footer" style="margin-top: 40px; padding: 20px 0; border-top: 1px solid var(--card-border); display: flex; justify-content: space-between; align-items: center; color: var(--text-muted); font-size: 11.5px; flex-wrap: wrap; gap: 12px;">
+        <p>&copy; 2026 CISSP Pro Prep Portal. All Rights Reserved. Designed for elite security candidates.</p>
+        <div style="display: flex; align-items: center; gap: 8px; background: rgba(255,255,255,0.03); padding: 4px 12px; border-radius: 20px; border: 1px solid var(--card-border);">
+          <i class="fa-solid fa-eye" style="color: var(--primary);"></i>
+          <span>Portal Viewers: <strong id="visitor-count" style="color: #fff;">1,284</strong></span>
+        </div>
+      </footer>
+    </section>
+
+    <!-- ======================================================= -->
+    <!-- 2. PRACTICE SIMULATOR TAB -->
+    <!-- ======================================================= -->
+    <section id="practice" class="tab-content">
+      <header class="tab-header">
+        <div>
+          <h2>Exam Simulator & Quiz Engine</h2>
+          <p>Simulate the adaptive testing environment or customize subject-wise quizzes.</p>
+        </div>
+      </header>
+
+      <div class="quiz-options-grid">
+        <!-- Card 1: Full Mock -->
+        <div class="card glass quiz-type-card">
+          <div class="badge">Adaptive Mock</div>
+          <i class="fa-solid fa-award"></i>
+          <h3>Full Scenario Mock Exam</h3>
+          <p>A comprehensive assessment testing across all 8 domains. Includes a simulated 4-hour countdown timer, review flags, and post-exam domain breakdowns.</p>
+          <ul>
+            <li><i class="fa-solid fa-check"></i> 125 scenario questions</li>
+            <li><i class="fa-solid fa-check"></i> Real-time timer</li>
+            <li><i class="fa-solid fa-check"></i> Review marked questions</li>
+          </ul>
+          <button class="btn btn-primary start-full-mock">Start Exam Simulator</button>
+        </div>
+
+        <!-- Card 2: Custom Quiz -->
+        <div class="card glass quiz-type-card">
+          <div class="badge secondary">Practice Mode</div>
+          <i class="fa-solid fa-sliders"></i>
+          <h3>Custom Domain Quiz</h3>
+          <p>Focus your energy on specific domains. Select a single CISSP domain and practice targeted scenarios with instant feedback.</p>
+          <div class="form-group">
+            <label for="domain-select">Target Domain</label>
+            <select id="domain-select" class="form-control">
+              <option value="1">Domain 1: Security and Risk Management</option>
+              <option value="2">Domain 2: Asset Security</option>
+              <option value="3">Domain 3: Security Architecture and Engineering</option>
+              <option value="4">Domain 4: Communication and Network Security</option>
+              <option value="5">Domain 5: Identity and Access Management</option>
+              <option value="6">Domain 6: Security Assessment and Testing</option>
+              <option value="7">Domain 7: Security Operations</option>
+              <option value="8">Domain 8: Software Development Security</option>
+            </select>
+          </div>
+          <button class="btn btn-secondary start-domain-quiz">Start Domain Practice</button>
+        </div>
+      </div>
+
+      <!-- Mock Exam Attempt History Card & Trend Graph -->
+      <div class="card glass exam-history-card" id="exam-history-card">
+        <div>
+          <h3>Exam Performance Trends & History</h3>
+          <p style="font-size: 12.5px; color: var(--text-muted); margin-bottom: 12px;">Track your past 5 simulation attempts to monitor your exam readiness improvements.</p>
+        </div>
+        
+        <!-- Score Trend Graph -->
+        <div class="trend-chart-container" id="exam-trend-chart">
+          <!-- Populated dynamically via app.js -->
+        </div>
+        
+        <!-- Attempt History List -->
+        <div class="exam-history-list" id="exam-history-list">
+          <!-- Populated dynamically via app.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================= -->
+    <!-- 3. DOMAIN GUIDES TAB -->
+    <!-- ======================================================= -->
+    <section id="guides" class="tab-content">
+      <header class="tab-header">
+        <div>
+          <h2>Domain Reference Guides</h2>
+          <p>Detailed study outlines and core information breakdowns for the 8 domains of CISSP.</p>
+        </div>
+      </header>
+
+      <!-- Cross-Book Reference Locator widget -->
+      <div class="card glass cross-book-card">
+        <h3>Sybex OSG & Shon Harris AIO Cross-Reference Locator</h3>
+        <p style="font-size: 12.5px; color: var(--text-muted); margin-bottom: 8px;">Quickly locate topics in your textbook. Search for concepts like "Kerberos", "Biba", "Bell-LaPadula", "SDLC", or "SOC".</p>
+        <div class="ref-search-container">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="ref-search-input" class="form-control ref-search-input" placeholder="Type key concept to find book chapters & pages...">
+        </div>
+        <table class="ref-results-table" id="ref-results-table" style="display: none;">
+          <thead>
+            <tr>
+              <th style="width: 25%;">Topic / Concept</th>
+              <th style="width: 15%;">Domain</th>
+              <th style="width: 30%;">Sybex Study Guide (10th/9th Ed)</th>
+              <th style="width: 30%;">Shon Harris AIO (9th Ed)</th>
+            </tr>
+          </thead>
+          <tbody id="ref-results-body">
+            <!-- Results rendered via app.js -->
+          </tbody>
+        </table>
+      </div>
+
+      <div class="guides-container">
+        <div class="guides-sidebar card glass">
+          <ul class="guide-tabs" id="guide-tab-links">
+            <li class="active" data-guide="1">Domain 1: Security & Risk</li>
+            <li data-guide="2">Domain 2: Asset Security</li>
+            <li data-guide="3">Domain 3: Security Engineering</li>
+            <li data-guide="4">Domain 4: Network Security</li>
+            <li data-guide="5">Domain 5: Identity & Access</li>
+            <li data-guide="6">Domain 6: Security Testing</li>
+            <li data-guide="7">Domain 7: Security Operations</li>
+            <li data-guide="8">Domain 8: Software Security</li>
+            <li data-guide="9" style="border-top: 1px solid rgba(255,255,255,0.08); margin-top: 8px; padding-top: 8px; color: var(--accent);"><i class="fa-solid fa-globe"></i> Online Resources</li>
+          </ul>
+        </div>
+        <div class="guide-content card glass" id="guide-viewer">
+          <!-- Populated dynamically via app.js with rich text -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================= -->
+    <!-- 3.5 INTERACTIVE CHEAT SHEET TAB -->
+    <!-- ======================================================= -->
+    <section id="cheatsheet" class="tab-content">
+      <header class="tab-header">
+        <div>
+          <h2>CISSP Searchable Cheat Sheet</h2>
+          <p>Instantly search, filter, and review 40+ high-yield exam concepts, ciphers, formulas, and laws.</p>
+        </div>
+      </header>
+
+      <!-- Cheat Sheet Search and Filter Bar -->
+      <div class="card glass cheatsheet-filter-card" style="padding: 20px; border-radius: 16px; margin-bottom: 20px; border-color: rgba(255,255,255,0.06); display: flex; flex-direction: column; gap: 15px;">
+        <div style="display: flex; gap: 15px; flex-wrap: wrap; width: 100%;">
+          <div style="flex-grow: 1; min-width: 250px; position: relative;">
+            <input type="text" id="cheatsheet-search" class="form-control" placeholder="Search term, keyword, formula, or domain..." style="padding-left: 40px; width: 100%; height: 42px; border-radius: 8px;">
+            <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 15px; top: 13px; color: var(--text-muted);"></i>
+          </div>
+          <div style="min-width: 180px;">
+            <select id="cheatsheet-domain-select" class="form-control" style="width: 100%; height: 42px; border-radius: 8px;">
+              <option value="all">All Domains</option>
+              <option value="1">D1: Security & Risk</option>
+              <option value="2">D2: Asset Security</option>
+              <option value="3">D3: Security Engineering</option>
+              <option value="4">D4: Network Security</option>
+              <option value="5">D5: Identity & Access</option>
+              <option value="6">D6: Security Testing</option>
+              <option value="7">D7: Security Operations</option>
+              <option value="8">D8: Software Security</option>
+            </select>
+          </div>
+        </div>
+        
+        <!-- Quick Tag Buttons for fast filtering -->
+        <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+          <span style="font-size: 13px; color: var(--text-muted); font-weight: 500;">Quick Tags:</span>
+          <button class="btn btn-secondary btn-sm tag-filter-btn" data-tag="all" style="padding: 4px 10px; font-size: 12px; border-radius: 20px; border-color: var(--primary);">All</button>
+          <button class="btn btn-secondary btn-sm tag-filter-btn" data-tag="formula" style="padding: 4px 10px; font-size: 12px; border-radius: 20px;">Formulas</button>
+          <button class="btn btn-secondary btn-sm tag-filter-btn" data-tag="cipher" style="padding: 4px 10px; font-size: 12px; border-radius: 20px;">Ciphers</button>
+          <button class="btn btn-secondary btn-sm tag-filter-btn" data-tag="model" style="padding: 4px 10px; font-size: 12px; border-radius: 20px;">Security Models</button>
+          <button class="btn btn-secondary btn-sm tag-filter-btn" data-tag="law" style="padding: 4px 10px; font-size: 12px; border-radius: 20px;">Regulations & Standards</button>
+        </div>
+      </div>
+
+      <!-- Cheat Sheet Cards Grid -->
+      <div id="cheatsheet-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; min-height: 200px; padding-bottom: 30px;">
+        <!-- Populated dynamically via app.js -->
+      </div>
+    </section>
+
+    <!-- ======================================================= -->
+    <!-- 3.6 CERTMIKE PDF TAB -->
+    <!-- ======================================================= -->
+    <!-- ======================================================= -->
+    <!-- PDF LIBRARY TAB (COMBINED CONCEPT BOOK & CERTMIKE GUIDE) -->
+    <!-- ======================================================= -->
+    <section id="pdf-library" class="tab-content">
+      <header class="tab-header" style="display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; margin-bottom: 12px;">
+        <div>
+          <h2>PDF Reference Library</h2>
+          <p>Toggle between the complete concept textbook and CertMike's cheat sheet.</p>
+        </div>
+        <div>
+          <select id="pdf-library-select" class="form-control" style="background: rgba(255,255,255,0.05); border: 1px solid var(--card-border); color: #fff; border-radius: 20px; padding: 6px 16px; font-weight: 600; outline: none; cursor: pointer; font-size: 13px;">
+            <option value="concept">CISSP Complete Concept Guide</option>
+            <option value="certmike">CertMike Last Minute Study Guide</option>
+          </select>
+        </div>
+      </header>
+
+      <!-- CONCEPT BOOK VIEWER CONTAINER -->
+      <div id="concept-reader-wrapper" style="display: flex; flex-direction: column; gap: 14px;">
+        <div class="reader-toolbar-container" style="display: flex; justify-content: flex-end; margin-bottom: 4px;">
+          <div class="reader-controls" id="reader-toolbar" style="display: flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.03); border: 1px solid var(--card-border); padding: 6px 14px; border-radius: 30px;">
+            <button class="btn btn-secondary btn-sm" id="book-prev-btn"><i class="fa-solid fa-chevron-left"></i> Prev</button>
+            <span class="page-display" style="font-size: 13px; color: var(--text-muted);">
+              Page <input type="number" id="book-page-num" value="1" min="1" style="width: 50px; padding: 2px; text-align: center; background: rgba(255,255,255,0.05); border: 1px solid var(--card-border); color: #fff; border-radius: 4px; outline: none; font-size: 12px;"> of <span id="book-page-count">-</span>
+            </span>
+            <button class="btn btn-secondary btn-sm" id="book-next-btn">Next <i class="fa-solid fa-chevron-right"></i></button>
+            <button class="btn btn-secondary btn-sm" id="book-zoom-out" title="Decrease Zoom"><i class="fa-solid fa-magnifying-glass-minus"></i></button>
+            <button class="btn btn-secondary btn-sm" id="book-zoom-in" title="Increase Zoom"><i class="fa-solid fa-magnifying-glass-plus"></i></button>
+            <button class="btn btn-secondary btn-sm" id="book-fullscreen-btn" title="Toggle Full Screen"><i class="fa-solid fa-expand"></i> Full Screen</button>
+          </div>
+        </div>
+        <div class="card glass book-viewport-card" style="height: calc(100vh - 200px); display: flex; justify-content: center; align-items: flex-start; overflow: auto; padding: 14px; border-radius: 16px;">
+          <canvas id="book-canvas" style="box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4); background: #fff; display: block; border-radius: 4px; max-width: 100%;"></canvas>
+          <div id="book-fallback-container" class="hidden" style="width: 100%; height: 100%; display: flex; flex-direction: column;">
+            <div class="alert-box" style="background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.2); padding: 12px; border-radius: 8px; font-size: 13px; color: var(--warning); margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
+              <i class="fa-solid fa-triangle-exclamation"></i>
+              <span>Local security policies block script access to files. Run a local server (e.g. <code>python server.py</code>) or check browser console.</span>
+            </div>
+            <iframe src="cissp_concept_guide.txt" width="100%" height="100%" style="border: none; border-radius: 12px;"></iframe>
+          </div>
+        </div>
+      </div>
+
+      <!-- CERTMIKE CHEAT SHEET VIEWER CONTAINER (HIDDEN BY DEFAULT) -->
+      <div id="certmike-reader-wrapper" class="hidden" style="display: flex; flex-direction: column; gap: 14px;">
+        <div class="reader-toolbar-container" style="display: flex; justify-content: flex-end; margin-bottom: 4px;">
+          <div id="certmike-toolbar" class="reader-toolbar" style="display: flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.03); border: 1px solid var(--card-border); padding: 6px 14px; border-radius: 30px;">
+            <button class="btn btn-secondary btn-sm" id="certmike-prev-btn"><i class="fa-solid fa-arrow-left"></i> Prev</button>
+             <span style="font-size: 13px; font-weight: 600; color: var(--text-main);">Page <span id="certmike-page-num">1</span> of <span id="certmike-page-count">-</span></span>
+            <button class="btn btn-secondary btn-sm" id="certmike-next-btn">Next <i class="fa-solid fa-arrow-right"></i></button>
+            <button class="btn btn-secondary btn-sm" id="certmike-fullscreen-btn" title="Toggle Full Screen"><i class="fa-solid fa-expand"></i> Full Screen</button>
+          </div>
+        </div>
+        <div class="reader-viewport card glass" style="display: flex; justify-content: center; align-items: center; padding: 14px; overflow: auto; min-height: 550px; background: rgba(30, 41, 59, 0.3); border-color: rgba(255,255,255,0.06); border-radius: 16px; height: calc(100vh - 200px);">
+          <canvas id="certmike-canvas" style="box-shadow: 0 8px 32px rgba(0,0,0,0.6); max-width: 100%; border-radius: 8px; display: block; border: 1px solid rgba(255,255,255,0.08);"></canvas>
+          <div id="certmike-fallback-container" class="hidden" style="text-align: center; padding: 40px; color: var(--text-muted);">
+            <i class="fa-solid fa-circle-exclamation" style="font-size: 40px; color: var(--warning); margin-bottom: 15px; display: block;"></i>
+            <p style="font-size: 14px; margin: 0;">PDF reader failed to load the CertMike guide. Make sure <code>certmike_cheat_sheet.txt</code> exists in your folder.</p>
+            <span id="certmike-error-message" style="color: var(--warning); font-size: 12px; display: block; margin-top: 10px; font-family: monospace;"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================= -->
+    <!-- 3.7 CISSP MIND MAPS TAB -->
+    <!-- ======================================================= -->
+    <section id="mindmaps" class="tab-content">
+      <header class="tab-header" style="display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; margin-bottom: 25px;">
+        <div>
+          <h2>CISSP Mind Maps & Syllabus Explorer</h2>
+          <p>Toggle between Matheus' high-res sheet rendering or the interactive collapsible syllabus node map explorer.</p>
+        </div>
+        <div style="display: flex; gap: 10px; background: rgba(255,255,255,0.03); border: 1px solid var(--card-border); padding: 4px; border-radius: 12px;">
+          <button class="btn btn-secondary active-game-tab" id="btn-mindmaps-pdf" style="border: none; padding: 8px 16px; border-radius: 8px; font-weight: 600; font-size: 13px; cursor: pointer; transition: all 0.3s;"><i class="fa-solid fa-file-pdf" style="margin-right: 6px;"></i> PDF Reader</button>
+          <button class="btn btn-secondary" id="btn-mindmaps-explorer" style="border: none; padding: 8px 16px; border-radius: 8px; font-weight: 600; font-size: 13px; cursor: pointer; transition: all 0.3s;"><i class="fa-solid fa-network-wired" style="margin-right: 6px;"></i> Interactive Explorer</button>
+        </div>
+      </header>
+
+      <!-- Viewer 1: PDF Viewer (Original) -->
+      <div id="mindmaps-pdf-wrapper" style="display: flex; flex-direction: column; gap: 14px;">
+        <div class="reader-toolbar-container" style="display: flex; justify-content: flex-end; margin-bottom: 4px;">
+          <div id="mindmaps-toolbar" class="reader-toolbar" style="display: flex; align-items: center; gap: 10px; background: rgba(255,255,255,0.03); border: 1px solid var(--card-border); padding: 6px 14px; border-radius: 30px;">
+            <select id="mindmaps-sheet-select" class="form-control" style="border: none; background: transparent; color: var(--text-main); font-weight: 600; font-size: 13px; cursor: pointer; outline: none;">
+              <option value="1" style="background: #0f172a;">Sheet 1: Access Control (Domain 5)</option>
+              <option value="2" style="background: #0f172a;">Sheet 2: Software Security (Domain 8)</option>
+              <option value="3" style="background: #0f172a;">Sheet 3: BCP & DRP (Domain 7)</option>
+              <option value="4" style="background: #0f172a;">Sheet 4: Cryptography (Domain 3)</option>
+              <option value="5" style="background: #0f172a;">Sheet 5: Risk Management (Domain 1)</option>
+              <option value="6" style="background: #0f172a;">Sheet 6: Legal & Compliance (Domain 1)</option>
+              <option value="7" style="background: #0f172a;">Sheet 7: Network Security (Domain 4)</option>
+              <option value="8" style="background: #0f172a;">Sheet 8: Operations Security (Domain 7)</option>
+              <option value="9" style="background: #0f172a;">Sheet 9: Physical Security (Domain 3)</option>
+              <option value="10" style="background: #0f172a;">Sheet 10: Security Architecture (Domain 3)</option>
+            </select>
+            <div style="width: 1px; height: 20px; background: rgba(255,255,255,0.1);"></div>
+            <button class="btn btn-secondary btn-sm" id="mindmaps-prev-btn"><i class="fa-solid fa-arrow-left"></i></button>
+             <span style="font-size: 13px; font-weight: 600; color: var(--text-main);" id="mindmaps-page-num">1</span>
+            <button class="btn btn-secondary btn-sm" id="mindmaps-next-btn"><i class="fa-solid fa-arrow-right"></i></button>
+          </div>
+        </div>
+        
+        <div class="reader-viewport card glass" style="display: flex; justify-content: center; align-items: center; padding: 20px; overflow: auto; min-height: 600px; background: rgba(30, 41, 59, 0.3); border-color: rgba(255,255,255,0.06); border-radius: 16px;">
+          <canvas id="mindmaps-canvas" style="box-shadow: 0 8px 32px rgba(0,0,0,0.6); max-width: 100%; border-radius: 8px; display: block; border: 1px solid rgba(255,255,255,0.08);"></canvas>
+          <div id="mindmaps-fallback-container" class="hidden" style="text-align: center; padding: 40px; color: var(--text-muted);">
+            <i class="fa-solid fa-circle-exclamation" style="font-size: 40px; color: var(--warning); margin-bottom: 15px; display: block;"></i>
+            <p style="font-size: 14px; margin: 0;">PDF reader failed to load the Mind Maps. Make sure <code>matheus_mindmaps.txt</code> exists in your folder.</p>
+            <span id="mindmaps-error-message" style="color: var(--warning); font-size: 12px; display: block; margin-top: 10px; font-family: monospace;"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Viewer 2: Mind Maps Interactive Explorer (New) -->
+      <div id="mindmaps-explorer-wrapper" class="hidden" style="display: flex; flex-direction: column; gap: 16px; position: relative; overflow: hidden; height: calc(100vh - 200px); min-height: 600px;">
+        <div class="explorer-toolbar-container" style="display: flex; justify-content: space-between; align-items: center; gap: 15px; flex-wrap: wrap;">
+          <div class="search-box-wrapper" style="width: 320px; position: relative;">
+            <i class="fa-solid fa-magnifying-glass" style="position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 13px;"></i>
+            <input type="text" id="mindmaps-search-input" class="form-control" placeholder="Search mind map nodes..." style="padding-left: 36px; border-radius: 30px; font-size: 13px;">
+          </div>
+          <div style="display: flex; gap: 8px;">
+            <button class="btn btn-secondary btn-sm" id="mindmaps-expand-all-btn" style="border-radius: 20px; padding: 6px 14px;"><i class="fa-solid fa-folder-open"></i> Expand All</button>
+            <button class="btn btn-secondary btn-sm" id="mindmaps-collapse-all-btn" style="border-radius: 20px; padding: 6px 14px;"><i class="fa-solid fa-folder"></i> Collapse All</button>
+          </div>
+        </div>
+
+        <div class="card glass mindmaps-explorer-body" style="flex: 1; display: flex; background: rgba(30, 41, 59, 0.3); border-color: rgba(255,255,255,0.06); border-radius: 16px; overflow: hidden; position: relative;">
+          <!-- Node Tree area (left pane) -->
+          <div class="tree-workspace" style="flex: 1; overflow-y: auto; padding: 24px; scroll-behavior: smooth;">
+            <div class="mindmap-tree-root" id="mindmaps-tree-root">
+              <!-- Syllabus Tree populated dynamically by JS -->
+            </div>
+          </div>
+
+          <!-- Concept Slide-out Drawer (right pane overlay) -->
+          <div class="mindmap-concept-drawer" id="mindmaps-concept-drawer">
+            <!-- Populated dynamically when clicking leaf nodes -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================= -->
+    <!-- 3.8 STUDY GAMES TAB -->
+    <!-- ======================================================= -->
+    <section id="games" class="tab-content">
+      <header class="tab-header" style="display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; margin-bottom: 25px;">
+        <div>
+          <h2>CISSP Matcher Games</h2>
+          <p>Test your knowledge with drag-and-drop matching. Master OSI layer protocols and cryptographic classifications.</p>
+        </div>
+        <div style="display: flex; gap: 10px; background: rgba(255,255,255,0.03); border: 1px solid var(--card-border); padding: 4px; border-radius: 12px;">
+          <button class="btn btn-secondary active-game-tab" id="btn-mode-osi" style="border: none; padding: 8px 16px; border-radius: 8px; font-weight: 600; font-size: 13px; cursor: pointer; transition: all 0.3s;"><i class="fa-solid fa-network-wired" style="margin-right: 6px;"></i> OSI Matcher</button>
+          <button class="btn btn-secondary" id="btn-mode-crypto" style="border: none; padding: 8px 16px; border-radius: 8px; font-weight: 600; font-size: 13px; cursor: pointer; transition: all 0.3s;"><i class="fa-solid fa-key" style="margin-right: 6px;"></i> Crypto Classifier</button>
+          <button class="btn btn-secondary" id="btn-mode-sequence" style="border: none; padding: 8px 16px; border-radius: 8px; font-weight: 600; font-size: 13px; cursor: pointer; transition: all 0.3s;"><i class="fa-solid fa-arrow-down-1-9" style="margin-right: 6px;"></i> Sequence Puzzle</button>
+          <button class="btn btn-secondary" id="btn-mode-architect" style="border: none; padding: 8px 16px; border-radius: 8px; font-weight: 600; font-size: 13px; cursor: pointer; transition: all 0.3s;"><i class="fa-solid fa-diagram-project" style="margin-right: 6px;"></i> Network Architect</button>
+        </div>
+      </header>
+
+      <!-- Matcher Game Area (OSI & Crypto Classifier) -->
+      <div id="matcher-game-area" class="games-container" style="display: grid; grid-template-columns: 1fr 340px; gap: 24px;">
+        <!-- Left Pane: Bins / Targets -->
+        <div class="card glass game-play-area" style="padding: 24px; min-height: 600px; display: flex; flex-direction: column; justify-content: space-between; background: rgba(30, 41, 59, 0.3); border-color: rgba(255,255,255,0.06); border-radius: 16px;">
+          <!-- Game Board dynamically populated by JS -->
+          <div id="game-board" style="display: flex; flex-direction: column; gap: 12px; width: 100%;"></div>
+          
+          <div class="game-footer" style="margin-top: 24px; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 20px; flex-wrap: wrap; gap: 15px;">
+            <div class="stats" style="display: flex; gap: 24px; font-size: 14px; font-weight: 600;">
+              <div>Correct: <span id="game-score-correct" style="color: var(--success); font-size: 16px;">0</span></div>
+              <div>Incorrect: <span id="game-score-incorrect" style="color: var(--warning); font-size: 16px;">0</span></div>
+              <div>Current Streak: <span id="game-score-streak" style="color: var(--accent); font-size: 16px;">0 🔥</span></div>
+            </div>
+            <button class="btn btn-secondary btn-sm" id="game-reset-btn" style="border-radius: 30px; padding: 8px 16px;"><i class="fa-solid fa-rotate-right" style="margin-right: 6px;"></i> Reset Game</button>
+          </div>
+        </div>
+
+        <!-- Right Pane: Source Cards Deck -->
+        <div class="card glass deck-area" style="padding: 24px; display: flex; flex-direction: column; align-items: center; min-height: 600px; background: rgba(30, 41, 59, 0.3); border-color: rgba(255,255,255,0.06); border-radius: 16px; justify-content: space-between;">
+          <div style="width: 100%; text-align: center;">
+            <h3 style="margin-top: 0; margin-bottom: 8px; font-weight: 700; color: var(--text-main);">Protocol/Cipher Deck</h3>
+            <p class="desc" style="font-size: 12px; margin-bottom: 24px; color: var(--text-muted); line-height: 1.5; margin-top: 0;">Drag these cards to the correct slots on the left board, or select the card and click the target layer.</p>
+          </div>
+          
+          <div id="deck-card-container" style="width: 100%; display: flex; align-items: center; justify-content: center; position: relative; margin: 20px 0;">
+            <!-- Single active card is rendered here -->
+          </div>
+          
+          <div id="deck-feedback" style="width: 100%; text-align: center; min-height: 120px; font-size: 13px; line-height: 1.6; border-radius: 8px; padding: 12px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04); display: flex; align-items: center; justify-content: center; color: var(--text-muted);">
+            No actions taken yet. Start matching!
+          </div>
+        </div> <!-- Closes .deck-area -->
+      </div> <!-- Closes #matcher-game-area -->
+
+      <!-- Sequence Puzzle Area -->
+      <div id="sequence-game-area" class="card glass hidden" style="padding: 24px; min-height: 400px; display: flex; flex-direction: column; gap: 16px; background: rgba(30, 41, 59, 0.3); border-color: rgba(255,255,255,0.06); border-radius: 16px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 12px; flex-wrap: wrap; gap: 10px;">
+          <div>
+            <h3 style="margin: 0; color: var(--text-main); font-size: 18px;">Process Sequence Puzzle</h3>
+            <p style="font-size: 12.5px; color: var(--text-muted); margin: 4px 0 0 0;">Drag blocks left or right to sort the process steps into their correct chronological order.</p>
+          </div>
+          <div class="form-group" style="margin: 0; display: flex; align-items: center; gap: 10px;">
+            <label for="sequence-select" style="font-size: 12px; font-weight: 700; white-space: nowrap; margin: 0; color: var(--text-muted);">Select Process:</label>
+            <select id="sequence-select" class="form-control" style="width: 220px; font-size: 12.5px; padding: 6px 12px;">
+              <option value="picerl">Incident Response (PICERL)</option>
+              <option value="sdlc">Software Development Lifecycle (SDLC)</option>
+              <option value="rmf">Risk Management Framework (RMF)</option>
+              <option value="bcp">Business Continuity Plan (BCP)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="sequence-container">
+          <div class="sequence-board" id="sequence-board">
+            <!-- Dynamic blocks here -->
+          </div>
+          
+          <div id="sequence-feedback" style="text-align: center; font-size: 13px; color: var(--text-muted); padding: 14px; border-radius: 8px; background: rgba(255, 255, 255, 0.02); min-height: 48px; display: flex; align-items: center; justify-content: center; border: 1px dashed var(--card-border);">
+            Drag the blocks to rearrange their order, then check if they match the correct security process sequence.
+          </div>
+          
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
+            <button class="btn btn-secondary" id="sequence-reset-btn"><i class="fa-solid fa-rotate-right" style="margin-right: 6px;"></i> Reset Puzzle</button>
+            <button class="btn btn-primary" id="sequence-check-btn"><i class="fa-solid fa-square-check" style="margin-right: 6px;"></i> Verify Sequence</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Secure Network Architect Game Area -->
+      <div id="architect-game-area" class="card glass hidden" style="padding: 24px; min-height: 550px; display: flex; flex-direction: column; gap: 16px; background: rgba(30, 41, 59, 0.3); border-color: rgba(255,255,255,0.06); border-radius: 16px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 12px; flex-wrap: wrap; gap: 10px;">
+          <div>
+            <h3 style="margin: 0; color: var(--text-main); font-size: 18px;">Secure Network Architect</h3>
+            <p style="font-size: 12.5px; color: var(--text-muted); margin: 4px 0 0 0;">Drag components from the toolbox into the correct security zones to satisfy the scenario constraints.</p>
+          </div>
+          <div class="form-group" style="margin: 0; display: flex; align-items: center; gap: 10px;">
+            <label for="architect-scenario-select" style="font-size: 12px; font-weight: 700; white-space: nowrap; margin: 0; color: var(--text-muted);">Select Scenario:</label>
+            <select id="architect-scenario-select" class="form-control" style="width: 260px; font-size: 12.5px; padding: 6px 12px;">
+              <option value="portal">Scenario 1: Secure Web Portal</option>
+              <option value="shield">Scenario 2: IDS & WAF Protection</option>
+              <option value="bait">Scenario 3: Attacker Honeynet Bait</option>
+            </select>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 10px; background: rgba(245, 158, 11, 0.04); border: 1px solid rgba(245, 158, 11, 0.15); padding: 12px 16px; border-radius: 8px; font-size: 13px; color: var(--warning);" id="architect-scenario-desc">
+          <!-- Scenario text populated by JS -->
+        </div>
+
+        <div class="architect-game-container" style="display: grid; grid-template-columns: 240px 1fr; gap: 24px; min-height: 420px;">
+          <!-- Left: Device Toolbox -->
+          <div class="architect-toolbox card glass" style="padding: 16px; background: rgba(255,255,255,0.01); border-color: rgba(255,255,255,0.04); display: flex; flex-direction: column; gap: 10px; height: 100%;">
+            <h4 style="margin: 0 0 8px 0; color: var(--text-main); font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;"><i class="fa-solid fa-toolbox" style="margin-right: 6px; color: var(--primary);"></i>Toolbox</h4>
+            <div id="architect-toolbox-items" style="display: flex; flex-direction: column; gap: 8px;">
+              <!-- Draggable nodes populated by JS -->
+            </div>
+          </div>
+
+          <!-- Right: Network Canvas Zones -->
+          <div class="architect-canvas" style="display: flex; flex-direction: column; gap: 14px;">
+            <!-- Zone 1: Public / Internet -->
+            <div class="architect-zone-panel" data-zone="untrusted" style="flex: 1; min-height: 120px; border: 2px dashed rgba(239, 68, 68, 0.15); background: rgba(239, 68, 68, 0.02); border-radius: 12px; padding: 16px; position: relative;">
+              <span class="zone-label" style="position: absolute; top: 8px; right: 12px; font-size: 11px; font-weight: 700; color: var(--danger); text-transform: uppercase; letter-spacing: 0.5px;">Untrusted / Internet Boundary</span>
+              <div class="architect-zone-items" style="display: flex; gap: 12px; flex-wrap: wrap; height: 100%; align-content: center; align-items: center; min-height: 80px;"></div>
+            </div>
+
+            <!-- Zone 2: DMZ -->
+            <div class="architect-zone-panel" data-zone="dmz" style="flex: 1; min-height: 120px; border: 2px dashed rgba(245, 158, 11, 0.15); background: rgba(245, 158, 11, 0.02); border-radius: 12px; padding: 16px; position: relative;">
+              <span class="zone-label" style="position: absolute; top: 8px; right: 12px; font-size: 11px; font-weight: 700; color: var(--warning); text-transform: uppercase; letter-spacing: 0.5px;">Demilitarized Zone (DMZ)</span>
+              <div class="architect-zone-items" style="display: flex; gap: 12px; flex-wrap: wrap; height: 100%; align-content: center; align-items: center; min-height: 80px;"></div>
+            </div>
+
+            <!-- Zone 3: Trusted Internal -->
+            <div class="architect-zone-panel" data-zone="trusted" style="flex: 1; min-height: 120px; border: 2px dashed rgba(16, 185, 129, 0.15); background: rgba(16, 185, 129, 0.02); border-radius: 12px; padding: 16px; position: relative;">
+              <span class="zone-label" style="position: absolute; top: 8px; right: 12px; font-size: 11px; font-weight: 700; color: var(--success); text-transform: uppercase; letter-spacing: 0.5px;">Trusted / Internal Enterprise</span>
+              <div class="architect-zone-items" style="display: flex; gap: 12px; flex-wrap: wrap; height: 100%; align-content: center; align-items: center; min-height: 80px;"></div>
+            </div>
+          </div>
+        </div>
+
+        <div id="architect-feedback" style="text-align: center; font-size: 13px; color: var(--text-muted); padding: 14px; border-radius: 8px; background: rgba(255, 255, 255, 0.02); min-height: 48px; display: flex; align-items: center; justify-content: center; border: 1px dashed var(--card-border);">
+          Drag devices from the left toolbox into the correct security zones, then verify your design.
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
+          <button class="btn btn-secondary" id="architect-reset-btn"><i class="fa-solid fa-rotate-right" style="margin-right: 6px;"></i> Reset Design</button>
+          <button class="btn btn-primary" id="architect-verify-btn"><i class="fa-solid fa-shield-halved" style="margin-right: 6px;"></i> Verify Secure Architecture</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================= -->
+    <!-- 4. MEMORY PALACE TAB -->
+    <!-- ======================================================= -->
+    <section id="memory" class="tab-content">
+      <header class="tab-header">
+        <div>
+          <h2>Memory Palace & Formulas</h2>
+          <p>Interactive calculators, cheat sheets, and comparison models for rapid recall.</p>
+        </div>
+      </header>
+
+      <div class="memory-grid">
+        <!-- ALE Calculator -->
+        <div class="card glass calculator-card">
+          <h3><i class="fa-solid fa-calculator"></i> Risk Assessment Calculator</h3>
+          <p class="desc">Calculate Single Loss Expectancy (SLE) and Annualized Loss Expectancy (ALE).</p>
+          <div class="calc-inputs">
+            <div class="form-group">
+              <label>Asset Value (AV) ($)</label>
+              <input type="number" id="calc-av" value="250000" class="form-control">
+            </div>
+            <div class="form-group">
+              <label>Exposure Factor (EF) (%)</label>
+              <input type="number" id="calc-ef" value="40" class="form-control" max="100" min="0">
+            </div>
+            <div class="form-group">
+              <label>Annualized Rate of Occurrence (ARO)</label>
+              <input type="number" id="calc-aro" value="0.02" class="form-control" step="0.01">
+            </div>
+          </div>
+          <div class="calc-results">
+            <div>
+              <p>Single Loss Expectancy (SLE)</p>
+              <h4 id="calc-sle-res">$100,000</h4>
+            </div>
+            <div>
+              <p>Annualized Loss Expectancy (ALE)</p>
+              <h4 id="calc-ale-res" class="accent-color">$2,000</h4>
+            </div>
+          </div>
+        </div>
+
+        <!-- Symmetric Cryptography Key Calculator -->
+        <div class="card glass calculator-card">
+          <h3><i class="fa-solid fa-key"></i> Symmetric Key Formula</h3>
+          <p class="desc">Calculate the number of symmetric keys needed for secure communication among users.</p>
+          <div class="calc-inputs">
+            <div class="form-group">
+              <label>Number of Communication Users (n)</label>
+              <input type="number" id="calc-n-users" value="10" class="form-control" min="2">
+            </div>
+          </div>
+          <div class="calc-formula">
+            <p>Formula: <span>n * (n - 1) / 2</span></p>
+          </div>
+          <div class="calc-results single">
+            <div>
+              <p>Symmetric Keys Required</p>
+              <h4 id="calc-keys-res" class="accent-color">45</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Reference Grids -->
+      <div class="card glass model-reference-card">
+        <h3>Core Security Access Models</h3>
+        <div class="responsive-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Security Model</th>
+                <th>Primary Focus</th>
+                <th>Core Principles</th>
+                <th>Key Axiom / Properties</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Bell-LaPadula</strong></td>
+                <td>Confidentiality</td>
+                <td>Prevents unauthorized disclosure of classified details. Lattice-based MAC.</td>
+                <td>No Read Up (Simple Security), No Write Down (*-Property).</td>
+              </tr>
+              <tr>
+                <td><strong>Biba</strong></td>
+                <td>Integrity</td>
+                <td>Prevents unauthorized modification of files. Lattice-based MAC.</td>
+                <td>No Read Down (Simple Integrity), No Write Up (*-Integrity).</td>
+              </tr>
+              <tr>
+                <td><strong>Clark-Wilson</strong></td>
+                <td>Integrity</td>
+                <td>Transactions are validated via constrained processes and separation of duties.</td>
+                <td>Access Triple (Subject, Program, Object). Transformation Procedures (TPs).</td>
+              </tr>
+              <tr>
+                <td><strong>Brewer-Nash</strong></td>
+                <td>Confidentiality</td>
+                <td>Prevents conflict of interest in consultancy environments dynamically.</td>
+                <td>Chinese Wall (Restricts access based on history).</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Cheat Sheet Reference Card -->
+      <div class="card glass model-reference-card" style="margin-top: 20px;">
+        <h3>CISSP Ultimate Cheat Sheet (Quick Reference)</h3>
+        <p class="desc" style="color: var(--text-muted); font-size: 13px; margin-bottom: 15px;">A distilled summary of essential exam concepts, formulas, ciphers, and regulatory standards.</p>
+        <div class="responsive-table">
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 25%;">Category / Concept</th>
+                <th style="width: 25%;">Core Formula / Principle</th>
+                <th>Exam Context & Key Details</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Risk Calculations</strong></td>
+                <td><code>SLE = AV &times; EF</code><br><code>ALE = SLE &times; ARO</code></td>
+                <td>Asset Value (AV) is cost, Exposure Factor (EF) is % loss. ALE represents the annual loss expectation. Helps determine if control cost is justified.</td>
+              </tr>
+              <tr>
+                <td><strong>Symmetric Keys</strong></td>
+                <td><code>Keys = n &times; (n - 1) / 2</code></td>
+                <td>Calculates the number of symmetric keys required for <code>n</code> users to communicate securely. Symmetric is fast, but key distribution does not scale.</td>
+              </tr>
+              <tr>
+                <td><strong>Digital Evidence</strong></td>
+                <td><strong>Order of Volatility</strong></td>
+                <td>Collect most volatile data first: 1. CPU Registers/Cache &rarr; 2. RAM &rarr; 3. Network States/Routing Tables &rarr; 4. Disk &rarr; 5. Backups.</td>
+              </tr>
+              <tr>
+                <td><strong>Cryptosystems</strong></td>
+                <td><strong>Kerckhoffs' Principle</strong></td>
+                <td>The security of a cryptosystem must rest entirely on the secrecy of the key, not on the secrecy of the algorithm (no security by obscurity).</td>
+              </tr>
+              <tr>
+                <td><strong>Security Models</strong></td>
+                <td><strong>Confidentiality vs. Integrity</strong></td>
+                <td><strong>Bell-LaPadula:</strong> No Read Up, No Write Down (confidentiality).<br><strong>Biba:</strong> No Read Down, No Write Up (integrity).</td>
+              </tr>
+              <tr>
+                <td><strong>IPsec Encapsulation</strong></td>
+                <td><strong>ESP vs. AH</strong></td>
+                <td><strong>ESP:</strong> Encrypts payload (Confidentiality + Integrity).<br><strong>AH:</strong> Signatures only (Integrity, no confidentiality; does not encrypt).</td>
+              </tr>
+              <tr>
+                <td><strong>ISO Standards</strong></td>
+                <td><strong>27001 / 27002 / 27005 / 27701</strong></td>
+                <td><strong>27001:</strong> ISMS Program framework.<br><strong>27002:</strong> Specific controls.<br><strong>27005:</strong> Risk management.<br><strong>27701:</strong> Privacy extension.</td>
+              </tr>
+              <tr>
+                <td><strong>Privacy Mandates</strong></td>
+                <td><strong>GDPR / HIPAA / GLBA</strong></td>
+                <td><strong>GDPR:</strong> EU rights, 72-hour breach notify.<br><strong>HIPAA:</strong> Health PHI safeguards.<br><strong>GLBA:</strong> Financial institutions client data.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================= -->
+    <!-- 5. FLASHCARDS TAB -->
+    <!-- ======================================================= -->
+    <section id="flashcards" class="tab-content">
+      <header class="tab-header">
+        <div>
+          <h2>Interactive Acronym Flashcards</h2>
+          <p>domain-specific digital flip-cards for rapid terminology memorization.</p>
+        </div>
+        <div class="flashcard-filters">
+          <label>Filter Domain</label>
+          <select id="flashcard-domain-filter" class="form-control inline">
+            <option value="all">All Domains</option>
+            <option value="1">D1: Security & Risk</option>
+            <option value="2">D2: Asset Security</option>
+            <option value="3">D3: Security Engineering</option>
+            <option value="4">D4: Network Security</option>
+            <option value="5">D5: Identity & Access</option>
+            <option value="6">D6: Security Testing</option>
+            <option value="7">D7: Security Operations</option>
+            <option value="8">D8: Software Security</option>
+          </select>
+        </div>
+      </header>
+
+      <div class="flashcard-arena">
+        <div class="flashcard" id="active-flashcard">
+          <div class="flashcard-inner">
+            <div class="flashcard-front">
+              <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; position: absolute; top: 15px; padding: 0 20px; box-sizing: border-box;">
+                <p class="card-domain-tag" style="margin: 0; font-size: 11px;">Domain 1: Risk Management</p>
+                <button class="tts-play-btn" id="flashcard-front-speak" title="Read term aloud" style="margin: 0;"><i class="fa-solid fa-volume-low"></i></button>
+              </div>
+              <h3 id="card-front-title" style="margin-top: 20px;">ALE</h3>
+              <p class="hint">Click to flip and reveal details</p>
+            </div>
+            <div class="flashcard-back">
+              <div style="display: flex; justify-content: space-between; align-items: center; width: 100%; margin-bottom: 12px;">
+                <h3 style="font-size: 16px; margin: 0;">Annualized Loss Expectancy</h3>
+                <button class="tts-play-btn" id="flashcard-back-speak" title="Read details aloud" style="margin: 0;"><i class="fa-solid fa-volume-low"></i></button>
+              </div>
+              <p id="card-back-desc">The expected financial loss an organization will experience from a specific threat event over one year.</p>
+              <span class="formula-box">ALE = SLE * ARO</span>
+            </div>
+          </div>
+        </div>
+        <div class="flashcard-controls">
+          <button class="btn btn-secondary" id="prev-card-btn"><i class="fa-solid fa-arrow-left"></i> Previous</button>
+          <span id="card-counter">1 / 10</span>
+          <button class="btn btn-secondary" id="next-card-btn">Next <i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================= -->
+    <!-- 6. STUDY PLANNER TAB -->
+    <!-- ======================================================= -->
+    <section id="planner" class="tab-content">
+      <header class="tab-header">
+        <div>
+          <h2>Custom Study Planner & Logger</h2>
+          <p>Plan sub-topics, log study hours, and check off milestones. Persists to browser storage.</p>
+        </div>
+      </header>
+
+      <div class="planner-grid">
+        <!-- Log Hours Card -->
+        <div class="card glass logger-card">
+          <h3><i class="fa-solid fa-pen-nib"></i> Log Today's Study Session</h3>
+          <div class="form-group">
+            <label>Hours Spent</label>
+            <input type="number" id="log-hours" class="form-control" placeholder="e.g. 2.5" step="0.5" min="0.5">
+          </div>
+          <div class="form-group">
+            <label>Notes / Topic Studied</label>
+            <textarea id="log-notes" class="form-control" rows="3" placeholder="Reviewed cryptographic ciphers..."></textarea>
+          </div>
+          <button class="btn btn-primary" id="save-log-btn">Save Log Entry</button>
+
+          <h4 class="session-logs-title">Recent Study Sessions</h4>
+          <ul class="session-logs" id="session-logs-list">
+            <!-- Dynamically populated via app.js -->
+          </ul>
+        </div>
+
+        <!-- Topic Checklists -->
+        <div class="card glass checklist-card">
+          <h3>Progress Tracker Checklist</h3>
+          <div class="checklist-container" id="checklist-topics">
+            <!-- Populated dynamically via app.js -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================= -->
+    <!-- AI TUTOR TAB -->
+    <!-- ======================================================= -->
+    <section id="ai-tutor" class="tab-content">
+      <header class="tab-header" style="margin-bottom: 25px;">
+        <div>
+          <h2><i class="fa-solid fa-robot" style="color: var(--primary); margin-right: 10px;"></i>AI Study Tutor & Exam Companion</h2>
+          <p>Supercharge your preparation with our client-side study engine. Ask for explanations, custom quizzes, flashcards, scenarios, or professor analogies.</p>
+        </div>
+      </header>
+
+      <div class="ai-tutor-container">
+        <!-- Left: Configuration Card -->
+        <div class="card glass ai-config-card" style="padding: 24px; display: flex; flex-direction: column; gap: 20px; background: rgba(30, 41, 59, 0.3); border-color: rgba(255,255,255,0.06); border-radius: 16px; height: fit-content;">
+          <h3 style="margin: 0; color: var(--text-main); font-size: 18px; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 12px;"><i class="fa-solid fa-sliders" style="margin-right: 8px; color: var(--accent);"></i>Tutor Settings</h3>
+          
+          <div class="form-group">
+            <label for="ai-service-select" style="font-weight: 600; color: var(--text-muted); font-size: 12px; margin-bottom: 8px; display: block;">Select Study Service</label>
+            <select id="ai-service-select" class="form-control" style="width: 100%;">
+              <option value="explain">Explain Concepts</option>
+              <option value="professor">Teach Like a Professor</option>
+              <option value="quiz">Generate Quiz</option>
+              <option value="flashcards">Create Flashcards</option>
+              <option value="summary">Summarize Domain</option>
+              <option value="scenario">Scenario Questions</option>
+              <option value="tips">Exam Tips</option>
+            </select>
+          </div>
+
+          <div class="form-group" id="ai-domain-group">
+            <label for="ai-domain-select" style="font-weight: 600; color: var(--text-muted); font-size: 12px; margin-bottom: 8px; display: block;">Select Domain (Context)</label>
+            <select id="ai-domain-select" class="form-control" style="width: 100%;">
+              <option value="all">All Domains / General</option>
+              <option value="1">Domain 1: Security & Risk Management</option>
+              <option value="2">Domain 2: Asset Security</option>
+              <option value="3">Domain 3: Security Architecture & Engineering</option>
+              <option value="4">Domain 4: Communication & Network Security</option>
+              <option value="5">Domain 5: Identity & Access Management (IAM)</option>
+              <option value="6">Domain 6: Security Assessment & Testing</option>
+              <option value="7">Domain 7: Security Operations</option>
+              <option value="8">Domain 8: Software Development Security</option>
+            </select>
+          </div>
+
+          <div class="form-group" id="ai-input-group">
+            <label for="ai-concept-input" style="font-weight: 600; color: var(--text-muted); font-size: 12px; margin-bottom: 8px; display: block;">Topic or Term</label>
+            <input type="text" id="ai-concept-input" class="form-control" placeholder="e.g. Bell-LaPadula, SAML, BCP..." style="width: 100%;">
+          </div>
+
+          <button class="btn btn-primary" id="ai-consult-btn" style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px; font-weight: 700;">
+            <i class="fa-solid fa-brain"></i> Consult Tutor
+          </button>
+        </div>
+
+        <!-- Right: Chat / Output Console -->
+        <div class="card glass ai-chat-card" style="padding: 24px; display: flex; flex-direction: column; background: rgba(30, 41, 59, 0.3); border-color: rgba(255,255,255,0.06); border-radius: 16px; height: 600px;">
+          <div class="ai-console-header" style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 12px; margin-bottom: 16px;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <span class="status-dot" style="width: 8px; height: 8px; background-color: var(--success); border-radius: 50%; display: inline-block; box-shadow: 0 0 8px var(--success);"></span>
+              <strong style="color: var(--text-main); font-size: 15px;">AI Tutor Console</strong>
+            </div>
+            <div style="display: flex; gap: 8px;">
+              <button class="btn btn-secondary btn-sm" id="ai-speak-btn" title="Listen to last response" style="padding: 6px 12px; border-radius: 20px;"><i class="fa-solid fa-volume-high"></i> Listen</button>
+              <button class="btn btn-secondary btn-sm" id="ai-clear-btn" title="Clear console" style="padding: 6px 12px; border-radius: 20px;"><i class="fa-solid fa-trash-can"></i> Clear</button>
+            </div>
+          </div>
+
+          <div id="ai-chat-terminal">
+            <!-- Welcome message -->
+            <div class="chat-bubble assistant-bubble">
+              <p style="margin: 0; font-weight: 500;">Hello Vicky! I am your AI Study Tutor. Select a service on the left to start your custom session. I can explain key terms, generate dynamic quizzes, prepare interactive flashcards, or teach you like a professor.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ======================================================= -->
+  <!-- EXAM SIMULATOR MODAL (FULL SCREEN OVERLAY) -->
+  <!-- ======================================================= -->
+  <div class="exam-modal" id="exam-engine-modal">
+    <div class="exam-header">
+      <div class="exam-info">
+        <h3 id="exam-title-lbl">Full-Length CISSP Simulated Exam</h3>
+        <span class="badge" id="exam-progress-lbl">Question 1 of 125</span>
+      </div>
+      <div class="exam-timer" id="exam-timer-box">
+        <i class="fa-solid fa-hourglass-half"></i> <span id="exam-timer-lbl">04:00:00</span>
+      </div>
+    </div>
+
+    <div class="exam-body">
+      <div class="scenario-panel card glass">
+        <h4><i class="fa-solid fa-circle-info"></i> Background Scenario</h4>
+        <p id="exam-scenario-txt">An organization is implementing a cloud workload migration...</p>
+      </div>
+      <div class="question-panel card glass">
+        <h4 id="exam-question-txt">Which model should be selected to enforce strict read access controls?</h4>
+        <div class="options-container" id="exam-options-box">
+          <!-- Radio options populated dynamically -->
+        </div>
+        <div class="explanation-box card glass hidden" id="exam-explanation-box">
+          <h5><i class="fa-solid fa-circle-check"></i> Explanation</h5>
+          <p id="exam-explanation-txt">Under GDPR, the Data Controller determines the means...</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="exam-footer">
+      <div style="display: flex; gap: 10px;">
+        <button class="btn btn-secondary" id="exam-flag-btn"><i class="fa-regular fa-flag"></i> Flag for Review</button>
+        <button class="btn btn-danger" id="exam-exit-btn" style="background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.3); color: var(--danger);"><i class="fa-solid fa-arrow-right-from-bracket"></i> Exit Exam</button>
+      </div>
+      <div class="navigation-btns">
+        <button class="btn btn-secondary" id="exam-prev-btn"><i class="fa-solid fa-arrow-left"></i> Previous</button>
+        <button class="btn btn-secondary" id="exam-show-ans-btn">Show Answer</button>
+        <button class="btn btn-primary" id="exam-next-btn">Next <i class="fa-solid fa-arrow-right"></i></button>
+        <button class="btn btn-danger hidden" id="exam-submit-btn">Submit Exam</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================= -->
+  <!-- EXAM RESULTS VIEW MODAL -->
+  <!-- ======================================================= -->
+  <div class="exam-results-modal" id="exam-results-modal">
+    <div class="card glass results-card">
+      <i class="fa-solid fa-chart-pie results-icon"></i>
+      <h2>Exam Completion Summary</h2>
+      <p>Here is your quantitative scoring breakdown.</p>
+      <div class="score-grid">
+        <div>
+          <span id="res-score-pct">0%</span>
+          <p>Your Score</p>
+        </div>
+        <div>
+          <span id="res-status-lbl" class="status-fail">FAIL</span>
+          <p>Status (70% Passing)</p>
+        </div>
+      </div>
+      <div class="results-breakdown">
+        <h3>Domain performance</h3>
+        <ul id="res-domain-list">
+          <!-- Dynamically populated -->
+        </ul>
+      </div>
+      <button class="btn btn-primary" id="close-results-btn">Return to Dashboard</button>
+    </div>
+  </div>
+
+  <!-- ======================================================= -->
+  <!-- MEMBER LOGIN MODAL -->
+  <!-- ======================================================= -->
+  <div class="login-modal-overlay" id="login-modal">
+    <div class="card glass login-card">
+      <div class="login-header">
+        <h3>Member Portal Sign-In</h3>
+        <button class="close-login-btn" id="close-login-modal">&times;</button>
+      </div>
+      <p class="login-subheader">Unlock cloud sync, exam progression records, and verified member credentials.</p>
+      
+      <!-- Google Sign In Container -->
+      <div class="google-auth-wrapper">
+        <label class="auth-label">Sign in with Gmail</label>
+        <div id="google-signin-btn"></div>
+        <button class="btn btn-secondary demo-login-btn" id="demo-gmail-btn">
+          <i class="fa-solid fa-flask" style="color: var(--primary);"></i> Launch Demo Gmail Sign-In
+        </button>
+      </div>
+      
+      <div class="auth-divider">
+        <span>OR</span>
+      </div>
+      
+      <!-- Traditional Login Form -->
+      <form id="email-login-form" class="login-form">
+        <div class="form-group">
+          <label for="login-email">Email Address</label>
+          <input type="email" id="login-email" class="form-control" placeholder="name@domain.com" required>
+        </div>
+        <div class="form-group">
+          <label for="login-password">Password</label>
+          <input type="password" id="login-password" class="form-control" placeholder="••••••••" required>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">Sign In with Email</button>
+      </form>
+      
+      <div class="login-footer">
+        <p>Don't have an account? <span class="register-link" id="register-trigger">Register Free</span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Questions DB -->
+  <script src="questions.js"></script>
+  <!-- Cheat Sheet DB -->
+  <script src="cheatsheet_data.js?v=2.1"></script>
+  <!-- Application Logic -->
+  <script src="app.js?v=3.9"></script>
+</body>
+</html>
