@@ -4363,11 +4363,12 @@ function fetchVisitorCount() {
   mockCount += 1;
   localStorage.setItem("cissp_mock_visitors", mockCount);
 
-  fetch('https://api.counterapi.dev/v1/cissp-prep-portal-vicky/views/up')
+  fetch('https://api.counterapi.dev/v1/cissp-exampro/views/up')
     .then(response => response.json())
     .then(data => {
-      if (data && data.value) {
-        visitorCountEl.textContent = Number(data.value).toLocaleString();
+      if (data && (data.count !== undefined || data.value !== undefined)) {
+        const actualCount = data.count !== undefined ? data.count : data.value;
+        visitorCountEl.textContent = Number(actualCount).toLocaleString();
       } else {
         visitorCountEl.textContent = mockCount.toLocaleString();
       }
