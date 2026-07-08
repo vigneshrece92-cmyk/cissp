@@ -14739,5 +14739,20045 @@ const CISSP_QUESTIONS = [
     ],
     "answer": 2,
     "explanation": "This question covers a critical concept in Security and Risk Management. Option C is verified as the correct answer key in standard CISSP assessments."
+  },
+  {
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "scenario": "Data Classification & Lifecycle",
+    "question": "A multinational financial firm is designing a data retention policy. Which of the following factors is the MOST critical driver for determining the retention periods of customer financial transaction logs?",
+    "options": [
+      "The storage capacity of the firm's backup arrays",
+      "Legal and regulatory compliance requirements",
+      "The preference of the business database administrators",
+      "The average lifespan of the storage media"
+    ],
+    "answer": 1,
+    "explanation": "Legal and regulatory compliance requirements (such as SOX, GDPR, or local tax laws) are the primary and most critical driver for data retention. Business preferences or hardware limits cannot override legal mandates.",
+    "id": 10401
+  },
+  {
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "scenario": "Data Sanitization standards",
+    "question": "An enterprise is decommissioning a cluster of servers containing highly sensitive proprietary research data stored on Solid-State Drives (SSDs). According to NIST SP 800-88 Rev 1, which of the following is the BEST sanitization method if the SSDs are to be sold to a third-party vendor?",
+    "options": [
+      "Declassification using standard low-level formatting",
+      "Degaussing using a high-intensity magnetic field",
+      "Cryptographic Erase (CE) followed by verification",
+      "Physical disintegration or shredding"
+    ],
+    "answer": 2,
+    "explanation": "Cryptographic Erase (CE) is a recognized logical sanitization method under NIST SP 800-88 Rev 1 for SSDs when physical reuse is desired. Note that degaussing is ineffective on SSDs as they contain flash memory, not magnetic media. Physical shredding is effective but prevents resale/reuse.",
+    "id": 10402
+  },
+  {
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "scenario": "Asset Roles",
+    "question": "The Chief Executive Officer (CEO) of a health insurance company has appointed a senior database administrator (DBA) to manage access permissions, perform daily backups, and configure encryption on the database. In this context, what role is the DBA fulfilling?",
+    "options": [
+      "Data Owner",
+      "Data Custodian",
+      "Data Processor",
+      "Data Controller"
+    ],
+    "answer": 1,
+    "explanation": "The Data Custodian is responsible for the technical implementation of security controls, backing up data, and managing access permissions as directed by the Data Owner. The CEO or executive team represents the Data Owner/Controller.",
+    "id": 10403
+  },
+  {
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "scenario": "Data State Protections",
+    "question": "Which of the following technologies is PRIMARILY designed to protect sensitive data while it is actively being processed by a CPU in system memory?",
+    "options": [
+      "Transport Layer Security (TLS)",
+      "Full Disk Encryption (FDE)",
+      "Confidential Computing (Hardware Enclaves)",
+      "Database Column Encryption"
+    ],
+    "answer": 2,
+    "explanation": "Confidential Computing uses hardware-based enclaves (such as Intel SGX or AMD SEV) to encrypt and protect data-in-use inside system memory (RAM) while being processed by the CPU. TLS is for data-in-transit, FDE is for data-at-rest.",
+    "id": 10404
+  },
+  {
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "scenario": "Data Remanence",
+    "question": "During a risk assessment, a security auditor notes that an organization uses standard file deletion commands to clean up old PII from shared file servers. Why should this practice be flagged as a security risk?",
+    "options": [
+      "It triggers automatic file server replication",
+      "Standard deletion only removes file pointers, leaving data blocks recoverable",
+      "It violates the WPA3 enterprise security protocol",
+      "It forces the immediate physical wear of the storage controller"
+    ],
+    "answer": 1,
+    "explanation": "Standard OS deletion commands (like 'delete' or 'rm') only remove file directory pointers or indexing records. The actual data blocks containing the sensitive information remain intact on the media and are easily recoverable using basic software tools until overwritten.",
+    "id": 10405
+  },
+  {
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "scenario": "Baselines, Scoping & Tailoring",
+    "question": "An IT department is implementing the NIST SP 800-53 security baseline. They decide to remove a specific control regarding wireless networks because their facility has no wireless capability. What process has the team performed?",
+    "options": [
+      "Tailoring",
+      "Scoping",
+      "Risk Transference",
+      "Compensating"
+    ],
+    "answer": 1,
+    "explanation": "Scoping is the process of eliminating controls from a baseline security framework that do not apply to the specific technology environment of the organization.",
+    "id": 10406
+  },
+  {
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "scenario": "Privacy-Enhancing Tech",
+    "question": "An analyst wants to share a customer dataset with an external marketing firm but must protect customer privacy. They replace all direct identifiers (names, Social Security numbers) with randomized values that can be mapped back internally if necessary. What technique is this?",
+    "options": [
+      "Anonymization",
+      "Pseudonymization",
+      "Data Destruction",
+      "Media Purging"
+    ],
+    "answer": 1,
+    "explanation": "Pseudonymization replaces identifiers with artificial identifiers (pseudonyms) but allows re-identification if the key/mapping is accessed. Anonymization, on the other hand, is irreversible.",
+    "id": 10407
+  },
+  {
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "scenario": "DRM & IRM",
+    "question": "A design team wants to share blueprints with external contractors but prevent them from copying, printing, or forwarding the files. Which of the following is the BEST solution to enforce these granular permissions?",
+    "options": [
+      "Data Loss Prevention (DLP) at the network perimeter",
+      "Information Rights Management (IRM)",
+      "Strong symmetric file encryption",
+      "Restricted DAC permissions on the local server"
+    ],
+    "answer": 1,
+    "explanation": "Information Rights Management (IRM) / Digital Rights Management (DRM) enforces file-level usage rights (no print, no copy, no forward) that persist with the file even when it leaves the organization's network.",
+    "id": 10408
+  },
+  {
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "scenario": "Legal Holds",
+    "question": "A legal counsel issues a 'legal hold' notice to the IT department. What is the immediate expected action from the IT team?",
+    "options": [
+      "Immediately delete the requested records to prevent leaks",
+      "Preserve all relevant data and suspend normal data deletion/rotation schedules for it",
+      "Encrypt the data with a key known only to the legal team",
+      "Outsource the database holding the records to a cloud provider"
+    ],
+    "answer": 1,
+    "explanation": "A legal hold requires preserving all electronically stored information (ESI) relevant to a pending or active lawsuit or audit, which means normal data retention deletion schedules must be temporarily suspended.",
+    "id": 10409
+  },
+  {
+    "domain": 2,
+    "domain_name": "Asset Security",
+    "scenario": "Asset Ownership",
+    "question": "Who is ultimately responsible for defining the classification level of a specific data asset within an organization?",
+    "options": [
+      "The Database Administrator (DBA)",
+      "The Data Owner / Information Owner",
+      "The Chief Information Security Officer (CISO)",
+      "The External Auditor"
+    ],
+    "answer": 1,
+    "explanation": "The Data Owner (Information Owner) is a business manager who has policy-level responsibility for a dataset and is responsible for defining its classification level.",
+    "id": 10410
+  },
+  {
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "scenario": "Access Control Models",
+    "question": "A system administrator is reviewing a security model designed to prevent the unauthorized disclosure of state secrets. The model enforces that a user with 'Secret' clearance cannot write to 'Unclassified' files. Which property of which model does this behavior represent?",
+    "options": [
+      "The *-Property (Star Property) of Bell-LaPadula",
+      "The Simple Security Property of Bell-LaPadula",
+      "The *-Integrity Property of Biba",
+      "The Simple Integrity Property of Biba"
+    ],
+    "answer": 0,
+    "explanation": "The *-Property (Star Property) of the Bell-LaPadula model states 'No Write Down'. A user with higher clearance (Secret) cannot write down to a lower level (Unclassified) to prevent accidental data leaks.",
+    "id": 10411
+  },
+  {
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "scenario": "Access Control Models",
+    "question": "A security architect is designing an accounting system where users cannot directly write to database tables. Instead, all modifications must go through audited transaction applications. Which security model is this architecture based on?",
+    "options": [
+      "Bell-LaPadula Model",
+      "Biba Model",
+      "Clark-Wilson Model",
+      "Brewer-Nash Model"
+    ],
+    "answer": 2,
+    "explanation": "The Clark-Wilson model is designed for commercial application integrity. It uses 'well-formed transactions' (requiring users to access data only through validated programs) and Separation of Duties to protect integrity.",
+    "id": 10412
+  },
+  {
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "scenario": "Common Criteria",
+    "question": "In the Common Criteria (ISO/IEC 15408) evaluation process, what term refers to the document that defines the specific security requirements of a product category (e.g., 'Virtual Private Network routers')?",
+    "options": [
+      "Security Target (ST)",
+      "Target of Evaluation (TOE)",
+      "Protection Profile (PP)",
+      "Evaluation Assurance Level (EAL)"
+    ],
+    "answer": 2,
+    "explanation": "The Protection Profile (PP) defines a standardized set of security requirements for a category of products (the TOE) that customers or industries wish to evaluate.",
+    "id": 10413
+  },
+  {
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "scenario": "CPU Protections",
+    "question": "A developer writes an application that executes a system call to read a file from the hard disk. How does the CPU handle this transitions between rings?",
+    "options": [
+      "It executes the system call in Ring 3 directly",
+      "It shifts execution from Ring 3 (User mode) to Ring 0 (Kernel mode)",
+      "It routes the request through Ring 2 to verify encryption",
+      "It forces the system to restart for integrity check"
+    ],
+    "answer": 1,
+    "explanation": "User applications run in Ring 3 (User mode) and cannot access hardware directly. To perform I/O operations (like file reads), the CPU shifts execution to Ring 0 (Kernel/Privileged mode) via system calls.",
+    "id": 10414
+  },
+  {
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "scenario": "Symmetric Cryptography",
+    "question": "Why is the Advanced Encryption Standard (AES) in Electronic Codebook (ECB) mode considered unsafe for encrypting sensitive graphics or database backups?",
+    "options": [
+      "It uses a variable key length that is prone to brute force",
+      "It encrypts identical plaintext blocks into identical ciphertext blocks, revealing patterns",
+      "It does not support key sizes above 64 bits",
+      "It requires an asymmetric public key exchange"
+    ],
+    "answer": 1,
+    "explanation": "ECB mode encrypts each block independently. If two blocks of plaintext are identical, they result in identical blocks of ciphertext. This lacks randomness and can reveal structural patterns in the encrypted data.",
+    "id": 10415
+  },
+  {
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "scenario": "Key agreement protocols",
+    "question": "Which of the following cryptographic algorithms is PRIMARILY designed to allow two parties to securely establish a shared symmetric session key over an untrusted channel, without pre-existing secrets?",
+    "options": [
+      "RSA",
+      "AES",
+      "Diffie-Hellman",
+      "SHA-256"
+    ],
+    "answer": 2,
+    "explanation": "Diffie-Hellman is a key agreement/exchange protocol that allows two parties to establish a shared symmetric session key over an insecure channel. It does not perform encryption/decryption on its own.",
+    "id": 10416
+  },
+  {
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "scenario": "Hardware Security",
+    "question": "An enterprise wants to enforce that a server's operating system has not been modified or compromised at boot time. Which hardware device should be used to verify boot integrity?",
+    "options": [
+      "Hardware Security Module (HSM)",
+      "Trusted Platform Module (TPM)",
+      "Asymmetric Crypto-processor",
+      "Unified Threat Management (UTM)"
+    ],
+    "answer": 1,
+    "explanation": "A Trusted Platform Module (TPM) chip stores cryptographic hashes of the system boot state and verifies boot integrity (Secure Boot), alerting or blocking boot if modifications are detected.",
+    "id": 10417
+  },
+  {
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "scenario": "Physical Security",
+    "question": "Which of the following physical security controls is specifically designed to prevent 'tailgating' or 'piggybacking' at a high-security data center entrance?",
+    "options": [
+      "A CCTV system with motion tracking",
+      "A mantrap (physical access portal)",
+      "High-security turnstile gates",
+      "Proximity reader cards"
+    ],
+    "answer": 1,
+    "explanation": "A mantrap consists of two interlocking doors. The first door must close and lock before the second door opens, allowing security to verify that only one authorized person enters at a time, preventing tailgating.",
+    "id": 10418
+  },
+  {
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "scenario": "Common Cryptography",
+    "question": "An application needs to secure storage of user passwords. Which of the following is the BEST cryptographic technique to resist offline brute force and GPU-accelerated hashing attacks?",
+    "options": [
+      "MD5 hashing with a 16-bit salt",
+      "SHA-256 hashing",
+      "A slow key stretching algorithm like bcrypt or Argon2",
+      "Symmetric encryption using AES-256"
+    ],
+    "answer": 2,
+    "explanation": "Key stretching algorithms (like bcrypt, scrypt, or Argon2) make the hashing process computationally slow and memory-intensive, drastically slowing down brute-force attempts even when attackers use specialized GPU hardware.",
+    "id": 10419
+  },
+  {
+    "domain": 3,
+    "domain_name": "Security Architecture and Engineering",
+    "scenario": "PKI",
+    "question": "An online certificate validation check fails because the client cannot establish real-time connectivity to the CA's Certificate Revocation List (CRL). What PKI protocol provides a faster, real-time, query-based alternative to CRLs?",
+    "options": [
+      "OCSP (Online Certificate Status Protocol)",
+      "SAML (Security Assertion Markup Language)",
+      "LDAP (Lightweight Directory Access Protocol)",
+      "Diffie-Hellman Key Exchange"
+    ],
+    "answer": 0,
+    "explanation": "OCSP allows clients to query a CA real-time regarding the status of a specific certificate, returning a quick response (Valid, Revoked, or Unknown) without downloading the entire CRL file.",
+    "id": 10420
+  },
+  {
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "scenario": "Penetration Testing",
+    "question": "A security engineer is performing a penetration test. The client has provided the tester with only an IP range and no system details, credentials, or architecture diagrams. What type of penetration test does this simulate?",
+    "options": [
+      "White Box",
+      "Gray Box",
+      "Black Box",
+      "Credentialed Audit"
+    ],
+    "answer": 2,
+    "explanation": "A black box penetration test provides the tester with zero initial information about the target environment, simulating a realistic external attacker's perspective.",
+    "id": 10421
+  },
+  {
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "scenario": "Code Scanning",
+    "question": "During a software development sprint, the security team wants to scan the source code repository for vulnerabilities before compile time. What tool should be integrated into the CI/CD pipeline?",
+    "options": [
+      "Dynamic Application Security Testing (DAST)",
+      "Static Application Security Testing (SAST)",
+      "Runtime Application Self-Protection (RASP)",
+      "Centralized Log Aggregator"
+    ],
+    "answer": 1,
+    "explanation": "SAST scans source code or binary files in a non-running state, analyzing the code structure to find flaws early in the software development lifecycle.",
+    "id": 10422
+  },
+  {
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "scenario": "SOC Reports",
+    "question": "An enterprise is outsourcing its customer data hosting to a third-party cloud provider. The security manager wants to evaluate the operating effectiveness of the provider's security controls over the past 9 months. Which document should the manager request?",
+    "options": [
+      "SOC 1 Type I",
+      "SOC 2 Type I",
+      "SOC 2 Type II",
+      "SOC 3"
+    ],
+    "answer": 2,
+    "explanation": "A SOC 2 Type II report evaluates the operating effectiveness of a service organization's controls over a period of time (typically 6-12 months). A Type I report only checks control design at a single point in time.",
+    "id": 10423
+  },
+  {
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "scenario": "Testing vs Assessment",
+    "question": "What is the primary difference between a vulnerability assessment and a penetration test?",
+    "options": [
+      "Vulnerability assessments require physical access, while penetration tests do not",
+      "Vulnerability assessments identify security weaknesses, while penetration tests exploit them to demonstrate impact",
+      "Vulnerability assessments are performed by auditors, while penetration tests are performed by developers",
+      "Vulnerability assessments are always black-box, while penetration tests are always white-box"
+    ],
+    "answer": 1,
+    "explanation": "A vulnerability assessment lists and categorizes security flaws without executing them. A penetration test active exploits discovered flaws to verify if they can be bypassed and measure downstream impact.",
+    "id": 10424
+  },
+  {
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "scenario": "Vulnerability Scanning",
+    "question": "A security analyst runs a credentialed vulnerability scan on a core database server. Why is this preferred over a non-credentialed scan?",
+    "options": [
+      "It uses passive sniffing that does not impact server performance",
+      "It provides a deeper inspection of local configurations, patch levels, and registry values",
+      "It tests external firewall rule configuration",
+      "It is immune to false positive alerts"
+    ],
+    "answer": 1,
+    "explanation": "A credentialed (authenticated) scan logs into the target system, allowing the scanner to inspect internal attributes like registry settings, local patch levels, and system configurations, reducing false positives.",
+    "id": 10425
+  },
+  {
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "scenario": "Fuzz Testing",
+    "question": "A developer wants to test an input field for vulnerability to buffer overflows by sending massive amounts of randomized, malformed data to the application. What testing technique is this?",
+    "options": [
+      "Static Analysis",
+      "Regression Testing",
+      "Fuzz Testing (Fuzzing)",
+      "Unit Testing"
+    ],
+    "answer": 2,
+    "explanation": "Fuzz testing (fuzzing) involves sending randomized, invalid, or unexpected inputs to an application's interfaces to detect crashes, memory leaks, or error handling flaws.",
+    "id": 10426
+  },
+  {
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "scenario": "SOC Reports",
+    "question": "Which of the following SOC reports is designed for general public distribution and does not contain detailed control test descriptions or results?",
+    "options": [
+      "SOC 1 Type II",
+      "SOC 2 Type II",
+      "SOC 3",
+      "SOC 2 Type I"
+    ],
+    "answer": 2,
+    "explanation": "SOC 3 is a high-level summary report designed for public disclosure to show compliance without exposing sensitive structural or audit details.",
+    "id": 10427
+  },
+  {
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "scenario": "Penetration Testing Methodology",
+    "question": "During a penetration test, the tester establishes a backdoor on a compromised web server to maintain access in the future. What phase of the penetration testing methodology does this represent?",
+    "options": [
+      "Reconnaissance",
+      "Exploitation",
+      "Post-Exploitation (Persistence)",
+      "Reporting"
+    ],
+    "answer": 2,
+    "explanation": "Establishing backdoors, escalating privileges, and locating sensitive assets after initially gaining access occur in the post-exploitation phase.",
+    "id": 10428
+  },
+  {
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "scenario": "Security Audits",
+    "question": "Which of the following best describes the main objective of a third-party security audit?",
+    "options": [
+      "To design new security training materials for employees",
+      "To provide independent assurance that the organization complies with specific security standards or policies",
+      "To implement technical patches on production servers",
+      "To run automated password cracking tools against user directories"
+    ],
+    "answer": 1,
+    "explanation": "Audits assess and verify if controls are functioning in compliance with regulations or policies, providing an objective, independent report to stakeholders.",
+    "id": 10429
+  },
+  {
+    "domain": 6,
+    "domain_name": "Security Assessment and Testing",
+    "scenario": "Threat Hunting",
+    "question": "How does threat hunting differ from traditional security monitoring using a SIEM?",
+    "options": [
+      "Threat hunting is automated, while SIEM monitoring is manual",
+      "Threat hunting is proactive and hypothesis-driven, while SIEM monitoring is reactive to alerts",
+      "Threat hunting does not require log access",
+      "Threat hunting is only performed after a confirmed data breach"
+    ],
+    "answer": 1,
+    "explanation": "Traditional monitoring waits for alerts (reactive). Threat hunting is a proactive, hypothesis-based search through networks and endpoints to detect hidden threats that bypassed controls.",
+    "id": 10430
+  },
+  {
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "scenario": "Incident Response",
+    "question": "A security analyst detects that a server is actively communicating with a known Command & Control (C2) IP address. According to the PICERL incident response framework, what should the analyst do NEXT?",
+    "options": [
+      "Conduct a lessons learned review meeting",
+      "Eradicate the malware from the server filesystem",
+      "Isolate the server to contain the incident",
+      "Rebuild the server from the gold master backup image"
+    ],
+    "answer": 2,
+    "explanation": "Once an incident is identified, the immediate priority in the PICERL lifecycle is **Containment** (isolating the system to prevent data exfiltration or lateral movement) before moving to Eradication.",
+    "id": 10431
+  },
+  {
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "scenario": "Forensics",
+    "question": "A digital forensics investigator is collecting evidence from a compromised system. Which of the following data should the investigator capture FIRST?",
+    "options": [
+      "The contents of the local hard drive",
+      "The active CPU registers and system memory (RAM)",
+      "The offsite backup tapes",
+      "The system event logs on the centralized logging server"
+    ],
+    "answer": 1,
+    "explanation": "According to the Order of Volatility, RAM and CPU registers are highly volatile and lost when the system is powered off or rebooted. They must be collected first, before disk drives.",
+    "id": 10432
+  },
+  {
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "scenario": "DRP Testing",
+    "question": "A business continuity manager wants to verify that the disaster recovery backup systems can handle the production traffic load without causing downtime or disrupting daily business operations at the primary site. Which test should be performed?",
+    "options": [
+      "Tabletop Exercise",
+      "Checklist Walkthrough",
+      "Parallel Test",
+      "Full Interruption Test"
+    ],
+    "answer": 2,
+    "explanation": "A parallel test activates backup systems and mirrors production data to run workloads concurrently without shutting down the primary site, making it safe and non-disruptive.",
+    "id": 10433
+  },
+  {
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "scenario": "Incident Response",
+    "question": "Which phase of the incident response lifecycle is considered the most critical for ensuring that the organization learns from security events and improves future defense capabilities?",
+    "options": [
+      "Containment",
+      "Eradication",
+      "Lessons Learned / Post-Incident Activity",
+      "Preparation"
+    ],
+    "answer": 2,
+    "explanation": "The Lessons Learned phase compiles reports, conducts a post-mortem review, and updates policies and controls to prevent similar incidents, which directly enhances future posture.",
+    "id": 10434
+  },
+  {
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "scenario": "Backups",
+    "question": "An IT department performs a full backup on Sunday night, and incremental backups on Monday, Tuesday, and Wednesday nights. If the database crashes on Thursday morning, what backups are required to fully restore the database?",
+    "options": [
+      "Only the Sunday full backup",
+      "The Sunday full backup and the Wednesday incremental backup",
+      "The Sunday full backup and all incremental backups (Monday, Tuesday, Wednesday) restored in order",
+      "All backups since the last 30 days"
+    ],
+    "answer": 2,
+    "explanation": "Restoring from incremental backups requires the last full backup plus **all subsequent incremental backups** applied in the exact chronological order they were taken.",
+    "id": 10435
+  },
+  {
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "scenario": "Change Management",
+    "question": "A systems administrator notices that a patch has caused a critical application to fail in the staging environment. What component of the change management policy outlines the steps to revert the system to its previous functional state?",
+    "options": [
+      "Request for Change (RFC)",
+      "Rollback Plan (Backout Plan)",
+      "Configuration baseline",
+      "Lessons learned protocol"
+    ],
+    "answer": 1,
+    "explanation": "A rollback (or backout) plan is a mandatory part of change management that details how to restore a system to its original state if a change fails or causes instability.",
+    "id": 10436
+  },
+  {
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "scenario": "Physical Security",
+    "question": "An organization wants to design an office park to reduce crime and unauthorized entry by naturally guiding visitors toward monitored reception areas using landscaping, fencing, and pathways. What design framework is this?",
+    "options": [
+      "Mantraps & Turnstiles configuration",
+      "Crime Prevention Through Environmental Design (CPTED)",
+      "Defense-in-depth layout",
+      "Perimeter security metrics"
+    ],
+    "answer": 1,
+    "explanation": "CPTED uses physical design, landscaping, natural surveillance, and territorial reinforcement to deter criminal activity and guide human behavior in physical environments.",
+    "id": 10437
+  },
+  {
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "scenario": "Log management",
+    "question": "A security analyst is investigating a security alert. They note that the system logs on the local host show signs of tampering. What security architecture could have prevented this modification of audit trails?",
+    "options": [
+      "Running local backups every hour",
+      "Centralized, write-once logging (SIEM) with cryptographic hashing",
+      "Installing host-based intrusion prevention systems (HIPS)",
+      "Restricting users to Discretionary Access Control (DAC) permissions"
+    ],
+    "answer": 1,
+    "explanation": "Sending logs in real-time to a centralized log management system (SIEM) that stores them on Write-Once-Read-Many (WORM) media prevents local attackers or rootkits from altering logs to cover their tracks.",
+    "id": 10438
+  },
+  {
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "scenario": "Digital Forensics",
+    "question": "In digital forensics, what does the term 'Chain of Custody' primarily document?",
+    "options": [
+      "The encryption algorithms used to secure the backup tapes",
+      "The list of employees authorized to access the server room",
+      "A chronological log showing the collection, control, transfer, and analysis of evidence",
+      "The order in which memory registers are dumped to disk"
+    ],
+    "answer": 2,
+    "explanation": "Chain of custody maintains evidence integrity by logging every person who handled, transported, or accessed the evidence, ensuring it remains admissible in a court of law.",
+    "id": 10439
+  },
+  {
+    "domain": 7,
+    "domain_name": "Security Operations",
+    "scenario": "Incident Response",
+    "question": "During the Containment phase of incident response, why is 'disconnecting the network cable' preferred over 'turning off the server power'?",
+    "options": [
+      "It saves electrical power",
+      "It preserves volatile evidence in RAM (like active processes and memory state) for forensics",
+      "It forces the system to automatically patch itself",
+      "It triggers a database commit transaction"
+    ],
+    "answer": 1,
+    "explanation": "Powering off a system wipes volatile data in RAM. Disconnecting the network interface contains the threat (prevents communication) while leaving RAM intact for forensic imaging.",
+    "id": 10440
+  },
+  {
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "scenario": "SDLC Models",
+    "question": "A software team is developing a medical device control application where software failure could result in loss of life. They want to use a development model that heavily emphasizes systematic risk analysis and mitigation at every iteration. Which model is best suited?",
+    "options": [
+      "Waterfall Model",
+      "Agile Scrum",
+      "Spiral Model",
+      "Rapid Application Development (RAD)"
+    ],
+    "answer": 2,
+    "explanation": "The Spiral model is a risk-driven development model that focuses on identifying, analyzing, and resolving risks during each iterative cycle (spiral loop).",
+    "id": 10441
+  },
+  {
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "scenario": "Secure coding",
+    "question": "An application is vulnerable to SQL injection because user inputs are directly concatenated into SQL query strings. What is the BEST programming defense to eliminate this vulnerability?",
+    "options": [
+      "Install a Web Application Firewall (WAF) in front of the server",
+      "Implement Parameterized Queries (Prepared Statements)",
+      "Encrypt the database connection strings",
+      "Use a block cipher to encrypt the database fields"
+    ],
+    "answer": 1,
+    "explanation": "Parameterized queries (prepared statements) ensure that user input is treated as data, not as executable code, neutralizing SQL injection attempts at the code level.",
+    "id": 10442
+  },
+  {
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "scenario": "Memory Safety",
+    "question": "Which of the following software vulnerabilities is characterized by an application writing data past the boundaries of a allocated memory buffer, potentially overwriting execution flow controls?",
+    "options": [
+      "Cross-Site Scripting (XSS)",
+      "SQL Injection",
+      "Buffer Overflow",
+      "Directory Traversal"
+    ],
+    "answer": 2,
+    "explanation": "A buffer overflow occurs when an application writes more data to a memory buffer than it is allocated to hold, overwriting adjacent memory spaces (like the stack return address).",
+    "id": 10443
+  },
+  {
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "scenario": "Design Principles",
+    "question": "A software architect is designing a login system. If the authentication database fails or goes offline, the system should log the error and deny all access requests. What secure design principle does this implement?",
+    "options": [
+      "Fail-Secure (Fail-Safe)",
+      "Fail-Open",
+      "Defense in Depth",
+      "Economy of Mechanism"
+    ],
+    "answer": 0,
+    "explanation": "Fail-Secure (Fail-Safe) ensures that if a component fails, the system defaults to a secure state (blocking access). Fail-open would grant access, prioritizing availability over confidentiality.",
+    "id": 10444
+  },
+  {
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "scenario": "DevSecOps",
+    "question": "A security engineer wants to automatically audit the open-source libraries and third-party dependencies used in an application for known vulnerabilities during the CI/CD build process. What tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Interactive Application Security Testing (IAST)"
+    ],
+    "answer": 2,
+    "explanation": "SCA tools scan third-party dependencies and open-source packages within a codebase to detect known vulnerabilities and license compliance issues.",
+    "id": 10445
+  },
+  {
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "scenario": "Web vulnerabilities",
+    "question": "An attacker tricks an authenticated user into clicking a link that triggers an unauthorized bank transfer request on a site the user is currently logged into. What vulnerability does this attack exploit?",
+    "options": [
+      "Cross-Site Scripting (XSS)",
+      "Cross-Site Request Forgery (CSRF)",
+      "SQL Injection",
+      "Session Fixation"
+    ],
+    "answer": 1,
+    "explanation": "CSRF forces an authenticated user's browser to send a forged HTTP request (carrying the user's active session cookie) to a vulnerable web application, executing unauthorized commands.",
+    "id": 10446
+  },
+  {
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "scenario": "Input Sanitization",
+    "question": "Which input validation strategy is considered the most secure when designing a form field?",
+    "options": [
+      "Denylisting (blocking known bad characters like '<' or ';')",
+      "Allowlisting (only accepting inputs that match a strict regular expression of allowed characters)",
+      "Relying on client-side JavaScript validation only",
+      "Converting all inputs to Base64 format"
+    ],
+    "answer": 1,
+    "explanation": "Allowlisting (strict input validation) checks input against an explicit set of safe inputs, which is far more secure than denylisting, as attackers constantly find new ways to format malicious inputs.",
+    "id": 10447
+  },
+  {
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "scenario": "Software Escrow",
+    "question": "An organization is purchasing a critical COTS application from a startup vendor. What contractual agreement protects the organization if the startup goes out of business and stops supporting the application?",
+    "options": [
+      "Service Level Agreement (SLA)",
+      "Software Escrow Agreement",
+      "Non-Disclosure Agreement (NDA)",
+      "Business Impact Analysis (BIA)"
+    ],
+    "answer": 1,
+    "explanation": "A software escrow agreement places the application's source code with a neutral third party, to be released to the buyer if the vendor goes bankrupt or defaults on support.",
+    "id": 10448
+  },
+  {
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "scenario": "Software Supply Chain",
+    "question": "What is the primary purpose of a Software Bill of Materials (SBOM) in modern secure software development?",
+    "options": [
+      "To document the billing rates of the developer team",
+      "To provide a complete, structured inventory of all software components, modules, and dependencies used in a product",
+      "To trace CPU register states during testing",
+      "To automate database query indexing"
+    ],
+    "answer": 1,
+    "explanation": "An SBOM is a structured record of all components, libraries, and dependencies within software. It enables organizations to instantly check if their systems are affected by a new dependency vulnerability.",
+    "id": 10449
+  },
+  {
+    "domain": 8,
+    "domain_name": "Software Development Security",
+    "scenario": "API Security",
+    "question": "A developer is building a REST API. They must prevent resource exhaustion attacks where a bot floods the endpoints with requests. What control is best suited?",
+    "options": [
+      "SSL Certificate Pinning",
+      "Rate Limiting (Throttling)",
+      "Data Sanitization",
+      "Input Encryption"
+    ],
+    "answer": 1,
+    "explanation": "Rate limiting restricts the number of API requests a user or IP address can make in a given timeframe, protecting endpoints from denial-of-service and brute-force attacks.",
+    "id": 10450
+  },
+  {
+    "id": 10451,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "GDPR Roles",
+    "question": "Under GDPR, a cloud service provider collects customer preferences to target ads, but outsources the storage and analysis to a third party. In this scenario, what is the cloud provider's legal role?",
+    "options": [
+      "Data Owner",
+      "Data Controller",
+      "Data Custodian",
+      "Data Processor"
+    ],
+    "answer": 3,
+    "explanation": "The third-party service provider storing and processing data on behalf of the company is the Data Processor. The company that determines the purpose of collection is the Data Controller."
+  },
+  {
+    "id": 10452,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Scoping & Tailoring",
+    "question": "A Security Architect at a retail chain modifies the baseline security catalog to replace a standard physical badge lock control with a biometric iris scanner due to higher security requirements. What process has occurred?",
+    "options": [
+      "Scoping",
+      "Tailoring",
+      "Transference",
+      "Acceptance"
+    ],
+    "answer": 1,
+    "explanation": "Tailoring involves modifying or supplementing baseline security controls to fit specific organizational constraints, risks, or security profiles."
+  },
+  {
+    "id": 10453,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Data States",
+    "question": "A defense contractor wants to secure customer PII stored on backup tapes. The Information Owner recommends encrypting the data. What data state are they securing, and what is the primary threat mitigated?",
+    "options": [
+      "Data in transit; packet sniffing",
+      "Data at rest; physical theft or unauthorized access to media",
+      "Data in use; memory injection attacks",
+      "Data in transit; man-in-the-middle attacks"
+    ],
+    "answer": 1,
+    "explanation": "Backup tapes represent data at rest. Encrypting data at rest protects it against physical theft, loss of media, or unauthorized read access on stored drives."
+  },
+  {
+    "id": 10454,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Scoping & Tailoring",
+    "question": "A Lead Network Engineer at a telecommunications operator modifies the baseline security catalog to replace a standard physical badge lock control with a biometric iris scanner due to higher security requirements. What process has occurred?",
+    "options": [
+      "Scoping",
+      "Tailoring",
+      "Transference",
+      "Acceptance"
+    ],
+    "answer": 1,
+    "explanation": "Tailoring involves modifying or supplementing baseline security controls to fit specific organizational constraints, risks, or security profiles."
+  },
+  {
+    "id": 10455,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "GDPR Roles",
+    "question": "Under GDPR, a financial services firm collects customer preferences to target ads, but outsources the storage and analysis to a third party. In this scenario, what is the cloud provider's legal role?",
+    "options": [
+      "Data Owner",
+      "Data Controller",
+      "Data Custodian",
+      "Data Processor"
+    ],
+    "answer": 3,
+    "explanation": "The third-party service provider storing and processing data on behalf of the company is the Data Processor. The company that determines the purpose of collection is the Data Controller."
+  },
+  {
+    "id": 10456,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Scoping & Tailoring",
+    "question": "A Senior Security Auditor at a multinational bank modifies the baseline security catalog to replace a standard physical badge lock control with a biometric iris scanner due to higher security requirements. What process has occurred?",
+    "options": [
+      "Scoping",
+      "Tailoring",
+      "Transference",
+      "Acceptance"
+    ],
+    "answer": 1,
+    "explanation": "Tailoring involves modifying or supplementing baseline security controls to fit specific organizational constraints, risks, or security profiles."
+  },
+  {
+    "id": 10457,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "NIST SP 800-88 Sanitization",
+    "question": "A Information Owner at a telecommunications operator is decommissioning server hardware containing sensitive data. According to NIST SP 800-88 Rev 1, what is the best method for sanitizing magnetic hard drives when the media is intended to be reused outside the organization?",
+    "options": [
+      "Clearing the media by overwriting all addressable locations",
+      "Purging the media via Cryptographic Erase or Degaussing",
+      "Physical destruction by shredding or incineration",
+      "Declassifying by deleting partition tables"
+    ],
+    "answer": 1,
+    "explanation": "According to NIST SP 800-88 Rev 1, Purging (which includes Cryptographic Erase or Degaussing) is required when media will leave organizational control but remain physically reusable. Clearing is only suitable for reuse within the organization, while physical destruction prevents reuse."
+  },
+  {
+    "id": 10458,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Data States",
+    "question": "A SaaS startup wants to secure customer PII stored on backup tapes. The Security Architect recommends encrypting the data. What data state are they securing, and what is the primary threat mitigated?",
+    "options": [
+      "Data in transit; packet sniffing",
+      "Data at rest; physical theft or unauthorized access to media",
+      "Data in use; memory injection attacks",
+      "Data in transit; man-in-the-middle attacks"
+    ],
+    "answer": 1,
+    "explanation": "Backup tapes represent data at rest. Encrypting data at rest protects it against physical theft, loss of media, or unauthorized read access on stored drives."
+  },
+  {
+    "id": 10459,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Scoping & Tailoring",
+    "question": "A Security Architect at a healthcare provider modifies the baseline security catalog to replace a standard physical badge lock control with a biometric iris scanner due to higher security requirements. What process has occurred?",
+    "options": [
+      "Scoping",
+      "Tailoring",
+      "Transference",
+      "Acceptance"
+    ],
+    "answer": 1,
+    "explanation": "Tailoring involves modifying or supplementing baseline security controls to fit specific organizational constraints, risks, or security profiles."
+  },
+  {
+    "id": 10460,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "NIST SP 800-88 Sanitization",
+    "question": "A Lead Network Engineer at a SaaS startup is decommissioning server hardware containing sensitive data. According to NIST SP 800-88 Rev 1, what is the best method for sanitizing removable SSDs when the media is intended to be reused outside the organization?",
+    "options": [
+      "Clearing the media by overwriting all addressable locations",
+      "Purging the media via Cryptographic Erase or Degaussing",
+      "Physical destruction by shredding or incineration",
+      "Declassifying by deleting partition tables"
+    ],
+    "answer": 1,
+    "explanation": "According to NIST SP 800-88 Rev 1, Purging (which includes Cryptographic Erase or Degaussing) is required when media will leave organizational control but remain physically reusable. Clearing is only suitable for reuse within the organization, while physical destruction prevents reuse."
+  },
+  {
+    "id": 10461,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Scoping & Tailoring",
+    "question": "A Information Owner at a financial services firm modifies the baseline security catalog to replace a standard physical badge lock control with a biometric iris scanner due to higher security requirements. What process has occurred?",
+    "options": [
+      "Scoping",
+      "Tailoring",
+      "Transference",
+      "Acceptance"
+    ],
+    "answer": 1,
+    "explanation": "Tailoring involves modifying or supplementing baseline security controls to fit specific organizational constraints, risks, or security profiles."
+  },
+  {
+    "id": 10462,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Scoping & Tailoring",
+    "question": "A Chief Information Security Officer (CISO) at a defense contractor modifies the baseline security catalog to replace a standard physical badge lock control with a biometric iris scanner due to higher security requirements. What process has occurred?",
+    "options": [
+      "Scoping",
+      "Tailoring",
+      "Transference",
+      "Acceptance"
+    ],
+    "answer": 1,
+    "explanation": "Tailoring involves modifying or supplementing baseline security controls to fit specific organizational constraints, risks, or security profiles."
+  },
+  {
+    "id": 10463,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Scoping & Tailoring",
+    "question": "A Chief Information Security Officer (CISO) at a e-commerce giant modifies the baseline security catalog to replace a standard physical badge lock control with a biometric iris scanner due to higher security requirements. What process has occurred?",
+    "options": [
+      "Scoping",
+      "Tailoring",
+      "Transference",
+      "Acceptance"
+    ],
+    "answer": 1,
+    "explanation": "Tailoring involves modifying or supplementing baseline security controls to fit specific organizational constraints, risks, or security profiles."
+  },
+  {
+    "id": 10464,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Scoping & Tailoring",
+    "question": "A Lead Network Engineer at a defense contractor modifies the baseline security catalog to replace a standard physical badge lock control with a biometric iris scanner due to higher security requirements. What process has occurred?",
+    "options": [
+      "Scoping",
+      "Tailoring",
+      "Transference",
+      "Acceptance"
+    ],
+    "answer": 1,
+    "explanation": "Tailoring involves modifying or supplementing baseline security controls to fit specific organizational constraints, risks, or security profiles."
+  },
+  {
+    "id": 10465,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "GDPR Roles",
+    "question": "Under GDPR, a defense contractor collects customer preferences to target ads, but outsources the storage and analysis to a third party. In this scenario, what is the cloud provider's legal role?",
+    "options": [
+      "Data Owner",
+      "Data Controller",
+      "Data Custodian",
+      "Data Processor"
+    ],
+    "answer": 3,
+    "explanation": "The third-party service provider storing and processing data on behalf of the company is the Data Processor. The company that determines the purpose of collection is the Data Controller."
+  },
+  {
+    "id": 10466,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Data States",
+    "question": "A university network wants to secure customer PII stored on backup tapes. The Lead Network Engineer recommends encrypting the data. What data state are they securing, and what is the primary threat mitigated?",
+    "options": [
+      "Data in transit; packet sniffing",
+      "Data at rest; physical theft or unauthorized access to media",
+      "Data in use; memory injection attacks",
+      "Data in transit; man-in-the-middle attacks"
+    ],
+    "answer": 1,
+    "explanation": "Backup tapes represent data at rest. Encrypting data at rest protects it against physical theft, loss of media, or unauthorized read access on stored drives."
+  },
+  {
+    "id": 10467,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Data States",
+    "question": "A cloud service provider wants to secure customer PII stored on backup tapes. The Lead Network Engineer recommends encrypting the data. What data state are they securing, and what is the primary threat mitigated?",
+    "options": [
+      "Data in transit; packet sniffing",
+      "Data at rest; physical theft or unauthorized access to media",
+      "Data in use; memory injection attacks",
+      "Data in transit; man-in-the-middle attacks"
+    ],
+    "answer": 1,
+    "explanation": "Backup tapes represent data at rest. Encrypting data at rest protects it against physical theft, loss of media, or unauthorized read access on stored drives."
+  },
+  {
+    "id": 10468,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "GDPR Roles",
+    "question": "Under GDPR, a retail chain collects customer preferences to target ads, but outsources the storage and analysis to a third party. In this scenario, what is the cloud provider's legal role?",
+    "options": [
+      "Data Owner",
+      "Data Controller",
+      "Data Custodian",
+      "Data Processor"
+    ],
+    "answer": 3,
+    "explanation": "The third-party service provider storing and processing data on behalf of the company is the Data Processor. The company that determines the purpose of collection is the Data Controller."
+  },
+  {
+    "id": 10469,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Data States",
+    "question": "A cloud service provider wants to secure customer PII stored on backup tapes. The Database Custodian recommends encrypting the data. What data state are they securing, and what is the primary threat mitigated?",
+    "options": [
+      "Data in transit; packet sniffing",
+      "Data at rest; physical theft or unauthorized access to media",
+      "Data in use; memory injection attacks",
+      "Data in transit; man-in-the-middle attacks"
+    ],
+    "answer": 1,
+    "explanation": "Backup tapes represent data at rest. Encrypting data at rest protects it against physical theft, loss of media, or unauthorized read access on stored drives."
+  },
+  {
+    "id": 10470,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "NIST SP 800-88 Sanitization",
+    "question": "A Information Owner at a e-commerce giant is decommissioning server hardware containing sensitive data. According to NIST SP 800-88 Rev 1, what is the best method for sanitizing removable SSDs when the media is intended to be reused outside the organization?",
+    "options": [
+      "Clearing the media by overwriting all addressable locations",
+      "Purging the media via Cryptographic Erase or Degaussing",
+      "Physical destruction by shredding or incineration",
+      "Declassifying by deleting partition tables"
+    ],
+    "answer": 1,
+    "explanation": "According to NIST SP 800-88 Rev 1, Purging (which includes Cryptographic Erase or Degaussing) is required when media will leave organizational control but remain physically reusable. Clearing is only suitable for reuse within the organization, while physical destruction prevents reuse."
+  },
+  {
+    "id": 10471,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "GDPR Roles",
+    "question": "Under GDPR, a financial services firm collects customer preferences to target ads, but outsources the storage and analysis to a third party. In this scenario, what is the cloud provider's legal role?",
+    "options": [
+      "Data Owner",
+      "Data Controller",
+      "Data Custodian",
+      "Data Processor"
+    ],
+    "answer": 3,
+    "explanation": "The third-party service provider storing and processing data on behalf of the company is the Data Processor. The company that determines the purpose of collection is the Data Controller."
+  },
+  {
+    "id": 10472,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "NIST SP 800-88 Sanitization",
+    "question": "A Senior Security Auditor at a cloud service provider is decommissioning server hardware containing sensitive data. According to NIST SP 800-88 Rev 1, what is the best method for sanitizing magnetic hard drives when the media is intended to be reused outside the organization?",
+    "options": [
+      "Clearing the media by overwriting all addressable locations",
+      "Purging the media via Cryptographic Erase or Degaussing",
+      "Physical destruction by shredding or incineration",
+      "Declassifying by deleting partition tables"
+    ],
+    "answer": 1,
+    "explanation": "According to NIST SP 800-88 Rev 1, Purging (which includes Cryptographic Erase or Degaussing) is required when media will leave organizational control but remain physically reusable. Clearing is only suitable for reuse within the organization, while physical destruction prevents reuse."
+  },
+  {
+    "id": 10473,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "NIST SP 800-88 Sanitization",
+    "question": "A Information Owner at a government agency is decommissioning server hardware containing sensitive data. According to NIST SP 800-88 Rev 1, what is the best method for sanitizing usb flash drives when the media is intended to be reused outside the organization?",
+    "options": [
+      "Clearing the media by overwriting all addressable locations",
+      "Purging the media via Cryptographic Erase or Degaussing",
+      "Physical destruction by shredding or incineration",
+      "Declassifying by deleting partition tables"
+    ],
+    "answer": 1,
+    "explanation": "According to NIST SP 800-88 Rev 1, Purging (which includes Cryptographic Erase or Degaussing) is required when media will leave organizational control but remain physically reusable. Clearing is only suitable for reuse within the organization, while physical destruction prevents reuse."
+  },
+  {
+    "id": 10474,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "GDPR Roles",
+    "question": "Under GDPR, a defense contractor collects customer preferences to target ads, but outsources the storage and analysis to a third party. In this scenario, what is the cloud provider's legal role?",
+    "options": [
+      "Data Owner",
+      "Data Controller",
+      "Data Custodian",
+      "Data Processor"
+    ],
+    "answer": 3,
+    "explanation": "The third-party service provider storing and processing data on behalf of the company is the Data Processor. The company that determines the purpose of collection is the Data Controller."
+  },
+  {
+    "id": 10475,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "NIST SP 800-88 Sanitization",
+    "question": "A Senior Security Auditor at a defense contractor is decommissioning server hardware containing sensitive data. According to NIST SP 800-88 Rev 1, what is the best method for sanitizing backup tapes when the media is intended to be reused outside the organization?",
+    "options": [
+      "Clearing the media by overwriting all addressable locations",
+      "Purging the media via Cryptographic Erase or Degaussing",
+      "Physical destruction by shredding or incineration",
+      "Declassifying by deleting partition tables"
+    ],
+    "answer": 1,
+    "explanation": "According to NIST SP 800-88 Rev 1, Purging (which includes Cryptographic Erase or Degaussing) is required when media will leave organizational control but remain physically reusable. Clearing is only suitable for reuse within the organization, while physical destruction prevents reuse."
+  },
+  {
+    "id": 10476,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "GDPR Roles",
+    "question": "Under GDPR, a government agency collects customer preferences to target ads, but outsources the storage and analysis to a third party. In this scenario, what is the cloud provider's legal role?",
+    "options": [
+      "Data Owner",
+      "Data Controller",
+      "Data Custodian",
+      "Data Processor"
+    ],
+    "answer": 3,
+    "explanation": "The third-party service provider storing and processing data on behalf of the company is the Data Processor. The company that determines the purpose of collection is the Data Controller."
+  },
+  {
+    "id": 10477,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Data States",
+    "question": "A e-commerce giant wants to secure customer PII stored on backup tapes. The Lead Network Engineer recommends encrypting the data. What data state are they securing, and what is the primary threat mitigated?",
+    "options": [
+      "Data in transit; packet sniffing",
+      "Data at rest; physical theft or unauthorized access to media",
+      "Data in use; memory injection attacks",
+      "Data in transit; man-in-the-middle attacks"
+    ],
+    "answer": 1,
+    "explanation": "Backup tapes represent data at rest. Encrypting data at rest protects it against physical theft, loss of media, or unauthorized read access on stored drives."
+  },
+  {
+    "id": 10478,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Scoping & Tailoring",
+    "question": "A Privacy Officer at a university network modifies the baseline security catalog to replace a standard physical badge lock control with a biometric iris scanner due to higher security requirements. What process has occurred?",
+    "options": [
+      "Scoping",
+      "Tailoring",
+      "Transference",
+      "Acceptance"
+    ],
+    "answer": 1,
+    "explanation": "Tailoring involves modifying or supplementing baseline security controls to fit specific organizational constraints, risks, or security profiles."
+  },
+  {
+    "id": 10479,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "NIST SP 800-88 Sanitization",
+    "question": "A Privacy Officer at a government agency is decommissioning server hardware containing sensitive data. According to NIST SP 800-88 Rev 1, what is the best method for sanitizing removable SSDs when the media is intended to be reused outside the organization?",
+    "options": [
+      "Clearing the media by overwriting all addressable locations",
+      "Purging the media via Cryptographic Erase or Degaussing",
+      "Physical destruction by shredding or incineration",
+      "Declassifying by deleting partition tables"
+    ],
+    "answer": 1,
+    "explanation": "According to NIST SP 800-88 Rev 1, Purging (which includes Cryptographic Erase or Degaussing) is required when media will leave organizational control but remain physically reusable. Clearing is only suitable for reuse within the organization, while physical destruction prevents reuse."
+  },
+  {
+    "id": 10480,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "GDPR Roles",
+    "question": "Under GDPR, a government agency collects customer preferences to target ads, but outsources the storage and analysis to a third party. In this scenario, what is the cloud provider's legal role?",
+    "options": [
+      "Data Owner",
+      "Data Controller",
+      "Data Custodian",
+      "Data Processor"
+    ],
+    "answer": 3,
+    "explanation": "The third-party service provider storing and processing data on behalf of the company is the Data Processor. The company that determines the purpose of collection is the Data Controller."
+  },
+  {
+    "id": 10481,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Scoping & Tailoring",
+    "question": "A Security Architect at a e-commerce giant modifies the baseline security catalog to replace a standard physical badge lock control with a biometric iris scanner due to higher security requirements. What process has occurred?",
+    "options": [
+      "Scoping",
+      "Tailoring",
+      "Transference",
+      "Acceptance"
+    ],
+    "answer": 1,
+    "explanation": "Tailoring involves modifying or supplementing baseline security controls to fit specific organizational constraints, risks, or security profiles."
+  },
+  {
+    "id": 10482,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "NIST SP 800-88 Sanitization",
+    "question": "A Information Owner at a SaaS startup is decommissioning server hardware containing sensitive data. According to NIST SP 800-88 Rev 1, what is the best method for sanitizing backup tapes when the media is intended to be reused outside the organization?",
+    "options": [
+      "Clearing the media by overwriting all addressable locations",
+      "Purging the media via Cryptographic Erase or Degaussing",
+      "Physical destruction by shredding or incineration",
+      "Declassifying by deleting partition tables"
+    ],
+    "answer": 1,
+    "explanation": "According to NIST SP 800-88 Rev 1, Purging (which includes Cryptographic Erase or Degaussing) is required when media will leave organizational control but remain physically reusable. Clearing is only suitable for reuse within the organization, while physical destruction prevents reuse."
+  },
+  {
+    "id": 10483,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "GDPR Roles",
+    "question": "Under GDPR, a telecommunications operator collects customer preferences to target ads, but outsources the storage and analysis to a third party. In this scenario, what is the cloud provider's legal role?",
+    "options": [
+      "Data Owner",
+      "Data Controller",
+      "Data Custodian",
+      "Data Processor"
+    ],
+    "answer": 3,
+    "explanation": "The third-party service provider storing and processing data on behalf of the company is the Data Processor. The company that determines the purpose of collection is the Data Controller."
+  },
+  {
+    "id": 10484,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "NIST SP 800-88 Sanitization",
+    "question": "A Information Owner at a telecommunications operator is decommissioning server hardware containing sensitive data. According to NIST SP 800-88 Rev 1, what is the best method for sanitizing usb flash drives when the media is intended to be reused outside the organization?",
+    "options": [
+      "Clearing the media by overwriting all addressable locations",
+      "Purging the media via Cryptographic Erase or Degaussing",
+      "Physical destruction by shredding or incineration",
+      "Declassifying by deleting partition tables"
+    ],
+    "answer": 1,
+    "explanation": "According to NIST SP 800-88 Rev 1, Purging (which includes Cryptographic Erase or Degaussing) is required when media will leave organizational control but remain physically reusable. Clearing is only suitable for reuse within the organization, while physical destruction prevents reuse."
+  },
+  {
+    "id": 10485,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "NIST SP 800-88 Sanitization",
+    "question": "A Privacy Officer at a multinational bank is decommissioning server hardware containing sensitive data. According to NIST SP 800-88 Rev 1, what is the best method for sanitizing usb flash drives when the media is intended to be reused outside the organization?",
+    "options": [
+      "Clearing the media by overwriting all addressable locations",
+      "Purging the media via Cryptographic Erase or Degaussing",
+      "Physical destruction by shredding or incineration",
+      "Declassifying by deleting partition tables"
+    ],
+    "answer": 1,
+    "explanation": "According to NIST SP 800-88 Rev 1, Purging (which includes Cryptographic Erase or Degaussing) is required when media will leave organizational control but remain physically reusable. Clearing is only suitable for reuse within the organization, while physical destruction prevents reuse."
+  },
+  {
+    "id": 10486,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "NIST SP 800-88 Sanitization",
+    "question": "A Chief Information Security Officer (CISO) at a retail chain is decommissioning server hardware containing sensitive data. According to NIST SP 800-88 Rev 1, what is the best method for sanitizing removable SSDs when the media is intended to be reused outside the organization?",
+    "options": [
+      "Clearing the media by overwriting all addressable locations",
+      "Purging the media via Cryptographic Erase or Degaussing",
+      "Physical destruction by shredding or incineration",
+      "Declassifying by deleting partition tables"
+    ],
+    "answer": 1,
+    "explanation": "According to NIST SP 800-88 Rev 1, Purging (which includes Cryptographic Erase or Degaussing) is required when media will leave organizational control but remain physically reusable. Clearing is only suitable for reuse within the organization, while physical destruction prevents reuse."
+  },
+  {
+    "id": 10487,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Data States",
+    "question": "A university network wants to secure customer PII stored on backup tapes. The Senior Security Auditor recommends encrypting the data. What data state are they securing, and what is the primary threat mitigated?",
+    "options": [
+      "Data in transit; packet sniffing",
+      "Data at rest; physical theft or unauthorized access to media",
+      "Data in use; memory injection attacks",
+      "Data in transit; man-in-the-middle attacks"
+    ],
+    "answer": 1,
+    "explanation": "Backup tapes represent data at rest. Encrypting data at rest protects it against physical theft, loss of media, or unauthorized read access on stored drives."
+  },
+  {
+    "id": 10488,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "NIST SP 800-88 Sanitization",
+    "question": "A Chief Information Security Officer (CISO) at a government agency is decommissioning server hardware containing sensitive data. According to NIST SP 800-88 Rev 1, what is the best method for sanitizing usb flash drives when the media is intended to be reused outside the organization?",
+    "options": [
+      "Clearing the media by overwriting all addressable locations",
+      "Purging the media via Cryptographic Erase or Degaussing",
+      "Physical destruction by shredding or incineration",
+      "Declassifying by deleting partition tables"
+    ],
+    "answer": 1,
+    "explanation": "According to NIST SP 800-88 Rev 1, Purging (which includes Cryptographic Erase or Degaussing) is required when media will leave organizational control but remain physically reusable. Clearing is only suitable for reuse within the organization, while physical destruction prevents reuse."
+  },
+  {
+    "id": 10489,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "NIST SP 800-88 Sanitization",
+    "question": "A Senior Security Auditor at a SaaS startup is decommissioning server hardware containing sensitive data. According to NIST SP 800-88 Rev 1, what is the best method for sanitizing magnetic hard drives when the media is intended to be reused outside the organization?",
+    "options": [
+      "Clearing the media by overwriting all addressable locations",
+      "Purging the media via Cryptographic Erase or Degaussing",
+      "Physical destruction by shredding or incineration",
+      "Declassifying by deleting partition tables"
+    ],
+    "answer": 1,
+    "explanation": "According to NIST SP 800-88 Rev 1, Purging (which includes Cryptographic Erase or Degaussing) is required when media will leave organizational control but remain physically reusable. Clearing is only suitable for reuse within the organization, while physical destruction prevents reuse."
+  },
+  {
+    "id": 10490,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "NIST SP 800-88 Sanitization",
+    "question": "A Security Architect at a telecommunications operator is decommissioning server hardware containing sensitive data. According to NIST SP 800-88 Rev 1, what is the best method for sanitizing backup tapes when the media is intended to be reused outside the organization?",
+    "options": [
+      "Clearing the media by overwriting all addressable locations",
+      "Purging the media via Cryptographic Erase or Degaussing",
+      "Physical destruction by shredding or incineration",
+      "Declassifying by deleting partition tables"
+    ],
+    "answer": 1,
+    "explanation": "According to NIST SP 800-88 Rev 1, Purging (which includes Cryptographic Erase or Degaussing) is required when media will leave organizational control but remain physically reusable. Clearing is only suitable for reuse within the organization, while physical destruction prevents reuse."
+  },
+  {
+    "id": 10491,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "GDPR Roles",
+    "question": "Under GDPR, a university network collects customer preferences to target ads, but outsources the storage and analysis to a third party. In this scenario, what is the cloud provider's legal role?",
+    "options": [
+      "Data Owner",
+      "Data Controller",
+      "Data Custodian",
+      "Data Processor"
+    ],
+    "answer": 3,
+    "explanation": "The third-party service provider storing and processing data on behalf of the company is the Data Processor. The company that determines the purpose of collection is the Data Controller."
+  },
+  {
+    "id": 10492,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "GDPR Roles",
+    "question": "Under GDPR, a government agency collects customer preferences to target ads, but outsources the storage and analysis to a third party. In this scenario, what is the cloud provider's legal role?",
+    "options": [
+      "Data Owner",
+      "Data Controller",
+      "Data Custodian",
+      "Data Processor"
+    ],
+    "answer": 3,
+    "explanation": "The third-party service provider storing and processing data on behalf of the company is the Data Processor. The company that determines the purpose of collection is the Data Controller."
+  },
+  {
+    "id": 10493,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "NIST SP 800-88 Sanitization",
+    "question": "A Security Architect at a defense contractor is decommissioning server hardware containing sensitive data. According to NIST SP 800-88 Rev 1, what is the best method for sanitizing magnetic hard drives when the media is intended to be reused outside the organization?",
+    "options": [
+      "Clearing the media by overwriting all addressable locations",
+      "Purging the media via Cryptographic Erase or Degaussing",
+      "Physical destruction by shredding or incineration",
+      "Declassifying by deleting partition tables"
+    ],
+    "answer": 1,
+    "explanation": "According to NIST SP 800-88 Rev 1, Purging (which includes Cryptographic Erase or Degaussing) is required when media will leave organizational control but remain physically reusable. Clearing is only suitable for reuse within the organization, while physical destruction prevents reuse."
+  },
+  {
+    "id": 10494,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Data States",
+    "question": "A defense contractor wants to secure customer PII stored on backup tapes. The Chief Information Security Officer (CISO) recommends encrypting the data. What data state are they securing, and what is the primary threat mitigated?",
+    "options": [
+      "Data in transit; packet sniffing",
+      "Data at rest; physical theft or unauthorized access to media",
+      "Data in use; memory injection attacks",
+      "Data in transit; man-in-the-middle attacks"
+    ],
+    "answer": 1,
+    "explanation": "Backup tapes represent data at rest. Encrypting data at rest protects it against physical theft, loss of media, or unauthorized read access on stored drives."
+  },
+  {
+    "id": 10495,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Data States",
+    "question": "A government agency wants to secure customer PII stored on backup tapes. The Information Owner recommends encrypting the data. What data state are they securing, and what is the primary threat mitigated?",
+    "options": [
+      "Data in transit; packet sniffing",
+      "Data at rest; physical theft or unauthorized access to media",
+      "Data in use; memory injection attacks",
+      "Data in transit; man-in-the-middle attacks"
+    ],
+    "answer": 1,
+    "explanation": "Backup tapes represent data at rest. Encrypting data at rest protects it against physical theft, loss of media, or unauthorized read access on stored drives."
+  },
+  {
+    "id": 10496,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Data States",
+    "question": "A retail chain wants to secure customer PII stored on backup tapes. The Senior Security Auditor recommends encrypting the data. What data state are they securing, and what is the primary threat mitigated?",
+    "options": [
+      "Data in transit; packet sniffing",
+      "Data at rest; physical theft or unauthorized access to media",
+      "Data in use; memory injection attacks",
+      "Data in transit; man-in-the-middle attacks"
+    ],
+    "answer": 1,
+    "explanation": "Backup tapes represent data at rest. Encrypting data at rest protects it against physical theft, loss of media, or unauthorized read access on stored drives."
+  },
+  {
+    "id": 10497,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "GDPR Roles",
+    "question": "Under GDPR, a government agency collects customer preferences to target ads, but outsources the storage and analysis to a third party. In this scenario, what is the cloud provider's legal role?",
+    "options": [
+      "Data Owner",
+      "Data Controller",
+      "Data Custodian",
+      "Data Processor"
+    ],
+    "answer": 3,
+    "explanation": "The third-party service provider storing and processing data on behalf of the company is the Data Processor. The company that determines the purpose of collection is the Data Controller."
+  },
+  {
+    "id": 10498,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Data States",
+    "question": "A multinational bank wants to secure customer PII stored on backup tapes. The Lead Network Engineer recommends encrypting the data. What data state are they securing, and what is the primary threat mitigated?",
+    "options": [
+      "Data in transit; packet sniffing",
+      "Data at rest; physical theft or unauthorized access to media",
+      "Data in use; memory injection attacks",
+      "Data in transit; man-in-the-middle attacks"
+    ],
+    "answer": 1,
+    "explanation": "Backup tapes represent data at rest. Encrypting data at rest protects it against physical theft, loss of media, or unauthorized read access on stored drives."
+  },
+  {
+    "id": 10499,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "GDPR Roles",
+    "question": "Under GDPR, a healthcare provider collects customer preferences to target ads, but outsources the storage and analysis to a third party. In this scenario, what is the cloud provider's legal role?",
+    "options": [
+      "Data Owner",
+      "Data Controller",
+      "Data Custodian",
+      "Data Processor"
+    ],
+    "answer": 3,
+    "explanation": "The third-party service provider storing and processing data on behalf of the company is the Data Processor. The company that determines the purpose of collection is the Data Controller."
+  },
+  {
+    "id": 10500,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Scoping & Tailoring",
+    "question": "A Chief Information Security Officer (CISO) at a university network modifies the baseline security catalog to replace a standard physical badge lock control with a biometric iris scanner due to higher security requirements. What process has occurred?",
+    "options": [
+      "Scoping",
+      "Tailoring",
+      "Transference",
+      "Acceptance"
+    ],
+    "answer": 1,
+    "explanation": "Tailoring involves modifying or supplementing baseline security controls to fit specific organizational constraints, risks, or security profiles."
+  },
+  {
+    "id": 10501,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "NIST SP 800-88 Sanitization",
+    "question": "A Database Custodian at a government agency is decommissioning server hardware containing sensitive data. According to NIST SP 800-88 Rev 1, what is the best method for sanitizing removable SSDs when the media is intended to be reused outside the organization?",
+    "options": [
+      "Clearing the media by overwriting all addressable locations",
+      "Purging the media via Cryptographic Erase or Degaussing",
+      "Physical destruction by shredding or incineration",
+      "Declassifying by deleting partition tables"
+    ],
+    "answer": 1,
+    "explanation": "According to NIST SP 800-88 Rev 1, Purging (which includes Cryptographic Erase or Degaussing) is required when media will leave organizational control but remain physically reusable. Clearing is only suitable for reuse within the organization, while physical destruction prevents reuse."
+  },
+  {
+    "id": 10502,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "GDPR Roles",
+    "question": "Under GDPR, a financial services firm collects customer preferences to target ads, but outsources the storage and analysis to a third party. In this scenario, what is the cloud provider's legal role?",
+    "options": [
+      "Data Owner",
+      "Data Controller",
+      "Data Custodian",
+      "Data Processor"
+    ],
+    "answer": 3,
+    "explanation": "The third-party service provider storing and processing data on behalf of the company is the Data Processor. The company that determines the purpose of collection is the Data Controller."
+  },
+  {
+    "id": 10503,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "GDPR Roles",
+    "question": "Under GDPR, a retail chain collects customer preferences to target ads, but outsources the storage and analysis to a third party. In this scenario, what is the cloud provider's legal role?",
+    "options": [
+      "Data Owner",
+      "Data Controller",
+      "Data Custodian",
+      "Data Processor"
+    ],
+    "answer": 3,
+    "explanation": "The third-party service provider storing and processing data on behalf of the company is the Data Processor. The company that determines the purpose of collection is the Data Controller."
+  },
+  {
+    "id": 10504,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "GDPR Roles",
+    "question": "Under GDPR, a cloud service provider collects customer preferences to target ads, but outsources the storage and analysis to a third party. In this scenario, what is the cloud provider's legal role?",
+    "options": [
+      "Data Owner",
+      "Data Controller",
+      "Data Custodian",
+      "Data Processor"
+    ],
+    "answer": 3,
+    "explanation": "The third-party service provider storing and processing data on behalf of the company is the Data Processor. The company that determines the purpose of collection is the Data Controller."
+  },
+  {
+    "id": 10505,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Scoping & Tailoring",
+    "question": "A Information Owner at a university network modifies the baseline security catalog to replace a standard physical badge lock control with a biometric iris scanner due to higher security requirements. What process has occurred?",
+    "options": [
+      "Scoping",
+      "Tailoring",
+      "Transference",
+      "Acceptance"
+    ],
+    "answer": 1,
+    "explanation": "Tailoring involves modifying or supplementing baseline security controls to fit specific organizational constraints, risks, or security profiles."
+  },
+  {
+    "id": 10506,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Data States",
+    "question": "A government agency wants to secure customer PII stored on backup tapes. The Database Custodian recommends encrypting the data. What data state are they securing, and what is the primary threat mitigated?",
+    "options": [
+      "Data in transit; packet sniffing",
+      "Data at rest; physical theft or unauthorized access to media",
+      "Data in use; memory injection attacks",
+      "Data in transit; man-in-the-middle attacks"
+    ],
+    "answer": 1,
+    "explanation": "Backup tapes represent data at rest. Encrypting data at rest protects it against physical theft, loss of media, or unauthorized read access on stored drives."
+  },
+  {
+    "id": 10507,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "GDPR Roles",
+    "question": "Under GDPR, a defense contractor collects customer preferences to target ads, but outsources the storage and analysis to a third party. In this scenario, what is the cloud provider's legal role?",
+    "options": [
+      "Data Owner",
+      "Data Controller",
+      "Data Custodian",
+      "Data Processor"
+    ],
+    "answer": 3,
+    "explanation": "The third-party service provider storing and processing data on behalf of the company is the Data Processor. The company that determines the purpose of collection is the Data Controller."
+  },
+  {
+    "id": 10508,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Scoping & Tailoring",
+    "question": "A Security Architect at a healthcare provider modifies the baseline security catalog to replace a standard physical badge lock control with a biometric iris scanner due to higher security requirements. What process has occurred?",
+    "options": [
+      "Scoping",
+      "Tailoring",
+      "Transference",
+      "Acceptance"
+    ],
+    "answer": 1,
+    "explanation": "Tailoring involves modifying or supplementing baseline security controls to fit specific organizational constraints, risks, or security profiles."
+  },
+  {
+    "id": 10509,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Data States",
+    "question": "A defense contractor wants to secure customer PII stored on backup tapes. The Information Owner recommends encrypting the data. What data state are they securing, and what is the primary threat mitigated?",
+    "options": [
+      "Data in transit; packet sniffing",
+      "Data at rest; physical theft or unauthorized access to media",
+      "Data in use; memory injection attacks",
+      "Data in transit; man-in-the-middle attacks"
+    ],
+    "answer": 1,
+    "explanation": "Backup tapes represent data at rest. Encrypting data at rest protects it against physical theft, loss of media, or unauthorized read access on stored drives."
+  },
+  {
+    "id": 10510,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Data States",
+    "question": "A telecommunications operator wants to secure customer PII stored on backup tapes. The Lead Network Engineer recommends encrypting the data. What data state are they securing, and what is the primary threat mitigated?",
+    "options": [
+      "Data in transit; packet sniffing",
+      "Data at rest; physical theft or unauthorized access to media",
+      "Data in use; memory injection attacks",
+      "Data in transit; man-in-the-middle attacks"
+    ],
+    "answer": 1,
+    "explanation": "Backup tapes represent data at rest. Encrypting data at rest protects it against physical theft, loss of media, or unauthorized read access on stored drives."
+  },
+  {
+    "id": 10511,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "GDPR Roles",
+    "question": "Under GDPR, a SaaS startup collects customer preferences to target ads, but outsources the storage and analysis to a third party. In this scenario, what is the cloud provider's legal role?",
+    "options": [
+      "Data Owner",
+      "Data Controller",
+      "Data Custodian",
+      "Data Processor"
+    ],
+    "answer": 3,
+    "explanation": "The third-party service provider storing and processing data on behalf of the company is the Data Processor. The company that determines the purpose of collection is the Data Controller."
+  },
+  {
+    "id": 10512,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Scoping & Tailoring",
+    "question": "A Database Custodian at a e-commerce giant modifies the baseline security catalog to replace a standard physical badge lock control with a biometric iris scanner due to higher security requirements. What process has occurred?",
+    "options": [
+      "Scoping",
+      "Tailoring",
+      "Transference",
+      "Acceptance"
+    ],
+    "answer": 1,
+    "explanation": "Tailoring involves modifying or supplementing baseline security controls to fit specific organizational constraints, risks, or security profiles."
+  },
+  {
+    "id": 10513,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "GDPR Roles",
+    "question": "Under GDPR, a government agency collects customer preferences to target ads, but outsources the storage and analysis to a third party. In this scenario, what is the cloud provider's legal role?",
+    "options": [
+      "Data Owner",
+      "Data Controller",
+      "Data Custodian",
+      "Data Processor"
+    ],
+    "answer": 3,
+    "explanation": "The third-party service provider storing and processing data on behalf of the company is the Data Processor. The company that determines the purpose of collection is the Data Controller."
+  },
+  {
+    "id": 10514,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "NIST SP 800-88 Sanitization",
+    "question": "A Senior Security Auditor at a telecommunications operator is decommissioning server hardware containing sensitive data. According to NIST SP 800-88 Rev 1, what is the best method for sanitizing backup tapes when the media is intended to be reused outside the organization?",
+    "options": [
+      "Clearing the media by overwriting all addressable locations",
+      "Purging the media via Cryptographic Erase or Degaussing",
+      "Physical destruction by shredding or incineration",
+      "Declassifying by deleting partition tables"
+    ],
+    "answer": 1,
+    "explanation": "According to NIST SP 800-88 Rev 1, Purging (which includes Cryptographic Erase or Degaussing) is required when media will leave organizational control but remain physically reusable. Clearing is only suitable for reuse within the organization, while physical destruction prevents reuse."
+  },
+  {
+    "id": 10515,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "GDPR Roles",
+    "question": "Under GDPR, a government agency collects customer preferences to target ads, but outsources the storage and analysis to a third party. In this scenario, what is the cloud provider's legal role?",
+    "options": [
+      "Data Owner",
+      "Data Controller",
+      "Data Custodian",
+      "Data Processor"
+    ],
+    "answer": 3,
+    "explanation": "The third-party service provider storing and processing data on behalf of the company is the Data Processor. The company that determines the purpose of collection is the Data Controller."
+  },
+  {
+    "id": 10516,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "GDPR Roles",
+    "question": "Under GDPR, a retail chain collects customer preferences to target ads, but outsources the storage and analysis to a third party. In this scenario, what is the cloud provider's legal role?",
+    "options": [
+      "Data Owner",
+      "Data Controller",
+      "Data Custodian",
+      "Data Processor"
+    ],
+    "answer": 3,
+    "explanation": "The third-party service provider storing and processing data on behalf of the company is the Data Processor. The company that determines the purpose of collection is the Data Controller."
+  },
+  {
+    "id": 10517,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "GDPR Roles",
+    "question": "Under GDPR, a government agency collects customer preferences to target ads, but outsources the storage and analysis to a third party. In this scenario, what is the cloud provider's legal role?",
+    "options": [
+      "Data Owner",
+      "Data Controller",
+      "Data Custodian",
+      "Data Processor"
+    ],
+    "answer": 3,
+    "explanation": "The third-party service provider storing and processing data on behalf of the company is the Data Processor. The company that determines the purpose of collection is the Data Controller."
+  },
+  {
+    "id": 10518,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "GDPR Roles",
+    "question": "Under GDPR, a government agency collects customer preferences to target ads, but outsources the storage and analysis to a third party. In this scenario, what is the cloud provider's legal role?",
+    "options": [
+      "Data Owner",
+      "Data Controller",
+      "Data Custodian",
+      "Data Processor"
+    ],
+    "answer": 3,
+    "explanation": "The third-party service provider storing and processing data on behalf of the company is the Data Processor. The company that determines the purpose of collection is the Data Controller."
+  },
+  {
+    "id": 10519,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "GDPR Roles",
+    "question": "Under GDPR, a university network collects customer preferences to target ads, but outsources the storage and analysis to a third party. In this scenario, what is the cloud provider's legal role?",
+    "options": [
+      "Data Owner",
+      "Data Controller",
+      "Data Custodian",
+      "Data Processor"
+    ],
+    "answer": 3,
+    "explanation": "The third-party service provider storing and processing data on behalf of the company is the Data Processor. The company that determines the purpose of collection is the Data Controller."
+  },
+  {
+    "id": 10520,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "GDPR Roles",
+    "question": "Under GDPR, a government agency collects customer preferences to target ads, but outsources the storage and analysis to a third party. In this scenario, what is the cloud provider's legal role?",
+    "options": [
+      "Data Owner",
+      "Data Controller",
+      "Data Custodian",
+      "Data Processor"
+    ],
+    "answer": 3,
+    "explanation": "The third-party service provider storing and processing data on behalf of the company is the Data Processor. The company that determines the purpose of collection is the Data Controller."
+  },
+  {
+    "id": 10521,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "GDPR Roles",
+    "question": "Under GDPR, a university network collects customer preferences to target ads, but outsources the storage and analysis to a third party. In this scenario, what is the cloud provider's legal role?",
+    "options": [
+      "Data Owner",
+      "Data Controller",
+      "Data Custodian",
+      "Data Processor"
+    ],
+    "answer": 3,
+    "explanation": "The third-party service provider storing and processing data on behalf of the company is the Data Processor. The company that determines the purpose of collection is the Data Controller."
+  },
+  {
+    "id": 10522,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "NIST SP 800-88 Sanitization",
+    "question": "A Senior Security Auditor at a multinational bank is decommissioning server hardware containing sensitive data. According to NIST SP 800-88 Rev 1, what is the best method for sanitizing magnetic hard drives when the media is intended to be reused outside the organization?",
+    "options": [
+      "Clearing the media by overwriting all addressable locations",
+      "Purging the media via Cryptographic Erase or Degaussing",
+      "Physical destruction by shredding or incineration",
+      "Declassifying by deleting partition tables"
+    ],
+    "answer": 1,
+    "explanation": "According to NIST SP 800-88 Rev 1, Purging (which includes Cryptographic Erase or Degaussing) is required when media will leave organizational control but remain physically reusable. Clearing is only suitable for reuse within the organization, while physical destruction prevents reuse."
+  },
+  {
+    "id": 10523,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "GDPR Roles",
+    "question": "Under GDPR, a telecommunications operator collects customer preferences to target ads, but outsources the storage and analysis to a third party. In this scenario, what is the cloud provider's legal role?",
+    "options": [
+      "Data Owner",
+      "Data Controller",
+      "Data Custodian",
+      "Data Processor"
+    ],
+    "answer": 3,
+    "explanation": "The third-party service provider storing and processing data on behalf of the company is the Data Processor. The company that determines the purpose of collection is the Data Controller."
+  },
+  {
+    "id": 10524,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Data States",
+    "question": "A cloud service provider wants to secure customer PII stored on backup tapes. The Privacy Officer recommends encrypting the data. What data state are they securing, and what is the primary threat mitigated?",
+    "options": [
+      "Data in transit; packet sniffing",
+      "Data at rest; physical theft or unauthorized access to media",
+      "Data in use; memory injection attacks",
+      "Data in transit; man-in-the-middle attacks"
+    ],
+    "answer": 1,
+    "explanation": "Backup tapes represent data at rest. Encrypting data at rest protects it against physical theft, loss of media, or unauthorized read access on stored drives."
+  },
+  {
+    "id": 10525,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Data States",
+    "question": "A financial services firm wants to secure customer PII stored on backup tapes. The Security Architect recommends encrypting the data. What data state are they securing, and what is the primary threat mitigated?",
+    "options": [
+      "Data in transit; packet sniffing",
+      "Data at rest; physical theft or unauthorized access to media",
+      "Data in use; memory injection attacks",
+      "Data in transit; man-in-the-middle attacks"
+    ],
+    "answer": 1,
+    "explanation": "Backup tapes represent data at rest. Encrypting data at rest protects it against physical theft, loss of media, or unauthorized read access on stored drives."
+  },
+  {
+    "id": 10526,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "GDPR Roles",
+    "question": "Under GDPR, a financial services firm collects customer preferences to target ads, but outsources the storage and analysis to a third party. In this scenario, what is the cloud provider's legal role?",
+    "options": [
+      "Data Owner",
+      "Data Controller",
+      "Data Custodian",
+      "Data Processor"
+    ],
+    "answer": 3,
+    "explanation": "The third-party service provider storing and processing data on behalf of the company is the Data Processor. The company that determines the purpose of collection is the Data Controller."
+  },
+  {
+    "id": 10527,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Data States",
+    "question": "A financial services firm wants to secure customer PII stored on backup tapes. The Database Custodian recommends encrypting the data. What data state are they securing, and what is the primary threat mitigated?",
+    "options": [
+      "Data in transit; packet sniffing",
+      "Data at rest; physical theft or unauthorized access to media",
+      "Data in use; memory injection attacks",
+      "Data in transit; man-in-the-middle attacks"
+    ],
+    "answer": 1,
+    "explanation": "Backup tapes represent data at rest. Encrypting data at rest protects it against physical theft, loss of media, or unauthorized read access on stored drives."
+  },
+  {
+    "id": 10528,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "GDPR Roles",
+    "question": "Under GDPR, a defense contractor collects customer preferences to target ads, but outsources the storage and analysis to a third party. In this scenario, what is the cloud provider's legal role?",
+    "options": [
+      "Data Owner",
+      "Data Controller",
+      "Data Custodian",
+      "Data Processor"
+    ],
+    "answer": 3,
+    "explanation": "The third-party service provider storing and processing data on behalf of the company is the Data Processor. The company that determines the purpose of collection is the Data Controller."
+  },
+  {
+    "id": 10529,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "NIST SP 800-88 Sanitization",
+    "question": "A Information Owner at a telecommunications operator is decommissioning server hardware containing sensitive data. According to NIST SP 800-88 Rev 1, what is the best method for sanitizing usb flash drives when the media is intended to be reused outside the organization?",
+    "options": [
+      "Clearing the media by overwriting all addressable locations",
+      "Purging the media via Cryptographic Erase or Degaussing",
+      "Physical destruction by shredding or incineration",
+      "Declassifying by deleting partition tables"
+    ],
+    "answer": 1,
+    "explanation": "According to NIST SP 800-88 Rev 1, Purging (which includes Cryptographic Erase or Degaussing) is required when media will leave organizational control but remain physically reusable. Clearing is only suitable for reuse within the organization, while physical destruction prevents reuse."
+  },
+  {
+    "id": 10530,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Scoping & Tailoring",
+    "question": "A Information Owner at a SaaS startup modifies the baseline security catalog to replace a standard physical badge lock control with a biometric iris scanner due to higher security requirements. What process has occurred?",
+    "options": [
+      "Scoping",
+      "Tailoring",
+      "Transference",
+      "Acceptance"
+    ],
+    "answer": 1,
+    "explanation": "Tailoring involves modifying or supplementing baseline security controls to fit specific organizational constraints, risks, or security profiles."
+  },
+  {
+    "id": 10531,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Scoping & Tailoring",
+    "question": "A Database Custodian at a government agency modifies the baseline security catalog to replace a standard physical badge lock control with a biometric iris scanner due to higher security requirements. What process has occurred?",
+    "options": [
+      "Scoping",
+      "Tailoring",
+      "Transference",
+      "Acceptance"
+    ],
+    "answer": 1,
+    "explanation": "Tailoring involves modifying or supplementing baseline security controls to fit specific organizational constraints, risks, or security profiles."
+  },
+  {
+    "id": 10532,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "NIST SP 800-88 Sanitization",
+    "question": "A Information Owner at a telecommunications operator is decommissioning server hardware containing sensitive data. According to NIST SP 800-88 Rev 1, what is the best method for sanitizing removable SSDs when the media is intended to be reused outside the organization?",
+    "options": [
+      "Clearing the media by overwriting all addressable locations",
+      "Purging the media via Cryptographic Erase or Degaussing",
+      "Physical destruction by shredding or incineration",
+      "Declassifying by deleting partition tables"
+    ],
+    "answer": 1,
+    "explanation": "According to NIST SP 800-88 Rev 1, Purging (which includes Cryptographic Erase or Degaussing) is required when media will leave organizational control but remain physically reusable. Clearing is only suitable for reuse within the organization, while physical destruction prevents reuse."
+  },
+  {
+    "id": 10533,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "NIST SP 800-88 Sanitization",
+    "question": "A Database Custodian at a SaaS startup is decommissioning server hardware containing sensitive data. According to NIST SP 800-88 Rev 1, what is the best method for sanitizing backup tapes when the media is intended to be reused outside the organization?",
+    "options": [
+      "Clearing the media by overwriting all addressable locations",
+      "Purging the media via Cryptographic Erase or Degaussing",
+      "Physical destruction by shredding or incineration",
+      "Declassifying by deleting partition tables"
+    ],
+    "answer": 1,
+    "explanation": "According to NIST SP 800-88 Rev 1, Purging (which includes Cryptographic Erase or Degaussing) is required when media will leave organizational control but remain physically reusable. Clearing is only suitable for reuse within the organization, while physical destruction prevents reuse."
+  },
+  {
+    "id": 10534,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Data States",
+    "question": "A multinational bank wants to secure customer PII stored on backup tapes. The Lead Network Engineer recommends encrypting the data. What data state are they securing, and what is the primary threat mitigated?",
+    "options": [
+      "Data in transit; packet sniffing",
+      "Data at rest; physical theft or unauthorized access to media",
+      "Data in use; memory injection attacks",
+      "Data in transit; man-in-the-middle attacks"
+    ],
+    "answer": 1,
+    "explanation": "Backup tapes represent data at rest. Encrypting data at rest protects it against physical theft, loss of media, or unauthorized read access on stored drives."
+  },
+  {
+    "id": 10535,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "NIST SP 800-88 Sanitization",
+    "question": "A Privacy Officer at a cloud service provider is decommissioning server hardware containing sensitive data. According to NIST SP 800-88 Rev 1, what is the best method for sanitizing magnetic hard drives when the media is intended to be reused outside the organization?",
+    "options": [
+      "Clearing the media by overwriting all addressable locations",
+      "Purging the media via Cryptographic Erase or Degaussing",
+      "Physical destruction by shredding or incineration",
+      "Declassifying by deleting partition tables"
+    ],
+    "answer": 1,
+    "explanation": "According to NIST SP 800-88 Rev 1, Purging (which includes Cryptographic Erase or Degaussing) is required when media will leave organizational control but remain physically reusable. Clearing is only suitable for reuse within the organization, while physical destruction prevents reuse."
+  },
+  {
+    "id": 10536,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "GDPR Roles",
+    "question": "Under GDPR, a SaaS startup collects customer preferences to target ads, but outsources the storage and analysis to a third party. In this scenario, what is the cloud provider's legal role?",
+    "options": [
+      "Data Owner",
+      "Data Controller",
+      "Data Custodian",
+      "Data Processor"
+    ],
+    "answer": 3,
+    "explanation": "The third-party service provider storing and processing data on behalf of the company is the Data Processor. The company that determines the purpose of collection is the Data Controller."
+  },
+  {
+    "id": 10537,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Scoping & Tailoring",
+    "question": "A Information Owner at a multinational bank modifies the baseline security catalog to replace a standard physical badge lock control with a biometric iris scanner due to higher security requirements. What process has occurred?",
+    "options": [
+      "Scoping",
+      "Tailoring",
+      "Transference",
+      "Acceptance"
+    ],
+    "answer": 1,
+    "explanation": "Tailoring involves modifying or supplementing baseline security controls to fit specific organizational constraints, risks, or security profiles."
+  },
+  {
+    "id": 10538,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "GDPR Roles",
+    "question": "Under GDPR, a university network collects customer preferences to target ads, but outsources the storage and analysis to a third party. In this scenario, what is the cloud provider's legal role?",
+    "options": [
+      "Data Owner",
+      "Data Controller",
+      "Data Custodian",
+      "Data Processor"
+    ],
+    "answer": 3,
+    "explanation": "The third-party service provider storing and processing data on behalf of the company is the Data Processor. The company that determines the purpose of collection is the Data Controller."
+  },
+  {
+    "id": 10539,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Scoping & Tailoring",
+    "question": "A Senior Security Auditor at a SaaS startup modifies the baseline security catalog to replace a standard physical badge lock control with a biometric iris scanner due to higher security requirements. What process has occurred?",
+    "options": [
+      "Scoping",
+      "Tailoring",
+      "Transference",
+      "Acceptance"
+    ],
+    "answer": 1,
+    "explanation": "Tailoring involves modifying or supplementing baseline security controls to fit specific organizational constraints, risks, or security profiles."
+  },
+  {
+    "id": 10540,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "GDPR Roles",
+    "question": "Under GDPR, a healthcare provider collects customer preferences to target ads, but outsources the storage and analysis to a third party. In this scenario, what is the cloud provider's legal role?",
+    "options": [
+      "Data Owner",
+      "Data Controller",
+      "Data Custodian",
+      "Data Processor"
+    ],
+    "answer": 3,
+    "explanation": "The third-party service provider storing and processing data on behalf of the company is the Data Processor. The company that determines the purpose of collection is the Data Controller."
+  },
+  {
+    "id": 10541,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Scoping & Tailoring",
+    "question": "A Chief Information Security Officer (CISO) at a multinational bank modifies the baseline security catalog to replace a standard physical badge lock control with a biometric iris scanner due to higher security requirements. What process has occurred?",
+    "options": [
+      "Scoping",
+      "Tailoring",
+      "Transference",
+      "Acceptance"
+    ],
+    "answer": 1,
+    "explanation": "Tailoring involves modifying or supplementing baseline security controls to fit specific organizational constraints, risks, or security profiles."
+  },
+  {
+    "id": 10542,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Data States",
+    "question": "A retail chain wants to secure customer PII stored on backup tapes. The Chief Information Security Officer (CISO) recommends encrypting the data. What data state are they securing, and what is the primary threat mitigated?",
+    "options": [
+      "Data in transit; packet sniffing",
+      "Data at rest; physical theft or unauthorized access to media",
+      "Data in use; memory injection attacks",
+      "Data in transit; man-in-the-middle attacks"
+    ],
+    "answer": 1,
+    "explanation": "Backup tapes represent data at rest. Encrypting data at rest protects it against physical theft, loss of media, or unauthorized read access on stored drives."
+  },
+  {
+    "id": 10543,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "NIST SP 800-88 Sanitization",
+    "question": "A Security Architect at a SaaS startup is decommissioning server hardware containing sensitive data. According to NIST SP 800-88 Rev 1, what is the best method for sanitizing usb flash drives when the media is intended to be reused outside the organization?",
+    "options": [
+      "Clearing the media by overwriting all addressable locations",
+      "Purging the media via Cryptographic Erase or Degaussing",
+      "Physical destruction by shredding or incineration",
+      "Declassifying by deleting partition tables"
+    ],
+    "answer": 1,
+    "explanation": "According to NIST SP 800-88 Rev 1, Purging (which includes Cryptographic Erase or Degaussing) is required when media will leave organizational control but remain physically reusable. Clearing is only suitable for reuse within the organization, while physical destruction prevents reuse."
+  },
+  {
+    "id": 10544,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "GDPR Roles",
+    "question": "Under GDPR, a multinational bank collects customer preferences to target ads, but outsources the storage and analysis to a third party. In this scenario, what is the cloud provider's legal role?",
+    "options": [
+      "Data Owner",
+      "Data Controller",
+      "Data Custodian",
+      "Data Processor"
+    ],
+    "answer": 3,
+    "explanation": "The third-party service provider storing and processing data on behalf of the company is the Data Processor. The company that determines the purpose of collection is the Data Controller."
+  },
+  {
+    "id": 10545,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "NIST SP 800-88 Sanitization",
+    "question": "A Information Owner at a defense contractor is decommissioning server hardware containing sensitive data. According to NIST SP 800-88 Rev 1, what is the best method for sanitizing usb flash drives when the media is intended to be reused outside the organization?",
+    "options": [
+      "Clearing the media by overwriting all addressable locations",
+      "Purging the media via Cryptographic Erase or Degaussing",
+      "Physical destruction by shredding or incineration",
+      "Declassifying by deleting partition tables"
+    ],
+    "answer": 1,
+    "explanation": "According to NIST SP 800-88 Rev 1, Purging (which includes Cryptographic Erase or Degaussing) is required when media will leave organizational control but remain physically reusable. Clearing is only suitable for reuse within the organization, while physical destruction prevents reuse."
+  },
+  {
+    "id": 10546,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "GDPR Roles",
+    "question": "Under GDPR, a healthcare provider collects customer preferences to target ads, but outsources the storage and analysis to a third party. In this scenario, what is the cloud provider's legal role?",
+    "options": [
+      "Data Owner",
+      "Data Controller",
+      "Data Custodian",
+      "Data Processor"
+    ],
+    "answer": 3,
+    "explanation": "The third-party service provider storing and processing data on behalf of the company is the Data Processor. The company that determines the purpose of collection is the Data Controller."
+  },
+  {
+    "id": 10547,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "GDPR Roles",
+    "question": "Under GDPR, a government agency collects customer preferences to target ads, but outsources the storage and analysis to a third party. In this scenario, what is the cloud provider's legal role?",
+    "options": [
+      "Data Owner",
+      "Data Controller",
+      "Data Custodian",
+      "Data Processor"
+    ],
+    "answer": 3,
+    "explanation": "The third-party service provider storing and processing data on behalf of the company is the Data Processor. The company that determines the purpose of collection is the Data Controller."
+  },
+  {
+    "id": 10548,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "GDPR Roles",
+    "question": "Under GDPR, a cloud service provider collects customer preferences to target ads, but outsources the storage and analysis to a third party. In this scenario, what is the cloud provider's legal role?",
+    "options": [
+      "Data Owner",
+      "Data Controller",
+      "Data Custodian",
+      "Data Processor"
+    ],
+    "answer": 3,
+    "explanation": "The third-party service provider storing and processing data on behalf of the company is the Data Processor. The company that determines the purpose of collection is the Data Controller."
+  },
+  {
+    "id": 10549,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "NIST SP 800-88 Sanitization",
+    "question": "A Lead Network Engineer at a e-commerce giant is decommissioning server hardware containing sensitive data. According to NIST SP 800-88 Rev 1, what is the best method for sanitizing backup tapes when the media is intended to be reused outside the organization?",
+    "options": [
+      "Clearing the media by overwriting all addressable locations",
+      "Purging the media via Cryptographic Erase or Degaussing",
+      "Physical destruction by shredding or incineration",
+      "Declassifying by deleting partition tables"
+    ],
+    "answer": 1,
+    "explanation": "According to NIST SP 800-88 Rev 1, Purging (which includes Cryptographic Erase or Degaussing) is required when media will leave organizational control but remain physically reusable. Clearing is only suitable for reuse within the organization, while physical destruction prevents reuse."
+  },
+  {
+    "id": 10550,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Data States",
+    "question": "A multinational bank wants to secure customer PII stored on backup tapes. The Security Architect recommends encrypting the data. What data state are they securing, and what is the primary threat mitigated?",
+    "options": [
+      "Data in transit; packet sniffing",
+      "Data at rest; physical theft or unauthorized access to media",
+      "Data in use; memory injection attacks",
+      "Data in transit; man-in-the-middle attacks"
+    ],
+    "answer": 1,
+    "explanation": "Backup tapes represent data at rest. Encrypting data at rest protects it against physical theft, loss of media, or unauthorized read access on stored drives."
+  },
+  {
+    "id": 10551,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "GDPR Roles",
+    "question": "Under GDPR, a telecommunications operator collects customer preferences to target ads, but outsources the storage and analysis to a third party. In this scenario, what is the cloud provider's legal role?",
+    "options": [
+      "Data Owner",
+      "Data Controller",
+      "Data Custodian",
+      "Data Processor"
+    ],
+    "answer": 3,
+    "explanation": "The third-party service provider storing and processing data on behalf of the company is the Data Processor. The company that determines the purpose of collection is the Data Controller."
+  },
+  {
+    "id": 10552,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Scoping & Tailoring",
+    "question": "A Lead Network Engineer at a telecommunications operator modifies the baseline security catalog to replace a standard physical badge lock control with a biometric iris scanner due to higher security requirements. What process has occurred?",
+    "options": [
+      "Scoping",
+      "Tailoring",
+      "Transference",
+      "Acceptance"
+    ],
+    "answer": 1,
+    "explanation": "Tailoring involves modifying or supplementing baseline security controls to fit specific organizational constraints, risks, or security profiles."
+  },
+  {
+    "id": 10553,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Data States",
+    "question": "A cloud service provider wants to secure customer PII stored on backup tapes. The Chief Information Security Officer (CISO) recommends encrypting the data. What data state are they securing, and what is the primary threat mitigated?",
+    "options": [
+      "Data in transit; packet sniffing",
+      "Data at rest; physical theft or unauthorized access to media",
+      "Data in use; memory injection attacks",
+      "Data in transit; man-in-the-middle attacks"
+    ],
+    "answer": 1,
+    "explanation": "Backup tapes represent data at rest. Encrypting data at rest protects it against physical theft, loss of media, or unauthorized read access on stored drives."
+  },
+  {
+    "id": 10554,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "NIST SP 800-88 Sanitization",
+    "question": "A Privacy Officer at a defense contractor is decommissioning server hardware containing sensitive data. According to NIST SP 800-88 Rev 1, what is the best method for sanitizing usb flash drives when the media is intended to be reused outside the organization?",
+    "options": [
+      "Clearing the media by overwriting all addressable locations",
+      "Purging the media via Cryptographic Erase or Degaussing",
+      "Physical destruction by shredding or incineration",
+      "Declassifying by deleting partition tables"
+    ],
+    "answer": 1,
+    "explanation": "According to NIST SP 800-88 Rev 1, Purging (which includes Cryptographic Erase or Degaussing) is required when media will leave organizational control but remain physically reusable. Clearing is only suitable for reuse within the organization, while physical destruction prevents reuse."
+  },
+  {
+    "id": 10555,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "NIST SP 800-88 Sanitization",
+    "question": "A Security Architect at a healthcare provider is decommissioning server hardware containing sensitive data. According to NIST SP 800-88 Rev 1, what is the best method for sanitizing removable SSDs when the media is intended to be reused outside the organization?",
+    "options": [
+      "Clearing the media by overwriting all addressable locations",
+      "Purging the media via Cryptographic Erase or Degaussing",
+      "Physical destruction by shredding or incineration",
+      "Declassifying by deleting partition tables"
+    ],
+    "answer": 1,
+    "explanation": "According to NIST SP 800-88 Rev 1, Purging (which includes Cryptographic Erase or Degaussing) is required when media will leave organizational control but remain physically reusable. Clearing is only suitable for reuse within the organization, while physical destruction prevents reuse."
+  },
+  {
+    "id": 10556,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "NIST SP 800-88 Sanitization",
+    "question": "A Security Architect at a government agency is decommissioning server hardware containing sensitive data. According to NIST SP 800-88 Rev 1, what is the best method for sanitizing magnetic hard drives when the media is intended to be reused outside the organization?",
+    "options": [
+      "Clearing the media by overwriting all addressable locations",
+      "Purging the media via Cryptographic Erase or Degaussing",
+      "Physical destruction by shredding or incineration",
+      "Declassifying by deleting partition tables"
+    ],
+    "answer": 1,
+    "explanation": "According to NIST SP 800-88 Rev 1, Purging (which includes Cryptographic Erase or Degaussing) is required when media will leave organizational control but remain physically reusable. Clearing is only suitable for reuse within the organization, while physical destruction prevents reuse."
+  },
+  {
+    "id": 10557,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "GDPR Roles",
+    "question": "Under GDPR, a cloud service provider collects customer preferences to target ads, but outsources the storage and analysis to a third party. In this scenario, what is the cloud provider's legal role?",
+    "options": [
+      "Data Owner",
+      "Data Controller",
+      "Data Custodian",
+      "Data Processor"
+    ],
+    "answer": 3,
+    "explanation": "The third-party service provider storing and processing data on behalf of the company is the Data Processor. The company that determines the purpose of collection is the Data Controller."
+  },
+  {
+    "id": 10558,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "GDPR Roles",
+    "question": "Under GDPR, a defense contractor collects customer preferences to target ads, but outsources the storage and analysis to a third party. In this scenario, what is the cloud provider's legal role?",
+    "options": [
+      "Data Owner",
+      "Data Controller",
+      "Data Custodian",
+      "Data Processor"
+    ],
+    "answer": 3,
+    "explanation": "The third-party service provider storing and processing data on behalf of the company is the Data Processor. The company that determines the purpose of collection is the Data Controller."
+  },
+  {
+    "id": 10559,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Data States",
+    "question": "A government agency wants to secure customer PII stored on backup tapes. The Chief Information Security Officer (CISO) recommends encrypting the data. What data state are they securing, and what is the primary threat mitigated?",
+    "options": [
+      "Data in transit; packet sniffing",
+      "Data at rest; physical theft or unauthorized access to media",
+      "Data in use; memory injection attacks",
+      "Data in transit; man-in-the-middle attacks"
+    ],
+    "answer": 1,
+    "explanation": "Backup tapes represent data at rest. Encrypting data at rest protects it against physical theft, loss of media, or unauthorized read access on stored drives."
+  },
+  {
+    "id": 10560,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Data States",
+    "question": "A cloud service provider wants to secure customer PII stored on backup tapes. The Senior Security Auditor recommends encrypting the data. What data state are they securing, and what is the primary threat mitigated?",
+    "options": [
+      "Data in transit; packet sniffing",
+      "Data at rest; physical theft or unauthorized access to media",
+      "Data in use; memory injection attacks",
+      "Data in transit; man-in-the-middle attacks"
+    ],
+    "answer": 1,
+    "explanation": "Backup tapes represent data at rest. Encrypting data at rest protects it against physical theft, loss of media, or unauthorized read access on stored drives."
+  },
+  {
+    "id": 10561,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "GDPR Roles",
+    "question": "Under GDPR, a university network collects customer preferences to target ads, but outsources the storage and analysis to a third party. In this scenario, what is the cloud provider's legal role?",
+    "options": [
+      "Data Owner",
+      "Data Controller",
+      "Data Custodian",
+      "Data Processor"
+    ],
+    "answer": 3,
+    "explanation": "The third-party service provider storing and processing data on behalf of the company is the Data Processor. The company that determines the purpose of collection is the Data Controller."
+  },
+  {
+    "id": 10562,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "GDPR Roles",
+    "question": "Under GDPR, a defense contractor collects customer preferences to target ads, but outsources the storage and analysis to a third party. In this scenario, what is the cloud provider's legal role?",
+    "options": [
+      "Data Owner",
+      "Data Controller",
+      "Data Custodian",
+      "Data Processor"
+    ],
+    "answer": 3,
+    "explanation": "The third-party service provider storing and processing data on behalf of the company is the Data Processor. The company that determines the purpose of collection is the Data Controller."
+  },
+  {
+    "id": 10563,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "GDPR Roles",
+    "question": "Under GDPR, a SaaS startup collects customer preferences to target ads, but outsources the storage and analysis to a third party. In this scenario, what is the cloud provider's legal role?",
+    "options": [
+      "Data Owner",
+      "Data Controller",
+      "Data Custodian",
+      "Data Processor"
+    ],
+    "answer": 3,
+    "explanation": "The third-party service provider storing and processing data on behalf of the company is the Data Processor. The company that determines the purpose of collection is the Data Controller."
+  },
+  {
+    "id": 10564,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Data States",
+    "question": "A retail chain wants to secure customer PII stored on backup tapes. The Lead Network Engineer recommends encrypting the data. What data state are they securing, and what is the primary threat mitigated?",
+    "options": [
+      "Data in transit; packet sniffing",
+      "Data at rest; physical theft or unauthorized access to media",
+      "Data in use; memory injection attacks",
+      "Data in transit; man-in-the-middle attacks"
+    ],
+    "answer": 1,
+    "explanation": "Backup tapes represent data at rest. Encrypting data at rest protects it against physical theft, loss of media, or unauthorized read access on stored drives."
+  },
+  {
+    "id": 10565,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Scoping & Tailoring",
+    "question": "A Information Owner at a university network modifies the baseline security catalog to replace a standard physical badge lock control with a biometric iris scanner due to higher security requirements. What process has occurred?",
+    "options": [
+      "Scoping",
+      "Tailoring",
+      "Transference",
+      "Acceptance"
+    ],
+    "answer": 1,
+    "explanation": "Tailoring involves modifying or supplementing baseline security controls to fit specific organizational constraints, risks, or security profiles."
+  },
+  {
+    "id": 10566,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Data States",
+    "question": "A university network wants to secure customer PII stored on backup tapes. The Chief Information Security Officer (CISO) recommends encrypting the data. What data state are they securing, and what is the primary threat mitigated?",
+    "options": [
+      "Data in transit; packet sniffing",
+      "Data at rest; physical theft or unauthorized access to media",
+      "Data in use; memory injection attacks",
+      "Data in transit; man-in-the-middle attacks"
+    ],
+    "answer": 1,
+    "explanation": "Backup tapes represent data at rest. Encrypting data at rest protects it against physical theft, loss of media, or unauthorized read access on stored drives."
+  },
+  {
+    "id": 10567,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Data States",
+    "question": "A multinational bank wants to secure customer PII stored on backup tapes. The Senior Security Auditor recommends encrypting the data. What data state are they securing, and what is the primary threat mitigated?",
+    "options": [
+      "Data in transit; packet sniffing",
+      "Data at rest; physical theft or unauthorized access to media",
+      "Data in use; memory injection attacks",
+      "Data in transit; man-in-the-middle attacks"
+    ],
+    "answer": 1,
+    "explanation": "Backup tapes represent data at rest. Encrypting data at rest protects it against physical theft, loss of media, or unauthorized read access on stored drives."
+  },
+  {
+    "id": 10568,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "GDPR Roles",
+    "question": "Under GDPR, a multinational bank collects customer preferences to target ads, but outsources the storage and analysis to a third party. In this scenario, what is the cloud provider's legal role?",
+    "options": [
+      "Data Owner",
+      "Data Controller",
+      "Data Custodian",
+      "Data Processor"
+    ],
+    "answer": 3,
+    "explanation": "The third-party service provider storing and processing data on behalf of the company is the Data Processor. The company that determines the purpose of collection is the Data Controller."
+  },
+  {
+    "id": 10569,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Data States",
+    "question": "A university network wants to secure customer PII stored on backup tapes. The Information Owner recommends encrypting the data. What data state are they securing, and what is the primary threat mitigated?",
+    "options": [
+      "Data in transit; packet sniffing",
+      "Data at rest; physical theft or unauthorized access to media",
+      "Data in use; memory injection attacks",
+      "Data in transit; man-in-the-middle attacks"
+    ],
+    "answer": 1,
+    "explanation": "Backup tapes represent data at rest. Encrypting data at rest protects it against physical theft, loss of media, or unauthorized read access on stored drives."
+  },
+  {
+    "id": 10570,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "GDPR Roles",
+    "question": "Under GDPR, a defense contractor collects customer preferences to target ads, but outsources the storage and analysis to a third party. In this scenario, what is the cloud provider's legal role?",
+    "options": [
+      "Data Owner",
+      "Data Controller",
+      "Data Custodian",
+      "Data Processor"
+    ],
+    "answer": 3,
+    "explanation": "The third-party service provider storing and processing data on behalf of the company is the Data Processor. The company that determines the purpose of collection is the Data Controller."
+  },
+  {
+    "id": 10571,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "NIST SP 800-88 Sanitization",
+    "question": "A Information Owner at a government agency is decommissioning server hardware containing sensitive data. According to NIST SP 800-88 Rev 1, what is the best method for sanitizing backup tapes when the media is intended to be reused outside the organization?",
+    "options": [
+      "Clearing the media by overwriting all addressable locations",
+      "Purging the media via Cryptographic Erase or Degaussing",
+      "Physical destruction by shredding or incineration",
+      "Declassifying by deleting partition tables"
+    ],
+    "answer": 1,
+    "explanation": "According to NIST SP 800-88 Rev 1, Purging (which includes Cryptographic Erase or Degaussing) is required when media will leave organizational control but remain physically reusable. Clearing is only suitable for reuse within the organization, while physical destruction prevents reuse."
+  },
+  {
+    "id": 10572,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Scoping & Tailoring",
+    "question": "A Lead Network Engineer at a telecommunications operator modifies the baseline security catalog to replace a standard physical badge lock control with a biometric iris scanner due to higher security requirements. What process has occurred?",
+    "options": [
+      "Scoping",
+      "Tailoring",
+      "Transference",
+      "Acceptance"
+    ],
+    "answer": 1,
+    "explanation": "Tailoring involves modifying or supplementing baseline security controls to fit specific organizational constraints, risks, or security profiles."
+  },
+  {
+    "id": 10573,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "NIST SP 800-88 Sanitization",
+    "question": "A Information Owner at a government agency is decommissioning server hardware containing sensitive data. According to NIST SP 800-88 Rev 1, what is the best method for sanitizing usb flash drives when the media is intended to be reused outside the organization?",
+    "options": [
+      "Clearing the media by overwriting all addressable locations",
+      "Purging the media via Cryptographic Erase or Degaussing",
+      "Physical destruction by shredding or incineration",
+      "Declassifying by deleting partition tables"
+    ],
+    "answer": 1,
+    "explanation": "According to NIST SP 800-88 Rev 1, Purging (which includes Cryptographic Erase or Degaussing) is required when media will leave organizational control but remain physically reusable. Clearing is only suitable for reuse within the organization, while physical destruction prevents reuse."
+  },
+  {
+    "id": 10574,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "NIST SP 800-88 Sanitization",
+    "question": "A Chief Information Security Officer (CISO) at a government agency is decommissioning server hardware containing sensitive data. According to NIST SP 800-88 Rev 1, what is the best method for sanitizing backup tapes when the media is intended to be reused outside the organization?",
+    "options": [
+      "Clearing the media by overwriting all addressable locations",
+      "Purging the media via Cryptographic Erase or Degaussing",
+      "Physical destruction by shredding or incineration",
+      "Declassifying by deleting partition tables"
+    ],
+    "answer": 1,
+    "explanation": "According to NIST SP 800-88 Rev 1, Purging (which includes Cryptographic Erase or Degaussing) is required when media will leave organizational control but remain physically reusable. Clearing is only suitable for reuse within the organization, while physical destruction prevents reuse."
+  },
+  {
+    "id": 10575,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "NIST SP 800-88 Sanitization",
+    "question": "A Database Custodian at a SaaS startup is decommissioning server hardware containing sensitive data. According to NIST SP 800-88 Rev 1, what is the best method for sanitizing backup tapes when the media is intended to be reused outside the organization?",
+    "options": [
+      "Clearing the media by overwriting all addressable locations",
+      "Purging the media via Cryptographic Erase or Degaussing",
+      "Physical destruction by shredding or incineration",
+      "Declassifying by deleting partition tables"
+    ],
+    "answer": 1,
+    "explanation": "According to NIST SP 800-88 Rev 1, Purging (which includes Cryptographic Erase or Degaussing) is required when media will leave organizational control but remain physically reusable. Clearing is only suitable for reuse within the organization, while physical destruction prevents reuse."
+  },
+  {
+    "id": 10576,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "GDPR Roles",
+    "question": "Under GDPR, a retail chain collects customer preferences to target ads, but outsources the storage and analysis to a third party. In this scenario, what is the cloud provider's legal role?",
+    "options": [
+      "Data Owner",
+      "Data Controller",
+      "Data Custodian",
+      "Data Processor"
+    ],
+    "answer": 3,
+    "explanation": "The third-party service provider storing and processing data on behalf of the company is the Data Processor. The company that determines the purpose of collection is the Data Controller."
+  },
+  {
+    "id": 10577,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Scoping & Tailoring",
+    "question": "A Security Architect at a cloud service provider modifies the baseline security catalog to replace a standard physical badge lock control with a biometric iris scanner due to higher security requirements. What process has occurred?",
+    "options": [
+      "Scoping",
+      "Tailoring",
+      "Transference",
+      "Acceptance"
+    ],
+    "answer": 1,
+    "explanation": "Tailoring involves modifying or supplementing baseline security controls to fit specific organizational constraints, risks, or security profiles."
+  },
+  {
+    "id": 10578,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "GDPR Roles",
+    "question": "Under GDPR, a SaaS startup collects customer preferences to target ads, but outsources the storage and analysis to a third party. In this scenario, what is the cloud provider's legal role?",
+    "options": [
+      "Data Owner",
+      "Data Controller",
+      "Data Custodian",
+      "Data Processor"
+    ],
+    "answer": 3,
+    "explanation": "The third-party service provider storing and processing data on behalf of the company is the Data Processor. The company that determines the purpose of collection is the Data Controller."
+  },
+  {
+    "id": 10579,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "GDPR Roles",
+    "question": "Under GDPR, a healthcare provider collects customer preferences to target ads, but outsources the storage and analysis to a third party. In this scenario, what is the cloud provider's legal role?",
+    "options": [
+      "Data Owner",
+      "Data Controller",
+      "Data Custodian",
+      "Data Processor"
+    ],
+    "answer": 3,
+    "explanation": "The third-party service provider storing and processing data on behalf of the company is the Data Processor. The company that determines the purpose of collection is the Data Controller."
+  },
+  {
+    "id": 10580,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "GDPR Roles",
+    "question": "Under GDPR, a university network collects customer preferences to target ads, but outsources the storage and analysis to a third party. In this scenario, what is the cloud provider's legal role?",
+    "options": [
+      "Data Owner",
+      "Data Controller",
+      "Data Custodian",
+      "Data Processor"
+    ],
+    "answer": 3,
+    "explanation": "The third-party service provider storing and processing data on behalf of the company is the Data Processor. The company that determines the purpose of collection is the Data Controller."
+  },
+  {
+    "id": 10581,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "GDPR Roles",
+    "question": "Under GDPR, a defense contractor collects customer preferences to target ads, but outsources the storage and analysis to a third party. In this scenario, what is the cloud provider's legal role?",
+    "options": [
+      "Data Owner",
+      "Data Controller",
+      "Data Custodian",
+      "Data Processor"
+    ],
+    "answer": 3,
+    "explanation": "The third-party service provider storing and processing data on behalf of the company is the Data Processor. The company that determines the purpose of collection is the Data Controller."
+  },
+  {
+    "id": 10582,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Data States",
+    "question": "A healthcare provider wants to secure customer PII stored on backup tapes. The Information Owner recommends encrypting the data. What data state are they securing, and what is the primary threat mitigated?",
+    "options": [
+      "Data in transit; packet sniffing",
+      "Data at rest; physical theft or unauthorized access to media",
+      "Data in use; memory injection attacks",
+      "Data in transit; man-in-the-middle attacks"
+    ],
+    "answer": 1,
+    "explanation": "Backup tapes represent data at rest. Encrypting data at rest protects it against physical theft, loss of media, or unauthorized read access on stored drives."
+  },
+  {
+    "id": 10583,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Scoping & Tailoring",
+    "question": "A Lead Network Engineer at a healthcare provider modifies the baseline security catalog to replace a standard physical badge lock control with a biometric iris scanner due to higher security requirements. What process has occurred?",
+    "options": [
+      "Scoping",
+      "Tailoring",
+      "Transference",
+      "Acceptance"
+    ],
+    "answer": 1,
+    "explanation": "Tailoring involves modifying or supplementing baseline security controls to fit specific organizational constraints, risks, or security profiles."
+  },
+  {
+    "id": 10584,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "GDPR Roles",
+    "question": "Under GDPR, a university network collects customer preferences to target ads, but outsources the storage and analysis to a third party. In this scenario, what is the cloud provider's legal role?",
+    "options": [
+      "Data Owner",
+      "Data Controller",
+      "Data Custodian",
+      "Data Processor"
+    ],
+    "answer": 3,
+    "explanation": "The third-party service provider storing and processing data on behalf of the company is the Data Processor. The company that determines the purpose of collection is the Data Controller."
+  },
+  {
+    "id": 10585,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Data States",
+    "question": "A defense contractor wants to secure customer PII stored on backup tapes. The Database Custodian recommends encrypting the data. What data state are they securing, and what is the primary threat mitigated?",
+    "options": [
+      "Data in transit; packet sniffing",
+      "Data at rest; physical theft or unauthorized access to media",
+      "Data in use; memory injection attacks",
+      "Data in transit; man-in-the-middle attacks"
+    ],
+    "answer": 1,
+    "explanation": "Backup tapes represent data at rest. Encrypting data at rest protects it against physical theft, loss of media, or unauthorized read access on stored drives."
+  },
+  {
+    "id": 10586,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "NIST SP 800-88 Sanitization",
+    "question": "A Lead Network Engineer at a retail chain is decommissioning server hardware containing sensitive data. According to NIST SP 800-88 Rev 1, what is the best method for sanitizing backup tapes when the media is intended to be reused outside the organization?",
+    "options": [
+      "Clearing the media by overwriting all addressable locations",
+      "Purging the media via Cryptographic Erase or Degaussing",
+      "Physical destruction by shredding or incineration",
+      "Declassifying by deleting partition tables"
+    ],
+    "answer": 1,
+    "explanation": "According to NIST SP 800-88 Rev 1, Purging (which includes Cryptographic Erase or Degaussing) is required when media will leave organizational control but remain physically reusable. Clearing is only suitable for reuse within the organization, while physical destruction prevents reuse."
+  },
+  {
+    "id": 10587,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "GDPR Roles",
+    "question": "Under GDPR, a government agency collects customer preferences to target ads, but outsources the storage and analysis to a third party. In this scenario, what is the cloud provider's legal role?",
+    "options": [
+      "Data Owner",
+      "Data Controller",
+      "Data Custodian",
+      "Data Processor"
+    ],
+    "answer": 3,
+    "explanation": "The third-party service provider storing and processing data on behalf of the company is the Data Processor. The company that determines the purpose of collection is the Data Controller."
+  },
+  {
+    "id": 10588,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "GDPR Roles",
+    "question": "Under GDPR, a cloud service provider collects customer preferences to target ads, but outsources the storage and analysis to a third party. In this scenario, what is the cloud provider's legal role?",
+    "options": [
+      "Data Owner",
+      "Data Controller",
+      "Data Custodian",
+      "Data Processor"
+    ],
+    "answer": 3,
+    "explanation": "The third-party service provider storing and processing data on behalf of the company is the Data Processor. The company that determines the purpose of collection is the Data Controller."
+  },
+  {
+    "id": 10589,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Scoping & Tailoring",
+    "question": "A Chief Information Security Officer (CISO) at a telecommunications operator modifies the baseline security catalog to replace a standard physical badge lock control with a biometric iris scanner due to higher security requirements. What process has occurred?",
+    "options": [
+      "Scoping",
+      "Tailoring",
+      "Transference",
+      "Acceptance"
+    ],
+    "answer": 1,
+    "explanation": "Tailoring involves modifying or supplementing baseline security controls to fit specific organizational constraints, risks, or security profiles."
+  },
+  {
+    "id": 10590,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "GDPR Roles",
+    "question": "Under GDPR, a government agency collects customer preferences to target ads, but outsources the storage and analysis to a third party. In this scenario, what is the cloud provider's legal role?",
+    "options": [
+      "Data Owner",
+      "Data Controller",
+      "Data Custodian",
+      "Data Processor"
+    ],
+    "answer": 3,
+    "explanation": "The third-party service provider storing and processing data on behalf of the company is the Data Processor. The company that determines the purpose of collection is the Data Controller."
+  },
+  {
+    "id": 10591,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Scoping & Tailoring",
+    "question": "A Lead Network Engineer at a e-commerce giant modifies the baseline security catalog to replace a standard physical badge lock control with a biometric iris scanner due to higher security requirements. What process has occurred?",
+    "options": [
+      "Scoping",
+      "Tailoring",
+      "Transference",
+      "Acceptance"
+    ],
+    "answer": 1,
+    "explanation": "Tailoring involves modifying or supplementing baseline security controls to fit specific organizational constraints, risks, or security profiles."
+  },
+  {
+    "id": 10592,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Scoping & Tailoring",
+    "question": "A Privacy Officer at a government agency modifies the baseline security catalog to replace a standard physical badge lock control with a biometric iris scanner due to higher security requirements. What process has occurred?",
+    "options": [
+      "Scoping",
+      "Tailoring",
+      "Transference",
+      "Acceptance"
+    ],
+    "answer": 1,
+    "explanation": "Tailoring involves modifying or supplementing baseline security controls to fit specific organizational constraints, risks, or security profiles."
+  },
+  {
+    "id": 10593,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "GDPR Roles",
+    "question": "Under GDPR, a retail chain collects customer preferences to target ads, but outsources the storage and analysis to a third party. In this scenario, what is the cloud provider's legal role?",
+    "options": [
+      "Data Owner",
+      "Data Controller",
+      "Data Custodian",
+      "Data Processor"
+    ],
+    "answer": 3,
+    "explanation": "The third-party service provider storing and processing data on behalf of the company is the Data Processor. The company that determines the purpose of collection is the Data Controller."
+  },
+  {
+    "id": 10594,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "NIST SP 800-88 Sanitization",
+    "question": "A Privacy Officer at a cloud service provider is decommissioning server hardware containing sensitive data. According to NIST SP 800-88 Rev 1, what is the best method for sanitizing usb flash drives when the media is intended to be reused outside the organization?",
+    "options": [
+      "Clearing the media by overwriting all addressable locations",
+      "Purging the media via Cryptographic Erase or Degaussing",
+      "Physical destruction by shredding or incineration",
+      "Declassifying by deleting partition tables"
+    ],
+    "answer": 1,
+    "explanation": "According to NIST SP 800-88 Rev 1, Purging (which includes Cryptographic Erase or Degaussing) is required when media will leave organizational control but remain physically reusable. Clearing is only suitable for reuse within the organization, while physical destruction prevents reuse."
+  },
+  {
+    "id": 10595,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "GDPR Roles",
+    "question": "Under GDPR, a retail chain collects customer preferences to target ads, but outsources the storage and analysis to a third party. In this scenario, what is the cloud provider's legal role?",
+    "options": [
+      "Data Owner",
+      "Data Controller",
+      "Data Custodian",
+      "Data Processor"
+    ],
+    "answer": 3,
+    "explanation": "The third-party service provider storing and processing data on behalf of the company is the Data Processor. The company that determines the purpose of collection is the Data Controller."
+  },
+  {
+    "id": 10596,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "GDPR Roles",
+    "question": "Under GDPR, a telecommunications operator collects customer preferences to target ads, but outsources the storage and analysis to a third party. In this scenario, what is the cloud provider's legal role?",
+    "options": [
+      "Data Owner",
+      "Data Controller",
+      "Data Custodian",
+      "Data Processor"
+    ],
+    "answer": 3,
+    "explanation": "The third-party service provider storing and processing data on behalf of the company is the Data Processor. The company that determines the purpose of collection is the Data Controller."
+  },
+  {
+    "id": 10597,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Scoping & Tailoring",
+    "question": "A Senior Security Auditor at a university network modifies the baseline security catalog to replace a standard physical badge lock control with a biometric iris scanner due to higher security requirements. What process has occurred?",
+    "options": [
+      "Scoping",
+      "Tailoring",
+      "Transference",
+      "Acceptance"
+    ],
+    "answer": 1,
+    "explanation": "Tailoring involves modifying or supplementing baseline security controls to fit specific organizational constraints, risks, or security profiles."
+  },
+  {
+    "id": 10598,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "GDPR Roles",
+    "question": "Under GDPR, a e-commerce giant collects customer preferences to target ads, but outsources the storage and analysis to a third party. In this scenario, what is the cloud provider's legal role?",
+    "options": [
+      "Data Owner",
+      "Data Controller",
+      "Data Custodian",
+      "Data Processor"
+    ],
+    "answer": 3,
+    "explanation": "The third-party service provider storing and processing data on behalf of the company is the Data Processor. The company that determines the purpose of collection is the Data Controller."
+  },
+  {
+    "id": 10599,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "GDPR Roles",
+    "question": "Under GDPR, a financial services firm collects customer preferences to target ads, but outsources the storage and analysis to a third party. In this scenario, what is the cloud provider's legal role?",
+    "options": [
+      "Data Owner",
+      "Data Controller",
+      "Data Custodian",
+      "Data Processor"
+    ],
+    "answer": 3,
+    "explanation": "The third-party service provider storing and processing data on behalf of the company is the Data Processor. The company that determines the purpose of collection is the Data Controller."
+  },
+  {
+    "id": 10600,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Data States",
+    "question": "A cloud service provider wants to secure customer PII stored on backup tapes. The Security Architect recommends encrypting the data. What data state are they securing, and what is the primary threat mitigated?",
+    "options": [
+      "Data in transit; packet sniffing",
+      "Data at rest; physical theft or unauthorized access to media",
+      "Data in use; memory injection attacks",
+      "Data in transit; man-in-the-middle attacks"
+    ],
+    "answer": 1,
+    "explanation": "Backup tapes represent data at rest. Encrypting data at rest protects it against physical theft, loss of media, or unauthorized read access on stored drives."
+  },
+  {
+    "id": 10601,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Scoping & Tailoring",
+    "question": "A Information Owner at a financial services firm modifies the baseline security catalog to replace a standard physical badge lock control with a biometric iris scanner due to higher security requirements. What process has occurred?",
+    "options": [
+      "Scoping",
+      "Tailoring",
+      "Transference",
+      "Acceptance"
+    ],
+    "answer": 1,
+    "explanation": "Tailoring involves modifying or supplementing baseline security controls to fit specific organizational constraints, risks, or security profiles."
+  },
+  {
+    "id": 10602,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "GDPR Roles",
+    "question": "Under GDPR, a financial services firm collects customer preferences to target ads, but outsources the storage and analysis to a third party. In this scenario, what is the cloud provider's legal role?",
+    "options": [
+      "Data Owner",
+      "Data Controller",
+      "Data Custodian",
+      "Data Processor"
+    ],
+    "answer": 3,
+    "explanation": "The third-party service provider storing and processing data on behalf of the company is the Data Processor. The company that determines the purpose of collection is the Data Controller."
+  },
+  {
+    "id": 10603,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Data States",
+    "question": "A government agency wants to secure customer PII stored on backup tapes. The Database Custodian recommends encrypting the data. What data state are they securing, and what is the primary threat mitigated?",
+    "options": [
+      "Data in transit; packet sniffing",
+      "Data at rest; physical theft or unauthorized access to media",
+      "Data in use; memory injection attacks",
+      "Data in transit; man-in-the-middle attacks"
+    ],
+    "answer": 1,
+    "explanation": "Backup tapes represent data at rest. Encrypting data at rest protects it against physical theft, loss of media, or unauthorized read access on stored drives."
+  },
+  {
+    "id": 10604,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Data States",
+    "question": "A SaaS startup wants to secure customer PII stored on backup tapes. The Chief Information Security Officer (CISO) recommends encrypting the data. What data state are they securing, and what is the primary threat mitigated?",
+    "options": [
+      "Data in transit; packet sniffing",
+      "Data at rest; physical theft or unauthorized access to media",
+      "Data in use; memory injection attacks",
+      "Data in transit; man-in-the-middle attacks"
+    ],
+    "answer": 1,
+    "explanation": "Backup tapes represent data at rest. Encrypting data at rest protects it against physical theft, loss of media, or unauthorized read access on stored drives."
+  },
+  {
+    "id": 10605,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "GDPR Roles",
+    "question": "Under GDPR, a SaaS startup collects customer preferences to target ads, but outsources the storage and analysis to a third party. In this scenario, what is the cloud provider's legal role?",
+    "options": [
+      "Data Owner",
+      "Data Controller",
+      "Data Custodian",
+      "Data Processor"
+    ],
+    "answer": 3,
+    "explanation": "The third-party service provider storing and processing data on behalf of the company is the Data Processor. The company that determines the purpose of collection is the Data Controller."
+  },
+  {
+    "id": 10606,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "NIST SP 800-88 Sanitization",
+    "question": "A Senior Security Auditor at a defense contractor is decommissioning server hardware containing sensitive data. According to NIST SP 800-88 Rev 1, what is the best method for sanitizing removable SSDs when the media is intended to be reused outside the organization?",
+    "options": [
+      "Clearing the media by overwriting all addressable locations",
+      "Purging the media via Cryptographic Erase or Degaussing",
+      "Physical destruction by shredding or incineration",
+      "Declassifying by deleting partition tables"
+    ],
+    "answer": 1,
+    "explanation": "According to NIST SP 800-88 Rev 1, Purging (which includes Cryptographic Erase or Degaussing) is required when media will leave organizational control but remain physically reusable. Clearing is only suitable for reuse within the organization, while physical destruction prevents reuse."
+  },
+  {
+    "id": 10607,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "NIST SP 800-88 Sanitization",
+    "question": "A Information Owner at a financial services firm is decommissioning server hardware containing sensitive data. According to NIST SP 800-88 Rev 1, what is the best method for sanitizing magnetic hard drives when the media is intended to be reused outside the organization?",
+    "options": [
+      "Clearing the media by overwriting all addressable locations",
+      "Purging the media via Cryptographic Erase or Degaussing",
+      "Physical destruction by shredding or incineration",
+      "Declassifying by deleting partition tables"
+    ],
+    "answer": 1,
+    "explanation": "According to NIST SP 800-88 Rev 1, Purging (which includes Cryptographic Erase or Degaussing) is required when media will leave organizational control but remain physically reusable. Clearing is only suitable for reuse within the organization, while physical destruction prevents reuse."
+  },
+  {
+    "id": 10608,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Data States",
+    "question": "A retail chain wants to secure customer PII stored on backup tapes. The Information Owner recommends encrypting the data. What data state are they securing, and what is the primary threat mitigated?",
+    "options": [
+      "Data in transit; packet sniffing",
+      "Data at rest; physical theft or unauthorized access to media",
+      "Data in use; memory injection attacks",
+      "Data in transit; man-in-the-middle attacks"
+    ],
+    "answer": 1,
+    "explanation": "Backup tapes represent data at rest. Encrypting data at rest protects it against physical theft, loss of media, or unauthorized read access on stored drives."
+  },
+  {
+    "id": 10609,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "GDPR Roles",
+    "question": "Under GDPR, a multinational bank collects customer preferences to target ads, but outsources the storage and analysis to a third party. In this scenario, what is the cloud provider's legal role?",
+    "options": [
+      "Data Owner",
+      "Data Controller",
+      "Data Custodian",
+      "Data Processor"
+    ],
+    "answer": 3,
+    "explanation": "The third-party service provider storing and processing data on behalf of the company is the Data Processor. The company that determines the purpose of collection is the Data Controller."
+  },
+  {
+    "id": 10610,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "NIST SP 800-88 Sanitization",
+    "question": "A Database Custodian at a government agency is decommissioning server hardware containing sensitive data. According to NIST SP 800-88 Rev 1, what is the best method for sanitizing magnetic hard drives when the media is intended to be reused outside the organization?",
+    "options": [
+      "Clearing the media by overwriting all addressable locations",
+      "Purging the media via Cryptographic Erase or Degaussing",
+      "Physical destruction by shredding or incineration",
+      "Declassifying by deleting partition tables"
+    ],
+    "answer": 1,
+    "explanation": "According to NIST SP 800-88 Rev 1, Purging (which includes Cryptographic Erase or Degaussing) is required when media will leave organizational control but remain physically reusable. Clearing is only suitable for reuse within the organization, while physical destruction prevents reuse."
+  },
+  {
+    "id": 10611,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Data States",
+    "question": "A SaaS startup wants to secure customer PII stored on backup tapes. The Privacy Officer recommends encrypting the data. What data state are they securing, and what is the primary threat mitigated?",
+    "options": [
+      "Data in transit; packet sniffing",
+      "Data at rest; physical theft or unauthorized access to media",
+      "Data in use; memory injection attacks",
+      "Data in transit; man-in-the-middle attacks"
+    ],
+    "answer": 1,
+    "explanation": "Backup tapes represent data at rest. Encrypting data at rest protects it against physical theft, loss of media, or unauthorized read access on stored drives."
+  },
+  {
+    "id": 10612,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Scoping & Tailoring",
+    "question": "A Lead Network Engineer at a e-commerce giant modifies the baseline security catalog to replace a standard physical badge lock control with a biometric iris scanner due to higher security requirements. What process has occurred?",
+    "options": [
+      "Scoping",
+      "Tailoring",
+      "Transference",
+      "Acceptance"
+    ],
+    "answer": 1,
+    "explanation": "Tailoring involves modifying or supplementing baseline security controls to fit specific organizational constraints, risks, or security profiles."
+  },
+  {
+    "id": 10613,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "NIST SP 800-88 Sanitization",
+    "question": "A Lead Network Engineer at a multinational bank is decommissioning server hardware containing sensitive data. According to NIST SP 800-88 Rev 1, what is the best method for sanitizing removable SSDs when the media is intended to be reused outside the organization?",
+    "options": [
+      "Clearing the media by overwriting all addressable locations",
+      "Purging the media via Cryptographic Erase or Degaussing",
+      "Physical destruction by shredding or incineration",
+      "Declassifying by deleting partition tables"
+    ],
+    "answer": 1,
+    "explanation": "According to NIST SP 800-88 Rev 1, Purging (which includes Cryptographic Erase or Degaussing) is required when media will leave organizational control but remain physically reusable. Clearing is only suitable for reuse within the organization, while physical destruction prevents reuse."
+  },
+  {
+    "id": 10614,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "NIST SP 800-88 Sanitization",
+    "question": "A Lead Network Engineer at a SaaS startup is decommissioning server hardware containing sensitive data. According to NIST SP 800-88 Rev 1, what is the best method for sanitizing backup tapes when the media is intended to be reused outside the organization?",
+    "options": [
+      "Clearing the media by overwriting all addressable locations",
+      "Purging the media via Cryptographic Erase or Degaussing",
+      "Physical destruction by shredding or incineration",
+      "Declassifying by deleting partition tables"
+    ],
+    "answer": 1,
+    "explanation": "According to NIST SP 800-88 Rev 1, Purging (which includes Cryptographic Erase or Degaussing) is required when media will leave organizational control but remain physically reusable. Clearing is only suitable for reuse within the organization, while physical destruction prevents reuse."
+  },
+  {
+    "id": 10615,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Scoping & Tailoring",
+    "question": "A Security Architect at a defense contractor modifies the baseline security catalog to replace a standard physical badge lock control with a biometric iris scanner due to higher security requirements. What process has occurred?",
+    "options": [
+      "Scoping",
+      "Tailoring",
+      "Transference",
+      "Acceptance"
+    ],
+    "answer": 1,
+    "explanation": "Tailoring involves modifying or supplementing baseline security controls to fit specific organizational constraints, risks, or security profiles."
+  },
+  {
+    "id": 10616,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "GDPR Roles",
+    "question": "Under GDPR, a healthcare provider collects customer preferences to target ads, but outsources the storage and analysis to a third party. In this scenario, what is the cloud provider's legal role?",
+    "options": [
+      "Data Owner",
+      "Data Controller",
+      "Data Custodian",
+      "Data Processor"
+    ],
+    "answer": 3,
+    "explanation": "The third-party service provider storing and processing data on behalf of the company is the Data Processor. The company that determines the purpose of collection is the Data Controller."
+  },
+  {
+    "id": 10617,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Data States",
+    "question": "A healthcare provider wants to secure customer PII stored on backup tapes. The Information Owner recommends encrypting the data. What data state are they securing, and what is the primary threat mitigated?",
+    "options": [
+      "Data in transit; packet sniffing",
+      "Data at rest; physical theft or unauthorized access to media",
+      "Data in use; memory injection attacks",
+      "Data in transit; man-in-the-middle attacks"
+    ],
+    "answer": 1,
+    "explanation": "Backup tapes represent data at rest. Encrypting data at rest protects it against physical theft, loss of media, or unauthorized read access on stored drives."
+  },
+  {
+    "id": 10618,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "NIST SP 800-88 Sanitization",
+    "question": "A Privacy Officer at a defense contractor is decommissioning server hardware containing sensitive data. According to NIST SP 800-88 Rev 1, what is the best method for sanitizing usb flash drives when the media is intended to be reused outside the organization?",
+    "options": [
+      "Clearing the media by overwriting all addressable locations",
+      "Purging the media via Cryptographic Erase or Degaussing",
+      "Physical destruction by shredding or incineration",
+      "Declassifying by deleting partition tables"
+    ],
+    "answer": 1,
+    "explanation": "According to NIST SP 800-88 Rev 1, Purging (which includes Cryptographic Erase or Degaussing) is required when media will leave organizational control but remain physically reusable. Clearing is only suitable for reuse within the organization, while physical destruction prevents reuse."
+  },
+  {
+    "id": 10619,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Scoping & Tailoring",
+    "question": "A Information Owner at a e-commerce giant modifies the baseline security catalog to replace a standard physical badge lock control with a biometric iris scanner due to higher security requirements. What process has occurred?",
+    "options": [
+      "Scoping",
+      "Tailoring",
+      "Transference",
+      "Acceptance"
+    ],
+    "answer": 1,
+    "explanation": "Tailoring involves modifying or supplementing baseline security controls to fit specific organizational constraints, risks, or security profiles."
+  },
+  {
+    "id": 10620,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "Scoping & Tailoring",
+    "question": "A Privacy Officer at a defense contractor modifies the baseline security catalog to replace a standard physical badge lock control with a biometric iris scanner due to higher security requirements. What process has occurred?",
+    "options": [
+      "Scoping",
+      "Tailoring",
+      "Transference",
+      "Acceptance"
+    ],
+    "answer": 1,
+    "explanation": "Tailoring involves modifying or supplementing baseline security controls to fit specific organizational constraints, risks, or security profiles."
+  },
+  {
+    "id": 10621,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "GDPR Roles",
+    "question": "Under GDPR, a government agency collects customer preferences to target ads, but outsources the storage and analysis to a third party. In this scenario, what is the cloud provider's legal role?",
+    "options": [
+      "Data Owner",
+      "Data Controller",
+      "Data Custodian",
+      "Data Processor"
+    ],
+    "answer": 3,
+    "explanation": "The third-party service provider storing and processing data on behalf of the company is the Data Processor. The company that determines the purpose of collection is the Data Controller."
+  },
+  {
+    "id": 10622,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "NIST SP 800-88 Sanitization",
+    "question": "A Chief Information Security Officer (CISO) at a government agency is decommissioning server hardware containing sensitive data. According to NIST SP 800-88 Rev 1, what is the best method for sanitizing magnetic hard drives when the media is intended to be reused outside the organization?",
+    "options": [
+      "Clearing the media by overwriting all addressable locations",
+      "Purging the media via Cryptographic Erase or Degaussing",
+      "Physical destruction by shredding or incineration",
+      "Declassifying by deleting partition tables"
+    ],
+    "answer": 1,
+    "explanation": "According to NIST SP 800-88 Rev 1, Purging (which includes Cryptographic Erase or Degaussing) is required when media will leave organizational control but remain physically reusable. Clearing is only suitable for reuse within the organization, while physical destruction prevents reuse."
+  },
+  {
+    "id": 10623,
+    "domain": 2,
+    "domain_name": "Domain 2",
+    "scenario": "GDPR Roles",
+    "question": "Under GDPR, a e-commerce giant collects customer preferences to target ads, but outsources the storage and analysis to a third party. In this scenario, what is the cloud provider's legal role?",
+    "options": [
+      "Data Owner",
+      "Data Controller",
+      "Data Custodian",
+      "Data Processor"
+    ],
+    "answer": 3,
+    "explanation": "The third-party service provider storing and processing data on behalf of the company is the Data Processor. The company that determines the purpose of collection is the Data Controller."
+  },
+  {
+    "id": 10624,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Bell-LaPadula Properties",
+    "question": "A secure system implements the Bell-LaPadula model. A user logged in with 'Secret' clearance tries to write information to a 'Top Secret' file. How does the system handle this request?",
+    "options": [
+      "The request is blocked because of the Simple Security property",
+      "The request is allowed because of the *-Property (Star Property)",
+      "The request is blocked because of the *-Property (Star Property)",
+      "The request is allowed because of the Simple Security property"
+    ],
+    "answer": 1,
+    "explanation": "The *-Property of Bell-LaPadula enforces 'No Write Down'. Writing UP (from Secret to Top Secret) is allowed because it does not compromise confidentiality."
+  },
+  {
+    "id": 10625,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Biba Properties",
+    "question": "A database system implements the Biba integrity model. A user with 'Low' integrity clearance attempts to write data to a 'High' integrity table. How does the system handle this?",
+    "options": [
+      "Allowed; Biba enforces no write down",
+      "Blocked; Biba enforces no write up (*-Integrity Property)",
+      "Allowed; Biba allows writing to any level",
+      "Blocked; Biba enforces no read down"
+    ],
+    "answer": 1,
+    "explanation": "The *-Integrity Property of the Biba model states 'No Write Up'. A subject at a lower integrity level cannot write data to a higher integrity level to prevent corrupting clean data."
+  },
+  {
+    "id": 10626,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Biba Properties",
+    "question": "A database system implements the Biba integrity model. A user with 'Low' integrity clearance attempts to write data to a 'High' integrity table. How does the system handle this?",
+    "options": [
+      "Allowed; Biba enforces no write down",
+      "Blocked; Biba enforces no write up (*-Integrity Property)",
+      "Allowed; Biba allows writing to any level",
+      "Blocked; Biba enforces no read down"
+    ],
+    "answer": 1,
+    "explanation": "The *-Integrity Property of the Biba model states 'No Write Up'. A subject at a lower integrity level cannot write data to a higher integrity level to prevent corrupting clean data."
+  },
+  {
+    "id": 10627,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Symmetric Key Calculations",
+    "question": "A defense contractor is designing a secure mesh network for 11 nodes using symmetric encryption. How many unique keys must the Security Architect generate and distribute to ensure private communication between every node?",
+    "options": [
+      "55 keys",
+      "66 keys",
+      "121 keys",
+      "110 keys"
+    ],
+    "answer": 0,
+    "explanation": "The formula for symmetric keys in a network of N nodes is N(N-1)/2. For 11 nodes, this evaluates to 55 keys."
+  },
+  {
+    "id": 10628,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Symmetric Key Calculations",
+    "question": "A cloud service provider is designing a secure mesh network for 21 nodes using symmetric encryption. How many unique keys must the Lead Network Engineer generate and distribute to ensure private communication between every node?",
+    "options": [
+      "210 keys",
+      "231 keys",
+      "441 keys",
+      "420 keys"
+    ],
+    "answer": 0,
+    "explanation": "The formula for symmetric keys in a network of N nodes is N(N-1)/2. For 21 nodes, this evaluates to 210 keys."
+  },
+  {
+    "id": 10629,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Common Criteria",
+    "question": "A Lead Network Engineer is evaluating a new firewall. The vendor claims it meets EAL 4. What does EAL 4 signify in the Common Criteria framework?",
+    "options": [
+      "Formally verified design and tested",
+      "Methodically designed, tested, and reviewed",
+      "Structurally tested and functionally verified",
+      "Semiformally verified and design tested"
+    ],
+    "answer": 1,
+    "explanation": "EAL 4 represents 'Methodically designed, tested, and reviewed'. It is the highest level at which it is mutually recognized as commercially viable."
+  },
+  {
+    "id": 10630,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Symmetric Key Calculations",
+    "question": "A e-commerce giant is designing a secure mesh network for 31 nodes using symmetric encryption. How many unique keys must the Information Owner generate and distribute to ensure private communication between every node?",
+    "options": [
+      "465 keys",
+      "496 keys",
+      "961 keys",
+      "930 keys"
+    ],
+    "answer": 0,
+    "explanation": "The formula for symmetric keys in a network of N nodes is N(N-1)/2. For 31 nodes, this evaluates to 465 keys."
+  },
+  {
+    "id": 10631,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Bell-LaPadula Properties",
+    "question": "A secure system implements the Bell-LaPadula model. A user logged in with 'Secret' clearance tries to write information to a 'Top Secret' file. How does the system handle this request?",
+    "options": [
+      "The request is blocked because of the Simple Security property",
+      "The request is allowed because of the *-Property (Star Property)",
+      "The request is blocked because of the *-Property (Star Property)",
+      "The request is allowed because of the Simple Security property"
+    ],
+    "answer": 1,
+    "explanation": "The *-Property of Bell-LaPadula enforces 'No Write Down'. Writing UP (from Secret to Top Secret) is allowed because it does not compromise confidentiality."
+  },
+  {
+    "id": 10632,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Biba Properties",
+    "question": "A database system implements the Biba integrity model. A user with 'Low' integrity clearance attempts to write data to a 'High' integrity table. How does the system handle this?",
+    "options": [
+      "Allowed; Biba enforces no write down",
+      "Blocked; Biba enforces no write up (*-Integrity Property)",
+      "Allowed; Biba allows writing to any level",
+      "Blocked; Biba enforces no read down"
+    ],
+    "answer": 1,
+    "explanation": "The *-Integrity Property of the Biba model states 'No Write Up'. A subject at a lower integrity level cannot write data to a higher integrity level to prevent corrupting clean data."
+  },
+  {
+    "id": 10633,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Common Criteria",
+    "question": "A Senior Security Auditor is evaluating a new firewall. The vendor claims it meets EAL 4. What does EAL 4 signify in the Common Criteria framework?",
+    "options": [
+      "Formally verified design and tested",
+      "Methodically designed, tested, and reviewed",
+      "Structurally tested and functionally verified",
+      "Semiformally verified and design tested"
+    ],
+    "answer": 1,
+    "explanation": "EAL 4 represents 'Methodically designed, tested, and reviewed'. It is the highest level at which it is mutually recognized as commercially viable."
+  },
+  {
+    "id": 10634,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Common Criteria",
+    "question": "A Database Custodian is evaluating a new firewall. The vendor claims it meets EAL 4. What does EAL 4 signify in the Common Criteria framework?",
+    "options": [
+      "Formally verified design and tested",
+      "Methodically designed, tested, and reviewed",
+      "Structurally tested and functionally verified",
+      "Semiformally verified and design tested"
+    ],
+    "answer": 1,
+    "explanation": "EAL 4 represents 'Methodically designed, tested, and reviewed'. It is the highest level at which it is mutually recognized as commercially viable."
+  },
+  {
+    "id": 10635,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Common Criteria",
+    "question": "A Security Architect is evaluating a new firewall. The vendor claims it meets EAL 4. What does EAL 4 signify in the Common Criteria framework?",
+    "options": [
+      "Formally verified design and tested",
+      "Methodically designed, tested, and reviewed",
+      "Structurally tested and functionally verified",
+      "Semiformally verified and design tested"
+    ],
+    "answer": 1,
+    "explanation": "EAL 4 represents 'Methodically designed, tested, and reviewed'. It is the highest level at which it is mutually recognized as commercially viable."
+  },
+  {
+    "id": 10636,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Bell-LaPadula Properties",
+    "question": "A secure system implements the Bell-LaPadula model. A user logged in with 'Secret' clearance tries to write information to a 'Top Secret' file. How does the system handle this request?",
+    "options": [
+      "The request is blocked because of the Simple Security property",
+      "The request is allowed because of the *-Property (Star Property)",
+      "The request is blocked because of the *-Property (Star Property)",
+      "The request is allowed because of the Simple Security property"
+    ],
+    "answer": 1,
+    "explanation": "The *-Property of Bell-LaPadula enforces 'No Write Down'. Writing UP (from Secret to Top Secret) is allowed because it does not compromise confidentiality."
+  },
+  {
+    "id": 10637,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Common Criteria",
+    "question": "A Security Architect is evaluating a new firewall. The vendor claims it meets EAL 4. What does EAL 4 signify in the Common Criteria framework?",
+    "options": [
+      "Formally verified design and tested",
+      "Methodically designed, tested, and reviewed",
+      "Structurally tested and functionally verified",
+      "Semiformally verified and design tested"
+    ],
+    "answer": 1,
+    "explanation": "EAL 4 represents 'Methodically designed, tested, and reviewed'. It is the highest level at which it is mutually recognized as commercially viable."
+  },
+  {
+    "id": 10638,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Common Criteria",
+    "question": "A Chief Information Security Officer (CISO) is evaluating a new firewall. The vendor claims it meets EAL 4. What does EAL 4 signify in the Common Criteria framework?",
+    "options": [
+      "Formally verified design and tested",
+      "Methodically designed, tested, and reviewed",
+      "Structurally tested and functionally verified",
+      "Semiformally verified and design tested"
+    ],
+    "answer": 1,
+    "explanation": "EAL 4 represents 'Methodically designed, tested, and reviewed'. It is the highest level at which it is mutually recognized as commercially viable."
+  },
+  {
+    "id": 10639,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Symmetric Key Calculations",
+    "question": "A university network is designing a secure mesh network for 54 nodes using symmetric encryption. How many unique keys must the Privacy Officer generate and distribute to ensure private communication between every node?",
+    "options": [
+      "1431 keys",
+      "1485 keys",
+      "2916 keys",
+      "2862 keys"
+    ],
+    "answer": 0,
+    "explanation": "The formula for symmetric keys in a network of N nodes is N(N-1)/2. For 54 nodes, this evaluates to 1431 keys."
+  },
+  {
+    "id": 10640,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Biba Properties",
+    "question": "A database system implements the Biba integrity model. A user with 'Low' integrity clearance attempts to write data to a 'High' integrity table. How does the system handle this?",
+    "options": [
+      "Allowed; Biba enforces no write down",
+      "Blocked; Biba enforces no write up (*-Integrity Property)",
+      "Allowed; Biba allows writing to any level",
+      "Blocked; Biba enforces no read down"
+    ],
+    "answer": 1,
+    "explanation": "The *-Integrity Property of the Biba model states 'No Write Up'. A subject at a lower integrity level cannot write data to a higher integrity level to prevent corrupting clean data."
+  },
+  {
+    "id": 10641,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Common Criteria",
+    "question": "A Security Architect is evaluating a new firewall. The vendor claims it meets EAL 4. What does EAL 4 signify in the Common Criteria framework?",
+    "options": [
+      "Formally verified design and tested",
+      "Methodically designed, tested, and reviewed",
+      "Structurally tested and functionally verified",
+      "Semiformally verified and design tested"
+    ],
+    "answer": 1,
+    "explanation": "EAL 4 represents 'Methodically designed, tested, and reviewed'. It is the highest level at which it is mutually recognized as commercially viable."
+  },
+  {
+    "id": 10642,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Biba Properties",
+    "question": "A database system implements the Biba integrity model. A user with 'Low' integrity clearance attempts to write data to a 'High' integrity table. How does the system handle this?",
+    "options": [
+      "Allowed; Biba enforces no write down",
+      "Blocked; Biba enforces no write up (*-Integrity Property)",
+      "Allowed; Biba allows writing to any level",
+      "Blocked; Biba enforces no read down"
+    ],
+    "answer": 1,
+    "explanation": "The *-Integrity Property of the Biba model states 'No Write Up'. A subject at a lower integrity level cannot write data to a higher integrity level to prevent corrupting clean data."
+  },
+  {
+    "id": 10643,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Biba Properties",
+    "question": "A database system implements the Biba integrity model. A user with 'Low' integrity clearance attempts to write data to a 'High' integrity table. How does the system handle this?",
+    "options": [
+      "Allowed; Biba enforces no write down",
+      "Blocked; Biba enforces no write up (*-Integrity Property)",
+      "Allowed; Biba allows writing to any level",
+      "Blocked; Biba enforces no read down"
+    ],
+    "answer": 1,
+    "explanation": "The *-Integrity Property of the Biba model states 'No Write Up'. A subject at a lower integrity level cannot write data to a higher integrity level to prevent corrupting clean data."
+  },
+  {
+    "id": 10644,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Bell-LaPadula Properties",
+    "question": "A secure system implements the Bell-LaPadula model. A user logged in with 'Secret' clearance tries to write information to a 'Top Secret' file. How does the system handle this request?",
+    "options": [
+      "The request is blocked because of the Simple Security property",
+      "The request is allowed because of the *-Property (Star Property)",
+      "The request is blocked because of the *-Property (Star Property)",
+      "The request is allowed because of the Simple Security property"
+    ],
+    "answer": 1,
+    "explanation": "The *-Property of Bell-LaPadula enforces 'No Write Down'. Writing UP (from Secret to Top Secret) is allowed because it does not compromise confidentiality."
+  },
+  {
+    "id": 10645,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Bell-LaPadula Properties",
+    "question": "A secure system implements the Bell-LaPadula model. A user logged in with 'Secret' clearance tries to write information to a 'Top Secret' file. How does the system handle this request?",
+    "options": [
+      "The request is blocked because of the Simple Security property",
+      "The request is allowed because of the *-Property (Star Property)",
+      "The request is blocked because of the *-Property (Star Property)",
+      "The request is allowed because of the Simple Security property"
+    ],
+    "answer": 1,
+    "explanation": "The *-Property of Bell-LaPadula enforces 'No Write Down'. Writing UP (from Secret to Top Secret) is allowed because it does not compromise confidentiality."
+  },
+  {
+    "id": 10646,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Common Criteria",
+    "question": "A Database Custodian is evaluating a new firewall. The vendor claims it meets EAL 4. What does EAL 4 signify in the Common Criteria framework?",
+    "options": [
+      "Formally verified design and tested",
+      "Methodically designed, tested, and reviewed",
+      "Structurally tested and functionally verified",
+      "Semiformally verified and design tested"
+    ],
+    "answer": 1,
+    "explanation": "EAL 4 represents 'Methodically designed, tested, and reviewed'. It is the highest level at which it is mutually recognized as commercially viable."
+  },
+  {
+    "id": 10647,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Symmetric Key Calculations",
+    "question": "A healthcare provider is designing a secure mesh network for 22 nodes using symmetric encryption. How many unique keys must the Chief Information Security Officer (CISO) generate and distribute to ensure private communication between every node?",
+    "options": [
+      "231 keys",
+      "253 keys",
+      "484 keys",
+      "462 keys"
+    ],
+    "answer": 0,
+    "explanation": "The formula for symmetric keys in a network of N nodes is N(N-1)/2. For 22 nodes, this evaluates to 231 keys."
+  },
+  {
+    "id": 10648,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Symmetric Key Calculations",
+    "question": "A SaaS startup is designing a secure mesh network for 42 nodes using symmetric encryption. How many unique keys must the Senior Security Auditor generate and distribute to ensure private communication between every node?",
+    "options": [
+      "861 keys",
+      "903 keys",
+      "1764 keys",
+      "1722 keys"
+    ],
+    "answer": 0,
+    "explanation": "The formula for symmetric keys in a network of N nodes is N(N-1)/2. For 42 nodes, this evaluates to 861 keys."
+  },
+  {
+    "id": 10649,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Common Criteria",
+    "question": "A Chief Information Security Officer (CISO) is evaluating a new firewall. The vendor claims it meets EAL 4. What does EAL 4 signify in the Common Criteria framework?",
+    "options": [
+      "Formally verified design and tested",
+      "Methodically designed, tested, and reviewed",
+      "Structurally tested and functionally verified",
+      "Semiformally verified and design tested"
+    ],
+    "answer": 1,
+    "explanation": "EAL 4 represents 'Methodically designed, tested, and reviewed'. It is the highest level at which it is mutually recognized as commercially viable."
+  },
+  {
+    "id": 10650,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Biba Properties",
+    "question": "A database system implements the Biba integrity model. A user with 'Low' integrity clearance attempts to write data to a 'High' integrity table. How does the system handle this?",
+    "options": [
+      "Allowed; Biba enforces no write down",
+      "Blocked; Biba enforces no write up (*-Integrity Property)",
+      "Allowed; Biba allows writing to any level",
+      "Blocked; Biba enforces no read down"
+    ],
+    "answer": 1,
+    "explanation": "The *-Integrity Property of the Biba model states 'No Write Up'. A subject at a lower integrity level cannot write data to a higher integrity level to prevent corrupting clean data."
+  },
+  {
+    "id": 10651,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Bell-LaPadula Properties",
+    "question": "A secure system implements the Bell-LaPadula model. A user logged in with 'Secret' clearance tries to write information to a 'Top Secret' file. How does the system handle this request?",
+    "options": [
+      "The request is blocked because of the Simple Security property",
+      "The request is allowed because of the *-Property (Star Property)",
+      "The request is blocked because of the *-Property (Star Property)",
+      "The request is allowed because of the Simple Security property"
+    ],
+    "answer": 1,
+    "explanation": "The *-Property of Bell-LaPadula enforces 'No Write Down'. Writing UP (from Secret to Top Secret) is allowed because it does not compromise confidentiality."
+  },
+  {
+    "id": 10652,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Bell-LaPadula Properties",
+    "question": "A secure system implements the Bell-LaPadula model. A user logged in with 'Secret' clearance tries to write information to a 'Top Secret' file. How does the system handle this request?",
+    "options": [
+      "The request is blocked because of the Simple Security property",
+      "The request is allowed because of the *-Property (Star Property)",
+      "The request is blocked because of the *-Property (Star Property)",
+      "The request is allowed because of the Simple Security property"
+    ],
+    "answer": 1,
+    "explanation": "The *-Property of Bell-LaPadula enforces 'No Write Down'. Writing UP (from Secret to Top Secret) is allowed because it does not compromise confidentiality."
+  },
+  {
+    "id": 10653,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Bell-LaPadula Properties",
+    "question": "A secure system implements the Bell-LaPadula model. A user logged in with 'Secret' clearance tries to write information to a 'Top Secret' file. How does the system handle this request?",
+    "options": [
+      "The request is blocked because of the Simple Security property",
+      "The request is allowed because of the *-Property (Star Property)",
+      "The request is blocked because of the *-Property (Star Property)",
+      "The request is allowed because of the Simple Security property"
+    ],
+    "answer": 1,
+    "explanation": "The *-Property of Bell-LaPadula enforces 'No Write Down'. Writing UP (from Secret to Top Secret) is allowed because it does not compromise confidentiality."
+  },
+  {
+    "id": 10654,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Common Criteria",
+    "question": "A Information Owner is evaluating a new firewall. The vendor claims it meets EAL 4. What does EAL 4 signify in the Common Criteria framework?",
+    "options": [
+      "Formally verified design and tested",
+      "Methodically designed, tested, and reviewed",
+      "Structurally tested and functionally verified",
+      "Semiformally verified and design tested"
+    ],
+    "answer": 1,
+    "explanation": "EAL 4 represents 'Methodically designed, tested, and reviewed'. It is the highest level at which it is mutually recognized as commercially viable."
+  },
+  {
+    "id": 10655,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Symmetric Key Calculations",
+    "question": "A telecommunications operator is designing a secure mesh network for 78 nodes using symmetric encryption. How many unique keys must the Lead Network Engineer generate and distribute to ensure private communication between every node?",
+    "options": [
+      "3003 keys",
+      "3081 keys",
+      "6084 keys",
+      "6006 keys"
+    ],
+    "answer": 0,
+    "explanation": "The formula for symmetric keys in a network of N nodes is N(N-1)/2. For 78 nodes, this evaluates to 3003 keys."
+  },
+  {
+    "id": 10656,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Biba Properties",
+    "question": "A database system implements the Biba integrity model. A user with 'Low' integrity clearance attempts to write data to a 'High' integrity table. How does the system handle this?",
+    "options": [
+      "Allowed; Biba enforces no write down",
+      "Blocked; Biba enforces no write up (*-Integrity Property)",
+      "Allowed; Biba allows writing to any level",
+      "Blocked; Biba enforces no read down"
+    ],
+    "answer": 1,
+    "explanation": "The *-Integrity Property of the Biba model states 'No Write Up'. A subject at a lower integrity level cannot write data to a higher integrity level to prevent corrupting clean data."
+  },
+  {
+    "id": 10657,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Common Criteria",
+    "question": "A Database Custodian is evaluating a new firewall. The vendor claims it meets EAL 4. What does EAL 4 signify in the Common Criteria framework?",
+    "options": [
+      "Formally verified design and tested",
+      "Methodically designed, tested, and reviewed",
+      "Structurally tested and functionally verified",
+      "Semiformally verified and design tested"
+    ],
+    "answer": 1,
+    "explanation": "EAL 4 represents 'Methodically designed, tested, and reviewed'. It is the highest level at which it is mutually recognized as commercially viable."
+  },
+  {
+    "id": 10658,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Bell-LaPadula Properties",
+    "question": "A secure system implements the Bell-LaPadula model. A user logged in with 'Secret' clearance tries to write information to a 'Top Secret' file. How does the system handle this request?",
+    "options": [
+      "The request is blocked because of the Simple Security property",
+      "The request is allowed because of the *-Property (Star Property)",
+      "The request is blocked because of the *-Property (Star Property)",
+      "The request is allowed because of the Simple Security property"
+    ],
+    "answer": 1,
+    "explanation": "The *-Property of Bell-LaPadula enforces 'No Write Down'. Writing UP (from Secret to Top Secret) is allowed because it does not compromise confidentiality."
+  },
+  {
+    "id": 10659,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Biba Properties",
+    "question": "A database system implements the Biba integrity model. A user with 'Low' integrity clearance attempts to write data to a 'High' integrity table. How does the system handle this?",
+    "options": [
+      "Allowed; Biba enforces no write down",
+      "Blocked; Biba enforces no write up (*-Integrity Property)",
+      "Allowed; Biba allows writing to any level",
+      "Blocked; Biba enforces no read down"
+    ],
+    "answer": 1,
+    "explanation": "The *-Integrity Property of the Biba model states 'No Write Up'. A subject at a lower integrity level cannot write data to a higher integrity level to prevent corrupting clean data."
+  },
+  {
+    "id": 10660,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Biba Properties",
+    "question": "A database system implements the Biba integrity model. A user with 'Low' integrity clearance attempts to write data to a 'High' integrity table. How does the system handle this?",
+    "options": [
+      "Allowed; Biba enforces no write down",
+      "Blocked; Biba enforces no write up (*-Integrity Property)",
+      "Allowed; Biba allows writing to any level",
+      "Blocked; Biba enforces no read down"
+    ],
+    "answer": 1,
+    "explanation": "The *-Integrity Property of the Biba model states 'No Write Up'. A subject at a lower integrity level cannot write data to a higher integrity level to prevent corrupting clean data."
+  },
+  {
+    "id": 10661,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Symmetric Key Calculations",
+    "question": "A financial services firm is designing a secure mesh network for 61 nodes using symmetric encryption. How many unique keys must the Database Custodian generate and distribute to ensure private communication between every node?",
+    "options": [
+      "1830 keys",
+      "1891 keys",
+      "3721 keys",
+      "3660 keys"
+    ],
+    "answer": 0,
+    "explanation": "The formula for symmetric keys in a network of N nodes is N(N-1)/2. For 61 nodes, this evaluates to 1830 keys."
+  },
+  {
+    "id": 10662,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Bell-LaPadula Properties",
+    "question": "A secure system implements the Bell-LaPadula model. A user logged in with 'Secret' clearance tries to write information to a 'Top Secret' file. How does the system handle this request?",
+    "options": [
+      "The request is blocked because of the Simple Security property",
+      "The request is allowed because of the *-Property (Star Property)",
+      "The request is blocked because of the *-Property (Star Property)",
+      "The request is allowed because of the Simple Security property"
+    ],
+    "answer": 1,
+    "explanation": "The *-Property of Bell-LaPadula enforces 'No Write Down'. Writing UP (from Secret to Top Secret) is allowed because it does not compromise confidentiality."
+  },
+  {
+    "id": 10663,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Biba Properties",
+    "question": "A database system implements the Biba integrity model. A user with 'Low' integrity clearance attempts to write data to a 'High' integrity table. How does the system handle this?",
+    "options": [
+      "Allowed; Biba enforces no write down",
+      "Blocked; Biba enforces no write up (*-Integrity Property)",
+      "Allowed; Biba allows writing to any level",
+      "Blocked; Biba enforces no read down"
+    ],
+    "answer": 1,
+    "explanation": "The *-Integrity Property of the Biba model states 'No Write Up'. A subject at a lower integrity level cannot write data to a higher integrity level to prevent corrupting clean data."
+  },
+  {
+    "id": 10664,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Biba Properties",
+    "question": "A database system implements the Biba integrity model. A user with 'Low' integrity clearance attempts to write data to a 'High' integrity table. How does the system handle this?",
+    "options": [
+      "Allowed; Biba enforces no write down",
+      "Blocked; Biba enforces no write up (*-Integrity Property)",
+      "Allowed; Biba allows writing to any level",
+      "Blocked; Biba enforces no read down"
+    ],
+    "answer": 1,
+    "explanation": "The *-Integrity Property of the Biba model states 'No Write Up'. A subject at a lower integrity level cannot write data to a higher integrity level to prevent corrupting clean data."
+  },
+  {
+    "id": 10665,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Common Criteria",
+    "question": "A Senior Security Auditor is evaluating a new firewall. The vendor claims it meets EAL 4. What does EAL 4 signify in the Common Criteria framework?",
+    "options": [
+      "Formally verified design and tested",
+      "Methodically designed, tested, and reviewed",
+      "Structurally tested and functionally verified",
+      "Semiformally verified and design tested"
+    ],
+    "answer": 1,
+    "explanation": "EAL 4 represents 'Methodically designed, tested, and reviewed'. It is the highest level at which it is mutually recognized as commercially viable."
+  },
+  {
+    "id": 10666,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Bell-LaPadula Properties",
+    "question": "A secure system implements the Bell-LaPadula model. A user logged in with 'Secret' clearance tries to write information to a 'Top Secret' file. How does the system handle this request?",
+    "options": [
+      "The request is blocked because of the Simple Security property",
+      "The request is allowed because of the *-Property (Star Property)",
+      "The request is blocked because of the *-Property (Star Property)",
+      "The request is allowed because of the Simple Security property"
+    ],
+    "answer": 1,
+    "explanation": "The *-Property of Bell-LaPadula enforces 'No Write Down'. Writing UP (from Secret to Top Secret) is allowed because it does not compromise confidentiality."
+  },
+  {
+    "id": 10667,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Biba Properties",
+    "question": "A database system implements the Biba integrity model. A user with 'Low' integrity clearance attempts to write data to a 'High' integrity table. How does the system handle this?",
+    "options": [
+      "Allowed; Biba enforces no write down",
+      "Blocked; Biba enforces no write up (*-Integrity Property)",
+      "Allowed; Biba allows writing to any level",
+      "Blocked; Biba enforces no read down"
+    ],
+    "answer": 1,
+    "explanation": "The *-Integrity Property of the Biba model states 'No Write Up'. A subject at a lower integrity level cannot write data to a higher integrity level to prevent corrupting clean data."
+  },
+  {
+    "id": 10668,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Common Criteria",
+    "question": "A Privacy Officer is evaluating a new firewall. The vendor claims it meets EAL 4. What does EAL 4 signify in the Common Criteria framework?",
+    "options": [
+      "Formally verified design and tested",
+      "Methodically designed, tested, and reviewed",
+      "Structurally tested and functionally verified",
+      "Semiformally verified and design tested"
+    ],
+    "answer": 1,
+    "explanation": "EAL 4 represents 'Methodically designed, tested, and reviewed'. It is the highest level at which it is mutually recognized as commercially viable."
+  },
+  {
+    "id": 10669,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Symmetric Key Calculations",
+    "question": "A cloud service provider is designing a secure mesh network for 48 nodes using symmetric encryption. How many unique keys must the Security Architect generate and distribute to ensure private communication between every node?",
+    "options": [
+      "1128 keys",
+      "1176 keys",
+      "2304 keys",
+      "2256 keys"
+    ],
+    "answer": 0,
+    "explanation": "The formula for symmetric keys in a network of N nodes is N(N-1)/2. For 48 nodes, this evaluates to 1128 keys."
+  },
+  {
+    "id": 10670,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Symmetric Key Calculations",
+    "question": "A multinational bank is designing a secure mesh network for 47 nodes using symmetric encryption. How many unique keys must the Information Owner generate and distribute to ensure private communication between every node?",
+    "options": [
+      "1081 keys",
+      "1128 keys",
+      "2209 keys",
+      "2162 keys"
+    ],
+    "answer": 0,
+    "explanation": "The formula for symmetric keys in a network of N nodes is N(N-1)/2. For 47 nodes, this evaluates to 1081 keys."
+  },
+  {
+    "id": 10671,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Common Criteria",
+    "question": "A Security Architect is evaluating a new firewall. The vendor claims it meets EAL 4. What does EAL 4 signify in the Common Criteria framework?",
+    "options": [
+      "Formally verified design and tested",
+      "Methodically designed, tested, and reviewed",
+      "Structurally tested and functionally verified",
+      "Semiformally verified and design tested"
+    ],
+    "answer": 1,
+    "explanation": "EAL 4 represents 'Methodically designed, tested, and reviewed'. It is the highest level at which it is mutually recognized as commercially viable."
+  },
+  {
+    "id": 10672,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Biba Properties",
+    "question": "A database system implements the Biba integrity model. A user with 'Low' integrity clearance attempts to write data to a 'High' integrity table. How does the system handle this?",
+    "options": [
+      "Allowed; Biba enforces no write down",
+      "Blocked; Biba enforces no write up (*-Integrity Property)",
+      "Allowed; Biba allows writing to any level",
+      "Blocked; Biba enforces no read down"
+    ],
+    "answer": 1,
+    "explanation": "The *-Integrity Property of the Biba model states 'No Write Up'. A subject at a lower integrity level cannot write data to a higher integrity level to prevent corrupting clean data."
+  },
+  {
+    "id": 10673,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Bell-LaPadula Properties",
+    "question": "A secure system implements the Bell-LaPadula model. A user logged in with 'Secret' clearance tries to write information to a 'Top Secret' file. How does the system handle this request?",
+    "options": [
+      "The request is blocked because of the Simple Security property",
+      "The request is allowed because of the *-Property (Star Property)",
+      "The request is blocked because of the *-Property (Star Property)",
+      "The request is allowed because of the Simple Security property"
+    ],
+    "answer": 1,
+    "explanation": "The *-Property of Bell-LaPadula enforces 'No Write Down'. Writing UP (from Secret to Top Secret) is allowed because it does not compromise confidentiality."
+  },
+  {
+    "id": 10674,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Bell-LaPadula Properties",
+    "question": "A secure system implements the Bell-LaPadula model. A user logged in with 'Secret' clearance tries to write information to a 'Top Secret' file. How does the system handle this request?",
+    "options": [
+      "The request is blocked because of the Simple Security property",
+      "The request is allowed because of the *-Property (Star Property)",
+      "The request is blocked because of the *-Property (Star Property)",
+      "The request is allowed because of the Simple Security property"
+    ],
+    "answer": 1,
+    "explanation": "The *-Property of Bell-LaPadula enforces 'No Write Down'. Writing UP (from Secret to Top Secret) is allowed because it does not compromise confidentiality."
+  },
+  {
+    "id": 10675,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Biba Properties",
+    "question": "A database system implements the Biba integrity model. A user with 'Low' integrity clearance attempts to write data to a 'High' integrity table. How does the system handle this?",
+    "options": [
+      "Allowed; Biba enforces no write down",
+      "Blocked; Biba enforces no write up (*-Integrity Property)",
+      "Allowed; Biba allows writing to any level",
+      "Blocked; Biba enforces no read down"
+    ],
+    "answer": 1,
+    "explanation": "The *-Integrity Property of the Biba model states 'No Write Up'. A subject at a lower integrity level cannot write data to a higher integrity level to prevent corrupting clean data."
+  },
+  {
+    "id": 10676,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Common Criteria",
+    "question": "A Privacy Officer is evaluating a new firewall. The vendor claims it meets EAL 4. What does EAL 4 signify in the Common Criteria framework?",
+    "options": [
+      "Formally verified design and tested",
+      "Methodically designed, tested, and reviewed",
+      "Structurally tested and functionally verified",
+      "Semiformally verified and design tested"
+    ],
+    "answer": 1,
+    "explanation": "EAL 4 represents 'Methodically designed, tested, and reviewed'. It is the highest level at which it is mutually recognized as commercially viable."
+  },
+  {
+    "id": 10677,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Bell-LaPadula Properties",
+    "question": "A secure system implements the Bell-LaPadula model. A user logged in with 'Secret' clearance tries to write information to a 'Top Secret' file. How does the system handle this request?",
+    "options": [
+      "The request is blocked because of the Simple Security property",
+      "The request is allowed because of the *-Property (Star Property)",
+      "The request is blocked because of the *-Property (Star Property)",
+      "The request is allowed because of the Simple Security property"
+    ],
+    "answer": 1,
+    "explanation": "The *-Property of Bell-LaPadula enforces 'No Write Down'. Writing UP (from Secret to Top Secret) is allowed because it does not compromise confidentiality."
+  },
+  {
+    "id": 10678,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Biba Properties",
+    "question": "A database system implements the Biba integrity model. A user with 'Low' integrity clearance attempts to write data to a 'High' integrity table. How does the system handle this?",
+    "options": [
+      "Allowed; Biba enforces no write down",
+      "Blocked; Biba enforces no write up (*-Integrity Property)",
+      "Allowed; Biba allows writing to any level",
+      "Blocked; Biba enforces no read down"
+    ],
+    "answer": 1,
+    "explanation": "The *-Integrity Property of the Biba model states 'No Write Up'. A subject at a lower integrity level cannot write data to a higher integrity level to prevent corrupting clean data."
+  },
+  {
+    "id": 10679,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Biba Properties",
+    "question": "A database system implements the Biba integrity model. A user with 'Low' integrity clearance attempts to write data to a 'High' integrity table. How does the system handle this?",
+    "options": [
+      "Allowed; Biba enforces no write down",
+      "Blocked; Biba enforces no write up (*-Integrity Property)",
+      "Allowed; Biba allows writing to any level",
+      "Blocked; Biba enforces no read down"
+    ],
+    "answer": 1,
+    "explanation": "The *-Integrity Property of the Biba model states 'No Write Up'. A subject at a lower integrity level cannot write data to a higher integrity level to prevent corrupting clean data."
+  },
+  {
+    "id": 10680,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Bell-LaPadula Properties",
+    "question": "A secure system implements the Bell-LaPadula model. A user logged in with 'Secret' clearance tries to write information to a 'Top Secret' file. How does the system handle this request?",
+    "options": [
+      "The request is blocked because of the Simple Security property",
+      "The request is allowed because of the *-Property (Star Property)",
+      "The request is blocked because of the *-Property (Star Property)",
+      "The request is allowed because of the Simple Security property"
+    ],
+    "answer": 1,
+    "explanation": "The *-Property of Bell-LaPadula enforces 'No Write Down'. Writing UP (from Secret to Top Secret) is allowed because it does not compromise confidentiality."
+  },
+  {
+    "id": 10681,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Symmetric Key Calculations",
+    "question": "A government agency is designing a secure mesh network for 44 nodes using symmetric encryption. How many unique keys must the Security Architect generate and distribute to ensure private communication between every node?",
+    "options": [
+      "946 keys",
+      "990 keys",
+      "1936 keys",
+      "1892 keys"
+    ],
+    "answer": 0,
+    "explanation": "The formula for symmetric keys in a network of N nodes is N(N-1)/2. For 44 nodes, this evaluates to 946 keys."
+  },
+  {
+    "id": 10682,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Biba Properties",
+    "question": "A database system implements the Biba integrity model. A user with 'Low' integrity clearance attempts to write data to a 'High' integrity table. How does the system handle this?",
+    "options": [
+      "Allowed; Biba enforces no write down",
+      "Blocked; Biba enforces no write up (*-Integrity Property)",
+      "Allowed; Biba allows writing to any level",
+      "Blocked; Biba enforces no read down"
+    ],
+    "answer": 1,
+    "explanation": "The *-Integrity Property of the Biba model states 'No Write Up'. A subject at a lower integrity level cannot write data to a higher integrity level to prevent corrupting clean data."
+  },
+  {
+    "id": 10683,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Bell-LaPadula Properties",
+    "question": "A secure system implements the Bell-LaPadula model. A user logged in with 'Secret' clearance tries to write information to a 'Top Secret' file. How does the system handle this request?",
+    "options": [
+      "The request is blocked because of the Simple Security property",
+      "The request is allowed because of the *-Property (Star Property)",
+      "The request is blocked because of the *-Property (Star Property)",
+      "The request is allowed because of the Simple Security property"
+    ],
+    "answer": 1,
+    "explanation": "The *-Property of Bell-LaPadula enforces 'No Write Down'. Writing UP (from Secret to Top Secret) is allowed because it does not compromise confidentiality."
+  },
+  {
+    "id": 10684,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Common Criteria",
+    "question": "A Lead Network Engineer is evaluating a new firewall. The vendor claims it meets EAL 4. What does EAL 4 signify in the Common Criteria framework?",
+    "options": [
+      "Formally verified design and tested",
+      "Methodically designed, tested, and reviewed",
+      "Structurally tested and functionally verified",
+      "Semiformally verified and design tested"
+    ],
+    "answer": 1,
+    "explanation": "EAL 4 represents 'Methodically designed, tested, and reviewed'. It is the highest level at which it is mutually recognized as commercially viable."
+  },
+  {
+    "id": 10685,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Symmetric Key Calculations",
+    "question": "A cloud service provider is designing a secure mesh network for 21 nodes using symmetric encryption. How many unique keys must the Privacy Officer generate and distribute to ensure private communication between every node?",
+    "options": [
+      "210 keys",
+      "231 keys",
+      "441 keys",
+      "420 keys"
+    ],
+    "answer": 0,
+    "explanation": "The formula for symmetric keys in a network of N nodes is N(N-1)/2. For 21 nodes, this evaluates to 210 keys."
+  },
+  {
+    "id": 10686,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Symmetric Key Calculations",
+    "question": "A healthcare provider is designing a secure mesh network for 14 nodes using symmetric encryption. How many unique keys must the Security Architect generate and distribute to ensure private communication between every node?",
+    "options": [
+      "91 keys",
+      "105 keys",
+      "196 keys",
+      "182 keys"
+    ],
+    "answer": 0,
+    "explanation": "The formula for symmetric keys in a network of N nodes is N(N-1)/2. For 14 nodes, this evaluates to 91 keys."
+  },
+  {
+    "id": 10687,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Bell-LaPadula Properties",
+    "question": "A secure system implements the Bell-LaPadula model. A user logged in with 'Secret' clearance tries to write information to a 'Top Secret' file. How does the system handle this request?",
+    "options": [
+      "The request is blocked because of the Simple Security property",
+      "The request is allowed because of the *-Property (Star Property)",
+      "The request is blocked because of the *-Property (Star Property)",
+      "The request is allowed because of the Simple Security property"
+    ],
+    "answer": 1,
+    "explanation": "The *-Property of Bell-LaPadula enforces 'No Write Down'. Writing UP (from Secret to Top Secret) is allowed because it does not compromise confidentiality."
+  },
+  {
+    "id": 10688,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Biba Properties",
+    "question": "A database system implements the Biba integrity model. A user with 'Low' integrity clearance attempts to write data to a 'High' integrity table. How does the system handle this?",
+    "options": [
+      "Allowed; Biba enforces no write down",
+      "Blocked; Biba enforces no write up (*-Integrity Property)",
+      "Allowed; Biba allows writing to any level",
+      "Blocked; Biba enforces no read down"
+    ],
+    "answer": 1,
+    "explanation": "The *-Integrity Property of the Biba model states 'No Write Up'. A subject at a lower integrity level cannot write data to a higher integrity level to prevent corrupting clean data."
+  },
+  {
+    "id": 10689,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Common Criteria",
+    "question": "A Senior Security Auditor is evaluating a new firewall. The vendor claims it meets EAL 4. What does EAL 4 signify in the Common Criteria framework?",
+    "options": [
+      "Formally verified design and tested",
+      "Methodically designed, tested, and reviewed",
+      "Structurally tested and functionally verified",
+      "Semiformally verified and design tested"
+    ],
+    "answer": 1,
+    "explanation": "EAL 4 represents 'Methodically designed, tested, and reviewed'. It is the highest level at which it is mutually recognized as commercially viable."
+  },
+  {
+    "id": 10690,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Biba Properties",
+    "question": "A database system implements the Biba integrity model. A user with 'Low' integrity clearance attempts to write data to a 'High' integrity table. How does the system handle this?",
+    "options": [
+      "Allowed; Biba enforces no write down",
+      "Blocked; Biba enforces no write up (*-Integrity Property)",
+      "Allowed; Biba allows writing to any level",
+      "Blocked; Biba enforces no read down"
+    ],
+    "answer": 1,
+    "explanation": "The *-Integrity Property of the Biba model states 'No Write Up'. A subject at a lower integrity level cannot write data to a higher integrity level to prevent corrupting clean data."
+  },
+  {
+    "id": 10691,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Bell-LaPadula Properties",
+    "question": "A secure system implements the Bell-LaPadula model. A user logged in with 'Secret' clearance tries to write information to a 'Top Secret' file. How does the system handle this request?",
+    "options": [
+      "The request is blocked because of the Simple Security property",
+      "The request is allowed because of the *-Property (Star Property)",
+      "The request is blocked because of the *-Property (Star Property)",
+      "The request is allowed because of the Simple Security property"
+    ],
+    "answer": 1,
+    "explanation": "The *-Property of Bell-LaPadula enforces 'No Write Down'. Writing UP (from Secret to Top Secret) is allowed because it does not compromise confidentiality."
+  },
+  {
+    "id": 10692,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Bell-LaPadula Properties",
+    "question": "A secure system implements the Bell-LaPadula model. A user logged in with 'Secret' clearance tries to write information to a 'Top Secret' file. How does the system handle this request?",
+    "options": [
+      "The request is blocked because of the Simple Security property",
+      "The request is allowed because of the *-Property (Star Property)",
+      "The request is blocked because of the *-Property (Star Property)",
+      "The request is allowed because of the Simple Security property"
+    ],
+    "answer": 1,
+    "explanation": "The *-Property of Bell-LaPadula enforces 'No Write Down'. Writing UP (from Secret to Top Secret) is allowed because it does not compromise confidentiality."
+  },
+  {
+    "id": 10693,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Bell-LaPadula Properties",
+    "question": "A secure system implements the Bell-LaPadula model. A user logged in with 'Secret' clearance tries to write information to a 'Top Secret' file. How does the system handle this request?",
+    "options": [
+      "The request is blocked because of the Simple Security property",
+      "The request is allowed because of the *-Property (Star Property)",
+      "The request is blocked because of the *-Property (Star Property)",
+      "The request is allowed because of the Simple Security property"
+    ],
+    "answer": 1,
+    "explanation": "The *-Property of Bell-LaPadula enforces 'No Write Down'. Writing UP (from Secret to Top Secret) is allowed because it does not compromise confidentiality."
+  },
+  {
+    "id": 10694,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Common Criteria",
+    "question": "A Lead Network Engineer is evaluating a new firewall. The vendor claims it meets EAL 4. What does EAL 4 signify in the Common Criteria framework?",
+    "options": [
+      "Formally verified design and tested",
+      "Methodically designed, tested, and reviewed",
+      "Structurally tested and functionally verified",
+      "Semiformally verified and design tested"
+    ],
+    "answer": 1,
+    "explanation": "EAL 4 represents 'Methodically designed, tested, and reviewed'. It is the highest level at which it is mutually recognized as commercially viable."
+  },
+  {
+    "id": 10695,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Biba Properties",
+    "question": "A database system implements the Biba integrity model. A user with 'Low' integrity clearance attempts to write data to a 'High' integrity table. How does the system handle this?",
+    "options": [
+      "Allowed; Biba enforces no write down",
+      "Blocked; Biba enforces no write up (*-Integrity Property)",
+      "Allowed; Biba allows writing to any level",
+      "Blocked; Biba enforces no read down"
+    ],
+    "answer": 1,
+    "explanation": "The *-Integrity Property of the Biba model states 'No Write Up'. A subject at a lower integrity level cannot write data to a higher integrity level to prevent corrupting clean data."
+  },
+  {
+    "id": 10696,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Common Criteria",
+    "question": "A Database Custodian is evaluating a new firewall. The vendor claims it meets EAL 4. What does EAL 4 signify in the Common Criteria framework?",
+    "options": [
+      "Formally verified design and tested",
+      "Methodically designed, tested, and reviewed",
+      "Structurally tested and functionally verified",
+      "Semiformally verified and design tested"
+    ],
+    "answer": 1,
+    "explanation": "EAL 4 represents 'Methodically designed, tested, and reviewed'. It is the highest level at which it is mutually recognized as commercially viable."
+  },
+  {
+    "id": 10697,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Biba Properties",
+    "question": "A database system implements the Biba integrity model. A user with 'Low' integrity clearance attempts to write data to a 'High' integrity table. How does the system handle this?",
+    "options": [
+      "Allowed; Biba enforces no write down",
+      "Blocked; Biba enforces no write up (*-Integrity Property)",
+      "Allowed; Biba allows writing to any level",
+      "Blocked; Biba enforces no read down"
+    ],
+    "answer": 1,
+    "explanation": "The *-Integrity Property of the Biba model states 'No Write Up'. A subject at a lower integrity level cannot write data to a higher integrity level to prevent corrupting clean data."
+  },
+  {
+    "id": 10698,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Bell-LaPadula Properties",
+    "question": "A secure system implements the Bell-LaPadula model. A user logged in with 'Secret' clearance tries to write information to a 'Top Secret' file. How does the system handle this request?",
+    "options": [
+      "The request is blocked because of the Simple Security property",
+      "The request is allowed because of the *-Property (Star Property)",
+      "The request is blocked because of the *-Property (Star Property)",
+      "The request is allowed because of the Simple Security property"
+    ],
+    "answer": 1,
+    "explanation": "The *-Property of Bell-LaPadula enforces 'No Write Down'. Writing UP (from Secret to Top Secret) is allowed because it does not compromise confidentiality."
+  },
+  {
+    "id": 10699,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Bell-LaPadula Properties",
+    "question": "A secure system implements the Bell-LaPadula model. A user logged in with 'Secret' clearance tries to write information to a 'Top Secret' file. How does the system handle this request?",
+    "options": [
+      "The request is blocked because of the Simple Security property",
+      "The request is allowed because of the *-Property (Star Property)",
+      "The request is blocked because of the *-Property (Star Property)",
+      "The request is allowed because of the Simple Security property"
+    ],
+    "answer": 1,
+    "explanation": "The *-Property of Bell-LaPadula enforces 'No Write Down'. Writing UP (from Secret to Top Secret) is allowed because it does not compromise confidentiality."
+  },
+  {
+    "id": 10700,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Symmetric Key Calculations",
+    "question": "A financial services firm is designing a secure mesh network for 52 nodes using symmetric encryption. How many unique keys must the Senior Security Auditor generate and distribute to ensure private communication between every node?",
+    "options": [
+      "1326 keys",
+      "1378 keys",
+      "2704 keys",
+      "2652 keys"
+    ],
+    "answer": 0,
+    "explanation": "The formula for symmetric keys in a network of N nodes is N(N-1)/2. For 52 nodes, this evaluates to 1326 keys."
+  },
+  {
+    "id": 10701,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Symmetric Key Calculations",
+    "question": "A SaaS startup is designing a secure mesh network for 52 nodes using symmetric encryption. How many unique keys must the Database Custodian generate and distribute to ensure private communication between every node?",
+    "options": [
+      "1326 keys",
+      "1378 keys",
+      "2704 keys",
+      "2652 keys"
+    ],
+    "answer": 0,
+    "explanation": "The formula for symmetric keys in a network of N nodes is N(N-1)/2. For 52 nodes, this evaluates to 1326 keys."
+  },
+  {
+    "id": 10702,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Biba Properties",
+    "question": "A database system implements the Biba integrity model. A user with 'Low' integrity clearance attempts to write data to a 'High' integrity table. How does the system handle this?",
+    "options": [
+      "Allowed; Biba enforces no write down",
+      "Blocked; Biba enforces no write up (*-Integrity Property)",
+      "Allowed; Biba allows writing to any level",
+      "Blocked; Biba enforces no read down"
+    ],
+    "answer": 1,
+    "explanation": "The *-Integrity Property of the Biba model states 'No Write Up'. A subject at a lower integrity level cannot write data to a higher integrity level to prevent corrupting clean data."
+  },
+  {
+    "id": 10703,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Common Criteria",
+    "question": "A Security Architect is evaluating a new firewall. The vendor claims it meets EAL 4. What does EAL 4 signify in the Common Criteria framework?",
+    "options": [
+      "Formally verified design and tested",
+      "Methodically designed, tested, and reviewed",
+      "Structurally tested and functionally verified",
+      "Semiformally verified and design tested"
+    ],
+    "answer": 1,
+    "explanation": "EAL 4 represents 'Methodically designed, tested, and reviewed'. It is the highest level at which it is mutually recognized as commercially viable."
+  },
+  {
+    "id": 10704,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Biba Properties",
+    "question": "A database system implements the Biba integrity model. A user with 'Low' integrity clearance attempts to write data to a 'High' integrity table. How does the system handle this?",
+    "options": [
+      "Allowed; Biba enforces no write down",
+      "Blocked; Biba enforces no write up (*-Integrity Property)",
+      "Allowed; Biba allows writing to any level",
+      "Blocked; Biba enforces no read down"
+    ],
+    "answer": 1,
+    "explanation": "The *-Integrity Property of the Biba model states 'No Write Up'. A subject at a lower integrity level cannot write data to a higher integrity level to prevent corrupting clean data."
+  },
+  {
+    "id": 10705,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Bell-LaPadula Properties",
+    "question": "A secure system implements the Bell-LaPadula model. A user logged in with 'Secret' clearance tries to write information to a 'Top Secret' file. How does the system handle this request?",
+    "options": [
+      "The request is blocked because of the Simple Security property",
+      "The request is allowed because of the *-Property (Star Property)",
+      "The request is blocked because of the *-Property (Star Property)",
+      "The request is allowed because of the Simple Security property"
+    ],
+    "answer": 1,
+    "explanation": "The *-Property of Bell-LaPadula enforces 'No Write Down'. Writing UP (from Secret to Top Secret) is allowed because it does not compromise confidentiality."
+  },
+  {
+    "id": 10706,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Common Criteria",
+    "question": "A Security Architect is evaluating a new firewall. The vendor claims it meets EAL 4. What does EAL 4 signify in the Common Criteria framework?",
+    "options": [
+      "Formally verified design and tested",
+      "Methodically designed, tested, and reviewed",
+      "Structurally tested and functionally verified",
+      "Semiformally verified and design tested"
+    ],
+    "answer": 1,
+    "explanation": "EAL 4 represents 'Methodically designed, tested, and reviewed'. It is the highest level at which it is mutually recognized as commercially viable."
+  },
+  {
+    "id": 10707,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Common Criteria",
+    "question": "A Security Architect is evaluating a new firewall. The vendor claims it meets EAL 4. What does EAL 4 signify in the Common Criteria framework?",
+    "options": [
+      "Formally verified design and tested",
+      "Methodically designed, tested, and reviewed",
+      "Structurally tested and functionally verified",
+      "Semiformally verified and design tested"
+    ],
+    "answer": 1,
+    "explanation": "EAL 4 represents 'Methodically designed, tested, and reviewed'. It is the highest level at which it is mutually recognized as commercially viable."
+  },
+  {
+    "id": 10708,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Common Criteria",
+    "question": "A Lead Network Engineer is evaluating a new firewall. The vendor claims it meets EAL 4. What does EAL 4 signify in the Common Criteria framework?",
+    "options": [
+      "Formally verified design and tested",
+      "Methodically designed, tested, and reviewed",
+      "Structurally tested and functionally verified",
+      "Semiformally verified and design tested"
+    ],
+    "answer": 1,
+    "explanation": "EAL 4 represents 'Methodically designed, tested, and reviewed'. It is the highest level at which it is mutually recognized as commercially viable."
+  },
+  {
+    "id": 10709,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Biba Properties",
+    "question": "A database system implements the Biba integrity model. A user with 'Low' integrity clearance attempts to write data to a 'High' integrity table. How does the system handle this?",
+    "options": [
+      "Allowed; Biba enforces no write down",
+      "Blocked; Biba enforces no write up (*-Integrity Property)",
+      "Allowed; Biba allows writing to any level",
+      "Blocked; Biba enforces no read down"
+    ],
+    "answer": 1,
+    "explanation": "The *-Integrity Property of the Biba model states 'No Write Up'. A subject at a lower integrity level cannot write data to a higher integrity level to prevent corrupting clean data."
+  },
+  {
+    "id": 10710,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Symmetric Key Calculations",
+    "question": "A e-commerce giant is designing a secure mesh network for 62 nodes using symmetric encryption. How many unique keys must the Senior Security Auditor generate and distribute to ensure private communication between every node?",
+    "options": [
+      "1891 keys",
+      "1953 keys",
+      "3844 keys",
+      "3782 keys"
+    ],
+    "answer": 0,
+    "explanation": "The formula for symmetric keys in a network of N nodes is N(N-1)/2. For 62 nodes, this evaluates to 1891 keys."
+  },
+  {
+    "id": 10711,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Common Criteria",
+    "question": "A Security Architect is evaluating a new firewall. The vendor claims it meets EAL 4. What does EAL 4 signify in the Common Criteria framework?",
+    "options": [
+      "Formally verified design and tested",
+      "Methodically designed, tested, and reviewed",
+      "Structurally tested and functionally verified",
+      "Semiformally verified and design tested"
+    ],
+    "answer": 1,
+    "explanation": "EAL 4 represents 'Methodically designed, tested, and reviewed'. It is the highest level at which it is mutually recognized as commercially viable."
+  },
+  {
+    "id": 10712,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Symmetric Key Calculations",
+    "question": "A telecommunications operator is designing a secure mesh network for 48 nodes using symmetric encryption. How many unique keys must the Privacy Officer generate and distribute to ensure private communication between every node?",
+    "options": [
+      "1128 keys",
+      "1176 keys",
+      "2304 keys",
+      "2256 keys"
+    ],
+    "answer": 0,
+    "explanation": "The formula for symmetric keys in a network of N nodes is N(N-1)/2. For 48 nodes, this evaluates to 1128 keys."
+  },
+  {
+    "id": 10713,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Symmetric Key Calculations",
+    "question": "A e-commerce giant is designing a secure mesh network for 76 nodes using symmetric encryption. How many unique keys must the Chief Information Security Officer (CISO) generate and distribute to ensure private communication between every node?",
+    "options": [
+      "2850 keys",
+      "2926 keys",
+      "5776 keys",
+      "5700 keys"
+    ],
+    "answer": 0,
+    "explanation": "The formula for symmetric keys in a network of N nodes is N(N-1)/2. For 76 nodes, this evaluates to 2850 keys."
+  },
+  {
+    "id": 10714,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Bell-LaPadula Properties",
+    "question": "A secure system implements the Bell-LaPadula model. A user logged in with 'Secret' clearance tries to write information to a 'Top Secret' file. How does the system handle this request?",
+    "options": [
+      "The request is blocked because of the Simple Security property",
+      "The request is allowed because of the *-Property (Star Property)",
+      "The request is blocked because of the *-Property (Star Property)",
+      "The request is allowed because of the Simple Security property"
+    ],
+    "answer": 1,
+    "explanation": "The *-Property of Bell-LaPadula enforces 'No Write Down'. Writing UP (from Secret to Top Secret) is allowed because it does not compromise confidentiality."
+  },
+  {
+    "id": 10715,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Bell-LaPadula Properties",
+    "question": "A secure system implements the Bell-LaPadula model. A user logged in with 'Secret' clearance tries to write information to a 'Top Secret' file. How does the system handle this request?",
+    "options": [
+      "The request is blocked because of the Simple Security property",
+      "The request is allowed because of the *-Property (Star Property)",
+      "The request is blocked because of the *-Property (Star Property)",
+      "The request is allowed because of the Simple Security property"
+    ],
+    "answer": 1,
+    "explanation": "The *-Property of Bell-LaPadula enforces 'No Write Down'. Writing UP (from Secret to Top Secret) is allowed because it does not compromise confidentiality."
+  },
+  {
+    "id": 10716,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Bell-LaPadula Properties",
+    "question": "A secure system implements the Bell-LaPadula model. A user logged in with 'Secret' clearance tries to write information to a 'Top Secret' file. How does the system handle this request?",
+    "options": [
+      "The request is blocked because of the Simple Security property",
+      "The request is allowed because of the *-Property (Star Property)",
+      "The request is blocked because of the *-Property (Star Property)",
+      "The request is allowed because of the Simple Security property"
+    ],
+    "answer": 1,
+    "explanation": "The *-Property of Bell-LaPadula enforces 'No Write Down'. Writing UP (from Secret to Top Secret) is allowed because it does not compromise confidentiality."
+  },
+  {
+    "id": 10717,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Biba Properties",
+    "question": "A database system implements the Biba integrity model. A user with 'Low' integrity clearance attempts to write data to a 'High' integrity table. How does the system handle this?",
+    "options": [
+      "Allowed; Biba enforces no write down",
+      "Blocked; Biba enforces no write up (*-Integrity Property)",
+      "Allowed; Biba allows writing to any level",
+      "Blocked; Biba enforces no read down"
+    ],
+    "answer": 1,
+    "explanation": "The *-Integrity Property of the Biba model states 'No Write Up'. A subject at a lower integrity level cannot write data to a higher integrity level to prevent corrupting clean data."
+  },
+  {
+    "id": 10718,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Bell-LaPadula Properties",
+    "question": "A secure system implements the Bell-LaPadula model. A user logged in with 'Secret' clearance tries to write information to a 'Top Secret' file. How does the system handle this request?",
+    "options": [
+      "The request is blocked because of the Simple Security property",
+      "The request is allowed because of the *-Property (Star Property)",
+      "The request is blocked because of the *-Property (Star Property)",
+      "The request is allowed because of the Simple Security property"
+    ],
+    "answer": 1,
+    "explanation": "The *-Property of Bell-LaPadula enforces 'No Write Down'. Writing UP (from Secret to Top Secret) is allowed because it does not compromise confidentiality."
+  },
+  {
+    "id": 10719,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Bell-LaPadula Properties",
+    "question": "A secure system implements the Bell-LaPadula model. A user logged in with 'Secret' clearance tries to write information to a 'Top Secret' file. How does the system handle this request?",
+    "options": [
+      "The request is blocked because of the Simple Security property",
+      "The request is allowed because of the *-Property (Star Property)",
+      "The request is blocked because of the *-Property (Star Property)",
+      "The request is allowed because of the Simple Security property"
+    ],
+    "answer": 1,
+    "explanation": "The *-Property of Bell-LaPadula enforces 'No Write Down'. Writing UP (from Secret to Top Secret) is allowed because it does not compromise confidentiality."
+  },
+  {
+    "id": 10720,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Bell-LaPadula Properties",
+    "question": "A secure system implements the Bell-LaPadula model. A user logged in with 'Secret' clearance tries to write information to a 'Top Secret' file. How does the system handle this request?",
+    "options": [
+      "The request is blocked because of the Simple Security property",
+      "The request is allowed because of the *-Property (Star Property)",
+      "The request is blocked because of the *-Property (Star Property)",
+      "The request is allowed because of the Simple Security property"
+    ],
+    "answer": 1,
+    "explanation": "The *-Property of Bell-LaPadula enforces 'No Write Down'. Writing UP (from Secret to Top Secret) is allowed because it does not compromise confidentiality."
+  },
+  {
+    "id": 10721,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Symmetric Key Calculations",
+    "question": "A university network is designing a secure mesh network for 51 nodes using symmetric encryption. How many unique keys must the Chief Information Security Officer (CISO) generate and distribute to ensure private communication between every node?",
+    "options": [
+      "1275 keys",
+      "1326 keys",
+      "2601 keys",
+      "2550 keys"
+    ],
+    "answer": 0,
+    "explanation": "The formula for symmetric keys in a network of N nodes is N(N-1)/2. For 51 nodes, this evaluates to 1275 keys."
+  },
+  {
+    "id": 10722,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Biba Properties",
+    "question": "A database system implements the Biba integrity model. A user with 'Low' integrity clearance attempts to write data to a 'High' integrity table. How does the system handle this?",
+    "options": [
+      "Allowed; Biba enforces no write down",
+      "Blocked; Biba enforces no write up (*-Integrity Property)",
+      "Allowed; Biba allows writing to any level",
+      "Blocked; Biba enforces no read down"
+    ],
+    "answer": 1,
+    "explanation": "The *-Integrity Property of the Biba model states 'No Write Up'. A subject at a lower integrity level cannot write data to a higher integrity level to prevent corrupting clean data."
+  },
+  {
+    "id": 10723,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Symmetric Key Calculations",
+    "question": "A retail chain is designing a secure mesh network for 14 nodes using symmetric encryption. How many unique keys must the Database Custodian generate and distribute to ensure private communication between every node?",
+    "options": [
+      "91 keys",
+      "105 keys",
+      "196 keys",
+      "182 keys"
+    ],
+    "answer": 0,
+    "explanation": "The formula for symmetric keys in a network of N nodes is N(N-1)/2. For 14 nodes, this evaluates to 91 keys."
+  },
+  {
+    "id": 10724,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Symmetric Key Calculations",
+    "question": "A telecommunications operator is designing a secure mesh network for 74 nodes using symmetric encryption. How many unique keys must the Senior Security Auditor generate and distribute to ensure private communication between every node?",
+    "options": [
+      "2701 keys",
+      "2775 keys",
+      "5476 keys",
+      "5402 keys"
+    ],
+    "answer": 0,
+    "explanation": "The formula for symmetric keys in a network of N nodes is N(N-1)/2. For 74 nodes, this evaluates to 2701 keys."
+  },
+  {
+    "id": 10725,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Common Criteria",
+    "question": "A Security Architect is evaluating a new firewall. The vendor claims it meets EAL 4. What does EAL 4 signify in the Common Criteria framework?",
+    "options": [
+      "Formally verified design and tested",
+      "Methodically designed, tested, and reviewed",
+      "Structurally tested and functionally verified",
+      "Semiformally verified and design tested"
+    ],
+    "answer": 1,
+    "explanation": "EAL 4 represents 'Methodically designed, tested, and reviewed'. It is the highest level at which it is mutually recognized as commercially viable."
+  },
+  {
+    "id": 10726,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Biba Properties",
+    "question": "A database system implements the Biba integrity model. A user with 'Low' integrity clearance attempts to write data to a 'High' integrity table. How does the system handle this?",
+    "options": [
+      "Allowed; Biba enforces no write down",
+      "Blocked; Biba enforces no write up (*-Integrity Property)",
+      "Allowed; Biba allows writing to any level",
+      "Blocked; Biba enforces no read down"
+    ],
+    "answer": 1,
+    "explanation": "The *-Integrity Property of the Biba model states 'No Write Up'. A subject at a lower integrity level cannot write data to a higher integrity level to prevent corrupting clean data."
+  },
+  {
+    "id": 10727,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Bell-LaPadula Properties",
+    "question": "A secure system implements the Bell-LaPadula model. A user logged in with 'Secret' clearance tries to write information to a 'Top Secret' file. How does the system handle this request?",
+    "options": [
+      "The request is blocked because of the Simple Security property",
+      "The request is allowed because of the *-Property (Star Property)",
+      "The request is blocked because of the *-Property (Star Property)",
+      "The request is allowed because of the Simple Security property"
+    ],
+    "answer": 1,
+    "explanation": "The *-Property of Bell-LaPadula enforces 'No Write Down'. Writing UP (from Secret to Top Secret) is allowed because it does not compromise confidentiality."
+  },
+  {
+    "id": 10728,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Symmetric Key Calculations",
+    "question": "A financial services firm is designing a secure mesh network for 46 nodes using symmetric encryption. How many unique keys must the Chief Information Security Officer (CISO) generate and distribute to ensure private communication between every node?",
+    "options": [
+      "1035 keys",
+      "1081 keys",
+      "2116 keys",
+      "2070 keys"
+    ],
+    "answer": 0,
+    "explanation": "The formula for symmetric keys in a network of N nodes is N(N-1)/2. For 46 nodes, this evaluates to 1035 keys."
+  },
+  {
+    "id": 10729,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Common Criteria",
+    "question": "A Senior Security Auditor is evaluating a new firewall. The vendor claims it meets EAL 4. What does EAL 4 signify in the Common Criteria framework?",
+    "options": [
+      "Formally verified design and tested",
+      "Methodically designed, tested, and reviewed",
+      "Structurally tested and functionally verified",
+      "Semiformally verified and design tested"
+    ],
+    "answer": 1,
+    "explanation": "EAL 4 represents 'Methodically designed, tested, and reviewed'. It is the highest level at which it is mutually recognized as commercially viable."
+  },
+  {
+    "id": 10730,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Symmetric Key Calculations",
+    "question": "A government agency is designing a secure mesh network for 13 nodes using symmetric encryption. How many unique keys must the Database Custodian generate and distribute to ensure private communication between every node?",
+    "options": [
+      "78 keys",
+      "91 keys",
+      "169 keys",
+      "156 keys"
+    ],
+    "answer": 0,
+    "explanation": "The formula for symmetric keys in a network of N nodes is N(N-1)/2. For 13 nodes, this evaluates to 78 keys."
+  },
+  {
+    "id": 10731,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Bell-LaPadula Properties",
+    "question": "A secure system implements the Bell-LaPadula model. A user logged in with 'Secret' clearance tries to write information to a 'Top Secret' file. How does the system handle this request?",
+    "options": [
+      "The request is blocked because of the Simple Security property",
+      "The request is allowed because of the *-Property (Star Property)",
+      "The request is blocked because of the *-Property (Star Property)",
+      "The request is allowed because of the Simple Security property"
+    ],
+    "answer": 1,
+    "explanation": "The *-Property of Bell-LaPadula enforces 'No Write Down'. Writing UP (from Secret to Top Secret) is allowed because it does not compromise confidentiality."
+  },
+  {
+    "id": 10732,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Common Criteria",
+    "question": "A Information Owner is evaluating a new firewall. The vendor claims it meets EAL 4. What does EAL 4 signify in the Common Criteria framework?",
+    "options": [
+      "Formally verified design and tested",
+      "Methodically designed, tested, and reviewed",
+      "Structurally tested and functionally verified",
+      "Semiformally verified and design tested"
+    ],
+    "answer": 1,
+    "explanation": "EAL 4 represents 'Methodically designed, tested, and reviewed'. It is the highest level at which it is mutually recognized as commercially viable."
+  },
+  {
+    "id": 10733,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Bell-LaPadula Properties",
+    "question": "A secure system implements the Bell-LaPadula model. A user logged in with 'Secret' clearance tries to write information to a 'Top Secret' file. How does the system handle this request?",
+    "options": [
+      "The request is blocked because of the Simple Security property",
+      "The request is allowed because of the *-Property (Star Property)",
+      "The request is blocked because of the *-Property (Star Property)",
+      "The request is allowed because of the Simple Security property"
+    ],
+    "answer": 1,
+    "explanation": "The *-Property of Bell-LaPadula enforces 'No Write Down'. Writing UP (from Secret to Top Secret) is allowed because it does not compromise confidentiality."
+  },
+  {
+    "id": 10734,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Common Criteria",
+    "question": "A Senior Security Auditor is evaluating a new firewall. The vendor claims it meets EAL 4. What does EAL 4 signify in the Common Criteria framework?",
+    "options": [
+      "Formally verified design and tested",
+      "Methodically designed, tested, and reviewed",
+      "Structurally tested and functionally verified",
+      "Semiformally verified and design tested"
+    ],
+    "answer": 1,
+    "explanation": "EAL 4 represents 'Methodically designed, tested, and reviewed'. It is the highest level at which it is mutually recognized as commercially viable."
+  },
+  {
+    "id": 10735,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Bell-LaPadula Properties",
+    "question": "A secure system implements the Bell-LaPadula model. A user logged in with 'Secret' clearance tries to write information to a 'Top Secret' file. How does the system handle this request?",
+    "options": [
+      "The request is blocked because of the Simple Security property",
+      "The request is allowed because of the *-Property (Star Property)",
+      "The request is blocked because of the *-Property (Star Property)",
+      "The request is allowed because of the Simple Security property"
+    ],
+    "answer": 1,
+    "explanation": "The *-Property of Bell-LaPadula enforces 'No Write Down'. Writing UP (from Secret to Top Secret) is allowed because it does not compromise confidentiality."
+  },
+  {
+    "id": 10736,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Common Criteria",
+    "question": "A Information Owner is evaluating a new firewall. The vendor claims it meets EAL 4. What does EAL 4 signify in the Common Criteria framework?",
+    "options": [
+      "Formally verified design and tested",
+      "Methodically designed, tested, and reviewed",
+      "Structurally tested and functionally verified",
+      "Semiformally verified and design tested"
+    ],
+    "answer": 1,
+    "explanation": "EAL 4 represents 'Methodically designed, tested, and reviewed'. It is the highest level at which it is mutually recognized as commercially viable."
+  },
+  {
+    "id": 10737,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Biba Properties",
+    "question": "A database system implements the Biba integrity model. A user with 'Low' integrity clearance attempts to write data to a 'High' integrity table. How does the system handle this?",
+    "options": [
+      "Allowed; Biba enforces no write down",
+      "Blocked; Biba enforces no write up (*-Integrity Property)",
+      "Allowed; Biba allows writing to any level",
+      "Blocked; Biba enforces no read down"
+    ],
+    "answer": 1,
+    "explanation": "The *-Integrity Property of the Biba model states 'No Write Up'. A subject at a lower integrity level cannot write data to a higher integrity level to prevent corrupting clean data."
+  },
+  {
+    "id": 10738,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Symmetric Key Calculations",
+    "question": "A telecommunications operator is designing a secure mesh network for 58 nodes using symmetric encryption. How many unique keys must the Information Owner generate and distribute to ensure private communication between every node?",
+    "options": [
+      "1653 keys",
+      "1711 keys",
+      "3364 keys",
+      "3306 keys"
+    ],
+    "answer": 0,
+    "explanation": "The formula for symmetric keys in a network of N nodes is N(N-1)/2. For 58 nodes, this evaluates to 1653 keys."
+  },
+  {
+    "id": 10739,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Symmetric Key Calculations",
+    "question": "A government agency is designing a secure mesh network for 52 nodes using symmetric encryption. How many unique keys must the Lead Network Engineer generate and distribute to ensure private communication between every node?",
+    "options": [
+      "1326 keys",
+      "1378 keys",
+      "2704 keys",
+      "2652 keys"
+    ],
+    "answer": 0,
+    "explanation": "The formula for symmetric keys in a network of N nodes is N(N-1)/2. For 52 nodes, this evaluates to 1326 keys."
+  },
+  {
+    "id": 10740,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Symmetric Key Calculations",
+    "question": "A defense contractor is designing a secure mesh network for 48 nodes using symmetric encryption. How many unique keys must the Database Custodian generate and distribute to ensure private communication between every node?",
+    "options": [
+      "1128 keys",
+      "1176 keys",
+      "2304 keys",
+      "2256 keys"
+    ],
+    "answer": 0,
+    "explanation": "The formula for symmetric keys in a network of N nodes is N(N-1)/2. For 48 nodes, this evaluates to 1128 keys."
+  },
+  {
+    "id": 10741,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Bell-LaPadula Properties",
+    "question": "A secure system implements the Bell-LaPadula model. A user logged in with 'Secret' clearance tries to write information to a 'Top Secret' file. How does the system handle this request?",
+    "options": [
+      "The request is blocked because of the Simple Security property",
+      "The request is allowed because of the *-Property (Star Property)",
+      "The request is blocked because of the *-Property (Star Property)",
+      "The request is allowed because of the Simple Security property"
+    ],
+    "answer": 1,
+    "explanation": "The *-Property of Bell-LaPadula enforces 'No Write Down'. Writing UP (from Secret to Top Secret) is allowed because it does not compromise confidentiality."
+  },
+  {
+    "id": 10742,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Common Criteria",
+    "question": "A Lead Network Engineer is evaluating a new firewall. The vendor claims it meets EAL 4. What does EAL 4 signify in the Common Criteria framework?",
+    "options": [
+      "Formally verified design and tested",
+      "Methodically designed, tested, and reviewed",
+      "Structurally tested and functionally verified",
+      "Semiformally verified and design tested"
+    ],
+    "answer": 1,
+    "explanation": "EAL 4 represents 'Methodically designed, tested, and reviewed'. It is the highest level at which it is mutually recognized as commercially viable."
+  },
+  {
+    "id": 10743,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Bell-LaPadula Properties",
+    "question": "A secure system implements the Bell-LaPadula model. A user logged in with 'Secret' clearance tries to write information to a 'Top Secret' file. How does the system handle this request?",
+    "options": [
+      "The request is blocked because of the Simple Security property",
+      "The request is allowed because of the *-Property (Star Property)",
+      "The request is blocked because of the *-Property (Star Property)",
+      "The request is allowed because of the Simple Security property"
+    ],
+    "answer": 1,
+    "explanation": "The *-Property of Bell-LaPadula enforces 'No Write Down'. Writing UP (from Secret to Top Secret) is allowed because it does not compromise confidentiality."
+  },
+  {
+    "id": 10744,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Biba Properties",
+    "question": "A database system implements the Biba integrity model. A user with 'Low' integrity clearance attempts to write data to a 'High' integrity table. How does the system handle this?",
+    "options": [
+      "Allowed; Biba enforces no write down",
+      "Blocked; Biba enforces no write up (*-Integrity Property)",
+      "Allowed; Biba allows writing to any level",
+      "Blocked; Biba enforces no read down"
+    ],
+    "answer": 1,
+    "explanation": "The *-Integrity Property of the Biba model states 'No Write Up'. A subject at a lower integrity level cannot write data to a higher integrity level to prevent corrupting clean data."
+  },
+  {
+    "id": 10745,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Bell-LaPadula Properties",
+    "question": "A secure system implements the Bell-LaPadula model. A user logged in with 'Secret' clearance tries to write information to a 'Top Secret' file. How does the system handle this request?",
+    "options": [
+      "The request is blocked because of the Simple Security property",
+      "The request is allowed because of the *-Property (Star Property)",
+      "The request is blocked because of the *-Property (Star Property)",
+      "The request is allowed because of the Simple Security property"
+    ],
+    "answer": 1,
+    "explanation": "The *-Property of Bell-LaPadula enforces 'No Write Down'. Writing UP (from Secret to Top Secret) is allowed because it does not compromise confidentiality."
+  },
+  {
+    "id": 10746,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Symmetric Key Calculations",
+    "question": "A telecommunications operator is designing a secure mesh network for 10 nodes using symmetric encryption. How many unique keys must the Database Custodian generate and distribute to ensure private communication between every node?",
+    "options": [
+      "45 keys",
+      "55 keys",
+      "100 keys",
+      "90 keys"
+    ],
+    "answer": 0,
+    "explanation": "The formula for symmetric keys in a network of N nodes is N(N-1)/2. For 10 nodes, this evaluates to 45 keys."
+  },
+  {
+    "id": 10747,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Common Criteria",
+    "question": "A Database Custodian is evaluating a new firewall. The vendor claims it meets EAL 4. What does EAL 4 signify in the Common Criteria framework?",
+    "options": [
+      "Formally verified design and tested",
+      "Methodically designed, tested, and reviewed",
+      "Structurally tested and functionally verified",
+      "Semiformally verified and design tested"
+    ],
+    "answer": 1,
+    "explanation": "EAL 4 represents 'Methodically designed, tested, and reviewed'. It is the highest level at which it is mutually recognized as commercially viable."
+  },
+  {
+    "id": 10748,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Common Criteria",
+    "question": "A Senior Security Auditor is evaluating a new firewall. The vendor claims it meets EAL 4. What does EAL 4 signify in the Common Criteria framework?",
+    "options": [
+      "Formally verified design and tested",
+      "Methodically designed, tested, and reviewed",
+      "Structurally tested and functionally verified",
+      "Semiformally verified and design tested"
+    ],
+    "answer": 1,
+    "explanation": "EAL 4 represents 'Methodically designed, tested, and reviewed'. It is the highest level at which it is mutually recognized as commercially viable."
+  },
+  {
+    "id": 10749,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Biba Properties",
+    "question": "A database system implements the Biba integrity model. A user with 'Low' integrity clearance attempts to write data to a 'High' integrity table. How does the system handle this?",
+    "options": [
+      "Allowed; Biba enforces no write down",
+      "Blocked; Biba enforces no write up (*-Integrity Property)",
+      "Allowed; Biba allows writing to any level",
+      "Blocked; Biba enforces no read down"
+    ],
+    "answer": 1,
+    "explanation": "The *-Integrity Property of the Biba model states 'No Write Up'. A subject at a lower integrity level cannot write data to a higher integrity level to prevent corrupting clean data."
+  },
+  {
+    "id": 10750,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Bell-LaPadula Properties",
+    "question": "A secure system implements the Bell-LaPadula model. A user logged in with 'Secret' clearance tries to write information to a 'Top Secret' file. How does the system handle this request?",
+    "options": [
+      "The request is blocked because of the Simple Security property",
+      "The request is allowed because of the *-Property (Star Property)",
+      "The request is blocked because of the *-Property (Star Property)",
+      "The request is allowed because of the Simple Security property"
+    ],
+    "answer": 1,
+    "explanation": "The *-Property of Bell-LaPadula enforces 'No Write Down'. Writing UP (from Secret to Top Secret) is allowed because it does not compromise confidentiality."
+  },
+  {
+    "id": 10751,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Bell-LaPadula Properties",
+    "question": "A secure system implements the Bell-LaPadula model. A user logged in with 'Secret' clearance tries to write information to a 'Top Secret' file. How does the system handle this request?",
+    "options": [
+      "The request is blocked because of the Simple Security property",
+      "The request is allowed because of the *-Property (Star Property)",
+      "The request is blocked because of the *-Property (Star Property)",
+      "The request is allowed because of the Simple Security property"
+    ],
+    "answer": 1,
+    "explanation": "The *-Property of Bell-LaPadula enforces 'No Write Down'. Writing UP (from Secret to Top Secret) is allowed because it does not compromise confidentiality."
+  },
+  {
+    "id": 10752,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Symmetric Key Calculations",
+    "question": "A government agency is designing a secure mesh network for 32 nodes using symmetric encryption. How many unique keys must the Privacy Officer generate and distribute to ensure private communication between every node?",
+    "options": [
+      "496 keys",
+      "528 keys",
+      "1024 keys",
+      "992 keys"
+    ],
+    "answer": 0,
+    "explanation": "The formula for symmetric keys in a network of N nodes is N(N-1)/2. For 32 nodes, this evaluates to 496 keys."
+  },
+  {
+    "id": 10753,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Common Criteria",
+    "question": "A Chief Information Security Officer (CISO) is evaluating a new firewall. The vendor claims it meets EAL 4. What does EAL 4 signify in the Common Criteria framework?",
+    "options": [
+      "Formally verified design and tested",
+      "Methodically designed, tested, and reviewed",
+      "Structurally tested and functionally verified",
+      "Semiformally verified and design tested"
+    ],
+    "answer": 1,
+    "explanation": "EAL 4 represents 'Methodically designed, tested, and reviewed'. It is the highest level at which it is mutually recognized as commercially viable."
+  },
+  {
+    "id": 10754,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Bell-LaPadula Properties",
+    "question": "A secure system implements the Bell-LaPadula model. A user logged in with 'Secret' clearance tries to write information to a 'Top Secret' file. How does the system handle this request?",
+    "options": [
+      "The request is blocked because of the Simple Security property",
+      "The request is allowed because of the *-Property (Star Property)",
+      "The request is blocked because of the *-Property (Star Property)",
+      "The request is allowed because of the Simple Security property"
+    ],
+    "answer": 1,
+    "explanation": "The *-Property of Bell-LaPadula enforces 'No Write Down'. Writing UP (from Secret to Top Secret) is allowed because it does not compromise confidentiality."
+  },
+  {
+    "id": 10755,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Symmetric Key Calculations",
+    "question": "A defense contractor is designing a secure mesh network for 40 nodes using symmetric encryption. How many unique keys must the Senior Security Auditor generate and distribute to ensure private communication between every node?",
+    "options": [
+      "780 keys",
+      "820 keys",
+      "1600 keys",
+      "1560 keys"
+    ],
+    "answer": 0,
+    "explanation": "The formula for symmetric keys in a network of N nodes is N(N-1)/2. For 40 nodes, this evaluates to 780 keys."
+  },
+  {
+    "id": 10756,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Symmetric Key Calculations",
+    "question": "A university network is designing a secure mesh network for 54 nodes using symmetric encryption. How many unique keys must the Senior Security Auditor generate and distribute to ensure private communication between every node?",
+    "options": [
+      "1431 keys",
+      "1485 keys",
+      "2916 keys",
+      "2862 keys"
+    ],
+    "answer": 0,
+    "explanation": "The formula for symmetric keys in a network of N nodes is N(N-1)/2. For 54 nodes, this evaluates to 1431 keys."
+  },
+  {
+    "id": 10757,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Symmetric Key Calculations",
+    "question": "A cloud service provider is designing a secure mesh network for 27 nodes using symmetric encryption. How many unique keys must the Chief Information Security Officer (CISO) generate and distribute to ensure private communication between every node?",
+    "options": [
+      "351 keys",
+      "378 keys",
+      "729 keys",
+      "702 keys"
+    ],
+    "answer": 0,
+    "explanation": "The formula for symmetric keys in a network of N nodes is N(N-1)/2. For 27 nodes, this evaluates to 351 keys."
+  },
+  {
+    "id": 10758,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Bell-LaPadula Properties",
+    "question": "A secure system implements the Bell-LaPadula model. A user logged in with 'Secret' clearance tries to write information to a 'Top Secret' file. How does the system handle this request?",
+    "options": [
+      "The request is blocked because of the Simple Security property",
+      "The request is allowed because of the *-Property (Star Property)",
+      "The request is blocked because of the *-Property (Star Property)",
+      "The request is allowed because of the Simple Security property"
+    ],
+    "answer": 1,
+    "explanation": "The *-Property of Bell-LaPadula enforces 'No Write Down'. Writing UP (from Secret to Top Secret) is allowed because it does not compromise confidentiality."
+  },
+  {
+    "id": 10759,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Common Criteria",
+    "question": "A Lead Network Engineer is evaluating a new firewall. The vendor claims it meets EAL 4. What does EAL 4 signify in the Common Criteria framework?",
+    "options": [
+      "Formally verified design and tested",
+      "Methodically designed, tested, and reviewed",
+      "Structurally tested and functionally verified",
+      "Semiformally verified and design tested"
+    ],
+    "answer": 1,
+    "explanation": "EAL 4 represents 'Methodically designed, tested, and reviewed'. It is the highest level at which it is mutually recognized as commercially viable."
+  },
+  {
+    "id": 10760,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Biba Properties",
+    "question": "A database system implements the Biba integrity model. A user with 'Low' integrity clearance attempts to write data to a 'High' integrity table. How does the system handle this?",
+    "options": [
+      "Allowed; Biba enforces no write down",
+      "Blocked; Biba enforces no write up (*-Integrity Property)",
+      "Allowed; Biba allows writing to any level",
+      "Blocked; Biba enforces no read down"
+    ],
+    "answer": 1,
+    "explanation": "The *-Integrity Property of the Biba model states 'No Write Up'. A subject at a lower integrity level cannot write data to a higher integrity level to prevent corrupting clean data."
+  },
+  {
+    "id": 10761,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Bell-LaPadula Properties",
+    "question": "A secure system implements the Bell-LaPadula model. A user logged in with 'Secret' clearance tries to write information to a 'Top Secret' file. How does the system handle this request?",
+    "options": [
+      "The request is blocked because of the Simple Security property",
+      "The request is allowed because of the *-Property (Star Property)",
+      "The request is blocked because of the *-Property (Star Property)",
+      "The request is allowed because of the Simple Security property"
+    ],
+    "answer": 1,
+    "explanation": "The *-Property of Bell-LaPadula enforces 'No Write Down'. Writing UP (from Secret to Top Secret) is allowed because it does not compromise confidentiality."
+  },
+  {
+    "id": 10762,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Common Criteria",
+    "question": "A Information Owner is evaluating a new firewall. The vendor claims it meets EAL 4. What does EAL 4 signify in the Common Criteria framework?",
+    "options": [
+      "Formally verified design and tested",
+      "Methodically designed, tested, and reviewed",
+      "Structurally tested and functionally verified",
+      "Semiformally verified and design tested"
+    ],
+    "answer": 1,
+    "explanation": "EAL 4 represents 'Methodically designed, tested, and reviewed'. It is the highest level at which it is mutually recognized as commercially viable."
+  },
+  {
+    "id": 10763,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Biba Properties",
+    "question": "A database system implements the Biba integrity model. A user with 'Low' integrity clearance attempts to write data to a 'High' integrity table. How does the system handle this?",
+    "options": [
+      "Allowed; Biba enforces no write down",
+      "Blocked; Biba enforces no write up (*-Integrity Property)",
+      "Allowed; Biba allows writing to any level",
+      "Blocked; Biba enforces no read down"
+    ],
+    "answer": 1,
+    "explanation": "The *-Integrity Property of the Biba model states 'No Write Up'. A subject at a lower integrity level cannot write data to a higher integrity level to prevent corrupting clean data."
+  },
+  {
+    "id": 10764,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Bell-LaPadula Properties",
+    "question": "A secure system implements the Bell-LaPadula model. A user logged in with 'Secret' clearance tries to write information to a 'Top Secret' file. How does the system handle this request?",
+    "options": [
+      "The request is blocked because of the Simple Security property",
+      "The request is allowed because of the *-Property (Star Property)",
+      "The request is blocked because of the *-Property (Star Property)",
+      "The request is allowed because of the Simple Security property"
+    ],
+    "answer": 1,
+    "explanation": "The *-Property of Bell-LaPadula enforces 'No Write Down'. Writing UP (from Secret to Top Secret) is allowed because it does not compromise confidentiality."
+  },
+  {
+    "id": 10765,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Bell-LaPadula Properties",
+    "question": "A secure system implements the Bell-LaPadula model. A user logged in with 'Secret' clearance tries to write information to a 'Top Secret' file. How does the system handle this request?",
+    "options": [
+      "The request is blocked because of the Simple Security property",
+      "The request is allowed because of the *-Property (Star Property)",
+      "The request is blocked because of the *-Property (Star Property)",
+      "The request is allowed because of the Simple Security property"
+    ],
+    "answer": 1,
+    "explanation": "The *-Property of Bell-LaPadula enforces 'No Write Down'. Writing UP (from Secret to Top Secret) is allowed because it does not compromise confidentiality."
+  },
+  {
+    "id": 10766,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Bell-LaPadula Properties",
+    "question": "A secure system implements the Bell-LaPadula model. A user logged in with 'Secret' clearance tries to write information to a 'Top Secret' file. How does the system handle this request?",
+    "options": [
+      "The request is blocked because of the Simple Security property",
+      "The request is allowed because of the *-Property (Star Property)",
+      "The request is blocked because of the *-Property (Star Property)",
+      "The request is allowed because of the Simple Security property"
+    ],
+    "answer": 1,
+    "explanation": "The *-Property of Bell-LaPadula enforces 'No Write Down'. Writing UP (from Secret to Top Secret) is allowed because it does not compromise confidentiality."
+  },
+  {
+    "id": 10767,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Symmetric Key Calculations",
+    "question": "A healthcare provider is designing a secure mesh network for 50 nodes using symmetric encryption. How many unique keys must the Database Custodian generate and distribute to ensure private communication between every node?",
+    "options": [
+      "1225 keys",
+      "1275 keys",
+      "2500 keys",
+      "2450 keys"
+    ],
+    "answer": 0,
+    "explanation": "The formula for symmetric keys in a network of N nodes is N(N-1)/2. For 50 nodes, this evaluates to 1225 keys."
+  },
+  {
+    "id": 10768,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Biba Properties",
+    "question": "A database system implements the Biba integrity model. A user with 'Low' integrity clearance attempts to write data to a 'High' integrity table. How does the system handle this?",
+    "options": [
+      "Allowed; Biba enforces no write down",
+      "Blocked; Biba enforces no write up (*-Integrity Property)",
+      "Allowed; Biba allows writing to any level",
+      "Blocked; Biba enforces no read down"
+    ],
+    "answer": 1,
+    "explanation": "The *-Integrity Property of the Biba model states 'No Write Up'. A subject at a lower integrity level cannot write data to a higher integrity level to prevent corrupting clean data."
+  },
+  {
+    "id": 10769,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Biba Properties",
+    "question": "A database system implements the Biba integrity model. A user with 'Low' integrity clearance attempts to write data to a 'High' integrity table. How does the system handle this?",
+    "options": [
+      "Allowed; Biba enforces no write down",
+      "Blocked; Biba enforces no write up (*-Integrity Property)",
+      "Allowed; Biba allows writing to any level",
+      "Blocked; Biba enforces no read down"
+    ],
+    "answer": 1,
+    "explanation": "The *-Integrity Property of the Biba model states 'No Write Up'. A subject at a lower integrity level cannot write data to a higher integrity level to prevent corrupting clean data."
+  },
+  {
+    "id": 10770,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Bell-LaPadula Properties",
+    "question": "A secure system implements the Bell-LaPadula model. A user logged in with 'Secret' clearance tries to write information to a 'Top Secret' file. How does the system handle this request?",
+    "options": [
+      "The request is blocked because of the Simple Security property",
+      "The request is allowed because of the *-Property (Star Property)",
+      "The request is blocked because of the *-Property (Star Property)",
+      "The request is allowed because of the Simple Security property"
+    ],
+    "answer": 1,
+    "explanation": "The *-Property of Bell-LaPadula enforces 'No Write Down'. Writing UP (from Secret to Top Secret) is allowed because it does not compromise confidentiality."
+  },
+  {
+    "id": 10771,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Symmetric Key Calculations",
+    "question": "A healthcare provider is designing a secure mesh network for 77 nodes using symmetric encryption. How many unique keys must the Privacy Officer generate and distribute to ensure private communication between every node?",
+    "options": [
+      "2926 keys",
+      "3003 keys",
+      "5929 keys",
+      "5852 keys"
+    ],
+    "answer": 0,
+    "explanation": "The formula for symmetric keys in a network of N nodes is N(N-1)/2. For 77 nodes, this evaluates to 2926 keys."
+  },
+  {
+    "id": 10772,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Biba Properties",
+    "question": "A database system implements the Biba integrity model. A user with 'Low' integrity clearance attempts to write data to a 'High' integrity table. How does the system handle this?",
+    "options": [
+      "Allowed; Biba enforces no write down",
+      "Blocked; Biba enforces no write up (*-Integrity Property)",
+      "Allowed; Biba allows writing to any level",
+      "Blocked; Biba enforces no read down"
+    ],
+    "answer": 1,
+    "explanation": "The *-Integrity Property of the Biba model states 'No Write Up'. A subject at a lower integrity level cannot write data to a higher integrity level to prevent corrupting clean data."
+  },
+  {
+    "id": 10773,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Common Criteria",
+    "question": "A Lead Network Engineer is evaluating a new firewall. The vendor claims it meets EAL 4. What does EAL 4 signify in the Common Criteria framework?",
+    "options": [
+      "Formally verified design and tested",
+      "Methodically designed, tested, and reviewed",
+      "Structurally tested and functionally verified",
+      "Semiformally verified and design tested"
+    ],
+    "answer": 1,
+    "explanation": "EAL 4 represents 'Methodically designed, tested, and reviewed'. It is the highest level at which it is mutually recognized as commercially viable."
+  },
+  {
+    "id": 10774,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Bell-LaPadula Properties",
+    "question": "A secure system implements the Bell-LaPadula model. A user logged in with 'Secret' clearance tries to write information to a 'Top Secret' file. How does the system handle this request?",
+    "options": [
+      "The request is blocked because of the Simple Security property",
+      "The request is allowed because of the *-Property (Star Property)",
+      "The request is blocked because of the *-Property (Star Property)",
+      "The request is allowed because of the Simple Security property"
+    ],
+    "answer": 1,
+    "explanation": "The *-Property of Bell-LaPadula enforces 'No Write Down'. Writing UP (from Secret to Top Secret) is allowed because it does not compromise confidentiality."
+  },
+  {
+    "id": 10775,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Biba Properties",
+    "question": "A database system implements the Biba integrity model. A user with 'Low' integrity clearance attempts to write data to a 'High' integrity table. How does the system handle this?",
+    "options": [
+      "Allowed; Biba enforces no write down",
+      "Blocked; Biba enforces no write up (*-Integrity Property)",
+      "Allowed; Biba allows writing to any level",
+      "Blocked; Biba enforces no read down"
+    ],
+    "answer": 1,
+    "explanation": "The *-Integrity Property of the Biba model states 'No Write Up'. A subject at a lower integrity level cannot write data to a higher integrity level to prevent corrupting clean data."
+  },
+  {
+    "id": 10776,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Bell-LaPadula Properties",
+    "question": "A secure system implements the Bell-LaPadula model. A user logged in with 'Secret' clearance tries to write information to a 'Top Secret' file. How does the system handle this request?",
+    "options": [
+      "The request is blocked because of the Simple Security property",
+      "The request is allowed because of the *-Property (Star Property)",
+      "The request is blocked because of the *-Property (Star Property)",
+      "The request is allowed because of the Simple Security property"
+    ],
+    "answer": 1,
+    "explanation": "The *-Property of Bell-LaPadula enforces 'No Write Down'. Writing UP (from Secret to Top Secret) is allowed because it does not compromise confidentiality."
+  },
+  {
+    "id": 10777,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Common Criteria",
+    "question": "A Information Owner is evaluating a new firewall. The vendor claims it meets EAL 4. What does EAL 4 signify in the Common Criteria framework?",
+    "options": [
+      "Formally verified design and tested",
+      "Methodically designed, tested, and reviewed",
+      "Structurally tested and functionally verified",
+      "Semiformally verified and design tested"
+    ],
+    "answer": 1,
+    "explanation": "EAL 4 represents 'Methodically designed, tested, and reviewed'. It is the highest level at which it is mutually recognized as commercially viable."
+  },
+  {
+    "id": 10778,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Biba Properties",
+    "question": "A database system implements the Biba integrity model. A user with 'Low' integrity clearance attempts to write data to a 'High' integrity table. How does the system handle this?",
+    "options": [
+      "Allowed; Biba enforces no write down",
+      "Blocked; Biba enforces no write up (*-Integrity Property)",
+      "Allowed; Biba allows writing to any level",
+      "Blocked; Biba enforces no read down"
+    ],
+    "answer": 1,
+    "explanation": "The *-Integrity Property of the Biba model states 'No Write Up'. A subject at a lower integrity level cannot write data to a higher integrity level to prevent corrupting clean data."
+  },
+  {
+    "id": 10779,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Symmetric Key Calculations",
+    "question": "A university network is designing a secure mesh network for 52 nodes using symmetric encryption. How many unique keys must the Privacy Officer generate and distribute to ensure private communication between every node?",
+    "options": [
+      "1326 keys",
+      "1378 keys",
+      "2704 keys",
+      "2652 keys"
+    ],
+    "answer": 0,
+    "explanation": "The formula for symmetric keys in a network of N nodes is N(N-1)/2. For 52 nodes, this evaluates to 1326 keys."
+  },
+  {
+    "id": 10780,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Common Criteria",
+    "question": "A Security Architect is evaluating a new firewall. The vendor claims it meets EAL 4. What does EAL 4 signify in the Common Criteria framework?",
+    "options": [
+      "Formally verified design and tested",
+      "Methodically designed, tested, and reviewed",
+      "Structurally tested and functionally verified",
+      "Semiformally verified and design tested"
+    ],
+    "answer": 1,
+    "explanation": "EAL 4 represents 'Methodically designed, tested, and reviewed'. It is the highest level at which it is mutually recognized as commercially viable."
+  },
+  {
+    "id": 10781,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Bell-LaPadula Properties",
+    "question": "A secure system implements the Bell-LaPadula model. A user logged in with 'Secret' clearance tries to write information to a 'Top Secret' file. How does the system handle this request?",
+    "options": [
+      "The request is blocked because of the Simple Security property",
+      "The request is allowed because of the *-Property (Star Property)",
+      "The request is blocked because of the *-Property (Star Property)",
+      "The request is allowed because of the Simple Security property"
+    ],
+    "answer": 1,
+    "explanation": "The *-Property of Bell-LaPadula enforces 'No Write Down'. Writing UP (from Secret to Top Secret) is allowed because it does not compromise confidentiality."
+  },
+  {
+    "id": 10782,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Biba Properties",
+    "question": "A database system implements the Biba integrity model. A user with 'Low' integrity clearance attempts to write data to a 'High' integrity table. How does the system handle this?",
+    "options": [
+      "Allowed; Biba enforces no write down",
+      "Blocked; Biba enforces no write up (*-Integrity Property)",
+      "Allowed; Biba allows writing to any level",
+      "Blocked; Biba enforces no read down"
+    ],
+    "answer": 1,
+    "explanation": "The *-Integrity Property of the Biba model states 'No Write Up'. A subject at a lower integrity level cannot write data to a higher integrity level to prevent corrupting clean data."
+  },
+  {
+    "id": 10783,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Bell-LaPadula Properties",
+    "question": "A secure system implements the Bell-LaPadula model. A user logged in with 'Secret' clearance tries to write information to a 'Top Secret' file. How does the system handle this request?",
+    "options": [
+      "The request is blocked because of the Simple Security property",
+      "The request is allowed because of the *-Property (Star Property)",
+      "The request is blocked because of the *-Property (Star Property)",
+      "The request is allowed because of the Simple Security property"
+    ],
+    "answer": 1,
+    "explanation": "The *-Property of Bell-LaPadula enforces 'No Write Down'. Writing UP (from Secret to Top Secret) is allowed because it does not compromise confidentiality."
+  },
+  {
+    "id": 10784,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Biba Properties",
+    "question": "A database system implements the Biba integrity model. A user with 'Low' integrity clearance attempts to write data to a 'High' integrity table. How does the system handle this?",
+    "options": [
+      "Allowed; Biba enforces no write down",
+      "Blocked; Biba enforces no write up (*-Integrity Property)",
+      "Allowed; Biba allows writing to any level",
+      "Blocked; Biba enforces no read down"
+    ],
+    "answer": 1,
+    "explanation": "The *-Integrity Property of the Biba model states 'No Write Up'. A subject at a lower integrity level cannot write data to a higher integrity level to prevent corrupting clean data."
+  },
+  {
+    "id": 10785,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Symmetric Key Calculations",
+    "question": "A financial services firm is designing a secure mesh network for 54 nodes using symmetric encryption. How many unique keys must the Senior Security Auditor generate and distribute to ensure private communication between every node?",
+    "options": [
+      "1431 keys",
+      "1485 keys",
+      "2916 keys",
+      "2862 keys"
+    ],
+    "answer": 0,
+    "explanation": "The formula for symmetric keys in a network of N nodes is N(N-1)/2. For 54 nodes, this evaluates to 1431 keys."
+  },
+  {
+    "id": 10786,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Bell-LaPadula Properties",
+    "question": "A secure system implements the Bell-LaPadula model. A user logged in with 'Secret' clearance tries to write information to a 'Top Secret' file. How does the system handle this request?",
+    "options": [
+      "The request is blocked because of the Simple Security property",
+      "The request is allowed because of the *-Property (Star Property)",
+      "The request is blocked because of the *-Property (Star Property)",
+      "The request is allowed because of the Simple Security property"
+    ],
+    "answer": 1,
+    "explanation": "The *-Property of Bell-LaPadula enforces 'No Write Down'. Writing UP (from Secret to Top Secret) is allowed because it does not compromise confidentiality."
+  },
+  {
+    "id": 10787,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Biba Properties",
+    "question": "A database system implements the Biba integrity model. A user with 'Low' integrity clearance attempts to write data to a 'High' integrity table. How does the system handle this?",
+    "options": [
+      "Allowed; Biba enforces no write down",
+      "Blocked; Biba enforces no write up (*-Integrity Property)",
+      "Allowed; Biba allows writing to any level",
+      "Blocked; Biba enforces no read down"
+    ],
+    "answer": 1,
+    "explanation": "The *-Integrity Property of the Biba model states 'No Write Up'. A subject at a lower integrity level cannot write data to a higher integrity level to prevent corrupting clean data."
+  },
+  {
+    "id": 10788,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Biba Properties",
+    "question": "A database system implements the Biba integrity model. A user with 'Low' integrity clearance attempts to write data to a 'High' integrity table. How does the system handle this?",
+    "options": [
+      "Allowed; Biba enforces no write down",
+      "Blocked; Biba enforces no write up (*-Integrity Property)",
+      "Allowed; Biba allows writing to any level",
+      "Blocked; Biba enforces no read down"
+    ],
+    "answer": 1,
+    "explanation": "The *-Integrity Property of the Biba model states 'No Write Up'. A subject at a lower integrity level cannot write data to a higher integrity level to prevent corrupting clean data."
+  },
+  {
+    "id": 10789,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Bell-LaPadula Properties",
+    "question": "A secure system implements the Bell-LaPadula model. A user logged in with 'Secret' clearance tries to write information to a 'Top Secret' file. How does the system handle this request?",
+    "options": [
+      "The request is blocked because of the Simple Security property",
+      "The request is allowed because of the *-Property (Star Property)",
+      "The request is blocked because of the *-Property (Star Property)",
+      "The request is allowed because of the Simple Security property"
+    ],
+    "answer": 1,
+    "explanation": "The *-Property of Bell-LaPadula enforces 'No Write Down'. Writing UP (from Secret to Top Secret) is allowed because it does not compromise confidentiality."
+  },
+  {
+    "id": 10790,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Common Criteria",
+    "question": "A Lead Network Engineer is evaluating a new firewall. The vendor claims it meets EAL 4. What does EAL 4 signify in the Common Criteria framework?",
+    "options": [
+      "Formally verified design and tested",
+      "Methodically designed, tested, and reviewed",
+      "Structurally tested and functionally verified",
+      "Semiformally verified and design tested"
+    ],
+    "answer": 1,
+    "explanation": "EAL 4 represents 'Methodically designed, tested, and reviewed'. It is the highest level at which it is mutually recognized as commercially viable."
+  },
+  {
+    "id": 10791,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Biba Properties",
+    "question": "A database system implements the Biba integrity model. A user with 'Low' integrity clearance attempts to write data to a 'High' integrity table. How does the system handle this?",
+    "options": [
+      "Allowed; Biba enforces no write down",
+      "Blocked; Biba enforces no write up (*-Integrity Property)",
+      "Allowed; Biba allows writing to any level",
+      "Blocked; Biba enforces no read down"
+    ],
+    "answer": 1,
+    "explanation": "The *-Integrity Property of the Biba model states 'No Write Up'. A subject at a lower integrity level cannot write data to a higher integrity level to prevent corrupting clean data."
+  },
+  {
+    "id": 10792,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Common Criteria",
+    "question": "A Information Owner is evaluating a new firewall. The vendor claims it meets EAL 4. What does EAL 4 signify in the Common Criteria framework?",
+    "options": [
+      "Formally verified design and tested",
+      "Methodically designed, tested, and reviewed",
+      "Structurally tested and functionally verified",
+      "Semiformally verified and design tested"
+    ],
+    "answer": 1,
+    "explanation": "EAL 4 represents 'Methodically designed, tested, and reviewed'. It is the highest level at which it is mutually recognized as commercially viable."
+  },
+  {
+    "id": 10793,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Biba Properties",
+    "question": "A database system implements the Biba integrity model. A user with 'Low' integrity clearance attempts to write data to a 'High' integrity table. How does the system handle this?",
+    "options": [
+      "Allowed; Biba enforces no write down",
+      "Blocked; Biba enforces no write up (*-Integrity Property)",
+      "Allowed; Biba allows writing to any level",
+      "Blocked; Biba enforces no read down"
+    ],
+    "answer": 1,
+    "explanation": "The *-Integrity Property of the Biba model states 'No Write Up'. A subject at a lower integrity level cannot write data to a higher integrity level to prevent corrupting clean data."
+  },
+  {
+    "id": 10794,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Common Criteria",
+    "question": "A Security Architect is evaluating a new firewall. The vendor claims it meets EAL 4. What does EAL 4 signify in the Common Criteria framework?",
+    "options": [
+      "Formally verified design and tested",
+      "Methodically designed, tested, and reviewed",
+      "Structurally tested and functionally verified",
+      "Semiformally verified and design tested"
+    ],
+    "answer": 1,
+    "explanation": "EAL 4 represents 'Methodically designed, tested, and reviewed'. It is the highest level at which it is mutually recognized as commercially viable."
+  },
+  {
+    "id": 10795,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Common Criteria",
+    "question": "A Database Custodian is evaluating a new firewall. The vendor claims it meets EAL 4. What does EAL 4 signify in the Common Criteria framework?",
+    "options": [
+      "Formally verified design and tested",
+      "Methodically designed, tested, and reviewed",
+      "Structurally tested and functionally verified",
+      "Semiformally verified and design tested"
+    ],
+    "answer": 1,
+    "explanation": "EAL 4 represents 'Methodically designed, tested, and reviewed'. It is the highest level at which it is mutually recognized as commercially viable."
+  },
+  {
+    "id": 10796,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Symmetric Key Calculations",
+    "question": "A financial services firm is designing a secure mesh network for 33 nodes using symmetric encryption. How many unique keys must the Information Owner generate and distribute to ensure private communication between every node?",
+    "options": [
+      "528 keys",
+      "561 keys",
+      "1089 keys",
+      "1056 keys"
+    ],
+    "answer": 0,
+    "explanation": "The formula for symmetric keys in a network of N nodes is N(N-1)/2. For 33 nodes, this evaluates to 528 keys."
+  },
+  {
+    "id": 10797,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Common Criteria",
+    "question": "A Senior Security Auditor is evaluating a new firewall. The vendor claims it meets EAL 4. What does EAL 4 signify in the Common Criteria framework?",
+    "options": [
+      "Formally verified design and tested",
+      "Methodically designed, tested, and reviewed",
+      "Structurally tested and functionally verified",
+      "Semiformally verified and design tested"
+    ],
+    "answer": 1,
+    "explanation": "EAL 4 represents 'Methodically designed, tested, and reviewed'. It is the highest level at which it is mutually recognized as commercially viable."
+  },
+  {
+    "id": 10798,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Bell-LaPadula Properties",
+    "question": "A secure system implements the Bell-LaPadula model. A user logged in with 'Secret' clearance tries to write information to a 'Top Secret' file. How does the system handle this request?",
+    "options": [
+      "The request is blocked because of the Simple Security property",
+      "The request is allowed because of the *-Property (Star Property)",
+      "The request is blocked because of the *-Property (Star Property)",
+      "The request is allowed because of the Simple Security property"
+    ],
+    "answer": 1,
+    "explanation": "The *-Property of Bell-LaPadula enforces 'No Write Down'. Writing UP (from Secret to Top Secret) is allowed because it does not compromise confidentiality."
+  },
+  {
+    "id": 10799,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Common Criteria",
+    "question": "A Database Custodian is evaluating a new firewall. The vendor claims it meets EAL 4. What does EAL 4 signify in the Common Criteria framework?",
+    "options": [
+      "Formally verified design and tested",
+      "Methodically designed, tested, and reviewed",
+      "Structurally tested and functionally verified",
+      "Semiformally verified and design tested"
+    ],
+    "answer": 1,
+    "explanation": "EAL 4 represents 'Methodically designed, tested, and reviewed'. It is the highest level at which it is mutually recognized as commercially viable."
+  },
+  {
+    "id": 10800,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Common Criteria",
+    "question": "A Information Owner is evaluating a new firewall. The vendor claims it meets EAL 4. What does EAL 4 signify in the Common Criteria framework?",
+    "options": [
+      "Formally verified design and tested",
+      "Methodically designed, tested, and reviewed",
+      "Structurally tested and functionally verified",
+      "Semiformally verified and design tested"
+    ],
+    "answer": 1,
+    "explanation": "EAL 4 represents 'Methodically designed, tested, and reviewed'. It is the highest level at which it is mutually recognized as commercially viable."
+  },
+  {
+    "id": 10801,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Common Criteria",
+    "question": "A Information Owner is evaluating a new firewall. The vendor claims it meets EAL 4. What does EAL 4 signify in the Common Criteria framework?",
+    "options": [
+      "Formally verified design and tested",
+      "Methodically designed, tested, and reviewed",
+      "Structurally tested and functionally verified",
+      "Semiformally verified and design tested"
+    ],
+    "answer": 1,
+    "explanation": "EAL 4 represents 'Methodically designed, tested, and reviewed'. It is the highest level at which it is mutually recognized as commercially viable."
+  },
+  {
+    "id": 10802,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Symmetric Key Calculations",
+    "question": "A telecommunications operator is designing a secure mesh network for 43 nodes using symmetric encryption. How many unique keys must the Lead Network Engineer generate and distribute to ensure private communication between every node?",
+    "options": [
+      "903 keys",
+      "946 keys",
+      "1849 keys",
+      "1806 keys"
+    ],
+    "answer": 0,
+    "explanation": "The formula for symmetric keys in a network of N nodes is N(N-1)/2. For 43 nodes, this evaluates to 903 keys."
+  },
+  {
+    "id": 10803,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Bell-LaPadula Properties",
+    "question": "A secure system implements the Bell-LaPadula model. A user logged in with 'Secret' clearance tries to write information to a 'Top Secret' file. How does the system handle this request?",
+    "options": [
+      "The request is blocked because of the Simple Security property",
+      "The request is allowed because of the *-Property (Star Property)",
+      "The request is blocked because of the *-Property (Star Property)",
+      "The request is allowed because of the Simple Security property"
+    ],
+    "answer": 1,
+    "explanation": "The *-Property of Bell-LaPadula enforces 'No Write Down'. Writing UP (from Secret to Top Secret) is allowed because it does not compromise confidentiality."
+  },
+  {
+    "id": 10804,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Bell-LaPadula Properties",
+    "question": "A secure system implements the Bell-LaPadula model. A user logged in with 'Secret' clearance tries to write information to a 'Top Secret' file. How does the system handle this request?",
+    "options": [
+      "The request is blocked because of the Simple Security property",
+      "The request is allowed because of the *-Property (Star Property)",
+      "The request is blocked because of the *-Property (Star Property)",
+      "The request is allowed because of the Simple Security property"
+    ],
+    "answer": 1,
+    "explanation": "The *-Property of Bell-LaPadula enforces 'No Write Down'. Writing UP (from Secret to Top Secret) is allowed because it does not compromise confidentiality."
+  },
+  {
+    "id": 10805,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Common Criteria",
+    "question": "A Lead Network Engineer is evaluating a new firewall. The vendor claims it meets EAL 4. What does EAL 4 signify in the Common Criteria framework?",
+    "options": [
+      "Formally verified design and tested",
+      "Methodically designed, tested, and reviewed",
+      "Structurally tested and functionally verified",
+      "Semiformally verified and design tested"
+    ],
+    "answer": 1,
+    "explanation": "EAL 4 represents 'Methodically designed, tested, and reviewed'. It is the highest level at which it is mutually recognized as commercially viable."
+  },
+  {
+    "id": 10806,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Bell-LaPadula Properties",
+    "question": "A secure system implements the Bell-LaPadula model. A user logged in with 'Secret' clearance tries to write information to a 'Top Secret' file. How does the system handle this request?",
+    "options": [
+      "The request is blocked because of the Simple Security property",
+      "The request is allowed because of the *-Property (Star Property)",
+      "The request is blocked because of the *-Property (Star Property)",
+      "The request is allowed because of the Simple Security property"
+    ],
+    "answer": 1,
+    "explanation": "The *-Property of Bell-LaPadula enforces 'No Write Down'. Writing UP (from Secret to Top Secret) is allowed because it does not compromise confidentiality."
+  },
+  {
+    "id": 10807,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Bell-LaPadula Properties",
+    "question": "A secure system implements the Bell-LaPadula model. A user logged in with 'Secret' clearance tries to write information to a 'Top Secret' file. How does the system handle this request?",
+    "options": [
+      "The request is blocked because of the Simple Security property",
+      "The request is allowed because of the *-Property (Star Property)",
+      "The request is blocked because of the *-Property (Star Property)",
+      "The request is allowed because of the Simple Security property"
+    ],
+    "answer": 1,
+    "explanation": "The *-Property of Bell-LaPadula enforces 'No Write Down'. Writing UP (from Secret to Top Secret) is allowed because it does not compromise confidentiality."
+  },
+  {
+    "id": 10808,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Biba Properties",
+    "question": "A database system implements the Biba integrity model. A user with 'Low' integrity clearance attempts to write data to a 'High' integrity table. How does the system handle this?",
+    "options": [
+      "Allowed; Biba enforces no write down",
+      "Blocked; Biba enforces no write up (*-Integrity Property)",
+      "Allowed; Biba allows writing to any level",
+      "Blocked; Biba enforces no read down"
+    ],
+    "answer": 1,
+    "explanation": "The *-Integrity Property of the Biba model states 'No Write Up'. A subject at a lower integrity level cannot write data to a higher integrity level to prevent corrupting clean data."
+  },
+  {
+    "id": 10809,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Bell-LaPadula Properties",
+    "question": "A secure system implements the Bell-LaPadula model. A user logged in with 'Secret' clearance tries to write information to a 'Top Secret' file. How does the system handle this request?",
+    "options": [
+      "The request is blocked because of the Simple Security property",
+      "The request is allowed because of the *-Property (Star Property)",
+      "The request is blocked because of the *-Property (Star Property)",
+      "The request is allowed because of the Simple Security property"
+    ],
+    "answer": 1,
+    "explanation": "The *-Property of Bell-LaPadula enforces 'No Write Down'. Writing UP (from Secret to Top Secret) is allowed because it does not compromise confidentiality."
+  },
+  {
+    "id": 10810,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Common Criteria",
+    "question": "A Database Custodian is evaluating a new firewall. The vendor claims it meets EAL 4. What does EAL 4 signify in the Common Criteria framework?",
+    "options": [
+      "Formally verified design and tested",
+      "Methodically designed, tested, and reviewed",
+      "Structurally tested and functionally verified",
+      "Semiformally verified and design tested"
+    ],
+    "answer": 1,
+    "explanation": "EAL 4 represents 'Methodically designed, tested, and reviewed'. It is the highest level at which it is mutually recognized as commercially viable."
+  },
+  {
+    "id": 10811,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Biba Properties",
+    "question": "A database system implements the Biba integrity model. A user with 'Low' integrity clearance attempts to write data to a 'High' integrity table. How does the system handle this?",
+    "options": [
+      "Allowed; Biba enforces no write down",
+      "Blocked; Biba enforces no write up (*-Integrity Property)",
+      "Allowed; Biba allows writing to any level",
+      "Blocked; Biba enforces no read down"
+    ],
+    "answer": 1,
+    "explanation": "The *-Integrity Property of the Biba model states 'No Write Up'. A subject at a lower integrity level cannot write data to a higher integrity level to prevent corrupting clean data."
+  },
+  {
+    "id": 10812,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Symmetric Key Calculations",
+    "question": "A university network is designing a secure mesh network for 78 nodes using symmetric encryption. How many unique keys must the Senior Security Auditor generate and distribute to ensure private communication between every node?",
+    "options": [
+      "3003 keys",
+      "3081 keys",
+      "6084 keys",
+      "6006 keys"
+    ],
+    "answer": 0,
+    "explanation": "The formula for symmetric keys in a network of N nodes is N(N-1)/2. For 78 nodes, this evaluates to 3003 keys."
+  },
+  {
+    "id": 10813,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Symmetric Key Calculations",
+    "question": "A financial services firm is designing a secure mesh network for 63 nodes using symmetric encryption. How many unique keys must the Senior Security Auditor generate and distribute to ensure private communication between every node?",
+    "options": [
+      "1953 keys",
+      "2016 keys",
+      "3969 keys",
+      "3906 keys"
+    ],
+    "answer": 0,
+    "explanation": "The formula for symmetric keys in a network of N nodes is N(N-1)/2. For 63 nodes, this evaluates to 1953 keys."
+  },
+  {
+    "id": 10814,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Biba Properties",
+    "question": "A database system implements the Biba integrity model. A user with 'Low' integrity clearance attempts to write data to a 'High' integrity table. How does the system handle this?",
+    "options": [
+      "Allowed; Biba enforces no write down",
+      "Blocked; Biba enforces no write up (*-Integrity Property)",
+      "Allowed; Biba allows writing to any level",
+      "Blocked; Biba enforces no read down"
+    ],
+    "answer": 1,
+    "explanation": "The *-Integrity Property of the Biba model states 'No Write Up'. A subject at a lower integrity level cannot write data to a higher integrity level to prevent corrupting clean data."
+  },
+  {
+    "id": 10815,
+    "domain": 3,
+    "domain_name": "Domain 3",
+    "scenario": "Symmetric Key Calculations",
+    "question": "A financial services firm is designing a secure mesh network for 23 nodes using symmetric encryption. How many unique keys must the Security Architect generate and distribute to ensure private communication between every node?",
+    "options": [
+      "253 keys",
+      "276 keys",
+      "529 keys",
+      "506 keys"
+    ],
+    "answer": 0,
+    "explanation": "The formula for symmetric keys in a network of N nodes is N(N-1)/2. For 23 nodes, this evaluates to 253 keys."
+  },
+  {
+    "id": 10816,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "OSI Layer Attacks",
+    "question": "An attacker is executing a MAC flooding attack against a local network switch. At which layer of the OSI model does this attack occur, and what is the target device?",
+    "options": [
+      "Layer 3 (Network); Router",
+      "Layer 2 (Data Link); Switch",
+      "Layer 4 (Transport); Gateway",
+      "Layer 1 (Physical); Hub"
+    ],
+    "answer": 1,
+    "explanation": "MAC flooding targets the CAM table of a switch, which operates at Layer 2 (Data Link) of the OSI model."
+  },
+  {
+    "id": 10817,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "IPsec Modes",
+    "question": "A Lead Network Engineer is setting up a site-to-site VPN between two corporate gateways. Which IPsec mode and protocol should be used to encrypt the entire packet including the original IP header?",
+    "options": [
+      "Transport Mode; AH",
+      "Tunnel Mode; ESP",
+      "Transport Mode; ESP",
+      "Tunnel Mode; AH"
+    ],
+    "answer": 1,
+    "explanation": "Tunnel Mode encapsulates and encrypts the entire original IP packet inside a new IP header. ESP provides encryption (confidentiality), whereas AH does not."
+  },
+  {
+    "id": 10818,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "OSI Layer Attacks",
+    "question": "An attacker is executing a MAC flooding attack against a local network switch. At which layer of the OSI model does this attack occur, and what is the target device?",
+    "options": [
+      "Layer 3 (Network); Router",
+      "Layer 2 (Data Link); Switch",
+      "Layer 4 (Transport); Gateway",
+      "Layer 1 (Physical); Hub"
+    ],
+    "answer": 1,
+    "explanation": "MAC flooding targets the CAM table of a switch, which operates at Layer 2 (Data Link) of the OSI model."
+  },
+  {
+    "id": 10819,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "Email Security",
+    "question": "To prevent email spoofing, a retail chain wants to configure records in their DNS. Which DNS record specifically validates that the sending email server's IP is authorized to send email for the domain?",
+    "options": [
+      "MX record",
+      "SPF record in a DNS TXT record",
+      "DKIM record",
+      "PTR record"
+    ],
+    "answer": 1,
+    "explanation": "SPF (Sender Policy Framework) is a DNS TXT record listing IP addresses authorized to send mail on behalf of a domain."
+  },
+  {
+    "id": 10820,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "OSI Layer Attacks",
+    "question": "An attacker is executing a MAC flooding attack against a local network switch. At which layer of the OSI model does this attack occur, and what is the target device?",
+    "options": [
+      "Layer 3 (Network); Router",
+      "Layer 2 (Data Link); Switch",
+      "Layer 4 (Transport); Gateway",
+      "Layer 1 (Physical); Hub"
+    ],
+    "answer": 1,
+    "explanation": "MAC flooding targets the CAM table of a switch, which operates at Layer 2 (Data Link) of the OSI model."
+  },
+  {
+    "id": 10821,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "OSI Layer Attacks",
+    "question": "An attacker is executing a MAC flooding attack against a local network switch. At which layer of the OSI model does this attack occur, and what is the target device?",
+    "options": [
+      "Layer 3 (Network); Router",
+      "Layer 2 (Data Link); Switch",
+      "Layer 4 (Transport); Gateway",
+      "Layer 1 (Physical); Hub"
+    ],
+    "answer": 1,
+    "explanation": "MAC flooding targets the CAM table of a switch, which operates at Layer 2 (Data Link) of the OSI model."
+  },
+  {
+    "id": 10822,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "IPsec Modes",
+    "question": "A Security Architect is setting up a site-to-site VPN between two corporate gateways. Which IPsec mode and protocol should be used to encrypt the entire packet including the original IP header?",
+    "options": [
+      "Transport Mode; AH",
+      "Tunnel Mode; ESP",
+      "Transport Mode; ESP",
+      "Tunnel Mode; AH"
+    ],
+    "answer": 1,
+    "explanation": "Tunnel Mode encapsulates and encrypts the entire original IP packet inside a new IP header. ESP provides encryption (confidentiality), whereas AH does not."
+  },
+  {
+    "id": 10823,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "IPsec Modes",
+    "question": "A Privacy Officer is setting up a site-to-site VPN between two corporate gateways. Which IPsec mode and protocol should be used to encrypt the entire packet including the original IP header?",
+    "options": [
+      "Transport Mode; AH",
+      "Tunnel Mode; ESP",
+      "Transport Mode; ESP",
+      "Tunnel Mode; AH"
+    ],
+    "answer": 1,
+    "explanation": "Tunnel Mode encapsulates and encrypts the entire original IP packet inside a new IP header. ESP provides encryption (confidentiality), whereas AH does not."
+  },
+  {
+    "id": 10824,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "OSI Layer Attacks",
+    "question": "An attacker is executing a MAC flooding attack against a local network switch. At which layer of the OSI model does this attack occur, and what is the target device?",
+    "options": [
+      "Layer 3 (Network); Router",
+      "Layer 2 (Data Link); Switch",
+      "Layer 4 (Transport); Gateway",
+      "Layer 1 (Physical); Hub"
+    ],
+    "answer": 1,
+    "explanation": "MAC flooding targets the CAM table of a switch, which operates at Layer 2 (Data Link) of the OSI model."
+  },
+  {
+    "id": 10825,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "IPsec Modes",
+    "question": "A Information Owner is setting up a site-to-site VPN between two corporate gateways. Which IPsec mode and protocol should be used to encrypt the entire packet including the original IP header?",
+    "options": [
+      "Transport Mode; AH",
+      "Tunnel Mode; ESP",
+      "Transport Mode; ESP",
+      "Tunnel Mode; AH"
+    ],
+    "answer": 1,
+    "explanation": "Tunnel Mode encapsulates and encrypts the entire original IP packet inside a new IP header. ESP provides encryption (confidentiality), whereas AH does not."
+  },
+  {
+    "id": 10826,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "OSI Layer Attacks",
+    "question": "An attacker is executing a MAC flooding attack against a local network switch. At which layer of the OSI model does this attack occur, and what is the target device?",
+    "options": [
+      "Layer 3 (Network); Router",
+      "Layer 2 (Data Link); Switch",
+      "Layer 4 (Transport); Gateway",
+      "Layer 1 (Physical); Hub"
+    ],
+    "answer": 1,
+    "explanation": "MAC flooding targets the CAM table of a switch, which operates at Layer 2 (Data Link) of the OSI model."
+  },
+  {
+    "id": 10827,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "Email Security",
+    "question": "To prevent email spoofing, a healthcare provider wants to configure records in their DNS. Which DNS record specifically validates that the sending email server's IP is authorized to send email for the domain?",
+    "options": [
+      "MX record",
+      "SPF record in a DNS TXT record",
+      "DKIM record",
+      "PTR record"
+    ],
+    "answer": 1,
+    "explanation": "SPF (Sender Policy Framework) is a DNS TXT record listing IP addresses authorized to send mail on behalf of a domain."
+  },
+  {
+    "id": 10828,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "Email Security",
+    "question": "To prevent email spoofing, a cloud service provider wants to configure records in their DNS. Which DNS record specifically validates that the sending email server's IP is authorized to send email for the domain?",
+    "options": [
+      "MX record",
+      "SPF record in a DNS TXT record",
+      "DKIM record",
+      "PTR record"
+    ],
+    "answer": 1,
+    "explanation": "SPF (Sender Policy Framework) is a DNS TXT record listing IP addresses authorized to send mail on behalf of a domain."
+  },
+  {
+    "id": 10829,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "OSI Layer Attacks",
+    "question": "An attacker is executing a MAC flooding attack against a local network switch. At which layer of the OSI model does this attack occur, and what is the target device?",
+    "options": [
+      "Layer 3 (Network); Router",
+      "Layer 2 (Data Link); Switch",
+      "Layer 4 (Transport); Gateway",
+      "Layer 1 (Physical); Hub"
+    ],
+    "answer": 1,
+    "explanation": "MAC flooding targets the CAM table of a switch, which operates at Layer 2 (Data Link) of the OSI model."
+  },
+  {
+    "id": 10830,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "IPsec Modes",
+    "question": "A Senior Security Auditor is setting up a site-to-site VPN between two corporate gateways. Which IPsec mode and protocol should be used to encrypt the entire packet including the original IP header?",
+    "options": [
+      "Transport Mode; AH",
+      "Tunnel Mode; ESP",
+      "Transport Mode; ESP",
+      "Tunnel Mode; AH"
+    ],
+    "answer": 1,
+    "explanation": "Tunnel Mode encapsulates and encrypts the entire original IP packet inside a new IP header. ESP provides encryption (confidentiality), whereas AH does not."
+  },
+  {
+    "id": 10831,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "IPsec Modes",
+    "question": "A Database Custodian is setting up a site-to-site VPN between two corporate gateways. Which IPsec mode and protocol should be used to encrypt the entire packet including the original IP header?",
+    "options": [
+      "Transport Mode; AH",
+      "Tunnel Mode; ESP",
+      "Transport Mode; ESP",
+      "Tunnel Mode; AH"
+    ],
+    "answer": 1,
+    "explanation": "Tunnel Mode encapsulates and encrypts the entire original IP packet inside a new IP header. ESP provides encryption (confidentiality), whereas AH does not."
+  },
+  {
+    "id": 10832,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "OSI Layer Attacks",
+    "question": "An attacker is executing a MAC flooding attack against a local network switch. At which layer of the OSI model does this attack occur, and what is the target device?",
+    "options": [
+      "Layer 3 (Network); Router",
+      "Layer 2 (Data Link); Switch",
+      "Layer 4 (Transport); Gateway",
+      "Layer 1 (Physical); Hub"
+    ],
+    "answer": 1,
+    "explanation": "MAC flooding targets the CAM table of a switch, which operates at Layer 2 (Data Link) of the OSI model."
+  },
+  {
+    "id": 10833,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "OSI Layer Attacks",
+    "question": "An attacker is executing a MAC flooding attack against a local network switch. At which layer of the OSI model does this attack occur, and what is the target device?",
+    "options": [
+      "Layer 3 (Network); Router",
+      "Layer 2 (Data Link); Switch",
+      "Layer 4 (Transport); Gateway",
+      "Layer 1 (Physical); Hub"
+    ],
+    "answer": 1,
+    "explanation": "MAC flooding targets the CAM table of a switch, which operates at Layer 2 (Data Link) of the OSI model."
+  },
+  {
+    "id": 10834,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "IPsec Modes",
+    "question": "A Senior Security Auditor is setting up a site-to-site VPN between two corporate gateways. Which IPsec mode and protocol should be used to encrypt the entire packet including the original IP header?",
+    "options": [
+      "Transport Mode; AH",
+      "Tunnel Mode; ESP",
+      "Transport Mode; ESP",
+      "Tunnel Mode; AH"
+    ],
+    "answer": 1,
+    "explanation": "Tunnel Mode encapsulates and encrypts the entire original IP packet inside a new IP header. ESP provides encryption (confidentiality), whereas AH does not."
+  },
+  {
+    "id": 10835,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "Email Security",
+    "question": "To prevent email spoofing, a defense contractor wants to configure records in their DNS. Which DNS record specifically validates that the sending email server's IP is authorized to send email for the domain?",
+    "options": [
+      "MX record",
+      "SPF record in a DNS TXT record",
+      "DKIM record",
+      "PTR record"
+    ],
+    "answer": 1,
+    "explanation": "SPF (Sender Policy Framework) is a DNS TXT record listing IP addresses authorized to send mail on behalf of a domain."
+  },
+  {
+    "id": 10836,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "IPsec Modes",
+    "question": "A Chief Information Security Officer (CISO) is setting up a site-to-site VPN between two corporate gateways. Which IPsec mode and protocol should be used to encrypt the entire packet including the original IP header?",
+    "options": [
+      "Transport Mode; AH",
+      "Tunnel Mode; ESP",
+      "Transport Mode; ESP",
+      "Tunnel Mode; AH"
+    ],
+    "answer": 1,
+    "explanation": "Tunnel Mode encapsulates and encrypts the entire original IP packet inside a new IP header. ESP provides encryption (confidentiality), whereas AH does not."
+  },
+  {
+    "id": 10837,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "OSI Layer Attacks",
+    "question": "An attacker is executing a MAC flooding attack against a local network switch. At which layer of the OSI model does this attack occur, and what is the target device?",
+    "options": [
+      "Layer 3 (Network); Router",
+      "Layer 2 (Data Link); Switch",
+      "Layer 4 (Transport); Gateway",
+      "Layer 1 (Physical); Hub"
+    ],
+    "answer": 1,
+    "explanation": "MAC flooding targets the CAM table of a switch, which operates at Layer 2 (Data Link) of the OSI model."
+  },
+  {
+    "id": 10838,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "Email Security",
+    "question": "To prevent email spoofing, a financial services firm wants to configure records in their DNS. Which DNS record specifically validates that the sending email server's IP is authorized to send email for the domain?",
+    "options": [
+      "MX record",
+      "SPF record in a DNS TXT record",
+      "DKIM record",
+      "PTR record"
+    ],
+    "answer": 1,
+    "explanation": "SPF (Sender Policy Framework) is a DNS TXT record listing IP addresses authorized to send mail on behalf of a domain."
+  },
+  {
+    "id": 10839,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "IPsec Modes",
+    "question": "A Information Owner is setting up a site-to-site VPN between two corporate gateways. Which IPsec mode and protocol should be used to encrypt the entire packet including the original IP header?",
+    "options": [
+      "Transport Mode; AH",
+      "Tunnel Mode; ESP",
+      "Transport Mode; ESP",
+      "Tunnel Mode; AH"
+    ],
+    "answer": 1,
+    "explanation": "Tunnel Mode encapsulates and encrypts the entire original IP packet inside a new IP header. ESP provides encryption (confidentiality), whereas AH does not."
+  },
+  {
+    "id": 10840,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "IPsec Modes",
+    "question": "A Senior Security Auditor is setting up a site-to-site VPN between two corporate gateways. Which IPsec mode and protocol should be used to encrypt the entire packet including the original IP header?",
+    "options": [
+      "Transport Mode; AH",
+      "Tunnel Mode; ESP",
+      "Transport Mode; ESP",
+      "Tunnel Mode; AH"
+    ],
+    "answer": 1,
+    "explanation": "Tunnel Mode encapsulates and encrypts the entire original IP packet inside a new IP header. ESP provides encryption (confidentiality), whereas AH does not."
+  },
+  {
+    "id": 10841,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "IPsec Modes",
+    "question": "A Privacy Officer is setting up a site-to-site VPN between two corporate gateways. Which IPsec mode and protocol should be used to encrypt the entire packet including the original IP header?",
+    "options": [
+      "Transport Mode; AH",
+      "Tunnel Mode; ESP",
+      "Transport Mode; ESP",
+      "Tunnel Mode; AH"
+    ],
+    "answer": 1,
+    "explanation": "Tunnel Mode encapsulates and encrypts the entire original IP packet inside a new IP header. ESP provides encryption (confidentiality), whereas AH does not."
+  },
+  {
+    "id": 10842,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "Email Security",
+    "question": "To prevent email spoofing, a multinational bank wants to configure records in their DNS. Which DNS record specifically validates that the sending email server's IP is authorized to send email for the domain?",
+    "options": [
+      "MX record",
+      "SPF record in a DNS TXT record",
+      "DKIM record",
+      "PTR record"
+    ],
+    "answer": 1,
+    "explanation": "SPF (Sender Policy Framework) is a DNS TXT record listing IP addresses authorized to send mail on behalf of a domain."
+  },
+  {
+    "id": 10843,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "Email Security",
+    "question": "To prevent email spoofing, a retail chain wants to configure records in their DNS. Which DNS record specifically validates that the sending email server's IP is authorized to send email for the domain?",
+    "options": [
+      "MX record",
+      "SPF record in a DNS TXT record",
+      "DKIM record",
+      "PTR record"
+    ],
+    "answer": 1,
+    "explanation": "SPF (Sender Policy Framework) is a DNS TXT record listing IP addresses authorized to send mail on behalf of a domain."
+  },
+  {
+    "id": 10844,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "OSI Layer Attacks",
+    "question": "An attacker is executing a MAC flooding attack against a local network switch. At which layer of the OSI model does this attack occur, and what is the target device?",
+    "options": [
+      "Layer 3 (Network); Router",
+      "Layer 2 (Data Link); Switch",
+      "Layer 4 (Transport); Gateway",
+      "Layer 1 (Physical); Hub"
+    ],
+    "answer": 1,
+    "explanation": "MAC flooding targets the CAM table of a switch, which operates at Layer 2 (Data Link) of the OSI model."
+  },
+  {
+    "id": 10845,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "Email Security",
+    "question": "To prevent email spoofing, a financial services firm wants to configure records in their DNS. Which DNS record specifically validates that the sending email server's IP is authorized to send email for the domain?",
+    "options": [
+      "MX record",
+      "SPF record in a DNS TXT record",
+      "DKIM record",
+      "PTR record"
+    ],
+    "answer": 1,
+    "explanation": "SPF (Sender Policy Framework) is a DNS TXT record listing IP addresses authorized to send mail on behalf of a domain."
+  },
+  {
+    "id": 10846,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "OSI Layer Attacks",
+    "question": "An attacker is executing a MAC flooding attack against a local network switch. At which layer of the OSI model does this attack occur, and what is the target device?",
+    "options": [
+      "Layer 3 (Network); Router",
+      "Layer 2 (Data Link); Switch",
+      "Layer 4 (Transport); Gateway",
+      "Layer 1 (Physical); Hub"
+    ],
+    "answer": 1,
+    "explanation": "MAC flooding targets the CAM table of a switch, which operates at Layer 2 (Data Link) of the OSI model."
+  },
+  {
+    "id": 10847,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "OSI Layer Attacks",
+    "question": "An attacker is executing a MAC flooding attack against a local network switch. At which layer of the OSI model does this attack occur, and what is the target device?",
+    "options": [
+      "Layer 3 (Network); Router",
+      "Layer 2 (Data Link); Switch",
+      "Layer 4 (Transport); Gateway",
+      "Layer 1 (Physical); Hub"
+    ],
+    "answer": 1,
+    "explanation": "MAC flooding targets the CAM table of a switch, which operates at Layer 2 (Data Link) of the OSI model."
+  },
+  {
+    "id": 10848,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "Email Security",
+    "question": "To prevent email spoofing, a government agency wants to configure records in their DNS. Which DNS record specifically validates that the sending email server's IP is authorized to send email for the domain?",
+    "options": [
+      "MX record",
+      "SPF record in a DNS TXT record",
+      "DKIM record",
+      "PTR record"
+    ],
+    "answer": 1,
+    "explanation": "SPF (Sender Policy Framework) is a DNS TXT record listing IP addresses authorized to send mail on behalf of a domain."
+  },
+  {
+    "id": 10849,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "IPsec Modes",
+    "question": "A Lead Network Engineer is setting up a site-to-site VPN between two corporate gateways. Which IPsec mode and protocol should be used to encrypt the entire packet including the original IP header?",
+    "options": [
+      "Transport Mode; AH",
+      "Tunnel Mode; ESP",
+      "Transport Mode; ESP",
+      "Tunnel Mode; AH"
+    ],
+    "answer": 1,
+    "explanation": "Tunnel Mode encapsulates and encrypts the entire original IP packet inside a new IP header. ESP provides encryption (confidentiality), whereas AH does not."
+  },
+  {
+    "id": 10850,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "OSI Layer Attacks",
+    "question": "An attacker is executing a MAC flooding attack against a local network switch. At which layer of the OSI model does this attack occur, and what is the target device?",
+    "options": [
+      "Layer 3 (Network); Router",
+      "Layer 2 (Data Link); Switch",
+      "Layer 4 (Transport); Gateway",
+      "Layer 1 (Physical); Hub"
+    ],
+    "answer": 1,
+    "explanation": "MAC flooding targets the CAM table of a switch, which operates at Layer 2 (Data Link) of the OSI model."
+  },
+  {
+    "id": 10851,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "OSI Layer Attacks",
+    "question": "An attacker is executing a MAC flooding attack against a local network switch. At which layer of the OSI model does this attack occur, and what is the target device?",
+    "options": [
+      "Layer 3 (Network); Router",
+      "Layer 2 (Data Link); Switch",
+      "Layer 4 (Transport); Gateway",
+      "Layer 1 (Physical); Hub"
+    ],
+    "answer": 1,
+    "explanation": "MAC flooding targets the CAM table of a switch, which operates at Layer 2 (Data Link) of the OSI model."
+  },
+  {
+    "id": 10852,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "Email Security",
+    "question": "To prevent email spoofing, a e-commerce giant wants to configure records in their DNS. Which DNS record specifically validates that the sending email server's IP is authorized to send email for the domain?",
+    "options": [
+      "MX record",
+      "SPF record in a DNS TXT record",
+      "DKIM record",
+      "PTR record"
+    ],
+    "answer": 1,
+    "explanation": "SPF (Sender Policy Framework) is a DNS TXT record listing IP addresses authorized to send mail on behalf of a domain."
+  },
+  {
+    "id": 10853,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "IPsec Modes",
+    "question": "A Information Owner is setting up a site-to-site VPN between two corporate gateways. Which IPsec mode and protocol should be used to encrypt the entire packet including the original IP header?",
+    "options": [
+      "Transport Mode; AH",
+      "Tunnel Mode; ESP",
+      "Transport Mode; ESP",
+      "Tunnel Mode; AH"
+    ],
+    "answer": 1,
+    "explanation": "Tunnel Mode encapsulates and encrypts the entire original IP packet inside a new IP header. ESP provides encryption (confidentiality), whereas AH does not."
+  },
+  {
+    "id": 10854,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "IPsec Modes",
+    "question": "A Privacy Officer is setting up a site-to-site VPN between two corporate gateways. Which IPsec mode and protocol should be used to encrypt the entire packet including the original IP header?",
+    "options": [
+      "Transport Mode; AH",
+      "Tunnel Mode; ESP",
+      "Transport Mode; ESP",
+      "Tunnel Mode; AH"
+    ],
+    "answer": 1,
+    "explanation": "Tunnel Mode encapsulates and encrypts the entire original IP packet inside a new IP header. ESP provides encryption (confidentiality), whereas AH does not."
+  },
+  {
+    "id": 10855,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "IPsec Modes",
+    "question": "A Chief Information Security Officer (CISO) is setting up a site-to-site VPN between two corporate gateways. Which IPsec mode and protocol should be used to encrypt the entire packet including the original IP header?",
+    "options": [
+      "Transport Mode; AH",
+      "Tunnel Mode; ESP",
+      "Transport Mode; ESP",
+      "Tunnel Mode; AH"
+    ],
+    "answer": 1,
+    "explanation": "Tunnel Mode encapsulates and encrypts the entire original IP packet inside a new IP header. ESP provides encryption (confidentiality), whereas AH does not."
+  },
+  {
+    "id": 10856,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "OSI Layer Attacks",
+    "question": "An attacker is executing a MAC flooding attack against a local network switch. At which layer of the OSI model does this attack occur, and what is the target device?",
+    "options": [
+      "Layer 3 (Network); Router",
+      "Layer 2 (Data Link); Switch",
+      "Layer 4 (Transport); Gateway",
+      "Layer 1 (Physical); Hub"
+    ],
+    "answer": 1,
+    "explanation": "MAC flooding targets the CAM table of a switch, which operates at Layer 2 (Data Link) of the OSI model."
+  },
+  {
+    "id": 10857,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "OSI Layer Attacks",
+    "question": "An attacker is executing a MAC flooding attack against a local network switch. At which layer of the OSI model does this attack occur, and what is the target device?",
+    "options": [
+      "Layer 3 (Network); Router",
+      "Layer 2 (Data Link); Switch",
+      "Layer 4 (Transport); Gateway",
+      "Layer 1 (Physical); Hub"
+    ],
+    "answer": 1,
+    "explanation": "MAC flooding targets the CAM table of a switch, which operates at Layer 2 (Data Link) of the OSI model."
+  },
+  {
+    "id": 10858,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "OSI Layer Attacks",
+    "question": "An attacker is executing a MAC flooding attack against a local network switch. At which layer of the OSI model does this attack occur, and what is the target device?",
+    "options": [
+      "Layer 3 (Network); Router",
+      "Layer 2 (Data Link); Switch",
+      "Layer 4 (Transport); Gateway",
+      "Layer 1 (Physical); Hub"
+    ],
+    "answer": 1,
+    "explanation": "MAC flooding targets the CAM table of a switch, which operates at Layer 2 (Data Link) of the OSI model."
+  },
+  {
+    "id": 10859,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "OSI Layer Attacks",
+    "question": "An attacker is executing a MAC flooding attack against a local network switch. At which layer of the OSI model does this attack occur, and what is the target device?",
+    "options": [
+      "Layer 3 (Network); Router",
+      "Layer 2 (Data Link); Switch",
+      "Layer 4 (Transport); Gateway",
+      "Layer 1 (Physical); Hub"
+    ],
+    "answer": 1,
+    "explanation": "MAC flooding targets the CAM table of a switch, which operates at Layer 2 (Data Link) of the OSI model."
+  },
+  {
+    "id": 10860,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "Email Security",
+    "question": "To prevent email spoofing, a cloud service provider wants to configure records in their DNS. Which DNS record specifically validates that the sending email server's IP is authorized to send email for the domain?",
+    "options": [
+      "MX record",
+      "SPF record in a DNS TXT record",
+      "DKIM record",
+      "PTR record"
+    ],
+    "answer": 1,
+    "explanation": "SPF (Sender Policy Framework) is a DNS TXT record listing IP addresses authorized to send mail on behalf of a domain."
+  },
+  {
+    "id": 10861,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "IPsec Modes",
+    "question": "A Database Custodian is setting up a site-to-site VPN between two corporate gateways. Which IPsec mode and protocol should be used to encrypt the entire packet including the original IP header?",
+    "options": [
+      "Transport Mode; AH",
+      "Tunnel Mode; ESP",
+      "Transport Mode; ESP",
+      "Tunnel Mode; AH"
+    ],
+    "answer": 1,
+    "explanation": "Tunnel Mode encapsulates and encrypts the entire original IP packet inside a new IP header. ESP provides encryption (confidentiality), whereas AH does not."
+  },
+  {
+    "id": 10862,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "OSI Layer Attacks",
+    "question": "An attacker is executing a MAC flooding attack against a local network switch. At which layer of the OSI model does this attack occur, and what is the target device?",
+    "options": [
+      "Layer 3 (Network); Router",
+      "Layer 2 (Data Link); Switch",
+      "Layer 4 (Transport); Gateway",
+      "Layer 1 (Physical); Hub"
+    ],
+    "answer": 1,
+    "explanation": "MAC flooding targets the CAM table of a switch, which operates at Layer 2 (Data Link) of the OSI model."
+  },
+  {
+    "id": 10863,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "IPsec Modes",
+    "question": "A Privacy Officer is setting up a site-to-site VPN between two corporate gateways. Which IPsec mode and protocol should be used to encrypt the entire packet including the original IP header?",
+    "options": [
+      "Transport Mode; AH",
+      "Tunnel Mode; ESP",
+      "Transport Mode; ESP",
+      "Tunnel Mode; AH"
+    ],
+    "answer": 1,
+    "explanation": "Tunnel Mode encapsulates and encrypts the entire original IP packet inside a new IP header. ESP provides encryption (confidentiality), whereas AH does not."
+  },
+  {
+    "id": 10864,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "IPsec Modes",
+    "question": "A Security Architect is setting up a site-to-site VPN between two corporate gateways. Which IPsec mode and protocol should be used to encrypt the entire packet including the original IP header?",
+    "options": [
+      "Transport Mode; AH",
+      "Tunnel Mode; ESP",
+      "Transport Mode; ESP",
+      "Tunnel Mode; AH"
+    ],
+    "answer": 1,
+    "explanation": "Tunnel Mode encapsulates and encrypts the entire original IP packet inside a new IP header. ESP provides encryption (confidentiality), whereas AH does not."
+  },
+  {
+    "id": 10865,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "IPsec Modes",
+    "question": "A Senior Security Auditor is setting up a site-to-site VPN between two corporate gateways. Which IPsec mode and protocol should be used to encrypt the entire packet including the original IP header?",
+    "options": [
+      "Transport Mode; AH",
+      "Tunnel Mode; ESP",
+      "Transport Mode; ESP",
+      "Tunnel Mode; AH"
+    ],
+    "answer": 1,
+    "explanation": "Tunnel Mode encapsulates and encrypts the entire original IP packet inside a new IP header. ESP provides encryption (confidentiality), whereas AH does not."
+  },
+  {
+    "id": 10866,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "IPsec Modes",
+    "question": "A Privacy Officer is setting up a site-to-site VPN between two corporate gateways. Which IPsec mode and protocol should be used to encrypt the entire packet including the original IP header?",
+    "options": [
+      "Transport Mode; AH",
+      "Tunnel Mode; ESP",
+      "Transport Mode; ESP",
+      "Tunnel Mode; AH"
+    ],
+    "answer": 1,
+    "explanation": "Tunnel Mode encapsulates and encrypts the entire original IP packet inside a new IP header. ESP provides encryption (confidentiality), whereas AH does not."
+  },
+  {
+    "id": 10867,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "OSI Layer Attacks",
+    "question": "An attacker is executing a MAC flooding attack against a local network switch. At which layer of the OSI model does this attack occur, and what is the target device?",
+    "options": [
+      "Layer 3 (Network); Router",
+      "Layer 2 (Data Link); Switch",
+      "Layer 4 (Transport); Gateway",
+      "Layer 1 (Physical); Hub"
+    ],
+    "answer": 1,
+    "explanation": "MAC flooding targets the CAM table of a switch, which operates at Layer 2 (Data Link) of the OSI model."
+  },
+  {
+    "id": 10868,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "Email Security",
+    "question": "To prevent email spoofing, a cloud service provider wants to configure records in their DNS. Which DNS record specifically validates that the sending email server's IP is authorized to send email for the domain?",
+    "options": [
+      "MX record",
+      "SPF record in a DNS TXT record",
+      "DKIM record",
+      "PTR record"
+    ],
+    "answer": 1,
+    "explanation": "SPF (Sender Policy Framework) is a DNS TXT record listing IP addresses authorized to send mail on behalf of a domain."
+  },
+  {
+    "id": 10869,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "OSI Layer Attacks",
+    "question": "An attacker is executing a MAC flooding attack against a local network switch. At which layer of the OSI model does this attack occur, and what is the target device?",
+    "options": [
+      "Layer 3 (Network); Router",
+      "Layer 2 (Data Link); Switch",
+      "Layer 4 (Transport); Gateway",
+      "Layer 1 (Physical); Hub"
+    ],
+    "answer": 1,
+    "explanation": "MAC flooding targets the CAM table of a switch, which operates at Layer 2 (Data Link) of the OSI model."
+  },
+  {
+    "id": 10870,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "Email Security",
+    "question": "To prevent email spoofing, a cloud service provider wants to configure records in their DNS. Which DNS record specifically validates that the sending email server's IP is authorized to send email for the domain?",
+    "options": [
+      "MX record",
+      "SPF record in a DNS TXT record",
+      "DKIM record",
+      "PTR record"
+    ],
+    "answer": 1,
+    "explanation": "SPF (Sender Policy Framework) is a DNS TXT record listing IP addresses authorized to send mail on behalf of a domain."
+  },
+  {
+    "id": 10871,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "IPsec Modes",
+    "question": "A Information Owner is setting up a site-to-site VPN between two corporate gateways. Which IPsec mode and protocol should be used to encrypt the entire packet including the original IP header?",
+    "options": [
+      "Transport Mode; AH",
+      "Tunnel Mode; ESP",
+      "Transport Mode; ESP",
+      "Tunnel Mode; AH"
+    ],
+    "answer": 1,
+    "explanation": "Tunnel Mode encapsulates and encrypts the entire original IP packet inside a new IP header. ESP provides encryption (confidentiality), whereas AH does not."
+  },
+  {
+    "id": 10872,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "Email Security",
+    "question": "To prevent email spoofing, a university network wants to configure records in their DNS. Which DNS record specifically validates that the sending email server's IP is authorized to send email for the domain?",
+    "options": [
+      "MX record",
+      "SPF record in a DNS TXT record",
+      "DKIM record",
+      "PTR record"
+    ],
+    "answer": 1,
+    "explanation": "SPF (Sender Policy Framework) is a DNS TXT record listing IP addresses authorized to send mail on behalf of a domain."
+  },
+  {
+    "id": 10873,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "OSI Layer Attacks",
+    "question": "An attacker is executing a MAC flooding attack against a local network switch. At which layer of the OSI model does this attack occur, and what is the target device?",
+    "options": [
+      "Layer 3 (Network); Router",
+      "Layer 2 (Data Link); Switch",
+      "Layer 4 (Transport); Gateway",
+      "Layer 1 (Physical); Hub"
+    ],
+    "answer": 1,
+    "explanation": "MAC flooding targets the CAM table of a switch, which operates at Layer 2 (Data Link) of the OSI model."
+  },
+  {
+    "id": 10874,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "IPsec Modes",
+    "question": "A Senior Security Auditor is setting up a site-to-site VPN between two corporate gateways. Which IPsec mode and protocol should be used to encrypt the entire packet including the original IP header?",
+    "options": [
+      "Transport Mode; AH",
+      "Tunnel Mode; ESP",
+      "Transport Mode; ESP",
+      "Tunnel Mode; AH"
+    ],
+    "answer": 1,
+    "explanation": "Tunnel Mode encapsulates and encrypts the entire original IP packet inside a new IP header. ESP provides encryption (confidentiality), whereas AH does not."
+  },
+  {
+    "id": 10875,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "OSI Layer Attacks",
+    "question": "An attacker is executing a MAC flooding attack against a local network switch. At which layer of the OSI model does this attack occur, and what is the target device?",
+    "options": [
+      "Layer 3 (Network); Router",
+      "Layer 2 (Data Link); Switch",
+      "Layer 4 (Transport); Gateway",
+      "Layer 1 (Physical); Hub"
+    ],
+    "answer": 1,
+    "explanation": "MAC flooding targets the CAM table of a switch, which operates at Layer 2 (Data Link) of the OSI model."
+  },
+  {
+    "id": 10876,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "IPsec Modes",
+    "question": "A Information Owner is setting up a site-to-site VPN between two corporate gateways. Which IPsec mode and protocol should be used to encrypt the entire packet including the original IP header?",
+    "options": [
+      "Transport Mode; AH",
+      "Tunnel Mode; ESP",
+      "Transport Mode; ESP",
+      "Tunnel Mode; AH"
+    ],
+    "answer": 1,
+    "explanation": "Tunnel Mode encapsulates and encrypts the entire original IP packet inside a new IP header. ESP provides encryption (confidentiality), whereas AH does not."
+  },
+  {
+    "id": 10877,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "Email Security",
+    "question": "To prevent email spoofing, a defense contractor wants to configure records in their DNS. Which DNS record specifically validates that the sending email server's IP is authorized to send email for the domain?",
+    "options": [
+      "MX record",
+      "SPF record in a DNS TXT record",
+      "DKIM record",
+      "PTR record"
+    ],
+    "answer": 1,
+    "explanation": "SPF (Sender Policy Framework) is a DNS TXT record listing IP addresses authorized to send mail on behalf of a domain."
+  },
+  {
+    "id": 10878,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "IPsec Modes",
+    "question": "A Security Architect is setting up a site-to-site VPN between two corporate gateways. Which IPsec mode and protocol should be used to encrypt the entire packet including the original IP header?",
+    "options": [
+      "Transport Mode; AH",
+      "Tunnel Mode; ESP",
+      "Transport Mode; ESP",
+      "Tunnel Mode; AH"
+    ],
+    "answer": 1,
+    "explanation": "Tunnel Mode encapsulates and encrypts the entire original IP packet inside a new IP header. ESP provides encryption (confidentiality), whereas AH does not."
+  },
+  {
+    "id": 10879,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "Email Security",
+    "question": "To prevent email spoofing, a multinational bank wants to configure records in their DNS. Which DNS record specifically validates that the sending email server's IP is authorized to send email for the domain?",
+    "options": [
+      "MX record",
+      "SPF record in a DNS TXT record",
+      "DKIM record",
+      "PTR record"
+    ],
+    "answer": 1,
+    "explanation": "SPF (Sender Policy Framework) is a DNS TXT record listing IP addresses authorized to send mail on behalf of a domain."
+  },
+  {
+    "id": 10880,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "Email Security",
+    "question": "To prevent email spoofing, a university network wants to configure records in their DNS. Which DNS record specifically validates that the sending email server's IP is authorized to send email for the domain?",
+    "options": [
+      "MX record",
+      "SPF record in a DNS TXT record",
+      "DKIM record",
+      "PTR record"
+    ],
+    "answer": 1,
+    "explanation": "SPF (Sender Policy Framework) is a DNS TXT record listing IP addresses authorized to send mail on behalf of a domain."
+  },
+  {
+    "id": 10881,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "IPsec Modes",
+    "question": "A Lead Network Engineer is setting up a site-to-site VPN between two corporate gateways. Which IPsec mode and protocol should be used to encrypt the entire packet including the original IP header?",
+    "options": [
+      "Transport Mode; AH",
+      "Tunnel Mode; ESP",
+      "Transport Mode; ESP",
+      "Tunnel Mode; AH"
+    ],
+    "answer": 1,
+    "explanation": "Tunnel Mode encapsulates and encrypts the entire original IP packet inside a new IP header. ESP provides encryption (confidentiality), whereas AH does not."
+  },
+  {
+    "id": 10882,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "Email Security",
+    "question": "To prevent email spoofing, a multinational bank wants to configure records in their DNS. Which DNS record specifically validates that the sending email server's IP is authorized to send email for the domain?",
+    "options": [
+      "MX record",
+      "SPF record in a DNS TXT record",
+      "DKIM record",
+      "PTR record"
+    ],
+    "answer": 1,
+    "explanation": "SPF (Sender Policy Framework) is a DNS TXT record listing IP addresses authorized to send mail on behalf of a domain."
+  },
+  {
+    "id": 10883,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "IPsec Modes",
+    "question": "A Security Architect is setting up a site-to-site VPN between two corporate gateways. Which IPsec mode and protocol should be used to encrypt the entire packet including the original IP header?",
+    "options": [
+      "Transport Mode; AH",
+      "Tunnel Mode; ESP",
+      "Transport Mode; ESP",
+      "Tunnel Mode; AH"
+    ],
+    "answer": 1,
+    "explanation": "Tunnel Mode encapsulates and encrypts the entire original IP packet inside a new IP header. ESP provides encryption (confidentiality), whereas AH does not."
+  },
+  {
+    "id": 10884,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "OSI Layer Attacks",
+    "question": "An attacker is executing a MAC flooding attack against a local network switch. At which layer of the OSI model does this attack occur, and what is the target device?",
+    "options": [
+      "Layer 3 (Network); Router",
+      "Layer 2 (Data Link); Switch",
+      "Layer 4 (Transport); Gateway",
+      "Layer 1 (Physical); Hub"
+    ],
+    "answer": 1,
+    "explanation": "MAC flooding targets the CAM table of a switch, which operates at Layer 2 (Data Link) of the OSI model."
+  },
+  {
+    "id": 10885,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "OSI Layer Attacks",
+    "question": "An attacker is executing a MAC flooding attack against a local network switch. At which layer of the OSI model does this attack occur, and what is the target device?",
+    "options": [
+      "Layer 3 (Network); Router",
+      "Layer 2 (Data Link); Switch",
+      "Layer 4 (Transport); Gateway",
+      "Layer 1 (Physical); Hub"
+    ],
+    "answer": 1,
+    "explanation": "MAC flooding targets the CAM table of a switch, which operates at Layer 2 (Data Link) of the OSI model."
+  },
+  {
+    "id": 10886,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "OSI Layer Attacks",
+    "question": "An attacker is executing a MAC flooding attack against a local network switch. At which layer of the OSI model does this attack occur, and what is the target device?",
+    "options": [
+      "Layer 3 (Network); Router",
+      "Layer 2 (Data Link); Switch",
+      "Layer 4 (Transport); Gateway",
+      "Layer 1 (Physical); Hub"
+    ],
+    "answer": 1,
+    "explanation": "MAC flooding targets the CAM table of a switch, which operates at Layer 2 (Data Link) of the OSI model."
+  },
+  {
+    "id": 10887,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "Email Security",
+    "question": "To prevent email spoofing, a government agency wants to configure records in their DNS. Which DNS record specifically validates that the sending email server's IP is authorized to send email for the domain?",
+    "options": [
+      "MX record",
+      "SPF record in a DNS TXT record",
+      "DKIM record",
+      "PTR record"
+    ],
+    "answer": 1,
+    "explanation": "SPF (Sender Policy Framework) is a DNS TXT record listing IP addresses authorized to send mail on behalf of a domain."
+  },
+  {
+    "id": 10888,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "OSI Layer Attacks",
+    "question": "An attacker is executing a MAC flooding attack against a local network switch. At which layer of the OSI model does this attack occur, and what is the target device?",
+    "options": [
+      "Layer 3 (Network); Router",
+      "Layer 2 (Data Link); Switch",
+      "Layer 4 (Transport); Gateway",
+      "Layer 1 (Physical); Hub"
+    ],
+    "answer": 1,
+    "explanation": "MAC flooding targets the CAM table of a switch, which operates at Layer 2 (Data Link) of the OSI model."
+  },
+  {
+    "id": 10889,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "IPsec Modes",
+    "question": "A Information Owner is setting up a site-to-site VPN between two corporate gateways. Which IPsec mode and protocol should be used to encrypt the entire packet including the original IP header?",
+    "options": [
+      "Transport Mode; AH",
+      "Tunnel Mode; ESP",
+      "Transport Mode; ESP",
+      "Tunnel Mode; AH"
+    ],
+    "answer": 1,
+    "explanation": "Tunnel Mode encapsulates and encrypts the entire original IP packet inside a new IP header. ESP provides encryption (confidentiality), whereas AH does not."
+  },
+  {
+    "id": 10890,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "OSI Layer Attacks",
+    "question": "An attacker is executing a MAC flooding attack against a local network switch. At which layer of the OSI model does this attack occur, and what is the target device?",
+    "options": [
+      "Layer 3 (Network); Router",
+      "Layer 2 (Data Link); Switch",
+      "Layer 4 (Transport); Gateway",
+      "Layer 1 (Physical); Hub"
+    ],
+    "answer": 1,
+    "explanation": "MAC flooding targets the CAM table of a switch, which operates at Layer 2 (Data Link) of the OSI model."
+  },
+  {
+    "id": 10891,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "Email Security",
+    "question": "To prevent email spoofing, a multinational bank wants to configure records in their DNS. Which DNS record specifically validates that the sending email server's IP is authorized to send email for the domain?",
+    "options": [
+      "MX record",
+      "SPF record in a DNS TXT record",
+      "DKIM record",
+      "PTR record"
+    ],
+    "answer": 1,
+    "explanation": "SPF (Sender Policy Framework) is a DNS TXT record listing IP addresses authorized to send mail on behalf of a domain."
+  },
+  {
+    "id": 10892,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "OSI Layer Attacks",
+    "question": "An attacker is executing a MAC flooding attack against a local network switch. At which layer of the OSI model does this attack occur, and what is the target device?",
+    "options": [
+      "Layer 3 (Network); Router",
+      "Layer 2 (Data Link); Switch",
+      "Layer 4 (Transport); Gateway",
+      "Layer 1 (Physical); Hub"
+    ],
+    "answer": 1,
+    "explanation": "MAC flooding targets the CAM table of a switch, which operates at Layer 2 (Data Link) of the OSI model."
+  },
+  {
+    "id": 10893,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "Email Security",
+    "question": "To prevent email spoofing, a retail chain wants to configure records in their DNS. Which DNS record specifically validates that the sending email server's IP is authorized to send email for the domain?",
+    "options": [
+      "MX record",
+      "SPF record in a DNS TXT record",
+      "DKIM record",
+      "PTR record"
+    ],
+    "answer": 1,
+    "explanation": "SPF (Sender Policy Framework) is a DNS TXT record listing IP addresses authorized to send mail on behalf of a domain."
+  },
+  {
+    "id": 10894,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "OSI Layer Attacks",
+    "question": "An attacker is executing a MAC flooding attack against a local network switch. At which layer of the OSI model does this attack occur, and what is the target device?",
+    "options": [
+      "Layer 3 (Network); Router",
+      "Layer 2 (Data Link); Switch",
+      "Layer 4 (Transport); Gateway",
+      "Layer 1 (Physical); Hub"
+    ],
+    "answer": 1,
+    "explanation": "MAC flooding targets the CAM table of a switch, which operates at Layer 2 (Data Link) of the OSI model."
+  },
+  {
+    "id": 10895,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "IPsec Modes",
+    "question": "A Senior Security Auditor is setting up a site-to-site VPN between two corporate gateways. Which IPsec mode and protocol should be used to encrypt the entire packet including the original IP header?",
+    "options": [
+      "Transport Mode; AH",
+      "Tunnel Mode; ESP",
+      "Transport Mode; ESP",
+      "Tunnel Mode; AH"
+    ],
+    "answer": 1,
+    "explanation": "Tunnel Mode encapsulates and encrypts the entire original IP packet inside a new IP header. ESP provides encryption (confidentiality), whereas AH does not."
+  },
+  {
+    "id": 10896,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "Email Security",
+    "question": "To prevent email spoofing, a government agency wants to configure records in their DNS. Which DNS record specifically validates that the sending email server's IP is authorized to send email for the domain?",
+    "options": [
+      "MX record",
+      "SPF record in a DNS TXT record",
+      "DKIM record",
+      "PTR record"
+    ],
+    "answer": 1,
+    "explanation": "SPF (Sender Policy Framework) is a DNS TXT record listing IP addresses authorized to send mail on behalf of a domain."
+  },
+  {
+    "id": 10897,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "Email Security",
+    "question": "To prevent email spoofing, a healthcare provider wants to configure records in their DNS. Which DNS record specifically validates that the sending email server's IP is authorized to send email for the domain?",
+    "options": [
+      "MX record",
+      "SPF record in a DNS TXT record",
+      "DKIM record",
+      "PTR record"
+    ],
+    "answer": 1,
+    "explanation": "SPF (Sender Policy Framework) is a DNS TXT record listing IP addresses authorized to send mail on behalf of a domain."
+  },
+  {
+    "id": 10898,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "IPsec Modes",
+    "question": "A Chief Information Security Officer (CISO) is setting up a site-to-site VPN between two corporate gateways. Which IPsec mode and protocol should be used to encrypt the entire packet including the original IP header?",
+    "options": [
+      "Transport Mode; AH",
+      "Tunnel Mode; ESP",
+      "Transport Mode; ESP",
+      "Tunnel Mode; AH"
+    ],
+    "answer": 1,
+    "explanation": "Tunnel Mode encapsulates and encrypts the entire original IP packet inside a new IP header. ESP provides encryption (confidentiality), whereas AH does not."
+  },
+  {
+    "id": 10899,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "IPsec Modes",
+    "question": "A Database Custodian is setting up a site-to-site VPN between two corporate gateways. Which IPsec mode and protocol should be used to encrypt the entire packet including the original IP header?",
+    "options": [
+      "Transport Mode; AH",
+      "Tunnel Mode; ESP",
+      "Transport Mode; ESP",
+      "Tunnel Mode; AH"
+    ],
+    "answer": 1,
+    "explanation": "Tunnel Mode encapsulates and encrypts the entire original IP packet inside a new IP header. ESP provides encryption (confidentiality), whereas AH does not."
+  },
+  {
+    "id": 10900,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "OSI Layer Attacks",
+    "question": "An attacker is executing a MAC flooding attack against a local network switch. At which layer of the OSI model does this attack occur, and what is the target device?",
+    "options": [
+      "Layer 3 (Network); Router",
+      "Layer 2 (Data Link); Switch",
+      "Layer 4 (Transport); Gateway",
+      "Layer 1 (Physical); Hub"
+    ],
+    "answer": 1,
+    "explanation": "MAC flooding targets the CAM table of a switch, which operates at Layer 2 (Data Link) of the OSI model."
+  },
+  {
+    "id": 10901,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "OSI Layer Attacks",
+    "question": "An attacker is executing a MAC flooding attack against a local network switch. At which layer of the OSI model does this attack occur, and what is the target device?",
+    "options": [
+      "Layer 3 (Network); Router",
+      "Layer 2 (Data Link); Switch",
+      "Layer 4 (Transport); Gateway",
+      "Layer 1 (Physical); Hub"
+    ],
+    "answer": 1,
+    "explanation": "MAC flooding targets the CAM table of a switch, which operates at Layer 2 (Data Link) of the OSI model."
+  },
+  {
+    "id": 10902,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "IPsec Modes",
+    "question": "A Senior Security Auditor is setting up a site-to-site VPN between two corporate gateways. Which IPsec mode and protocol should be used to encrypt the entire packet including the original IP header?",
+    "options": [
+      "Transport Mode; AH",
+      "Tunnel Mode; ESP",
+      "Transport Mode; ESP",
+      "Tunnel Mode; AH"
+    ],
+    "answer": 1,
+    "explanation": "Tunnel Mode encapsulates and encrypts the entire original IP packet inside a new IP header. ESP provides encryption (confidentiality), whereas AH does not."
+  },
+  {
+    "id": 10903,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "OSI Layer Attacks",
+    "question": "An attacker is executing a MAC flooding attack against a local network switch. At which layer of the OSI model does this attack occur, and what is the target device?",
+    "options": [
+      "Layer 3 (Network); Router",
+      "Layer 2 (Data Link); Switch",
+      "Layer 4 (Transport); Gateway",
+      "Layer 1 (Physical); Hub"
+    ],
+    "answer": 1,
+    "explanation": "MAC flooding targets the CAM table of a switch, which operates at Layer 2 (Data Link) of the OSI model."
+  },
+  {
+    "id": 10904,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "Email Security",
+    "question": "To prevent email spoofing, a e-commerce giant wants to configure records in their DNS. Which DNS record specifically validates that the sending email server's IP is authorized to send email for the domain?",
+    "options": [
+      "MX record",
+      "SPF record in a DNS TXT record",
+      "DKIM record",
+      "PTR record"
+    ],
+    "answer": 1,
+    "explanation": "SPF (Sender Policy Framework) is a DNS TXT record listing IP addresses authorized to send mail on behalf of a domain."
+  },
+  {
+    "id": 10905,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "OSI Layer Attacks",
+    "question": "An attacker is executing a MAC flooding attack against a local network switch. At which layer of the OSI model does this attack occur, and what is the target device?",
+    "options": [
+      "Layer 3 (Network); Router",
+      "Layer 2 (Data Link); Switch",
+      "Layer 4 (Transport); Gateway",
+      "Layer 1 (Physical); Hub"
+    ],
+    "answer": 1,
+    "explanation": "MAC flooding targets the CAM table of a switch, which operates at Layer 2 (Data Link) of the OSI model."
+  },
+  {
+    "id": 10906,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "Email Security",
+    "question": "To prevent email spoofing, a government agency wants to configure records in their DNS. Which DNS record specifically validates that the sending email server's IP is authorized to send email for the domain?",
+    "options": [
+      "MX record",
+      "SPF record in a DNS TXT record",
+      "DKIM record",
+      "PTR record"
+    ],
+    "answer": 1,
+    "explanation": "SPF (Sender Policy Framework) is a DNS TXT record listing IP addresses authorized to send mail on behalf of a domain."
+  },
+  {
+    "id": 10907,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "OSI Layer Attacks",
+    "question": "An attacker is executing a MAC flooding attack against a local network switch. At which layer of the OSI model does this attack occur, and what is the target device?",
+    "options": [
+      "Layer 3 (Network); Router",
+      "Layer 2 (Data Link); Switch",
+      "Layer 4 (Transport); Gateway",
+      "Layer 1 (Physical); Hub"
+    ],
+    "answer": 1,
+    "explanation": "MAC flooding targets the CAM table of a switch, which operates at Layer 2 (Data Link) of the OSI model."
+  },
+  {
+    "id": 10908,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "OSI Layer Attacks",
+    "question": "An attacker is executing a MAC flooding attack against a local network switch. At which layer of the OSI model does this attack occur, and what is the target device?",
+    "options": [
+      "Layer 3 (Network); Router",
+      "Layer 2 (Data Link); Switch",
+      "Layer 4 (Transport); Gateway",
+      "Layer 1 (Physical); Hub"
+    ],
+    "answer": 1,
+    "explanation": "MAC flooding targets the CAM table of a switch, which operates at Layer 2 (Data Link) of the OSI model."
+  },
+  {
+    "id": 10909,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "IPsec Modes",
+    "question": "A Chief Information Security Officer (CISO) is setting up a site-to-site VPN between two corporate gateways. Which IPsec mode and protocol should be used to encrypt the entire packet including the original IP header?",
+    "options": [
+      "Transport Mode; AH",
+      "Tunnel Mode; ESP",
+      "Transport Mode; ESP",
+      "Tunnel Mode; AH"
+    ],
+    "answer": 1,
+    "explanation": "Tunnel Mode encapsulates and encrypts the entire original IP packet inside a new IP header. ESP provides encryption (confidentiality), whereas AH does not."
+  },
+  {
+    "id": 10910,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "OSI Layer Attacks",
+    "question": "An attacker is executing a MAC flooding attack against a local network switch. At which layer of the OSI model does this attack occur, and what is the target device?",
+    "options": [
+      "Layer 3 (Network); Router",
+      "Layer 2 (Data Link); Switch",
+      "Layer 4 (Transport); Gateway",
+      "Layer 1 (Physical); Hub"
+    ],
+    "answer": 1,
+    "explanation": "MAC flooding targets the CAM table of a switch, which operates at Layer 2 (Data Link) of the OSI model."
+  },
+  {
+    "id": 10911,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "OSI Layer Attacks",
+    "question": "An attacker is executing a MAC flooding attack against a local network switch. At which layer of the OSI model does this attack occur, and what is the target device?",
+    "options": [
+      "Layer 3 (Network); Router",
+      "Layer 2 (Data Link); Switch",
+      "Layer 4 (Transport); Gateway",
+      "Layer 1 (Physical); Hub"
+    ],
+    "answer": 1,
+    "explanation": "MAC flooding targets the CAM table of a switch, which operates at Layer 2 (Data Link) of the OSI model."
+  },
+  {
+    "id": 10912,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "Email Security",
+    "question": "To prevent email spoofing, a financial services firm wants to configure records in their DNS. Which DNS record specifically validates that the sending email server's IP is authorized to send email for the domain?",
+    "options": [
+      "MX record",
+      "SPF record in a DNS TXT record",
+      "DKIM record",
+      "PTR record"
+    ],
+    "answer": 1,
+    "explanation": "SPF (Sender Policy Framework) is a DNS TXT record listing IP addresses authorized to send mail on behalf of a domain."
+  },
+  {
+    "id": 10913,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "OSI Layer Attacks",
+    "question": "An attacker is executing a MAC flooding attack against a local network switch. At which layer of the OSI model does this attack occur, and what is the target device?",
+    "options": [
+      "Layer 3 (Network); Router",
+      "Layer 2 (Data Link); Switch",
+      "Layer 4 (Transport); Gateway",
+      "Layer 1 (Physical); Hub"
+    ],
+    "answer": 1,
+    "explanation": "MAC flooding targets the CAM table of a switch, which operates at Layer 2 (Data Link) of the OSI model."
+  },
+  {
+    "id": 10914,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "IPsec Modes",
+    "question": "A Database Custodian is setting up a site-to-site VPN between two corporate gateways. Which IPsec mode and protocol should be used to encrypt the entire packet including the original IP header?",
+    "options": [
+      "Transport Mode; AH",
+      "Tunnel Mode; ESP",
+      "Transport Mode; ESP",
+      "Tunnel Mode; AH"
+    ],
+    "answer": 1,
+    "explanation": "Tunnel Mode encapsulates and encrypts the entire original IP packet inside a new IP header. ESP provides encryption (confidentiality), whereas AH does not."
+  },
+  {
+    "id": 10915,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "Email Security",
+    "question": "To prevent email spoofing, a healthcare provider wants to configure records in their DNS. Which DNS record specifically validates that the sending email server's IP is authorized to send email for the domain?",
+    "options": [
+      "MX record",
+      "SPF record in a DNS TXT record",
+      "DKIM record",
+      "PTR record"
+    ],
+    "answer": 1,
+    "explanation": "SPF (Sender Policy Framework) is a DNS TXT record listing IP addresses authorized to send mail on behalf of a domain."
+  },
+  {
+    "id": 10916,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "IPsec Modes",
+    "question": "A Database Custodian is setting up a site-to-site VPN between two corporate gateways. Which IPsec mode and protocol should be used to encrypt the entire packet including the original IP header?",
+    "options": [
+      "Transport Mode; AH",
+      "Tunnel Mode; ESP",
+      "Transport Mode; ESP",
+      "Tunnel Mode; AH"
+    ],
+    "answer": 1,
+    "explanation": "Tunnel Mode encapsulates and encrypts the entire original IP packet inside a new IP header. ESP provides encryption (confidentiality), whereas AH does not."
+  },
+  {
+    "id": 10917,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "IPsec Modes",
+    "question": "A Security Architect is setting up a site-to-site VPN between two corporate gateways. Which IPsec mode and protocol should be used to encrypt the entire packet including the original IP header?",
+    "options": [
+      "Transport Mode; AH",
+      "Tunnel Mode; ESP",
+      "Transport Mode; ESP",
+      "Tunnel Mode; AH"
+    ],
+    "answer": 1,
+    "explanation": "Tunnel Mode encapsulates and encrypts the entire original IP packet inside a new IP header. ESP provides encryption (confidentiality), whereas AH does not."
+  },
+  {
+    "id": 10918,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "IPsec Modes",
+    "question": "A Lead Network Engineer is setting up a site-to-site VPN between two corporate gateways. Which IPsec mode and protocol should be used to encrypt the entire packet including the original IP header?",
+    "options": [
+      "Transport Mode; AH",
+      "Tunnel Mode; ESP",
+      "Transport Mode; ESP",
+      "Tunnel Mode; AH"
+    ],
+    "answer": 1,
+    "explanation": "Tunnel Mode encapsulates and encrypts the entire original IP packet inside a new IP header. ESP provides encryption (confidentiality), whereas AH does not."
+  },
+  {
+    "id": 10919,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "OSI Layer Attacks",
+    "question": "An attacker is executing a MAC flooding attack against a local network switch. At which layer of the OSI model does this attack occur, and what is the target device?",
+    "options": [
+      "Layer 3 (Network); Router",
+      "Layer 2 (Data Link); Switch",
+      "Layer 4 (Transport); Gateway",
+      "Layer 1 (Physical); Hub"
+    ],
+    "answer": 1,
+    "explanation": "MAC flooding targets the CAM table of a switch, which operates at Layer 2 (Data Link) of the OSI model."
+  },
+  {
+    "id": 10920,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "IPsec Modes",
+    "question": "A Chief Information Security Officer (CISO) is setting up a site-to-site VPN between two corporate gateways. Which IPsec mode and protocol should be used to encrypt the entire packet including the original IP header?",
+    "options": [
+      "Transport Mode; AH",
+      "Tunnel Mode; ESP",
+      "Transport Mode; ESP",
+      "Tunnel Mode; AH"
+    ],
+    "answer": 1,
+    "explanation": "Tunnel Mode encapsulates and encrypts the entire original IP packet inside a new IP header. ESP provides encryption (confidentiality), whereas AH does not."
+  },
+  {
+    "id": 10921,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "OSI Layer Attacks",
+    "question": "An attacker is executing a MAC flooding attack against a local network switch. At which layer of the OSI model does this attack occur, and what is the target device?",
+    "options": [
+      "Layer 3 (Network); Router",
+      "Layer 2 (Data Link); Switch",
+      "Layer 4 (Transport); Gateway",
+      "Layer 1 (Physical); Hub"
+    ],
+    "answer": 1,
+    "explanation": "MAC flooding targets the CAM table of a switch, which operates at Layer 2 (Data Link) of the OSI model."
+  },
+  {
+    "id": 10922,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "IPsec Modes",
+    "question": "A Information Owner is setting up a site-to-site VPN between two corporate gateways. Which IPsec mode and protocol should be used to encrypt the entire packet including the original IP header?",
+    "options": [
+      "Transport Mode; AH",
+      "Tunnel Mode; ESP",
+      "Transport Mode; ESP",
+      "Tunnel Mode; AH"
+    ],
+    "answer": 1,
+    "explanation": "Tunnel Mode encapsulates and encrypts the entire original IP packet inside a new IP header. ESP provides encryption (confidentiality), whereas AH does not."
+  },
+  {
+    "id": 10923,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "OSI Layer Attacks",
+    "question": "An attacker is executing a MAC flooding attack against a local network switch. At which layer of the OSI model does this attack occur, and what is the target device?",
+    "options": [
+      "Layer 3 (Network); Router",
+      "Layer 2 (Data Link); Switch",
+      "Layer 4 (Transport); Gateway",
+      "Layer 1 (Physical); Hub"
+    ],
+    "answer": 1,
+    "explanation": "MAC flooding targets the CAM table of a switch, which operates at Layer 2 (Data Link) of the OSI model."
+  },
+  {
+    "id": 10924,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "IPsec Modes",
+    "question": "A Database Custodian is setting up a site-to-site VPN between two corporate gateways. Which IPsec mode and protocol should be used to encrypt the entire packet including the original IP header?",
+    "options": [
+      "Transport Mode; AH",
+      "Tunnel Mode; ESP",
+      "Transport Mode; ESP",
+      "Tunnel Mode; AH"
+    ],
+    "answer": 1,
+    "explanation": "Tunnel Mode encapsulates and encrypts the entire original IP packet inside a new IP header. ESP provides encryption (confidentiality), whereas AH does not."
+  },
+  {
+    "id": 10925,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "IPsec Modes",
+    "question": "A Information Owner is setting up a site-to-site VPN between two corporate gateways. Which IPsec mode and protocol should be used to encrypt the entire packet including the original IP header?",
+    "options": [
+      "Transport Mode; AH",
+      "Tunnel Mode; ESP",
+      "Transport Mode; ESP",
+      "Tunnel Mode; AH"
+    ],
+    "answer": 1,
+    "explanation": "Tunnel Mode encapsulates and encrypts the entire original IP packet inside a new IP header. ESP provides encryption (confidentiality), whereas AH does not."
+  },
+  {
+    "id": 10926,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "Email Security",
+    "question": "To prevent email spoofing, a retail chain wants to configure records in their DNS. Which DNS record specifically validates that the sending email server's IP is authorized to send email for the domain?",
+    "options": [
+      "MX record",
+      "SPF record in a DNS TXT record",
+      "DKIM record",
+      "PTR record"
+    ],
+    "answer": 1,
+    "explanation": "SPF (Sender Policy Framework) is a DNS TXT record listing IP addresses authorized to send mail on behalf of a domain."
+  },
+  {
+    "id": 10927,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "IPsec Modes",
+    "question": "A Information Owner is setting up a site-to-site VPN between two corporate gateways. Which IPsec mode and protocol should be used to encrypt the entire packet including the original IP header?",
+    "options": [
+      "Transport Mode; AH",
+      "Tunnel Mode; ESP",
+      "Transport Mode; ESP",
+      "Tunnel Mode; AH"
+    ],
+    "answer": 1,
+    "explanation": "Tunnel Mode encapsulates and encrypts the entire original IP packet inside a new IP header. ESP provides encryption (confidentiality), whereas AH does not."
+  },
+  {
+    "id": 10928,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "OSI Layer Attacks",
+    "question": "An attacker is executing a MAC flooding attack against a local network switch. At which layer of the OSI model does this attack occur, and what is the target device?",
+    "options": [
+      "Layer 3 (Network); Router",
+      "Layer 2 (Data Link); Switch",
+      "Layer 4 (Transport); Gateway",
+      "Layer 1 (Physical); Hub"
+    ],
+    "answer": 1,
+    "explanation": "MAC flooding targets the CAM table of a switch, which operates at Layer 2 (Data Link) of the OSI model."
+  },
+  {
+    "id": 10929,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "Email Security",
+    "question": "To prevent email spoofing, a retail chain wants to configure records in their DNS. Which DNS record specifically validates that the sending email server's IP is authorized to send email for the domain?",
+    "options": [
+      "MX record",
+      "SPF record in a DNS TXT record",
+      "DKIM record",
+      "PTR record"
+    ],
+    "answer": 1,
+    "explanation": "SPF (Sender Policy Framework) is a DNS TXT record listing IP addresses authorized to send mail on behalf of a domain."
+  },
+  {
+    "id": 10930,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "IPsec Modes",
+    "question": "A Information Owner is setting up a site-to-site VPN between two corporate gateways. Which IPsec mode and protocol should be used to encrypt the entire packet including the original IP header?",
+    "options": [
+      "Transport Mode; AH",
+      "Tunnel Mode; ESP",
+      "Transport Mode; ESP",
+      "Tunnel Mode; AH"
+    ],
+    "answer": 1,
+    "explanation": "Tunnel Mode encapsulates and encrypts the entire original IP packet inside a new IP header. ESP provides encryption (confidentiality), whereas AH does not."
+  },
+  {
+    "id": 10931,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "OSI Layer Attacks",
+    "question": "An attacker is executing a MAC flooding attack against a local network switch. At which layer of the OSI model does this attack occur, and what is the target device?",
+    "options": [
+      "Layer 3 (Network); Router",
+      "Layer 2 (Data Link); Switch",
+      "Layer 4 (Transport); Gateway",
+      "Layer 1 (Physical); Hub"
+    ],
+    "answer": 1,
+    "explanation": "MAC flooding targets the CAM table of a switch, which operates at Layer 2 (Data Link) of the OSI model."
+  },
+  {
+    "id": 10932,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "OSI Layer Attacks",
+    "question": "An attacker is executing a MAC flooding attack against a local network switch. At which layer of the OSI model does this attack occur, and what is the target device?",
+    "options": [
+      "Layer 3 (Network); Router",
+      "Layer 2 (Data Link); Switch",
+      "Layer 4 (Transport); Gateway",
+      "Layer 1 (Physical); Hub"
+    ],
+    "answer": 1,
+    "explanation": "MAC flooding targets the CAM table of a switch, which operates at Layer 2 (Data Link) of the OSI model."
+  },
+  {
+    "id": 10933,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "OSI Layer Attacks",
+    "question": "An attacker is executing a MAC flooding attack against a local network switch. At which layer of the OSI model does this attack occur, and what is the target device?",
+    "options": [
+      "Layer 3 (Network); Router",
+      "Layer 2 (Data Link); Switch",
+      "Layer 4 (Transport); Gateway",
+      "Layer 1 (Physical); Hub"
+    ],
+    "answer": 1,
+    "explanation": "MAC flooding targets the CAM table of a switch, which operates at Layer 2 (Data Link) of the OSI model."
+  },
+  {
+    "id": 10934,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "OSI Layer Attacks",
+    "question": "An attacker is executing a MAC flooding attack against a local network switch. At which layer of the OSI model does this attack occur, and what is the target device?",
+    "options": [
+      "Layer 3 (Network); Router",
+      "Layer 2 (Data Link); Switch",
+      "Layer 4 (Transport); Gateway",
+      "Layer 1 (Physical); Hub"
+    ],
+    "answer": 1,
+    "explanation": "MAC flooding targets the CAM table of a switch, which operates at Layer 2 (Data Link) of the OSI model."
+  },
+  {
+    "id": 10935,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "OSI Layer Attacks",
+    "question": "An attacker is executing a MAC flooding attack against a local network switch. At which layer of the OSI model does this attack occur, and what is the target device?",
+    "options": [
+      "Layer 3 (Network); Router",
+      "Layer 2 (Data Link); Switch",
+      "Layer 4 (Transport); Gateway",
+      "Layer 1 (Physical); Hub"
+    ],
+    "answer": 1,
+    "explanation": "MAC flooding targets the CAM table of a switch, which operates at Layer 2 (Data Link) of the OSI model."
+  },
+  {
+    "id": 10936,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "OSI Layer Attacks",
+    "question": "An attacker is executing a MAC flooding attack against a local network switch. At which layer of the OSI model does this attack occur, and what is the target device?",
+    "options": [
+      "Layer 3 (Network); Router",
+      "Layer 2 (Data Link); Switch",
+      "Layer 4 (Transport); Gateway",
+      "Layer 1 (Physical); Hub"
+    ],
+    "answer": 1,
+    "explanation": "MAC flooding targets the CAM table of a switch, which operates at Layer 2 (Data Link) of the OSI model."
+  },
+  {
+    "id": 10937,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "Email Security",
+    "question": "To prevent email spoofing, a SaaS startup wants to configure records in their DNS. Which DNS record specifically validates that the sending email server's IP is authorized to send email for the domain?",
+    "options": [
+      "MX record",
+      "SPF record in a DNS TXT record",
+      "DKIM record",
+      "PTR record"
+    ],
+    "answer": 1,
+    "explanation": "SPF (Sender Policy Framework) is a DNS TXT record listing IP addresses authorized to send mail on behalf of a domain."
+  },
+  {
+    "id": 10938,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "Email Security",
+    "question": "To prevent email spoofing, a e-commerce giant wants to configure records in their DNS. Which DNS record specifically validates that the sending email server's IP is authorized to send email for the domain?",
+    "options": [
+      "MX record",
+      "SPF record in a DNS TXT record",
+      "DKIM record",
+      "PTR record"
+    ],
+    "answer": 1,
+    "explanation": "SPF (Sender Policy Framework) is a DNS TXT record listing IP addresses authorized to send mail on behalf of a domain."
+  },
+  {
+    "id": 10939,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "Email Security",
+    "question": "To prevent email spoofing, a government agency wants to configure records in their DNS. Which DNS record specifically validates that the sending email server's IP is authorized to send email for the domain?",
+    "options": [
+      "MX record",
+      "SPF record in a DNS TXT record",
+      "DKIM record",
+      "PTR record"
+    ],
+    "answer": 1,
+    "explanation": "SPF (Sender Policy Framework) is a DNS TXT record listing IP addresses authorized to send mail on behalf of a domain."
+  },
+  {
+    "id": 10940,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "IPsec Modes",
+    "question": "A Database Custodian is setting up a site-to-site VPN between two corporate gateways. Which IPsec mode and protocol should be used to encrypt the entire packet including the original IP header?",
+    "options": [
+      "Transport Mode; AH",
+      "Tunnel Mode; ESP",
+      "Transport Mode; ESP",
+      "Tunnel Mode; AH"
+    ],
+    "answer": 1,
+    "explanation": "Tunnel Mode encapsulates and encrypts the entire original IP packet inside a new IP header. ESP provides encryption (confidentiality), whereas AH does not."
+  },
+  {
+    "id": 10941,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "OSI Layer Attacks",
+    "question": "An attacker is executing a MAC flooding attack against a local network switch. At which layer of the OSI model does this attack occur, and what is the target device?",
+    "options": [
+      "Layer 3 (Network); Router",
+      "Layer 2 (Data Link); Switch",
+      "Layer 4 (Transport); Gateway",
+      "Layer 1 (Physical); Hub"
+    ],
+    "answer": 1,
+    "explanation": "MAC flooding targets the CAM table of a switch, which operates at Layer 2 (Data Link) of the OSI model."
+  },
+  {
+    "id": 10942,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "IPsec Modes",
+    "question": "A Security Architect is setting up a site-to-site VPN between two corporate gateways. Which IPsec mode and protocol should be used to encrypt the entire packet including the original IP header?",
+    "options": [
+      "Transport Mode; AH",
+      "Tunnel Mode; ESP",
+      "Transport Mode; ESP",
+      "Tunnel Mode; AH"
+    ],
+    "answer": 1,
+    "explanation": "Tunnel Mode encapsulates and encrypts the entire original IP packet inside a new IP header. ESP provides encryption (confidentiality), whereas AH does not."
+  },
+  {
+    "id": 10943,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "IPsec Modes",
+    "question": "A Lead Network Engineer is setting up a site-to-site VPN between two corporate gateways. Which IPsec mode and protocol should be used to encrypt the entire packet including the original IP header?",
+    "options": [
+      "Transport Mode; AH",
+      "Tunnel Mode; ESP",
+      "Transport Mode; ESP",
+      "Tunnel Mode; AH"
+    ],
+    "answer": 1,
+    "explanation": "Tunnel Mode encapsulates and encrypts the entire original IP packet inside a new IP header. ESP provides encryption (confidentiality), whereas AH does not."
+  },
+  {
+    "id": 10944,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "IPsec Modes",
+    "question": "A Chief Information Security Officer (CISO) is setting up a site-to-site VPN between two corporate gateways. Which IPsec mode and protocol should be used to encrypt the entire packet including the original IP header?",
+    "options": [
+      "Transport Mode; AH",
+      "Tunnel Mode; ESP",
+      "Transport Mode; ESP",
+      "Tunnel Mode; AH"
+    ],
+    "answer": 1,
+    "explanation": "Tunnel Mode encapsulates and encrypts the entire original IP packet inside a new IP header. ESP provides encryption (confidentiality), whereas AH does not."
+  },
+  {
+    "id": 10945,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "OSI Layer Attacks",
+    "question": "An attacker is executing a MAC flooding attack against a local network switch. At which layer of the OSI model does this attack occur, and what is the target device?",
+    "options": [
+      "Layer 3 (Network); Router",
+      "Layer 2 (Data Link); Switch",
+      "Layer 4 (Transport); Gateway",
+      "Layer 1 (Physical); Hub"
+    ],
+    "answer": 1,
+    "explanation": "MAC flooding targets the CAM table of a switch, which operates at Layer 2 (Data Link) of the OSI model."
+  },
+  {
+    "id": 10946,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "OSI Layer Attacks",
+    "question": "An attacker is executing a MAC flooding attack against a local network switch. At which layer of the OSI model does this attack occur, and what is the target device?",
+    "options": [
+      "Layer 3 (Network); Router",
+      "Layer 2 (Data Link); Switch",
+      "Layer 4 (Transport); Gateway",
+      "Layer 1 (Physical); Hub"
+    ],
+    "answer": 1,
+    "explanation": "MAC flooding targets the CAM table of a switch, which operates at Layer 2 (Data Link) of the OSI model."
+  },
+  {
+    "id": 10947,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "OSI Layer Attacks",
+    "question": "An attacker is executing a MAC flooding attack against a local network switch. At which layer of the OSI model does this attack occur, and what is the target device?",
+    "options": [
+      "Layer 3 (Network); Router",
+      "Layer 2 (Data Link); Switch",
+      "Layer 4 (Transport); Gateway",
+      "Layer 1 (Physical); Hub"
+    ],
+    "answer": 1,
+    "explanation": "MAC flooding targets the CAM table of a switch, which operates at Layer 2 (Data Link) of the OSI model."
+  },
+  {
+    "id": 10948,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "IPsec Modes",
+    "question": "A Senior Security Auditor is setting up a site-to-site VPN between two corporate gateways. Which IPsec mode and protocol should be used to encrypt the entire packet including the original IP header?",
+    "options": [
+      "Transport Mode; AH",
+      "Tunnel Mode; ESP",
+      "Transport Mode; ESP",
+      "Tunnel Mode; AH"
+    ],
+    "answer": 1,
+    "explanation": "Tunnel Mode encapsulates and encrypts the entire original IP packet inside a new IP header. ESP provides encryption (confidentiality), whereas AH does not."
+  },
+  {
+    "id": 10949,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "Email Security",
+    "question": "To prevent email spoofing, a telecommunications operator wants to configure records in their DNS. Which DNS record specifically validates that the sending email server's IP is authorized to send email for the domain?",
+    "options": [
+      "MX record",
+      "SPF record in a DNS TXT record",
+      "DKIM record",
+      "PTR record"
+    ],
+    "answer": 1,
+    "explanation": "SPF (Sender Policy Framework) is a DNS TXT record listing IP addresses authorized to send mail on behalf of a domain."
+  },
+  {
+    "id": 10950,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "OSI Layer Attacks",
+    "question": "An attacker is executing a MAC flooding attack against a local network switch. At which layer of the OSI model does this attack occur, and what is the target device?",
+    "options": [
+      "Layer 3 (Network); Router",
+      "Layer 2 (Data Link); Switch",
+      "Layer 4 (Transport); Gateway",
+      "Layer 1 (Physical); Hub"
+    ],
+    "answer": 1,
+    "explanation": "MAC flooding targets the CAM table of a switch, which operates at Layer 2 (Data Link) of the OSI model."
+  },
+  {
+    "id": 10951,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "OSI Layer Attacks",
+    "question": "An attacker is executing a MAC flooding attack against a local network switch. At which layer of the OSI model does this attack occur, and what is the target device?",
+    "options": [
+      "Layer 3 (Network); Router",
+      "Layer 2 (Data Link); Switch",
+      "Layer 4 (Transport); Gateway",
+      "Layer 1 (Physical); Hub"
+    ],
+    "answer": 1,
+    "explanation": "MAC flooding targets the CAM table of a switch, which operates at Layer 2 (Data Link) of the OSI model."
+  },
+  {
+    "id": 10952,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "OSI Layer Attacks",
+    "question": "An attacker is executing a MAC flooding attack against a local network switch. At which layer of the OSI model does this attack occur, and what is the target device?",
+    "options": [
+      "Layer 3 (Network); Router",
+      "Layer 2 (Data Link); Switch",
+      "Layer 4 (Transport); Gateway",
+      "Layer 1 (Physical); Hub"
+    ],
+    "answer": 1,
+    "explanation": "MAC flooding targets the CAM table of a switch, which operates at Layer 2 (Data Link) of the OSI model."
+  },
+  {
+    "id": 10953,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "IPsec Modes",
+    "question": "A Lead Network Engineer is setting up a site-to-site VPN between two corporate gateways. Which IPsec mode and protocol should be used to encrypt the entire packet including the original IP header?",
+    "options": [
+      "Transport Mode; AH",
+      "Tunnel Mode; ESP",
+      "Transport Mode; ESP",
+      "Tunnel Mode; AH"
+    ],
+    "answer": 1,
+    "explanation": "Tunnel Mode encapsulates and encrypts the entire original IP packet inside a new IP header. ESP provides encryption (confidentiality), whereas AH does not."
+  },
+  {
+    "id": 10954,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "IPsec Modes",
+    "question": "A Database Custodian is setting up a site-to-site VPN between two corporate gateways. Which IPsec mode and protocol should be used to encrypt the entire packet including the original IP header?",
+    "options": [
+      "Transport Mode; AH",
+      "Tunnel Mode; ESP",
+      "Transport Mode; ESP",
+      "Tunnel Mode; AH"
+    ],
+    "answer": 1,
+    "explanation": "Tunnel Mode encapsulates and encrypts the entire original IP packet inside a new IP header. ESP provides encryption (confidentiality), whereas AH does not."
+  },
+  {
+    "id": 10955,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "Email Security",
+    "question": "To prevent email spoofing, a financial services firm wants to configure records in their DNS. Which DNS record specifically validates that the sending email server's IP is authorized to send email for the domain?",
+    "options": [
+      "MX record",
+      "SPF record in a DNS TXT record",
+      "DKIM record",
+      "PTR record"
+    ],
+    "answer": 1,
+    "explanation": "SPF (Sender Policy Framework) is a DNS TXT record listing IP addresses authorized to send mail on behalf of a domain."
+  },
+  {
+    "id": 10956,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "IPsec Modes",
+    "question": "A Privacy Officer is setting up a site-to-site VPN between two corporate gateways. Which IPsec mode and protocol should be used to encrypt the entire packet including the original IP header?",
+    "options": [
+      "Transport Mode; AH",
+      "Tunnel Mode; ESP",
+      "Transport Mode; ESP",
+      "Tunnel Mode; AH"
+    ],
+    "answer": 1,
+    "explanation": "Tunnel Mode encapsulates and encrypts the entire original IP packet inside a new IP header. ESP provides encryption (confidentiality), whereas AH does not."
+  },
+  {
+    "id": 10957,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "IPsec Modes",
+    "question": "A Information Owner is setting up a site-to-site VPN between two corporate gateways. Which IPsec mode and protocol should be used to encrypt the entire packet including the original IP header?",
+    "options": [
+      "Transport Mode; AH",
+      "Tunnel Mode; ESP",
+      "Transport Mode; ESP",
+      "Tunnel Mode; AH"
+    ],
+    "answer": 1,
+    "explanation": "Tunnel Mode encapsulates and encrypts the entire original IP packet inside a new IP header. ESP provides encryption (confidentiality), whereas AH does not."
+  },
+  {
+    "id": 10958,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "Email Security",
+    "question": "To prevent email spoofing, a e-commerce giant wants to configure records in their DNS. Which DNS record specifically validates that the sending email server's IP is authorized to send email for the domain?",
+    "options": [
+      "MX record",
+      "SPF record in a DNS TXT record",
+      "DKIM record",
+      "PTR record"
+    ],
+    "answer": 1,
+    "explanation": "SPF (Sender Policy Framework) is a DNS TXT record listing IP addresses authorized to send mail on behalf of a domain."
+  },
+  {
+    "id": 10959,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "Email Security",
+    "question": "To prevent email spoofing, a cloud service provider wants to configure records in their DNS. Which DNS record specifically validates that the sending email server's IP is authorized to send email for the domain?",
+    "options": [
+      "MX record",
+      "SPF record in a DNS TXT record",
+      "DKIM record",
+      "PTR record"
+    ],
+    "answer": 1,
+    "explanation": "SPF (Sender Policy Framework) is a DNS TXT record listing IP addresses authorized to send mail on behalf of a domain."
+  },
+  {
+    "id": 10960,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "OSI Layer Attacks",
+    "question": "An attacker is executing a MAC flooding attack against a local network switch. At which layer of the OSI model does this attack occur, and what is the target device?",
+    "options": [
+      "Layer 3 (Network); Router",
+      "Layer 2 (Data Link); Switch",
+      "Layer 4 (Transport); Gateway",
+      "Layer 1 (Physical); Hub"
+    ],
+    "answer": 1,
+    "explanation": "MAC flooding targets the CAM table of a switch, which operates at Layer 2 (Data Link) of the OSI model."
+  },
+  {
+    "id": 10961,
+    "domain": 4,
+    "domain_name": "Domain 4",
+    "scenario": "OSI Layer Attacks",
+    "question": "An attacker is executing a MAC flooding attack against a local network switch. At which layer of the OSI model does this attack occur, and what is the target device?",
+    "options": [
+      "Layer 3 (Network); Router",
+      "Layer 2 (Data Link); Switch",
+      "Layer 4 (Transport); Gateway",
+      "Layer 1 (Physical); Hub"
+    ],
+    "answer": 1,
+    "explanation": "MAC flooding targets the CAM table of a switch, which operates at Layer 2 (Data Link) of the OSI model."
+  },
+  {
+    "id": 10962,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Federation SSO",
+    "question": "An enterprise wants to allow its users to access a partner web app using their existing active directory credentials. What XML-based open standard is best suited for federated identity assertions?",
+    "options": [
+      "OAuth 2.0",
+      "SAML 2.0",
+      "OpenID Connect",
+      "LDAP"
+    ],
+    "answer": 1,
+    "explanation": "SAML 2.0 is an XML-based standard specifically designed for federating identity and sending authentication assertions between Identity Providers (IdPs) and Service Providers (SPs)."
+  },
+  {
+    "id": 10963,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Federation SSO",
+    "question": "An enterprise wants to allow its users to access a partner web app using their existing active directory credentials. What XML-based open standard is best suited for federated identity assertions?",
+    "options": [
+      "OAuth 2.0",
+      "SAML 2.0",
+      "OpenID Connect",
+      "LDAP"
+    ],
+    "answer": 1,
+    "explanation": "SAML 2.0 is an XML-based standard specifically designed for federating identity and sending authentication assertions between Identity Providers (IdPs) and Service Providers (SPs)."
+  },
+  {
+    "id": 10964,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Biometric Metrics",
+    "question": "A biometric system is tuned to reduce the number of false rejects. As a result, what is the expected impact on the False Acceptance Rate (FAR)?",
+    "options": [
+      "FAR will decrease, making the system more secure",
+      "FAR will increase, lowering overall security",
+      "FAR will remain unchanged",
+      "The Crossover Error Rate (CER) will instantly drop to zero"
+    ],
+    "answer": 1,
+    "explanation": "Biometric sensitivity is a trade-off. Lowering the False Rejection Rate (FRR) to make it easier for legitimate users makes the system less sensitive, which increases the False Acceptance Rate (FAR)."
+  },
+  {
+    "id": 10965,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Kerberos Tickets",
+    "question": "In a Kerberos environment, what is the role of the Ticket Granting Ticket (TGT)?",
+    "options": [
+      "It encrypts user passwords locally",
+      "It allows the user to request specific service tickets from the TGS without re-entering credentials",
+      "It acts as a public key certificate signed by the CA",
+      "It secures database traffic between servers"
+    ],
+    "answer": 1,
+    "explanation": "A TGT is issued by the Authentication Service (AS) and presented to the Ticket Granting Service (TGS) to request specific service tickets, preventing the user from needing to re-authenticate repeatedly."
+  },
+  {
+    "id": 10966,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Kerberos Tickets",
+    "question": "In a Kerberos environment, what is the role of the Ticket Granting Ticket (TGT)?",
+    "options": [
+      "It encrypts user passwords locally",
+      "It allows the user to request specific service tickets from the TGS without re-entering credentials",
+      "It acts as a public key certificate signed by the CA",
+      "It secures database traffic between servers"
+    ],
+    "answer": 1,
+    "explanation": "A TGT is issued by the Authentication Service (AS) and presented to the Ticket Granting Service (TGS) to request specific service tickets, preventing the user from needing to re-authenticate repeatedly."
+  },
+  {
+    "id": 10967,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Federation SSO",
+    "question": "An enterprise wants to allow its users to access a partner web app using their existing active directory credentials. What XML-based open standard is best suited for federated identity assertions?",
+    "options": [
+      "OAuth 2.0",
+      "SAML 2.0",
+      "OpenID Connect",
+      "LDAP"
+    ],
+    "answer": 1,
+    "explanation": "SAML 2.0 is an XML-based standard specifically designed for federating identity and sending authentication assertions between Identity Providers (IdPs) and Service Providers (SPs)."
+  },
+  {
+    "id": 10968,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Kerberos Tickets",
+    "question": "In a Kerberos environment, what is the role of the Ticket Granting Ticket (TGT)?",
+    "options": [
+      "It encrypts user passwords locally",
+      "It allows the user to request specific service tickets from the TGS without re-entering credentials",
+      "It acts as a public key certificate signed by the CA",
+      "It secures database traffic between servers"
+    ],
+    "answer": 1,
+    "explanation": "A TGT is issued by the Authentication Service (AS) and presented to the Ticket Granting Service (TGS) to request specific service tickets, preventing the user from needing to re-authenticate repeatedly."
+  },
+  {
+    "id": 10969,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Kerberos Tickets",
+    "question": "In a Kerberos environment, what is the role of the Ticket Granting Ticket (TGT)?",
+    "options": [
+      "It encrypts user passwords locally",
+      "It allows the user to request specific service tickets from the TGS without re-entering credentials",
+      "It acts as a public key certificate signed by the CA",
+      "It secures database traffic between servers"
+    ],
+    "answer": 1,
+    "explanation": "A TGT is issued by the Authentication Service (AS) and presented to the Ticket Granting Service (TGS) to request specific service tickets, preventing the user from needing to re-authenticate repeatedly."
+  },
+  {
+    "id": 10970,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Federation SSO",
+    "question": "An enterprise wants to allow its users to access a partner web app using their existing active directory credentials. What XML-based open standard is best suited for federated identity assertions?",
+    "options": [
+      "OAuth 2.0",
+      "SAML 2.0",
+      "OpenID Connect",
+      "LDAP"
+    ],
+    "answer": 1,
+    "explanation": "SAML 2.0 is an XML-based standard specifically designed for federating identity and sending authentication assertions between Identity Providers (IdPs) and Service Providers (SPs)."
+  },
+  {
+    "id": 10971,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Biometric Metrics",
+    "question": "A biometric system is tuned to reduce the number of false rejects. As a result, what is the expected impact on the False Acceptance Rate (FAR)?",
+    "options": [
+      "FAR will decrease, making the system more secure",
+      "FAR will increase, lowering overall security",
+      "FAR will remain unchanged",
+      "The Crossover Error Rate (CER) will instantly drop to zero"
+    ],
+    "answer": 1,
+    "explanation": "Biometric sensitivity is a trade-off. Lowering the False Rejection Rate (FRR) to make it easier for legitimate users makes the system less sensitive, which increases the False Acceptance Rate (FAR)."
+  },
+  {
+    "id": 10972,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Federation SSO",
+    "question": "An enterprise wants to allow its users to access a partner web app using their existing active directory credentials. What XML-based open standard is best suited for federated identity assertions?",
+    "options": [
+      "OAuth 2.0",
+      "SAML 2.0",
+      "OpenID Connect",
+      "LDAP"
+    ],
+    "answer": 1,
+    "explanation": "SAML 2.0 is an XML-based standard specifically designed for federating identity and sending authentication assertions between Identity Providers (IdPs) and Service Providers (SPs)."
+  },
+  {
+    "id": 10973,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Kerberos Tickets",
+    "question": "In a Kerberos environment, what is the role of the Ticket Granting Ticket (TGT)?",
+    "options": [
+      "It encrypts user passwords locally",
+      "It allows the user to request specific service tickets from the TGS without re-entering credentials",
+      "It acts as a public key certificate signed by the CA",
+      "It secures database traffic between servers"
+    ],
+    "answer": 1,
+    "explanation": "A TGT is issued by the Authentication Service (AS) and presented to the Ticket Granting Service (TGS) to request specific service tickets, preventing the user from needing to re-authenticate repeatedly."
+  },
+  {
+    "id": 10974,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Biometric Metrics",
+    "question": "A biometric system is tuned to reduce the number of false rejects. As a result, what is the expected impact on the False Acceptance Rate (FAR)?",
+    "options": [
+      "FAR will decrease, making the system more secure",
+      "FAR will increase, lowering overall security",
+      "FAR will remain unchanged",
+      "The Crossover Error Rate (CER) will instantly drop to zero"
+    ],
+    "answer": 1,
+    "explanation": "Biometric sensitivity is a trade-off. Lowering the False Rejection Rate (FRR) to make it easier for legitimate users makes the system less sensitive, which increases the False Acceptance Rate (FAR)."
+  },
+  {
+    "id": 10975,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Federation SSO",
+    "question": "An enterprise wants to allow its users to access a partner web app using their existing active directory credentials. What XML-based open standard is best suited for federated identity assertions?",
+    "options": [
+      "OAuth 2.0",
+      "SAML 2.0",
+      "OpenID Connect",
+      "LDAP"
+    ],
+    "answer": 1,
+    "explanation": "SAML 2.0 is an XML-based standard specifically designed for federating identity and sending authentication assertions between Identity Providers (IdPs) and Service Providers (SPs)."
+  },
+  {
+    "id": 10976,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Biometric Metrics",
+    "question": "A biometric system is tuned to reduce the number of false rejects. As a result, what is the expected impact on the False Acceptance Rate (FAR)?",
+    "options": [
+      "FAR will decrease, making the system more secure",
+      "FAR will increase, lowering overall security",
+      "FAR will remain unchanged",
+      "The Crossover Error Rate (CER) will instantly drop to zero"
+    ],
+    "answer": 1,
+    "explanation": "Biometric sensitivity is a trade-off. Lowering the False Rejection Rate (FRR) to make it easier for legitimate users makes the system less sensitive, which increases the False Acceptance Rate (FAR)."
+  },
+  {
+    "id": 10977,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Kerberos Tickets",
+    "question": "In a Kerberos environment, what is the role of the Ticket Granting Ticket (TGT)?",
+    "options": [
+      "It encrypts user passwords locally",
+      "It allows the user to request specific service tickets from the TGS without re-entering credentials",
+      "It acts as a public key certificate signed by the CA",
+      "It secures database traffic between servers"
+    ],
+    "answer": 1,
+    "explanation": "A TGT is issued by the Authentication Service (AS) and presented to the Ticket Granting Service (TGS) to request specific service tickets, preventing the user from needing to re-authenticate repeatedly."
+  },
+  {
+    "id": 10978,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Biometric Metrics",
+    "question": "A biometric system is tuned to reduce the number of false rejects. As a result, what is the expected impact on the False Acceptance Rate (FAR)?",
+    "options": [
+      "FAR will decrease, making the system more secure",
+      "FAR will increase, lowering overall security",
+      "FAR will remain unchanged",
+      "The Crossover Error Rate (CER) will instantly drop to zero"
+    ],
+    "answer": 1,
+    "explanation": "Biometric sensitivity is a trade-off. Lowering the False Rejection Rate (FRR) to make it easier for legitimate users makes the system less sensitive, which increases the False Acceptance Rate (FAR)."
+  },
+  {
+    "id": 10979,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Kerberos Tickets",
+    "question": "In a Kerberos environment, what is the role of the Ticket Granting Ticket (TGT)?",
+    "options": [
+      "It encrypts user passwords locally",
+      "It allows the user to request specific service tickets from the TGS without re-entering credentials",
+      "It acts as a public key certificate signed by the CA",
+      "It secures database traffic between servers"
+    ],
+    "answer": 1,
+    "explanation": "A TGT is issued by the Authentication Service (AS) and presented to the Ticket Granting Service (TGS) to request specific service tickets, preventing the user from needing to re-authenticate repeatedly."
+  },
+  {
+    "id": 10980,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Kerberos Tickets",
+    "question": "In a Kerberos environment, what is the role of the Ticket Granting Ticket (TGT)?",
+    "options": [
+      "It encrypts user passwords locally",
+      "It allows the user to request specific service tickets from the TGS without re-entering credentials",
+      "It acts as a public key certificate signed by the CA",
+      "It secures database traffic between servers"
+    ],
+    "answer": 1,
+    "explanation": "A TGT is issued by the Authentication Service (AS) and presented to the Ticket Granting Service (TGS) to request specific service tickets, preventing the user from needing to re-authenticate repeatedly."
+  },
+  {
+    "id": 10981,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Kerberos Tickets",
+    "question": "In a Kerberos environment, what is the role of the Ticket Granting Ticket (TGT)?",
+    "options": [
+      "It encrypts user passwords locally",
+      "It allows the user to request specific service tickets from the TGS without re-entering credentials",
+      "It acts as a public key certificate signed by the CA",
+      "It secures database traffic between servers"
+    ],
+    "answer": 1,
+    "explanation": "A TGT is issued by the Authentication Service (AS) and presented to the Ticket Granting Service (TGS) to request specific service tickets, preventing the user from needing to re-authenticate repeatedly."
+  },
+  {
+    "id": 10982,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Federation SSO",
+    "question": "An enterprise wants to allow its users to access a partner web app using their existing active directory credentials. What XML-based open standard is best suited for federated identity assertions?",
+    "options": [
+      "OAuth 2.0",
+      "SAML 2.0",
+      "OpenID Connect",
+      "LDAP"
+    ],
+    "answer": 1,
+    "explanation": "SAML 2.0 is an XML-based standard specifically designed for federating identity and sending authentication assertions between Identity Providers (IdPs) and Service Providers (SPs)."
+  },
+  {
+    "id": 10983,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Biometric Metrics",
+    "question": "A biometric system is tuned to reduce the number of false rejects. As a result, what is the expected impact on the False Acceptance Rate (FAR)?",
+    "options": [
+      "FAR will decrease, making the system more secure",
+      "FAR will increase, lowering overall security",
+      "FAR will remain unchanged",
+      "The Crossover Error Rate (CER) will instantly drop to zero"
+    ],
+    "answer": 1,
+    "explanation": "Biometric sensitivity is a trade-off. Lowering the False Rejection Rate (FRR) to make it easier for legitimate users makes the system less sensitive, which increases the False Acceptance Rate (FAR)."
+  },
+  {
+    "id": 10984,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Federation SSO",
+    "question": "An enterprise wants to allow its users to access a partner web app using their existing active directory credentials. What XML-based open standard is best suited for federated identity assertions?",
+    "options": [
+      "OAuth 2.0",
+      "SAML 2.0",
+      "OpenID Connect",
+      "LDAP"
+    ],
+    "answer": 1,
+    "explanation": "SAML 2.0 is an XML-based standard specifically designed for federating identity and sending authentication assertions between Identity Providers (IdPs) and Service Providers (SPs)."
+  },
+  {
+    "id": 10985,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Federation SSO",
+    "question": "An enterprise wants to allow its users to access a partner web app using their existing active directory credentials. What XML-based open standard is best suited for federated identity assertions?",
+    "options": [
+      "OAuth 2.0",
+      "SAML 2.0",
+      "OpenID Connect",
+      "LDAP"
+    ],
+    "answer": 1,
+    "explanation": "SAML 2.0 is an XML-based standard specifically designed for federating identity and sending authentication assertions between Identity Providers (IdPs) and Service Providers (SPs)."
+  },
+  {
+    "id": 10986,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Biometric Metrics",
+    "question": "A biometric system is tuned to reduce the number of false rejects. As a result, what is the expected impact on the False Acceptance Rate (FAR)?",
+    "options": [
+      "FAR will decrease, making the system more secure",
+      "FAR will increase, lowering overall security",
+      "FAR will remain unchanged",
+      "The Crossover Error Rate (CER) will instantly drop to zero"
+    ],
+    "answer": 1,
+    "explanation": "Biometric sensitivity is a trade-off. Lowering the False Rejection Rate (FRR) to make it easier for legitimate users makes the system less sensitive, which increases the False Acceptance Rate (FAR)."
+  },
+  {
+    "id": 10987,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Biometric Metrics",
+    "question": "A biometric system is tuned to reduce the number of false rejects. As a result, what is the expected impact on the False Acceptance Rate (FAR)?",
+    "options": [
+      "FAR will decrease, making the system more secure",
+      "FAR will increase, lowering overall security",
+      "FAR will remain unchanged",
+      "The Crossover Error Rate (CER) will instantly drop to zero"
+    ],
+    "answer": 1,
+    "explanation": "Biometric sensitivity is a trade-off. Lowering the False Rejection Rate (FRR) to make it easier for legitimate users makes the system less sensitive, which increases the False Acceptance Rate (FAR)."
+  },
+  {
+    "id": 10988,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Kerberos Tickets",
+    "question": "In a Kerberos environment, what is the role of the Ticket Granting Ticket (TGT)?",
+    "options": [
+      "It encrypts user passwords locally",
+      "It allows the user to request specific service tickets from the TGS without re-entering credentials",
+      "It acts as a public key certificate signed by the CA",
+      "It secures database traffic between servers"
+    ],
+    "answer": 1,
+    "explanation": "A TGT is issued by the Authentication Service (AS) and presented to the Ticket Granting Service (TGS) to request specific service tickets, preventing the user from needing to re-authenticate repeatedly."
+  },
+  {
+    "id": 10989,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Biometric Metrics",
+    "question": "A biometric system is tuned to reduce the number of false rejects. As a result, what is the expected impact on the False Acceptance Rate (FAR)?",
+    "options": [
+      "FAR will decrease, making the system more secure",
+      "FAR will increase, lowering overall security",
+      "FAR will remain unchanged",
+      "The Crossover Error Rate (CER) will instantly drop to zero"
+    ],
+    "answer": 1,
+    "explanation": "Biometric sensitivity is a trade-off. Lowering the False Rejection Rate (FRR) to make it easier for legitimate users makes the system less sensitive, which increases the False Acceptance Rate (FAR)."
+  },
+  {
+    "id": 10990,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Biometric Metrics",
+    "question": "A biometric system is tuned to reduce the number of false rejects. As a result, what is the expected impact on the False Acceptance Rate (FAR)?",
+    "options": [
+      "FAR will decrease, making the system more secure",
+      "FAR will increase, lowering overall security",
+      "FAR will remain unchanged",
+      "The Crossover Error Rate (CER) will instantly drop to zero"
+    ],
+    "answer": 1,
+    "explanation": "Biometric sensitivity is a trade-off. Lowering the False Rejection Rate (FRR) to make it easier for legitimate users makes the system less sensitive, which increases the False Acceptance Rate (FAR)."
+  },
+  {
+    "id": 10991,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Biometric Metrics",
+    "question": "A biometric system is tuned to reduce the number of false rejects. As a result, what is the expected impact on the False Acceptance Rate (FAR)?",
+    "options": [
+      "FAR will decrease, making the system more secure",
+      "FAR will increase, lowering overall security",
+      "FAR will remain unchanged",
+      "The Crossover Error Rate (CER) will instantly drop to zero"
+    ],
+    "answer": 1,
+    "explanation": "Biometric sensitivity is a trade-off. Lowering the False Rejection Rate (FRR) to make it easier for legitimate users makes the system less sensitive, which increases the False Acceptance Rate (FAR)."
+  },
+  {
+    "id": 10992,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Kerberos Tickets",
+    "question": "In a Kerberos environment, what is the role of the Ticket Granting Ticket (TGT)?",
+    "options": [
+      "It encrypts user passwords locally",
+      "It allows the user to request specific service tickets from the TGS without re-entering credentials",
+      "It acts as a public key certificate signed by the CA",
+      "It secures database traffic between servers"
+    ],
+    "answer": 1,
+    "explanation": "A TGT is issued by the Authentication Service (AS) and presented to the Ticket Granting Service (TGS) to request specific service tickets, preventing the user from needing to re-authenticate repeatedly."
+  },
+  {
+    "id": 10993,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Biometric Metrics",
+    "question": "A biometric system is tuned to reduce the number of false rejects. As a result, what is the expected impact on the False Acceptance Rate (FAR)?",
+    "options": [
+      "FAR will decrease, making the system more secure",
+      "FAR will increase, lowering overall security",
+      "FAR will remain unchanged",
+      "The Crossover Error Rate (CER) will instantly drop to zero"
+    ],
+    "answer": 1,
+    "explanation": "Biometric sensitivity is a trade-off. Lowering the False Rejection Rate (FRR) to make it easier for legitimate users makes the system less sensitive, which increases the False Acceptance Rate (FAR)."
+  },
+  {
+    "id": 10994,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Federation SSO",
+    "question": "An enterprise wants to allow its users to access a partner web app using their existing active directory credentials. What XML-based open standard is best suited for federated identity assertions?",
+    "options": [
+      "OAuth 2.0",
+      "SAML 2.0",
+      "OpenID Connect",
+      "LDAP"
+    ],
+    "answer": 1,
+    "explanation": "SAML 2.0 is an XML-based standard specifically designed for federating identity and sending authentication assertions between Identity Providers (IdPs) and Service Providers (SPs)."
+  },
+  {
+    "id": 10995,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Kerberos Tickets",
+    "question": "In a Kerberos environment, what is the role of the Ticket Granting Ticket (TGT)?",
+    "options": [
+      "It encrypts user passwords locally",
+      "It allows the user to request specific service tickets from the TGS without re-entering credentials",
+      "It acts as a public key certificate signed by the CA",
+      "It secures database traffic between servers"
+    ],
+    "answer": 1,
+    "explanation": "A TGT is issued by the Authentication Service (AS) and presented to the Ticket Granting Service (TGS) to request specific service tickets, preventing the user from needing to re-authenticate repeatedly."
+  },
+  {
+    "id": 10996,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Biometric Metrics",
+    "question": "A biometric system is tuned to reduce the number of false rejects. As a result, what is the expected impact on the False Acceptance Rate (FAR)?",
+    "options": [
+      "FAR will decrease, making the system more secure",
+      "FAR will increase, lowering overall security",
+      "FAR will remain unchanged",
+      "The Crossover Error Rate (CER) will instantly drop to zero"
+    ],
+    "answer": 1,
+    "explanation": "Biometric sensitivity is a trade-off. Lowering the False Rejection Rate (FRR) to make it easier for legitimate users makes the system less sensitive, which increases the False Acceptance Rate (FAR)."
+  },
+  {
+    "id": 10997,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Biometric Metrics",
+    "question": "A biometric system is tuned to reduce the number of false rejects. As a result, what is the expected impact on the False Acceptance Rate (FAR)?",
+    "options": [
+      "FAR will decrease, making the system more secure",
+      "FAR will increase, lowering overall security",
+      "FAR will remain unchanged",
+      "The Crossover Error Rate (CER) will instantly drop to zero"
+    ],
+    "answer": 1,
+    "explanation": "Biometric sensitivity is a trade-off. Lowering the False Rejection Rate (FRR) to make it easier for legitimate users makes the system less sensitive, which increases the False Acceptance Rate (FAR)."
+  },
+  {
+    "id": 10998,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Federation SSO",
+    "question": "An enterprise wants to allow its users to access a partner web app using their existing active directory credentials. What XML-based open standard is best suited for federated identity assertions?",
+    "options": [
+      "OAuth 2.0",
+      "SAML 2.0",
+      "OpenID Connect",
+      "LDAP"
+    ],
+    "answer": 1,
+    "explanation": "SAML 2.0 is an XML-based standard specifically designed for federating identity and sending authentication assertions between Identity Providers (IdPs) and Service Providers (SPs)."
+  },
+  {
+    "id": 10999,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Biometric Metrics",
+    "question": "A biometric system is tuned to reduce the number of false rejects. As a result, what is the expected impact on the False Acceptance Rate (FAR)?",
+    "options": [
+      "FAR will decrease, making the system more secure",
+      "FAR will increase, lowering overall security",
+      "FAR will remain unchanged",
+      "The Crossover Error Rate (CER) will instantly drop to zero"
+    ],
+    "answer": 1,
+    "explanation": "Biometric sensitivity is a trade-off. Lowering the False Rejection Rate (FRR) to make it easier for legitimate users makes the system less sensitive, which increases the False Acceptance Rate (FAR)."
+  },
+  {
+    "id": 11000,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Federation SSO",
+    "question": "An enterprise wants to allow its users to access a partner web app using their existing active directory credentials. What XML-based open standard is best suited for federated identity assertions?",
+    "options": [
+      "OAuth 2.0",
+      "SAML 2.0",
+      "OpenID Connect",
+      "LDAP"
+    ],
+    "answer": 1,
+    "explanation": "SAML 2.0 is an XML-based standard specifically designed for federating identity and sending authentication assertions between Identity Providers (IdPs) and Service Providers (SPs)."
+  },
+  {
+    "id": 11001,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Kerberos Tickets",
+    "question": "In a Kerberos environment, what is the role of the Ticket Granting Ticket (TGT)?",
+    "options": [
+      "It encrypts user passwords locally",
+      "It allows the user to request specific service tickets from the TGS without re-entering credentials",
+      "It acts as a public key certificate signed by the CA",
+      "It secures database traffic between servers"
+    ],
+    "answer": 1,
+    "explanation": "A TGT is issued by the Authentication Service (AS) and presented to the Ticket Granting Service (TGS) to request specific service tickets, preventing the user from needing to re-authenticate repeatedly."
+  },
+  {
+    "id": 11002,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Biometric Metrics",
+    "question": "A biometric system is tuned to reduce the number of false rejects. As a result, what is the expected impact on the False Acceptance Rate (FAR)?",
+    "options": [
+      "FAR will decrease, making the system more secure",
+      "FAR will increase, lowering overall security",
+      "FAR will remain unchanged",
+      "The Crossover Error Rate (CER) will instantly drop to zero"
+    ],
+    "answer": 1,
+    "explanation": "Biometric sensitivity is a trade-off. Lowering the False Rejection Rate (FRR) to make it easier for legitimate users makes the system less sensitive, which increases the False Acceptance Rate (FAR)."
+  },
+  {
+    "id": 11003,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Biometric Metrics",
+    "question": "A biometric system is tuned to reduce the number of false rejects. As a result, what is the expected impact on the False Acceptance Rate (FAR)?",
+    "options": [
+      "FAR will decrease, making the system more secure",
+      "FAR will increase, lowering overall security",
+      "FAR will remain unchanged",
+      "The Crossover Error Rate (CER) will instantly drop to zero"
+    ],
+    "answer": 1,
+    "explanation": "Biometric sensitivity is a trade-off. Lowering the False Rejection Rate (FRR) to make it easier for legitimate users makes the system less sensitive, which increases the False Acceptance Rate (FAR)."
+  },
+  {
+    "id": 11004,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Biometric Metrics",
+    "question": "A biometric system is tuned to reduce the number of false rejects. As a result, what is the expected impact on the False Acceptance Rate (FAR)?",
+    "options": [
+      "FAR will decrease, making the system more secure",
+      "FAR will increase, lowering overall security",
+      "FAR will remain unchanged",
+      "The Crossover Error Rate (CER) will instantly drop to zero"
+    ],
+    "answer": 1,
+    "explanation": "Biometric sensitivity is a trade-off. Lowering the False Rejection Rate (FRR) to make it easier for legitimate users makes the system less sensitive, which increases the False Acceptance Rate (FAR)."
+  },
+  {
+    "id": 11005,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Federation SSO",
+    "question": "An enterprise wants to allow its users to access a partner web app using their existing active directory credentials. What XML-based open standard is best suited for federated identity assertions?",
+    "options": [
+      "OAuth 2.0",
+      "SAML 2.0",
+      "OpenID Connect",
+      "LDAP"
+    ],
+    "answer": 1,
+    "explanation": "SAML 2.0 is an XML-based standard specifically designed for federating identity and sending authentication assertions between Identity Providers (IdPs) and Service Providers (SPs)."
+  },
+  {
+    "id": 11006,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Biometric Metrics",
+    "question": "A biometric system is tuned to reduce the number of false rejects. As a result, what is the expected impact on the False Acceptance Rate (FAR)?",
+    "options": [
+      "FAR will decrease, making the system more secure",
+      "FAR will increase, lowering overall security",
+      "FAR will remain unchanged",
+      "The Crossover Error Rate (CER) will instantly drop to zero"
+    ],
+    "answer": 1,
+    "explanation": "Biometric sensitivity is a trade-off. Lowering the False Rejection Rate (FRR) to make it easier for legitimate users makes the system less sensitive, which increases the False Acceptance Rate (FAR)."
+  },
+  {
+    "id": 11007,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Kerberos Tickets",
+    "question": "In a Kerberos environment, what is the role of the Ticket Granting Ticket (TGT)?",
+    "options": [
+      "It encrypts user passwords locally",
+      "It allows the user to request specific service tickets from the TGS without re-entering credentials",
+      "It acts as a public key certificate signed by the CA",
+      "It secures database traffic between servers"
+    ],
+    "answer": 1,
+    "explanation": "A TGT is issued by the Authentication Service (AS) and presented to the Ticket Granting Service (TGS) to request specific service tickets, preventing the user from needing to re-authenticate repeatedly."
+  },
+  {
+    "id": 11008,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Kerberos Tickets",
+    "question": "In a Kerberos environment, what is the role of the Ticket Granting Ticket (TGT)?",
+    "options": [
+      "It encrypts user passwords locally",
+      "It allows the user to request specific service tickets from the TGS without re-entering credentials",
+      "It acts as a public key certificate signed by the CA",
+      "It secures database traffic between servers"
+    ],
+    "answer": 1,
+    "explanation": "A TGT is issued by the Authentication Service (AS) and presented to the Ticket Granting Service (TGS) to request specific service tickets, preventing the user from needing to re-authenticate repeatedly."
+  },
+  {
+    "id": 11009,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Federation SSO",
+    "question": "An enterprise wants to allow its users to access a partner web app using their existing active directory credentials. What XML-based open standard is best suited for federated identity assertions?",
+    "options": [
+      "OAuth 2.0",
+      "SAML 2.0",
+      "OpenID Connect",
+      "LDAP"
+    ],
+    "answer": 1,
+    "explanation": "SAML 2.0 is an XML-based standard specifically designed for federating identity and sending authentication assertions between Identity Providers (IdPs) and Service Providers (SPs)."
+  },
+  {
+    "id": 11010,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Biometric Metrics",
+    "question": "A biometric system is tuned to reduce the number of false rejects. As a result, what is the expected impact on the False Acceptance Rate (FAR)?",
+    "options": [
+      "FAR will decrease, making the system more secure",
+      "FAR will increase, lowering overall security",
+      "FAR will remain unchanged",
+      "The Crossover Error Rate (CER) will instantly drop to zero"
+    ],
+    "answer": 1,
+    "explanation": "Biometric sensitivity is a trade-off. Lowering the False Rejection Rate (FRR) to make it easier for legitimate users makes the system less sensitive, which increases the False Acceptance Rate (FAR)."
+  },
+  {
+    "id": 11011,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Kerberos Tickets",
+    "question": "In a Kerberos environment, what is the role of the Ticket Granting Ticket (TGT)?",
+    "options": [
+      "It encrypts user passwords locally",
+      "It allows the user to request specific service tickets from the TGS without re-entering credentials",
+      "It acts as a public key certificate signed by the CA",
+      "It secures database traffic between servers"
+    ],
+    "answer": 1,
+    "explanation": "A TGT is issued by the Authentication Service (AS) and presented to the Ticket Granting Service (TGS) to request specific service tickets, preventing the user from needing to re-authenticate repeatedly."
+  },
+  {
+    "id": 11012,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Biometric Metrics",
+    "question": "A biometric system is tuned to reduce the number of false rejects. As a result, what is the expected impact on the False Acceptance Rate (FAR)?",
+    "options": [
+      "FAR will decrease, making the system more secure",
+      "FAR will increase, lowering overall security",
+      "FAR will remain unchanged",
+      "The Crossover Error Rate (CER) will instantly drop to zero"
+    ],
+    "answer": 1,
+    "explanation": "Biometric sensitivity is a trade-off. Lowering the False Rejection Rate (FRR) to make it easier for legitimate users makes the system less sensitive, which increases the False Acceptance Rate (FAR)."
+  },
+  {
+    "id": 11013,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Federation SSO",
+    "question": "An enterprise wants to allow its users to access a partner web app using their existing active directory credentials. What XML-based open standard is best suited for federated identity assertions?",
+    "options": [
+      "OAuth 2.0",
+      "SAML 2.0",
+      "OpenID Connect",
+      "LDAP"
+    ],
+    "answer": 1,
+    "explanation": "SAML 2.0 is an XML-based standard specifically designed for federating identity and sending authentication assertions between Identity Providers (IdPs) and Service Providers (SPs)."
+  },
+  {
+    "id": 11014,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Federation SSO",
+    "question": "An enterprise wants to allow its users to access a partner web app using their existing active directory credentials. What XML-based open standard is best suited for federated identity assertions?",
+    "options": [
+      "OAuth 2.0",
+      "SAML 2.0",
+      "OpenID Connect",
+      "LDAP"
+    ],
+    "answer": 1,
+    "explanation": "SAML 2.0 is an XML-based standard specifically designed for federating identity and sending authentication assertions between Identity Providers (IdPs) and Service Providers (SPs)."
+  },
+  {
+    "id": 11015,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Federation SSO",
+    "question": "An enterprise wants to allow its users to access a partner web app using their existing active directory credentials. What XML-based open standard is best suited for federated identity assertions?",
+    "options": [
+      "OAuth 2.0",
+      "SAML 2.0",
+      "OpenID Connect",
+      "LDAP"
+    ],
+    "answer": 1,
+    "explanation": "SAML 2.0 is an XML-based standard specifically designed for federating identity and sending authentication assertions between Identity Providers (IdPs) and Service Providers (SPs)."
+  },
+  {
+    "id": 11016,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Federation SSO",
+    "question": "An enterprise wants to allow its users to access a partner web app using their existing active directory credentials. What XML-based open standard is best suited for federated identity assertions?",
+    "options": [
+      "OAuth 2.0",
+      "SAML 2.0",
+      "OpenID Connect",
+      "LDAP"
+    ],
+    "answer": 1,
+    "explanation": "SAML 2.0 is an XML-based standard specifically designed for federating identity and sending authentication assertions between Identity Providers (IdPs) and Service Providers (SPs)."
+  },
+  {
+    "id": 11017,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Kerberos Tickets",
+    "question": "In a Kerberos environment, what is the role of the Ticket Granting Ticket (TGT)?",
+    "options": [
+      "It encrypts user passwords locally",
+      "It allows the user to request specific service tickets from the TGS without re-entering credentials",
+      "It acts as a public key certificate signed by the CA",
+      "It secures database traffic between servers"
+    ],
+    "answer": 1,
+    "explanation": "A TGT is issued by the Authentication Service (AS) and presented to the Ticket Granting Service (TGS) to request specific service tickets, preventing the user from needing to re-authenticate repeatedly."
+  },
+  {
+    "id": 11018,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Federation SSO",
+    "question": "An enterprise wants to allow its users to access a partner web app using their existing active directory credentials. What XML-based open standard is best suited for federated identity assertions?",
+    "options": [
+      "OAuth 2.0",
+      "SAML 2.0",
+      "OpenID Connect",
+      "LDAP"
+    ],
+    "answer": 1,
+    "explanation": "SAML 2.0 is an XML-based standard specifically designed for federating identity and sending authentication assertions between Identity Providers (IdPs) and Service Providers (SPs)."
+  },
+  {
+    "id": 11019,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Federation SSO",
+    "question": "An enterprise wants to allow its users to access a partner web app using their existing active directory credentials. What XML-based open standard is best suited for federated identity assertions?",
+    "options": [
+      "OAuth 2.0",
+      "SAML 2.0",
+      "OpenID Connect",
+      "LDAP"
+    ],
+    "answer": 1,
+    "explanation": "SAML 2.0 is an XML-based standard specifically designed for federating identity and sending authentication assertions between Identity Providers (IdPs) and Service Providers (SPs)."
+  },
+  {
+    "id": 11020,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Kerberos Tickets",
+    "question": "In a Kerberos environment, what is the role of the Ticket Granting Ticket (TGT)?",
+    "options": [
+      "It encrypts user passwords locally",
+      "It allows the user to request specific service tickets from the TGS without re-entering credentials",
+      "It acts as a public key certificate signed by the CA",
+      "It secures database traffic between servers"
+    ],
+    "answer": 1,
+    "explanation": "A TGT is issued by the Authentication Service (AS) and presented to the Ticket Granting Service (TGS) to request specific service tickets, preventing the user from needing to re-authenticate repeatedly."
+  },
+  {
+    "id": 11021,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Biometric Metrics",
+    "question": "A biometric system is tuned to reduce the number of false rejects. As a result, what is the expected impact on the False Acceptance Rate (FAR)?",
+    "options": [
+      "FAR will decrease, making the system more secure",
+      "FAR will increase, lowering overall security",
+      "FAR will remain unchanged",
+      "The Crossover Error Rate (CER) will instantly drop to zero"
+    ],
+    "answer": 1,
+    "explanation": "Biometric sensitivity is a trade-off. Lowering the False Rejection Rate (FRR) to make it easier for legitimate users makes the system less sensitive, which increases the False Acceptance Rate (FAR)."
+  },
+  {
+    "id": 11022,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Kerberos Tickets",
+    "question": "In a Kerberos environment, what is the role of the Ticket Granting Ticket (TGT)?",
+    "options": [
+      "It encrypts user passwords locally",
+      "It allows the user to request specific service tickets from the TGS without re-entering credentials",
+      "It acts as a public key certificate signed by the CA",
+      "It secures database traffic between servers"
+    ],
+    "answer": 1,
+    "explanation": "A TGT is issued by the Authentication Service (AS) and presented to the Ticket Granting Service (TGS) to request specific service tickets, preventing the user from needing to re-authenticate repeatedly."
+  },
+  {
+    "id": 11023,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Federation SSO",
+    "question": "An enterprise wants to allow its users to access a partner web app using their existing active directory credentials. What XML-based open standard is best suited for federated identity assertions?",
+    "options": [
+      "OAuth 2.0",
+      "SAML 2.0",
+      "OpenID Connect",
+      "LDAP"
+    ],
+    "answer": 1,
+    "explanation": "SAML 2.0 is an XML-based standard specifically designed for federating identity and sending authentication assertions between Identity Providers (IdPs) and Service Providers (SPs)."
+  },
+  {
+    "id": 11024,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Federation SSO",
+    "question": "An enterprise wants to allow its users to access a partner web app using their existing active directory credentials. What XML-based open standard is best suited for federated identity assertions?",
+    "options": [
+      "OAuth 2.0",
+      "SAML 2.0",
+      "OpenID Connect",
+      "LDAP"
+    ],
+    "answer": 1,
+    "explanation": "SAML 2.0 is an XML-based standard specifically designed for federating identity and sending authentication assertions between Identity Providers (IdPs) and Service Providers (SPs)."
+  },
+  {
+    "id": 11025,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Federation SSO",
+    "question": "An enterprise wants to allow its users to access a partner web app using their existing active directory credentials. What XML-based open standard is best suited for federated identity assertions?",
+    "options": [
+      "OAuth 2.0",
+      "SAML 2.0",
+      "OpenID Connect",
+      "LDAP"
+    ],
+    "answer": 1,
+    "explanation": "SAML 2.0 is an XML-based standard specifically designed for federating identity and sending authentication assertions between Identity Providers (IdPs) and Service Providers (SPs)."
+  },
+  {
+    "id": 11026,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Biometric Metrics",
+    "question": "A biometric system is tuned to reduce the number of false rejects. As a result, what is the expected impact on the False Acceptance Rate (FAR)?",
+    "options": [
+      "FAR will decrease, making the system more secure",
+      "FAR will increase, lowering overall security",
+      "FAR will remain unchanged",
+      "The Crossover Error Rate (CER) will instantly drop to zero"
+    ],
+    "answer": 1,
+    "explanation": "Biometric sensitivity is a trade-off. Lowering the False Rejection Rate (FRR) to make it easier for legitimate users makes the system less sensitive, which increases the False Acceptance Rate (FAR)."
+  },
+  {
+    "id": 11027,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Biometric Metrics",
+    "question": "A biometric system is tuned to reduce the number of false rejects. As a result, what is the expected impact on the False Acceptance Rate (FAR)?",
+    "options": [
+      "FAR will decrease, making the system more secure",
+      "FAR will increase, lowering overall security",
+      "FAR will remain unchanged",
+      "The Crossover Error Rate (CER) will instantly drop to zero"
+    ],
+    "answer": 1,
+    "explanation": "Biometric sensitivity is a trade-off. Lowering the False Rejection Rate (FRR) to make it easier for legitimate users makes the system less sensitive, which increases the False Acceptance Rate (FAR)."
+  },
+  {
+    "id": 11028,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Kerberos Tickets",
+    "question": "In a Kerberos environment, what is the role of the Ticket Granting Ticket (TGT)?",
+    "options": [
+      "It encrypts user passwords locally",
+      "It allows the user to request specific service tickets from the TGS without re-entering credentials",
+      "It acts as a public key certificate signed by the CA",
+      "It secures database traffic between servers"
+    ],
+    "answer": 1,
+    "explanation": "A TGT is issued by the Authentication Service (AS) and presented to the Ticket Granting Service (TGS) to request specific service tickets, preventing the user from needing to re-authenticate repeatedly."
+  },
+  {
+    "id": 11029,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Federation SSO",
+    "question": "An enterprise wants to allow its users to access a partner web app using their existing active directory credentials. What XML-based open standard is best suited for federated identity assertions?",
+    "options": [
+      "OAuth 2.0",
+      "SAML 2.0",
+      "OpenID Connect",
+      "LDAP"
+    ],
+    "answer": 1,
+    "explanation": "SAML 2.0 is an XML-based standard specifically designed for federating identity and sending authentication assertions between Identity Providers (IdPs) and Service Providers (SPs)."
+  },
+  {
+    "id": 11030,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Kerberos Tickets",
+    "question": "In a Kerberos environment, what is the role of the Ticket Granting Ticket (TGT)?",
+    "options": [
+      "It encrypts user passwords locally",
+      "It allows the user to request specific service tickets from the TGS without re-entering credentials",
+      "It acts as a public key certificate signed by the CA",
+      "It secures database traffic between servers"
+    ],
+    "answer": 1,
+    "explanation": "A TGT is issued by the Authentication Service (AS) and presented to the Ticket Granting Service (TGS) to request specific service tickets, preventing the user from needing to re-authenticate repeatedly."
+  },
+  {
+    "id": 11031,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Federation SSO",
+    "question": "An enterprise wants to allow its users to access a partner web app using their existing active directory credentials. What XML-based open standard is best suited for federated identity assertions?",
+    "options": [
+      "OAuth 2.0",
+      "SAML 2.0",
+      "OpenID Connect",
+      "LDAP"
+    ],
+    "answer": 1,
+    "explanation": "SAML 2.0 is an XML-based standard specifically designed for federating identity and sending authentication assertions between Identity Providers (IdPs) and Service Providers (SPs)."
+  },
+  {
+    "id": 11032,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Kerberos Tickets",
+    "question": "In a Kerberos environment, what is the role of the Ticket Granting Ticket (TGT)?",
+    "options": [
+      "It encrypts user passwords locally",
+      "It allows the user to request specific service tickets from the TGS without re-entering credentials",
+      "It acts as a public key certificate signed by the CA",
+      "It secures database traffic between servers"
+    ],
+    "answer": 1,
+    "explanation": "A TGT is issued by the Authentication Service (AS) and presented to the Ticket Granting Service (TGS) to request specific service tickets, preventing the user from needing to re-authenticate repeatedly."
+  },
+  {
+    "id": 11033,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Federation SSO",
+    "question": "An enterprise wants to allow its users to access a partner web app using their existing active directory credentials. What XML-based open standard is best suited for federated identity assertions?",
+    "options": [
+      "OAuth 2.0",
+      "SAML 2.0",
+      "OpenID Connect",
+      "LDAP"
+    ],
+    "answer": 1,
+    "explanation": "SAML 2.0 is an XML-based standard specifically designed for federating identity and sending authentication assertions between Identity Providers (IdPs) and Service Providers (SPs)."
+  },
+  {
+    "id": 11034,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Kerberos Tickets",
+    "question": "In a Kerberos environment, what is the role of the Ticket Granting Ticket (TGT)?",
+    "options": [
+      "It encrypts user passwords locally",
+      "It allows the user to request specific service tickets from the TGS without re-entering credentials",
+      "It acts as a public key certificate signed by the CA",
+      "It secures database traffic between servers"
+    ],
+    "answer": 1,
+    "explanation": "A TGT is issued by the Authentication Service (AS) and presented to the Ticket Granting Service (TGS) to request specific service tickets, preventing the user from needing to re-authenticate repeatedly."
+  },
+  {
+    "id": 11035,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Biometric Metrics",
+    "question": "A biometric system is tuned to reduce the number of false rejects. As a result, what is the expected impact on the False Acceptance Rate (FAR)?",
+    "options": [
+      "FAR will decrease, making the system more secure",
+      "FAR will increase, lowering overall security",
+      "FAR will remain unchanged",
+      "The Crossover Error Rate (CER) will instantly drop to zero"
+    ],
+    "answer": 1,
+    "explanation": "Biometric sensitivity is a trade-off. Lowering the False Rejection Rate (FRR) to make it easier for legitimate users makes the system less sensitive, which increases the False Acceptance Rate (FAR)."
+  },
+  {
+    "id": 11036,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Kerberos Tickets",
+    "question": "In a Kerberos environment, what is the role of the Ticket Granting Ticket (TGT)?",
+    "options": [
+      "It encrypts user passwords locally",
+      "It allows the user to request specific service tickets from the TGS without re-entering credentials",
+      "It acts as a public key certificate signed by the CA",
+      "It secures database traffic between servers"
+    ],
+    "answer": 1,
+    "explanation": "A TGT is issued by the Authentication Service (AS) and presented to the Ticket Granting Service (TGS) to request specific service tickets, preventing the user from needing to re-authenticate repeatedly."
+  },
+  {
+    "id": 11037,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Kerberos Tickets",
+    "question": "In a Kerberos environment, what is the role of the Ticket Granting Ticket (TGT)?",
+    "options": [
+      "It encrypts user passwords locally",
+      "It allows the user to request specific service tickets from the TGS without re-entering credentials",
+      "It acts as a public key certificate signed by the CA",
+      "It secures database traffic between servers"
+    ],
+    "answer": 1,
+    "explanation": "A TGT is issued by the Authentication Service (AS) and presented to the Ticket Granting Service (TGS) to request specific service tickets, preventing the user from needing to re-authenticate repeatedly."
+  },
+  {
+    "id": 11038,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Biometric Metrics",
+    "question": "A biometric system is tuned to reduce the number of false rejects. As a result, what is the expected impact on the False Acceptance Rate (FAR)?",
+    "options": [
+      "FAR will decrease, making the system more secure",
+      "FAR will increase, lowering overall security",
+      "FAR will remain unchanged",
+      "The Crossover Error Rate (CER) will instantly drop to zero"
+    ],
+    "answer": 1,
+    "explanation": "Biometric sensitivity is a trade-off. Lowering the False Rejection Rate (FRR) to make it easier for legitimate users makes the system less sensitive, which increases the False Acceptance Rate (FAR)."
+  },
+  {
+    "id": 11039,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Biometric Metrics",
+    "question": "A biometric system is tuned to reduce the number of false rejects. As a result, what is the expected impact on the False Acceptance Rate (FAR)?",
+    "options": [
+      "FAR will decrease, making the system more secure",
+      "FAR will increase, lowering overall security",
+      "FAR will remain unchanged",
+      "The Crossover Error Rate (CER) will instantly drop to zero"
+    ],
+    "answer": 1,
+    "explanation": "Biometric sensitivity is a trade-off. Lowering the False Rejection Rate (FRR) to make it easier for legitimate users makes the system less sensitive, which increases the False Acceptance Rate (FAR)."
+  },
+  {
+    "id": 11040,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Federation SSO",
+    "question": "An enterprise wants to allow its users to access a partner web app using their existing active directory credentials. What XML-based open standard is best suited for federated identity assertions?",
+    "options": [
+      "OAuth 2.0",
+      "SAML 2.0",
+      "OpenID Connect",
+      "LDAP"
+    ],
+    "answer": 1,
+    "explanation": "SAML 2.0 is an XML-based standard specifically designed for federating identity and sending authentication assertions between Identity Providers (IdPs) and Service Providers (SPs)."
+  },
+  {
+    "id": 11041,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Biometric Metrics",
+    "question": "A biometric system is tuned to reduce the number of false rejects. As a result, what is the expected impact on the False Acceptance Rate (FAR)?",
+    "options": [
+      "FAR will decrease, making the system more secure",
+      "FAR will increase, lowering overall security",
+      "FAR will remain unchanged",
+      "The Crossover Error Rate (CER) will instantly drop to zero"
+    ],
+    "answer": 1,
+    "explanation": "Biometric sensitivity is a trade-off. Lowering the False Rejection Rate (FRR) to make it easier for legitimate users makes the system less sensitive, which increases the False Acceptance Rate (FAR)."
+  },
+  {
+    "id": 11042,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Biometric Metrics",
+    "question": "A biometric system is tuned to reduce the number of false rejects. As a result, what is the expected impact on the False Acceptance Rate (FAR)?",
+    "options": [
+      "FAR will decrease, making the system more secure",
+      "FAR will increase, lowering overall security",
+      "FAR will remain unchanged",
+      "The Crossover Error Rate (CER) will instantly drop to zero"
+    ],
+    "answer": 1,
+    "explanation": "Biometric sensitivity is a trade-off. Lowering the False Rejection Rate (FRR) to make it easier for legitimate users makes the system less sensitive, which increases the False Acceptance Rate (FAR)."
+  },
+  {
+    "id": 11043,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Federation SSO",
+    "question": "An enterprise wants to allow its users to access a partner web app using their existing active directory credentials. What XML-based open standard is best suited for federated identity assertions?",
+    "options": [
+      "OAuth 2.0",
+      "SAML 2.0",
+      "OpenID Connect",
+      "LDAP"
+    ],
+    "answer": 1,
+    "explanation": "SAML 2.0 is an XML-based standard specifically designed for federating identity and sending authentication assertions between Identity Providers (IdPs) and Service Providers (SPs)."
+  },
+  {
+    "id": 11044,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Kerberos Tickets",
+    "question": "In a Kerberos environment, what is the role of the Ticket Granting Ticket (TGT)?",
+    "options": [
+      "It encrypts user passwords locally",
+      "It allows the user to request specific service tickets from the TGS without re-entering credentials",
+      "It acts as a public key certificate signed by the CA",
+      "It secures database traffic between servers"
+    ],
+    "answer": 1,
+    "explanation": "A TGT is issued by the Authentication Service (AS) and presented to the Ticket Granting Service (TGS) to request specific service tickets, preventing the user from needing to re-authenticate repeatedly."
+  },
+  {
+    "id": 11045,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Biometric Metrics",
+    "question": "A biometric system is tuned to reduce the number of false rejects. As a result, what is the expected impact on the False Acceptance Rate (FAR)?",
+    "options": [
+      "FAR will decrease, making the system more secure",
+      "FAR will increase, lowering overall security",
+      "FAR will remain unchanged",
+      "The Crossover Error Rate (CER) will instantly drop to zero"
+    ],
+    "answer": 1,
+    "explanation": "Biometric sensitivity is a trade-off. Lowering the False Rejection Rate (FRR) to make it easier for legitimate users makes the system less sensitive, which increases the False Acceptance Rate (FAR)."
+  },
+  {
+    "id": 11046,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Kerberos Tickets",
+    "question": "In a Kerberos environment, what is the role of the Ticket Granting Ticket (TGT)?",
+    "options": [
+      "It encrypts user passwords locally",
+      "It allows the user to request specific service tickets from the TGS without re-entering credentials",
+      "It acts as a public key certificate signed by the CA",
+      "It secures database traffic between servers"
+    ],
+    "answer": 1,
+    "explanation": "A TGT is issued by the Authentication Service (AS) and presented to the Ticket Granting Service (TGS) to request specific service tickets, preventing the user from needing to re-authenticate repeatedly."
+  },
+  {
+    "id": 11047,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Federation SSO",
+    "question": "An enterprise wants to allow its users to access a partner web app using their existing active directory credentials. What XML-based open standard is best suited for federated identity assertions?",
+    "options": [
+      "OAuth 2.0",
+      "SAML 2.0",
+      "OpenID Connect",
+      "LDAP"
+    ],
+    "answer": 1,
+    "explanation": "SAML 2.0 is an XML-based standard specifically designed for federating identity and sending authentication assertions between Identity Providers (IdPs) and Service Providers (SPs)."
+  },
+  {
+    "id": 11048,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Federation SSO",
+    "question": "An enterprise wants to allow its users to access a partner web app using their existing active directory credentials. What XML-based open standard is best suited for federated identity assertions?",
+    "options": [
+      "OAuth 2.0",
+      "SAML 2.0",
+      "OpenID Connect",
+      "LDAP"
+    ],
+    "answer": 1,
+    "explanation": "SAML 2.0 is an XML-based standard specifically designed for federating identity and sending authentication assertions between Identity Providers (IdPs) and Service Providers (SPs)."
+  },
+  {
+    "id": 11049,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Kerberos Tickets",
+    "question": "In a Kerberos environment, what is the role of the Ticket Granting Ticket (TGT)?",
+    "options": [
+      "It encrypts user passwords locally",
+      "It allows the user to request specific service tickets from the TGS without re-entering credentials",
+      "It acts as a public key certificate signed by the CA",
+      "It secures database traffic between servers"
+    ],
+    "answer": 1,
+    "explanation": "A TGT is issued by the Authentication Service (AS) and presented to the Ticket Granting Service (TGS) to request specific service tickets, preventing the user from needing to re-authenticate repeatedly."
+  },
+  {
+    "id": 11050,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Kerberos Tickets",
+    "question": "In a Kerberos environment, what is the role of the Ticket Granting Ticket (TGT)?",
+    "options": [
+      "It encrypts user passwords locally",
+      "It allows the user to request specific service tickets from the TGS without re-entering credentials",
+      "It acts as a public key certificate signed by the CA",
+      "It secures database traffic between servers"
+    ],
+    "answer": 1,
+    "explanation": "A TGT is issued by the Authentication Service (AS) and presented to the Ticket Granting Service (TGS) to request specific service tickets, preventing the user from needing to re-authenticate repeatedly."
+  },
+  {
+    "id": 11051,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Kerberos Tickets",
+    "question": "In a Kerberos environment, what is the role of the Ticket Granting Ticket (TGT)?",
+    "options": [
+      "It encrypts user passwords locally",
+      "It allows the user to request specific service tickets from the TGS without re-entering credentials",
+      "It acts as a public key certificate signed by the CA",
+      "It secures database traffic between servers"
+    ],
+    "answer": 1,
+    "explanation": "A TGT is issued by the Authentication Service (AS) and presented to the Ticket Granting Service (TGS) to request specific service tickets, preventing the user from needing to re-authenticate repeatedly."
+  },
+  {
+    "id": 11052,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Biometric Metrics",
+    "question": "A biometric system is tuned to reduce the number of false rejects. As a result, what is the expected impact on the False Acceptance Rate (FAR)?",
+    "options": [
+      "FAR will decrease, making the system more secure",
+      "FAR will increase, lowering overall security",
+      "FAR will remain unchanged",
+      "The Crossover Error Rate (CER) will instantly drop to zero"
+    ],
+    "answer": 1,
+    "explanation": "Biometric sensitivity is a trade-off. Lowering the False Rejection Rate (FRR) to make it easier for legitimate users makes the system less sensitive, which increases the False Acceptance Rate (FAR)."
+  },
+  {
+    "id": 11053,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Biometric Metrics",
+    "question": "A biometric system is tuned to reduce the number of false rejects. As a result, what is the expected impact on the False Acceptance Rate (FAR)?",
+    "options": [
+      "FAR will decrease, making the system more secure",
+      "FAR will increase, lowering overall security",
+      "FAR will remain unchanged",
+      "The Crossover Error Rate (CER) will instantly drop to zero"
+    ],
+    "answer": 1,
+    "explanation": "Biometric sensitivity is a trade-off. Lowering the False Rejection Rate (FRR) to make it easier for legitimate users makes the system less sensitive, which increases the False Acceptance Rate (FAR)."
+  },
+  {
+    "id": 11054,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Kerberos Tickets",
+    "question": "In a Kerberos environment, what is the role of the Ticket Granting Ticket (TGT)?",
+    "options": [
+      "It encrypts user passwords locally",
+      "It allows the user to request specific service tickets from the TGS without re-entering credentials",
+      "It acts as a public key certificate signed by the CA",
+      "It secures database traffic between servers"
+    ],
+    "answer": 1,
+    "explanation": "A TGT is issued by the Authentication Service (AS) and presented to the Ticket Granting Service (TGS) to request specific service tickets, preventing the user from needing to re-authenticate repeatedly."
+  },
+  {
+    "id": 11055,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Biometric Metrics",
+    "question": "A biometric system is tuned to reduce the number of false rejects. As a result, what is the expected impact on the False Acceptance Rate (FAR)?",
+    "options": [
+      "FAR will decrease, making the system more secure",
+      "FAR will increase, lowering overall security",
+      "FAR will remain unchanged",
+      "The Crossover Error Rate (CER) will instantly drop to zero"
+    ],
+    "answer": 1,
+    "explanation": "Biometric sensitivity is a trade-off. Lowering the False Rejection Rate (FRR) to make it easier for legitimate users makes the system less sensitive, which increases the False Acceptance Rate (FAR)."
+  },
+  {
+    "id": 11056,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Kerberos Tickets",
+    "question": "In a Kerberos environment, what is the role of the Ticket Granting Ticket (TGT)?",
+    "options": [
+      "It encrypts user passwords locally",
+      "It allows the user to request specific service tickets from the TGS without re-entering credentials",
+      "It acts as a public key certificate signed by the CA",
+      "It secures database traffic between servers"
+    ],
+    "answer": 1,
+    "explanation": "A TGT is issued by the Authentication Service (AS) and presented to the Ticket Granting Service (TGS) to request specific service tickets, preventing the user from needing to re-authenticate repeatedly."
+  },
+  {
+    "id": 11057,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Kerberos Tickets",
+    "question": "In a Kerberos environment, what is the role of the Ticket Granting Ticket (TGT)?",
+    "options": [
+      "It encrypts user passwords locally",
+      "It allows the user to request specific service tickets from the TGS without re-entering credentials",
+      "It acts as a public key certificate signed by the CA",
+      "It secures database traffic between servers"
+    ],
+    "answer": 1,
+    "explanation": "A TGT is issued by the Authentication Service (AS) and presented to the Ticket Granting Service (TGS) to request specific service tickets, preventing the user from needing to re-authenticate repeatedly."
+  },
+  {
+    "id": 11058,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Federation SSO",
+    "question": "An enterprise wants to allow its users to access a partner web app using their existing active directory credentials. What XML-based open standard is best suited for federated identity assertions?",
+    "options": [
+      "OAuth 2.0",
+      "SAML 2.0",
+      "OpenID Connect",
+      "LDAP"
+    ],
+    "answer": 1,
+    "explanation": "SAML 2.0 is an XML-based standard specifically designed for federating identity and sending authentication assertions between Identity Providers (IdPs) and Service Providers (SPs)."
+  },
+  {
+    "id": 11059,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Federation SSO",
+    "question": "An enterprise wants to allow its users to access a partner web app using their existing active directory credentials. What XML-based open standard is best suited for federated identity assertions?",
+    "options": [
+      "OAuth 2.0",
+      "SAML 2.0",
+      "OpenID Connect",
+      "LDAP"
+    ],
+    "answer": 1,
+    "explanation": "SAML 2.0 is an XML-based standard specifically designed for federating identity and sending authentication assertions between Identity Providers (IdPs) and Service Providers (SPs)."
+  },
+  {
+    "id": 11060,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Federation SSO",
+    "question": "An enterprise wants to allow its users to access a partner web app using their existing active directory credentials. What XML-based open standard is best suited for federated identity assertions?",
+    "options": [
+      "OAuth 2.0",
+      "SAML 2.0",
+      "OpenID Connect",
+      "LDAP"
+    ],
+    "answer": 1,
+    "explanation": "SAML 2.0 is an XML-based standard specifically designed for federating identity and sending authentication assertions between Identity Providers (IdPs) and Service Providers (SPs)."
+  },
+  {
+    "id": 11061,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Federation SSO",
+    "question": "An enterprise wants to allow its users to access a partner web app using their existing active directory credentials. What XML-based open standard is best suited for federated identity assertions?",
+    "options": [
+      "OAuth 2.0",
+      "SAML 2.0",
+      "OpenID Connect",
+      "LDAP"
+    ],
+    "answer": 1,
+    "explanation": "SAML 2.0 is an XML-based standard specifically designed for federating identity and sending authentication assertions between Identity Providers (IdPs) and Service Providers (SPs)."
+  },
+  {
+    "id": 11062,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Kerberos Tickets",
+    "question": "In a Kerberos environment, what is the role of the Ticket Granting Ticket (TGT)?",
+    "options": [
+      "It encrypts user passwords locally",
+      "It allows the user to request specific service tickets from the TGS without re-entering credentials",
+      "It acts as a public key certificate signed by the CA",
+      "It secures database traffic between servers"
+    ],
+    "answer": 1,
+    "explanation": "A TGT is issued by the Authentication Service (AS) and presented to the Ticket Granting Service (TGS) to request specific service tickets, preventing the user from needing to re-authenticate repeatedly."
+  },
+  {
+    "id": 11063,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Kerberos Tickets",
+    "question": "In a Kerberos environment, what is the role of the Ticket Granting Ticket (TGT)?",
+    "options": [
+      "It encrypts user passwords locally",
+      "It allows the user to request specific service tickets from the TGS without re-entering credentials",
+      "It acts as a public key certificate signed by the CA",
+      "It secures database traffic between servers"
+    ],
+    "answer": 1,
+    "explanation": "A TGT is issued by the Authentication Service (AS) and presented to the Ticket Granting Service (TGS) to request specific service tickets, preventing the user from needing to re-authenticate repeatedly."
+  },
+  {
+    "id": 11064,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Biometric Metrics",
+    "question": "A biometric system is tuned to reduce the number of false rejects. As a result, what is the expected impact on the False Acceptance Rate (FAR)?",
+    "options": [
+      "FAR will decrease, making the system more secure",
+      "FAR will increase, lowering overall security",
+      "FAR will remain unchanged",
+      "The Crossover Error Rate (CER) will instantly drop to zero"
+    ],
+    "answer": 1,
+    "explanation": "Biometric sensitivity is a trade-off. Lowering the False Rejection Rate (FRR) to make it easier for legitimate users makes the system less sensitive, which increases the False Acceptance Rate (FAR)."
+  },
+  {
+    "id": 11065,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Biometric Metrics",
+    "question": "A biometric system is tuned to reduce the number of false rejects. As a result, what is the expected impact on the False Acceptance Rate (FAR)?",
+    "options": [
+      "FAR will decrease, making the system more secure",
+      "FAR will increase, lowering overall security",
+      "FAR will remain unchanged",
+      "The Crossover Error Rate (CER) will instantly drop to zero"
+    ],
+    "answer": 1,
+    "explanation": "Biometric sensitivity is a trade-off. Lowering the False Rejection Rate (FRR) to make it easier for legitimate users makes the system less sensitive, which increases the False Acceptance Rate (FAR)."
+  },
+  {
+    "id": 11066,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Biometric Metrics",
+    "question": "A biometric system is tuned to reduce the number of false rejects. As a result, what is the expected impact on the False Acceptance Rate (FAR)?",
+    "options": [
+      "FAR will decrease, making the system more secure",
+      "FAR will increase, lowering overall security",
+      "FAR will remain unchanged",
+      "The Crossover Error Rate (CER) will instantly drop to zero"
+    ],
+    "answer": 1,
+    "explanation": "Biometric sensitivity is a trade-off. Lowering the False Rejection Rate (FRR) to make it easier for legitimate users makes the system less sensitive, which increases the False Acceptance Rate (FAR)."
+  },
+  {
+    "id": 11067,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Federation SSO",
+    "question": "An enterprise wants to allow its users to access a partner web app using their existing active directory credentials. What XML-based open standard is best suited for federated identity assertions?",
+    "options": [
+      "OAuth 2.0",
+      "SAML 2.0",
+      "OpenID Connect",
+      "LDAP"
+    ],
+    "answer": 1,
+    "explanation": "SAML 2.0 is an XML-based standard specifically designed for federating identity and sending authentication assertions between Identity Providers (IdPs) and Service Providers (SPs)."
+  },
+  {
+    "id": 11068,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Biometric Metrics",
+    "question": "A biometric system is tuned to reduce the number of false rejects. As a result, what is the expected impact on the False Acceptance Rate (FAR)?",
+    "options": [
+      "FAR will decrease, making the system more secure",
+      "FAR will increase, lowering overall security",
+      "FAR will remain unchanged",
+      "The Crossover Error Rate (CER) will instantly drop to zero"
+    ],
+    "answer": 1,
+    "explanation": "Biometric sensitivity is a trade-off. Lowering the False Rejection Rate (FRR) to make it easier for legitimate users makes the system less sensitive, which increases the False Acceptance Rate (FAR)."
+  },
+  {
+    "id": 11069,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Kerberos Tickets",
+    "question": "In a Kerberos environment, what is the role of the Ticket Granting Ticket (TGT)?",
+    "options": [
+      "It encrypts user passwords locally",
+      "It allows the user to request specific service tickets from the TGS without re-entering credentials",
+      "It acts as a public key certificate signed by the CA",
+      "It secures database traffic between servers"
+    ],
+    "answer": 1,
+    "explanation": "A TGT is issued by the Authentication Service (AS) and presented to the Ticket Granting Service (TGS) to request specific service tickets, preventing the user from needing to re-authenticate repeatedly."
+  },
+  {
+    "id": 11070,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Biometric Metrics",
+    "question": "A biometric system is tuned to reduce the number of false rejects. As a result, what is the expected impact on the False Acceptance Rate (FAR)?",
+    "options": [
+      "FAR will decrease, making the system more secure",
+      "FAR will increase, lowering overall security",
+      "FAR will remain unchanged",
+      "The Crossover Error Rate (CER) will instantly drop to zero"
+    ],
+    "answer": 1,
+    "explanation": "Biometric sensitivity is a trade-off. Lowering the False Rejection Rate (FRR) to make it easier for legitimate users makes the system less sensitive, which increases the False Acceptance Rate (FAR)."
+  },
+  {
+    "id": 11071,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Kerberos Tickets",
+    "question": "In a Kerberos environment, what is the role of the Ticket Granting Ticket (TGT)?",
+    "options": [
+      "It encrypts user passwords locally",
+      "It allows the user to request specific service tickets from the TGS without re-entering credentials",
+      "It acts as a public key certificate signed by the CA",
+      "It secures database traffic between servers"
+    ],
+    "answer": 1,
+    "explanation": "A TGT is issued by the Authentication Service (AS) and presented to the Ticket Granting Service (TGS) to request specific service tickets, preventing the user from needing to re-authenticate repeatedly."
+  },
+  {
+    "id": 11072,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Federation SSO",
+    "question": "An enterprise wants to allow its users to access a partner web app using their existing active directory credentials. What XML-based open standard is best suited for federated identity assertions?",
+    "options": [
+      "OAuth 2.0",
+      "SAML 2.0",
+      "OpenID Connect",
+      "LDAP"
+    ],
+    "answer": 1,
+    "explanation": "SAML 2.0 is an XML-based standard specifically designed for federating identity and sending authentication assertions between Identity Providers (IdPs) and Service Providers (SPs)."
+  },
+  {
+    "id": 11073,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Biometric Metrics",
+    "question": "A biometric system is tuned to reduce the number of false rejects. As a result, what is the expected impact on the False Acceptance Rate (FAR)?",
+    "options": [
+      "FAR will decrease, making the system more secure",
+      "FAR will increase, lowering overall security",
+      "FAR will remain unchanged",
+      "The Crossover Error Rate (CER) will instantly drop to zero"
+    ],
+    "answer": 1,
+    "explanation": "Biometric sensitivity is a trade-off. Lowering the False Rejection Rate (FRR) to make it easier for legitimate users makes the system less sensitive, which increases the False Acceptance Rate (FAR)."
+  },
+  {
+    "id": 11074,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Federation SSO",
+    "question": "An enterprise wants to allow its users to access a partner web app using their existing active directory credentials. What XML-based open standard is best suited for federated identity assertions?",
+    "options": [
+      "OAuth 2.0",
+      "SAML 2.0",
+      "OpenID Connect",
+      "LDAP"
+    ],
+    "answer": 1,
+    "explanation": "SAML 2.0 is an XML-based standard specifically designed for federating identity and sending authentication assertions between Identity Providers (IdPs) and Service Providers (SPs)."
+  },
+  {
+    "id": 11075,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Biometric Metrics",
+    "question": "A biometric system is tuned to reduce the number of false rejects. As a result, what is the expected impact on the False Acceptance Rate (FAR)?",
+    "options": [
+      "FAR will decrease, making the system more secure",
+      "FAR will increase, lowering overall security",
+      "FAR will remain unchanged",
+      "The Crossover Error Rate (CER) will instantly drop to zero"
+    ],
+    "answer": 1,
+    "explanation": "Biometric sensitivity is a trade-off. Lowering the False Rejection Rate (FRR) to make it easier for legitimate users makes the system less sensitive, which increases the False Acceptance Rate (FAR)."
+  },
+  {
+    "id": 11076,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Biometric Metrics",
+    "question": "A biometric system is tuned to reduce the number of false rejects. As a result, what is the expected impact on the False Acceptance Rate (FAR)?",
+    "options": [
+      "FAR will decrease, making the system more secure",
+      "FAR will increase, lowering overall security",
+      "FAR will remain unchanged",
+      "The Crossover Error Rate (CER) will instantly drop to zero"
+    ],
+    "answer": 1,
+    "explanation": "Biometric sensitivity is a trade-off. Lowering the False Rejection Rate (FRR) to make it easier for legitimate users makes the system less sensitive, which increases the False Acceptance Rate (FAR)."
+  },
+  {
+    "id": 11077,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Federation SSO",
+    "question": "An enterprise wants to allow its users to access a partner web app using their existing active directory credentials. What XML-based open standard is best suited for federated identity assertions?",
+    "options": [
+      "OAuth 2.0",
+      "SAML 2.0",
+      "OpenID Connect",
+      "LDAP"
+    ],
+    "answer": 1,
+    "explanation": "SAML 2.0 is an XML-based standard specifically designed for federating identity and sending authentication assertions between Identity Providers (IdPs) and Service Providers (SPs)."
+  },
+  {
+    "id": 11078,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Federation SSO",
+    "question": "An enterprise wants to allow its users to access a partner web app using their existing active directory credentials. What XML-based open standard is best suited for federated identity assertions?",
+    "options": [
+      "OAuth 2.0",
+      "SAML 2.0",
+      "OpenID Connect",
+      "LDAP"
+    ],
+    "answer": 1,
+    "explanation": "SAML 2.0 is an XML-based standard specifically designed for federating identity and sending authentication assertions between Identity Providers (IdPs) and Service Providers (SPs)."
+  },
+  {
+    "id": 11079,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Biometric Metrics",
+    "question": "A biometric system is tuned to reduce the number of false rejects. As a result, what is the expected impact on the False Acceptance Rate (FAR)?",
+    "options": [
+      "FAR will decrease, making the system more secure",
+      "FAR will increase, lowering overall security",
+      "FAR will remain unchanged",
+      "The Crossover Error Rate (CER) will instantly drop to zero"
+    ],
+    "answer": 1,
+    "explanation": "Biometric sensitivity is a trade-off. Lowering the False Rejection Rate (FRR) to make it easier for legitimate users makes the system less sensitive, which increases the False Acceptance Rate (FAR)."
+  },
+  {
+    "id": 11080,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Biometric Metrics",
+    "question": "A biometric system is tuned to reduce the number of false rejects. As a result, what is the expected impact on the False Acceptance Rate (FAR)?",
+    "options": [
+      "FAR will decrease, making the system more secure",
+      "FAR will increase, lowering overall security",
+      "FAR will remain unchanged",
+      "The Crossover Error Rate (CER) will instantly drop to zero"
+    ],
+    "answer": 1,
+    "explanation": "Biometric sensitivity is a trade-off. Lowering the False Rejection Rate (FRR) to make it easier for legitimate users makes the system less sensitive, which increases the False Acceptance Rate (FAR)."
+  },
+  {
+    "id": 11081,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Kerberos Tickets",
+    "question": "In a Kerberos environment, what is the role of the Ticket Granting Ticket (TGT)?",
+    "options": [
+      "It encrypts user passwords locally",
+      "It allows the user to request specific service tickets from the TGS without re-entering credentials",
+      "It acts as a public key certificate signed by the CA",
+      "It secures database traffic between servers"
+    ],
+    "answer": 1,
+    "explanation": "A TGT is issued by the Authentication Service (AS) and presented to the Ticket Granting Service (TGS) to request specific service tickets, preventing the user from needing to re-authenticate repeatedly."
+  },
+  {
+    "id": 11082,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Federation SSO",
+    "question": "An enterprise wants to allow its users to access a partner web app using their existing active directory credentials. What XML-based open standard is best suited for federated identity assertions?",
+    "options": [
+      "OAuth 2.0",
+      "SAML 2.0",
+      "OpenID Connect",
+      "LDAP"
+    ],
+    "answer": 1,
+    "explanation": "SAML 2.0 is an XML-based standard specifically designed for federating identity and sending authentication assertions between Identity Providers (IdPs) and Service Providers (SPs)."
+  },
+  {
+    "id": 11083,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Kerberos Tickets",
+    "question": "In a Kerberos environment, what is the role of the Ticket Granting Ticket (TGT)?",
+    "options": [
+      "It encrypts user passwords locally",
+      "It allows the user to request specific service tickets from the TGS without re-entering credentials",
+      "It acts as a public key certificate signed by the CA",
+      "It secures database traffic between servers"
+    ],
+    "answer": 1,
+    "explanation": "A TGT is issued by the Authentication Service (AS) and presented to the Ticket Granting Service (TGS) to request specific service tickets, preventing the user from needing to re-authenticate repeatedly."
+  },
+  {
+    "id": 11084,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Biometric Metrics",
+    "question": "A biometric system is tuned to reduce the number of false rejects. As a result, what is the expected impact on the False Acceptance Rate (FAR)?",
+    "options": [
+      "FAR will decrease, making the system more secure",
+      "FAR will increase, lowering overall security",
+      "FAR will remain unchanged",
+      "The Crossover Error Rate (CER) will instantly drop to zero"
+    ],
+    "answer": 1,
+    "explanation": "Biometric sensitivity is a trade-off. Lowering the False Rejection Rate (FRR) to make it easier for legitimate users makes the system less sensitive, which increases the False Acceptance Rate (FAR)."
+  },
+  {
+    "id": 11085,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Federation SSO",
+    "question": "An enterprise wants to allow its users to access a partner web app using their existing active directory credentials. What XML-based open standard is best suited for federated identity assertions?",
+    "options": [
+      "OAuth 2.0",
+      "SAML 2.0",
+      "OpenID Connect",
+      "LDAP"
+    ],
+    "answer": 1,
+    "explanation": "SAML 2.0 is an XML-based standard specifically designed for federating identity and sending authentication assertions between Identity Providers (IdPs) and Service Providers (SPs)."
+  },
+  {
+    "id": 11086,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Biometric Metrics",
+    "question": "A biometric system is tuned to reduce the number of false rejects. As a result, what is the expected impact on the False Acceptance Rate (FAR)?",
+    "options": [
+      "FAR will decrease, making the system more secure",
+      "FAR will increase, lowering overall security",
+      "FAR will remain unchanged",
+      "The Crossover Error Rate (CER) will instantly drop to zero"
+    ],
+    "answer": 1,
+    "explanation": "Biometric sensitivity is a trade-off. Lowering the False Rejection Rate (FRR) to make it easier for legitimate users makes the system less sensitive, which increases the False Acceptance Rate (FAR)."
+  },
+  {
+    "id": 11087,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Kerberos Tickets",
+    "question": "In a Kerberos environment, what is the role of the Ticket Granting Ticket (TGT)?",
+    "options": [
+      "It encrypts user passwords locally",
+      "It allows the user to request specific service tickets from the TGS without re-entering credentials",
+      "It acts as a public key certificate signed by the CA",
+      "It secures database traffic between servers"
+    ],
+    "answer": 1,
+    "explanation": "A TGT is issued by the Authentication Service (AS) and presented to the Ticket Granting Service (TGS) to request specific service tickets, preventing the user from needing to re-authenticate repeatedly."
+  },
+  {
+    "id": 11088,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Federation SSO",
+    "question": "An enterprise wants to allow its users to access a partner web app using their existing active directory credentials. What XML-based open standard is best suited for federated identity assertions?",
+    "options": [
+      "OAuth 2.0",
+      "SAML 2.0",
+      "OpenID Connect",
+      "LDAP"
+    ],
+    "answer": 1,
+    "explanation": "SAML 2.0 is an XML-based standard specifically designed for federating identity and sending authentication assertions between Identity Providers (IdPs) and Service Providers (SPs)."
+  },
+  {
+    "id": 11089,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Biometric Metrics",
+    "question": "A biometric system is tuned to reduce the number of false rejects. As a result, what is the expected impact on the False Acceptance Rate (FAR)?",
+    "options": [
+      "FAR will decrease, making the system more secure",
+      "FAR will increase, lowering overall security",
+      "FAR will remain unchanged",
+      "The Crossover Error Rate (CER) will instantly drop to zero"
+    ],
+    "answer": 1,
+    "explanation": "Biometric sensitivity is a trade-off. Lowering the False Rejection Rate (FRR) to make it easier for legitimate users makes the system less sensitive, which increases the False Acceptance Rate (FAR)."
+  },
+  {
+    "id": 11090,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Federation SSO",
+    "question": "An enterprise wants to allow its users to access a partner web app using their existing active directory credentials. What XML-based open standard is best suited for federated identity assertions?",
+    "options": [
+      "OAuth 2.0",
+      "SAML 2.0",
+      "OpenID Connect",
+      "LDAP"
+    ],
+    "answer": 1,
+    "explanation": "SAML 2.0 is an XML-based standard specifically designed for federating identity and sending authentication assertions between Identity Providers (IdPs) and Service Providers (SPs)."
+  },
+  {
+    "id": 11091,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Kerberos Tickets",
+    "question": "In a Kerberos environment, what is the role of the Ticket Granting Ticket (TGT)?",
+    "options": [
+      "It encrypts user passwords locally",
+      "It allows the user to request specific service tickets from the TGS without re-entering credentials",
+      "It acts as a public key certificate signed by the CA",
+      "It secures database traffic between servers"
+    ],
+    "answer": 1,
+    "explanation": "A TGT is issued by the Authentication Service (AS) and presented to the Ticket Granting Service (TGS) to request specific service tickets, preventing the user from needing to re-authenticate repeatedly."
+  },
+  {
+    "id": 11092,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Federation SSO",
+    "question": "An enterprise wants to allow its users to access a partner web app using their existing active directory credentials. What XML-based open standard is best suited for federated identity assertions?",
+    "options": [
+      "OAuth 2.0",
+      "SAML 2.0",
+      "OpenID Connect",
+      "LDAP"
+    ],
+    "answer": 1,
+    "explanation": "SAML 2.0 is an XML-based standard specifically designed for federating identity and sending authentication assertions between Identity Providers (IdPs) and Service Providers (SPs)."
+  },
+  {
+    "id": 11093,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Kerberos Tickets",
+    "question": "In a Kerberos environment, what is the role of the Ticket Granting Ticket (TGT)?",
+    "options": [
+      "It encrypts user passwords locally",
+      "It allows the user to request specific service tickets from the TGS without re-entering credentials",
+      "It acts as a public key certificate signed by the CA",
+      "It secures database traffic between servers"
+    ],
+    "answer": 1,
+    "explanation": "A TGT is issued by the Authentication Service (AS) and presented to the Ticket Granting Service (TGS) to request specific service tickets, preventing the user from needing to re-authenticate repeatedly."
+  },
+  {
+    "id": 11094,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Kerberos Tickets",
+    "question": "In a Kerberos environment, what is the role of the Ticket Granting Ticket (TGT)?",
+    "options": [
+      "It encrypts user passwords locally",
+      "It allows the user to request specific service tickets from the TGS without re-entering credentials",
+      "It acts as a public key certificate signed by the CA",
+      "It secures database traffic between servers"
+    ],
+    "answer": 1,
+    "explanation": "A TGT is issued by the Authentication Service (AS) and presented to the Ticket Granting Service (TGS) to request specific service tickets, preventing the user from needing to re-authenticate repeatedly."
+  },
+  {
+    "id": 11095,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Kerberos Tickets",
+    "question": "In a Kerberos environment, what is the role of the Ticket Granting Ticket (TGT)?",
+    "options": [
+      "It encrypts user passwords locally",
+      "It allows the user to request specific service tickets from the TGS without re-entering credentials",
+      "It acts as a public key certificate signed by the CA",
+      "It secures database traffic between servers"
+    ],
+    "answer": 1,
+    "explanation": "A TGT is issued by the Authentication Service (AS) and presented to the Ticket Granting Service (TGS) to request specific service tickets, preventing the user from needing to re-authenticate repeatedly."
+  },
+  {
+    "id": 11096,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Biometric Metrics",
+    "question": "A biometric system is tuned to reduce the number of false rejects. As a result, what is the expected impact on the False Acceptance Rate (FAR)?",
+    "options": [
+      "FAR will decrease, making the system more secure",
+      "FAR will increase, lowering overall security",
+      "FAR will remain unchanged",
+      "The Crossover Error Rate (CER) will instantly drop to zero"
+    ],
+    "answer": 1,
+    "explanation": "Biometric sensitivity is a trade-off. Lowering the False Rejection Rate (FRR) to make it easier for legitimate users makes the system less sensitive, which increases the False Acceptance Rate (FAR)."
+  },
+  {
+    "id": 11097,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Biometric Metrics",
+    "question": "A biometric system is tuned to reduce the number of false rejects. As a result, what is the expected impact on the False Acceptance Rate (FAR)?",
+    "options": [
+      "FAR will decrease, making the system more secure",
+      "FAR will increase, lowering overall security",
+      "FAR will remain unchanged",
+      "The Crossover Error Rate (CER) will instantly drop to zero"
+    ],
+    "answer": 1,
+    "explanation": "Biometric sensitivity is a trade-off. Lowering the False Rejection Rate (FRR) to make it easier for legitimate users makes the system less sensitive, which increases the False Acceptance Rate (FAR)."
+  },
+  {
+    "id": 11098,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Federation SSO",
+    "question": "An enterprise wants to allow its users to access a partner web app using their existing active directory credentials. What XML-based open standard is best suited for federated identity assertions?",
+    "options": [
+      "OAuth 2.0",
+      "SAML 2.0",
+      "OpenID Connect",
+      "LDAP"
+    ],
+    "answer": 1,
+    "explanation": "SAML 2.0 is an XML-based standard specifically designed for federating identity and sending authentication assertions between Identity Providers (IdPs) and Service Providers (SPs)."
+  },
+  {
+    "id": 11099,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Kerberos Tickets",
+    "question": "In a Kerberos environment, what is the role of the Ticket Granting Ticket (TGT)?",
+    "options": [
+      "It encrypts user passwords locally",
+      "It allows the user to request specific service tickets from the TGS without re-entering credentials",
+      "It acts as a public key certificate signed by the CA",
+      "It secures database traffic between servers"
+    ],
+    "answer": 1,
+    "explanation": "A TGT is issued by the Authentication Service (AS) and presented to the Ticket Granting Service (TGS) to request specific service tickets, preventing the user from needing to re-authenticate repeatedly."
+  },
+  {
+    "id": 11100,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Federation SSO",
+    "question": "An enterprise wants to allow its users to access a partner web app using their existing active directory credentials. What XML-based open standard is best suited for federated identity assertions?",
+    "options": [
+      "OAuth 2.0",
+      "SAML 2.0",
+      "OpenID Connect",
+      "LDAP"
+    ],
+    "answer": 1,
+    "explanation": "SAML 2.0 is an XML-based standard specifically designed for federating identity and sending authentication assertions between Identity Providers (IdPs) and Service Providers (SPs)."
+  },
+  {
+    "id": 11101,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Kerberos Tickets",
+    "question": "In a Kerberos environment, what is the role of the Ticket Granting Ticket (TGT)?",
+    "options": [
+      "It encrypts user passwords locally",
+      "It allows the user to request specific service tickets from the TGS without re-entering credentials",
+      "It acts as a public key certificate signed by the CA",
+      "It secures database traffic between servers"
+    ],
+    "answer": 1,
+    "explanation": "A TGT is issued by the Authentication Service (AS) and presented to the Ticket Granting Service (TGS) to request specific service tickets, preventing the user from needing to re-authenticate repeatedly."
+  },
+  {
+    "id": 11102,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Biometric Metrics",
+    "question": "A biometric system is tuned to reduce the number of false rejects. As a result, what is the expected impact on the False Acceptance Rate (FAR)?",
+    "options": [
+      "FAR will decrease, making the system more secure",
+      "FAR will increase, lowering overall security",
+      "FAR will remain unchanged",
+      "The Crossover Error Rate (CER) will instantly drop to zero"
+    ],
+    "answer": 1,
+    "explanation": "Biometric sensitivity is a trade-off. Lowering the False Rejection Rate (FRR) to make it easier for legitimate users makes the system less sensitive, which increases the False Acceptance Rate (FAR)."
+  },
+  {
+    "id": 11103,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Kerberos Tickets",
+    "question": "In a Kerberos environment, what is the role of the Ticket Granting Ticket (TGT)?",
+    "options": [
+      "It encrypts user passwords locally",
+      "It allows the user to request specific service tickets from the TGS without re-entering credentials",
+      "It acts as a public key certificate signed by the CA",
+      "It secures database traffic between servers"
+    ],
+    "answer": 1,
+    "explanation": "A TGT is issued by the Authentication Service (AS) and presented to the Ticket Granting Service (TGS) to request specific service tickets, preventing the user from needing to re-authenticate repeatedly."
+  },
+  {
+    "id": 11104,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Kerberos Tickets",
+    "question": "In a Kerberos environment, what is the role of the Ticket Granting Ticket (TGT)?",
+    "options": [
+      "It encrypts user passwords locally",
+      "It allows the user to request specific service tickets from the TGS without re-entering credentials",
+      "It acts as a public key certificate signed by the CA",
+      "It secures database traffic between servers"
+    ],
+    "answer": 1,
+    "explanation": "A TGT is issued by the Authentication Service (AS) and presented to the Ticket Granting Service (TGS) to request specific service tickets, preventing the user from needing to re-authenticate repeatedly."
+  },
+  {
+    "id": 11105,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Federation SSO",
+    "question": "An enterprise wants to allow its users to access a partner web app using their existing active directory credentials. What XML-based open standard is best suited for federated identity assertions?",
+    "options": [
+      "OAuth 2.0",
+      "SAML 2.0",
+      "OpenID Connect",
+      "LDAP"
+    ],
+    "answer": 1,
+    "explanation": "SAML 2.0 is an XML-based standard specifically designed for federating identity and sending authentication assertions between Identity Providers (IdPs) and Service Providers (SPs)."
+  },
+  {
+    "id": 11106,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Kerberos Tickets",
+    "question": "In a Kerberos environment, what is the role of the Ticket Granting Ticket (TGT)?",
+    "options": [
+      "It encrypts user passwords locally",
+      "It allows the user to request specific service tickets from the TGS without re-entering credentials",
+      "It acts as a public key certificate signed by the CA",
+      "It secures database traffic between servers"
+    ],
+    "answer": 1,
+    "explanation": "A TGT is issued by the Authentication Service (AS) and presented to the Ticket Granting Service (TGS) to request specific service tickets, preventing the user from needing to re-authenticate repeatedly."
+  },
+  {
+    "id": 11107,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Federation SSO",
+    "question": "An enterprise wants to allow its users to access a partner web app using their existing active directory credentials. What XML-based open standard is best suited for federated identity assertions?",
+    "options": [
+      "OAuth 2.0",
+      "SAML 2.0",
+      "OpenID Connect",
+      "LDAP"
+    ],
+    "answer": 1,
+    "explanation": "SAML 2.0 is an XML-based standard specifically designed for federating identity and sending authentication assertions between Identity Providers (IdPs) and Service Providers (SPs)."
+  },
+  {
+    "id": 11108,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Biometric Metrics",
+    "question": "A biometric system is tuned to reduce the number of false rejects. As a result, what is the expected impact on the False Acceptance Rate (FAR)?",
+    "options": [
+      "FAR will decrease, making the system more secure",
+      "FAR will increase, lowering overall security",
+      "FAR will remain unchanged",
+      "The Crossover Error Rate (CER) will instantly drop to zero"
+    ],
+    "answer": 1,
+    "explanation": "Biometric sensitivity is a trade-off. Lowering the False Rejection Rate (FRR) to make it easier for legitimate users makes the system less sensitive, which increases the False Acceptance Rate (FAR)."
+  },
+  {
+    "id": 11109,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Federation SSO",
+    "question": "An enterprise wants to allow its users to access a partner web app using their existing active directory credentials. What XML-based open standard is best suited for federated identity assertions?",
+    "options": [
+      "OAuth 2.0",
+      "SAML 2.0",
+      "OpenID Connect",
+      "LDAP"
+    ],
+    "answer": 1,
+    "explanation": "SAML 2.0 is an XML-based standard specifically designed for federating identity and sending authentication assertions between Identity Providers (IdPs) and Service Providers (SPs)."
+  },
+  {
+    "id": 11110,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Biometric Metrics",
+    "question": "A biometric system is tuned to reduce the number of false rejects. As a result, what is the expected impact on the False Acceptance Rate (FAR)?",
+    "options": [
+      "FAR will decrease, making the system more secure",
+      "FAR will increase, lowering overall security",
+      "FAR will remain unchanged",
+      "The Crossover Error Rate (CER) will instantly drop to zero"
+    ],
+    "answer": 1,
+    "explanation": "Biometric sensitivity is a trade-off. Lowering the False Rejection Rate (FRR) to make it easier for legitimate users makes the system less sensitive, which increases the False Acceptance Rate (FAR)."
+  },
+  {
+    "id": 11111,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Federation SSO",
+    "question": "An enterprise wants to allow its users to access a partner web app using their existing active directory credentials. What XML-based open standard is best suited for federated identity assertions?",
+    "options": [
+      "OAuth 2.0",
+      "SAML 2.0",
+      "OpenID Connect",
+      "LDAP"
+    ],
+    "answer": 1,
+    "explanation": "SAML 2.0 is an XML-based standard specifically designed for federating identity and sending authentication assertions between Identity Providers (IdPs) and Service Providers (SPs)."
+  },
+  {
+    "id": 11112,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Federation SSO",
+    "question": "An enterprise wants to allow its users to access a partner web app using their existing active directory credentials. What XML-based open standard is best suited for federated identity assertions?",
+    "options": [
+      "OAuth 2.0",
+      "SAML 2.0",
+      "OpenID Connect",
+      "LDAP"
+    ],
+    "answer": 1,
+    "explanation": "SAML 2.0 is an XML-based standard specifically designed for federating identity and sending authentication assertions between Identity Providers (IdPs) and Service Providers (SPs)."
+  },
+  {
+    "id": 11113,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Biometric Metrics",
+    "question": "A biometric system is tuned to reduce the number of false rejects. As a result, what is the expected impact on the False Acceptance Rate (FAR)?",
+    "options": [
+      "FAR will decrease, making the system more secure",
+      "FAR will increase, lowering overall security",
+      "FAR will remain unchanged",
+      "The Crossover Error Rate (CER) will instantly drop to zero"
+    ],
+    "answer": 1,
+    "explanation": "Biometric sensitivity is a trade-off. Lowering the False Rejection Rate (FRR) to make it easier for legitimate users makes the system less sensitive, which increases the False Acceptance Rate (FAR)."
+  },
+  {
+    "id": 11114,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Kerberos Tickets",
+    "question": "In a Kerberos environment, what is the role of the Ticket Granting Ticket (TGT)?",
+    "options": [
+      "It encrypts user passwords locally",
+      "It allows the user to request specific service tickets from the TGS without re-entering credentials",
+      "It acts as a public key certificate signed by the CA",
+      "It secures database traffic between servers"
+    ],
+    "answer": 1,
+    "explanation": "A TGT is issued by the Authentication Service (AS) and presented to the Ticket Granting Service (TGS) to request specific service tickets, preventing the user from needing to re-authenticate repeatedly."
+  },
+  {
+    "id": 11115,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Biometric Metrics",
+    "question": "A biometric system is tuned to reduce the number of false rejects. As a result, what is the expected impact on the False Acceptance Rate (FAR)?",
+    "options": [
+      "FAR will decrease, making the system more secure",
+      "FAR will increase, lowering overall security",
+      "FAR will remain unchanged",
+      "The Crossover Error Rate (CER) will instantly drop to zero"
+    ],
+    "answer": 1,
+    "explanation": "Biometric sensitivity is a trade-off. Lowering the False Rejection Rate (FRR) to make it easier for legitimate users makes the system less sensitive, which increases the False Acceptance Rate (FAR)."
+  },
+  {
+    "id": 11116,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Kerberos Tickets",
+    "question": "In a Kerberos environment, what is the role of the Ticket Granting Ticket (TGT)?",
+    "options": [
+      "It encrypts user passwords locally",
+      "It allows the user to request specific service tickets from the TGS without re-entering credentials",
+      "It acts as a public key certificate signed by the CA",
+      "It secures database traffic between servers"
+    ],
+    "answer": 1,
+    "explanation": "A TGT is issued by the Authentication Service (AS) and presented to the Ticket Granting Service (TGS) to request specific service tickets, preventing the user from needing to re-authenticate repeatedly."
+  },
+  {
+    "id": 11117,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Biometric Metrics",
+    "question": "A biometric system is tuned to reduce the number of false rejects. As a result, what is the expected impact on the False Acceptance Rate (FAR)?",
+    "options": [
+      "FAR will decrease, making the system more secure",
+      "FAR will increase, lowering overall security",
+      "FAR will remain unchanged",
+      "The Crossover Error Rate (CER) will instantly drop to zero"
+    ],
+    "answer": 1,
+    "explanation": "Biometric sensitivity is a trade-off. Lowering the False Rejection Rate (FRR) to make it easier for legitimate users makes the system less sensitive, which increases the False Acceptance Rate (FAR)."
+  },
+  {
+    "id": 11118,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Federation SSO",
+    "question": "An enterprise wants to allow its users to access a partner web app using their existing active directory credentials. What XML-based open standard is best suited for federated identity assertions?",
+    "options": [
+      "OAuth 2.0",
+      "SAML 2.0",
+      "OpenID Connect",
+      "LDAP"
+    ],
+    "answer": 1,
+    "explanation": "SAML 2.0 is an XML-based standard specifically designed for federating identity and sending authentication assertions between Identity Providers (IdPs) and Service Providers (SPs)."
+  },
+  {
+    "id": 11119,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Federation SSO",
+    "question": "An enterprise wants to allow its users to access a partner web app using their existing active directory credentials. What XML-based open standard is best suited for federated identity assertions?",
+    "options": [
+      "OAuth 2.0",
+      "SAML 2.0",
+      "OpenID Connect",
+      "LDAP"
+    ],
+    "answer": 1,
+    "explanation": "SAML 2.0 is an XML-based standard specifically designed for federating identity and sending authentication assertions between Identity Providers (IdPs) and Service Providers (SPs)."
+  },
+  {
+    "id": 11120,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Biometric Metrics",
+    "question": "A biometric system is tuned to reduce the number of false rejects. As a result, what is the expected impact on the False Acceptance Rate (FAR)?",
+    "options": [
+      "FAR will decrease, making the system more secure",
+      "FAR will increase, lowering overall security",
+      "FAR will remain unchanged",
+      "The Crossover Error Rate (CER) will instantly drop to zero"
+    ],
+    "answer": 1,
+    "explanation": "Biometric sensitivity is a trade-off. Lowering the False Rejection Rate (FRR) to make it easier for legitimate users makes the system less sensitive, which increases the False Acceptance Rate (FAR)."
+  },
+  {
+    "id": 11121,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Biometric Metrics",
+    "question": "A biometric system is tuned to reduce the number of false rejects. As a result, what is the expected impact on the False Acceptance Rate (FAR)?",
+    "options": [
+      "FAR will decrease, making the system more secure",
+      "FAR will increase, lowering overall security",
+      "FAR will remain unchanged",
+      "The Crossover Error Rate (CER) will instantly drop to zero"
+    ],
+    "answer": 1,
+    "explanation": "Biometric sensitivity is a trade-off. Lowering the False Rejection Rate (FRR) to make it easier for legitimate users makes the system less sensitive, which increases the False Acceptance Rate (FAR)."
+  },
+  {
+    "id": 11122,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Federation SSO",
+    "question": "An enterprise wants to allow its users to access a partner web app using their existing active directory credentials. What XML-based open standard is best suited for federated identity assertions?",
+    "options": [
+      "OAuth 2.0",
+      "SAML 2.0",
+      "OpenID Connect",
+      "LDAP"
+    ],
+    "answer": 1,
+    "explanation": "SAML 2.0 is an XML-based standard specifically designed for federating identity and sending authentication assertions between Identity Providers (IdPs) and Service Providers (SPs)."
+  },
+  {
+    "id": 11123,
+    "domain": 5,
+    "domain_name": "Domain 5",
+    "scenario": "Biometric Metrics",
+    "question": "A biometric system is tuned to reduce the number of false rejects. As a result, what is the expected impact on the False Acceptance Rate (FAR)?",
+    "options": [
+      "FAR will decrease, making the system more secure",
+      "FAR will increase, lowering overall security",
+      "FAR will remain unchanged",
+      "The Crossover Error Rate (CER) will instantly drop to zero"
+    ],
+    "answer": 1,
+    "explanation": "Biometric sensitivity is a trade-off. Lowering the False Rejection Rate (FRR) to make it easier for legitimate users makes the system less sensitive, which increases the False Acceptance Rate (FAR)."
+  },
+  {
+    "id": 11124,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Chief Information Security Officer (CISO) is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11125,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Senior Security Auditor is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11126,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Chief Information Security Officer (CISO) is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11127,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "CVSS Metrics",
+    "question": "A vulnerability is rated as CVSS 9.8. The vector string contains 'AV:N/AC:L/PR:N/UI:N'. What does this tell the Database Custodian about how the vulnerability is exploited?",
+    "options": [
+      "It requires local access and administrative credentials",
+      "It can be exploited remotely over the network, with low complexity, requiring no privileges or user interaction",
+      "It requires physical access to the device and user interaction",
+      "It is a temporal metric that will decrease next week"
+    ],
+    "answer": 1,
+    "explanation": "AV:N (Network), AC:L (Low Complexity), PR:N (No Privileges), UI:N (No User Interaction) denotes a highly critical, easily exploitable remote attack vector."
+  },
+  {
+    "id": 11128,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "CVSS Metrics",
+    "question": "A vulnerability is rated as CVSS 9.8. The vector string contains 'AV:N/AC:L/PR:N/UI:N'. What does this tell the Lead Network Engineer about how the vulnerability is exploited?",
+    "options": [
+      "It requires local access and administrative credentials",
+      "It can be exploited remotely over the network, with low complexity, requiring no privileges or user interaction",
+      "It requires physical access to the device and user interaction",
+      "It is a temporal metric that will decrease next week"
+    ],
+    "answer": 1,
+    "explanation": "AV:N (Network), AC:L (Low Complexity), PR:N (No Privileges), UI:N (No User Interaction) denotes a highly critical, easily exploitable remote attack vector."
+  },
+  {
+    "id": 11129,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11130,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "CVSS Metrics",
+    "question": "A vulnerability is rated as CVSS 9.8. The vector string contains 'AV:N/AC:L/PR:N/UI:N'. What does this tell the Senior Security Auditor about how the vulnerability is exploited?",
+    "options": [
+      "It requires local access and administrative credentials",
+      "It can be exploited remotely over the network, with low complexity, requiring no privileges or user interaction",
+      "It requires physical access to the device and user interaction",
+      "It is a temporal metric that will decrease next week"
+    ],
+    "answer": 1,
+    "explanation": "AV:N (Network), AC:L (Low Complexity), PR:N (No Privileges), UI:N (No User Interaction) denotes a highly critical, easily exploitable remote attack vector."
+  },
+  {
+    "id": 11131,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Senior Security Auditor is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11132,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "CVSS Metrics",
+    "question": "A vulnerability is rated as CVSS 9.8. The vector string contains 'AV:N/AC:L/PR:N/UI:N'. What does this tell the Chief Information Security Officer (CISO) about how the vulnerability is exploited?",
+    "options": [
+      "It requires local access and administrative credentials",
+      "It can be exploited remotely over the network, with low complexity, requiring no privileges or user interaction",
+      "It requires physical access to the device and user interaction",
+      "It is a temporal metric that will decrease next week"
+    ],
+    "answer": 1,
+    "explanation": "AV:N (Network), AC:L (Low Complexity), PR:N (No Privileges), UI:N (No User Interaction) denotes a highly critical, easily exploitable remote attack vector."
+  },
+  {
+    "id": 11133,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11134,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Security Architect is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11135,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Senior Security Auditor is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11136,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Security Architect is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11137,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "CVSS Metrics",
+    "question": "A vulnerability is rated as CVSS 9.8. The vector string contains 'AV:N/AC:L/PR:N/UI:N'. What does this tell the Lead Network Engineer about how the vulnerability is exploited?",
+    "options": [
+      "It requires local access and administrative credentials",
+      "It can be exploited remotely over the network, with low complexity, requiring no privileges or user interaction",
+      "It requires physical access to the device and user interaction",
+      "It is a temporal metric that will decrease next week"
+    ],
+    "answer": 1,
+    "explanation": "AV:N (Network), AC:L (Low Complexity), PR:N (No Privileges), UI:N (No User Interaction) denotes a highly critical, easily exploitable remote attack vector."
+  },
+  {
+    "id": 11138,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11139,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Senior Security Auditor is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11140,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Chief Information Security Officer (CISO) is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11141,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11142,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11143,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "CVSS Metrics",
+    "question": "A vulnerability is rated as CVSS 9.8. The vector string contains 'AV:N/AC:L/PR:N/UI:N'. What does this tell the Information Owner about how the vulnerability is exploited?",
+    "options": [
+      "It requires local access and administrative credentials",
+      "It can be exploited remotely over the network, with low complexity, requiring no privileges or user interaction",
+      "It requires physical access to the device and user interaction",
+      "It is a temporal metric that will decrease next week"
+    ],
+    "answer": 1,
+    "explanation": "AV:N (Network), AC:L (Low Complexity), PR:N (No Privileges), UI:N (No User Interaction) denotes a highly critical, easily exploitable remote attack vector."
+  },
+  {
+    "id": 11144,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "CVSS Metrics",
+    "question": "A vulnerability is rated as CVSS 9.8. The vector string contains 'AV:N/AC:L/PR:N/UI:N'. What does this tell the Database Custodian about how the vulnerability is exploited?",
+    "options": [
+      "It requires local access and administrative credentials",
+      "It can be exploited remotely over the network, with low complexity, requiring no privileges or user interaction",
+      "It requires physical access to the device and user interaction",
+      "It is a temporal metric that will decrease next week"
+    ],
+    "answer": 1,
+    "explanation": "AV:N (Network), AC:L (Low Complexity), PR:N (No Privileges), UI:N (No User Interaction) denotes a highly critical, easily exploitable remote attack vector."
+  },
+  {
+    "id": 11145,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Chief Information Security Officer (CISO) is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11146,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11147,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "CVSS Metrics",
+    "question": "A vulnerability is rated as CVSS 9.8. The vector string contains 'AV:N/AC:L/PR:N/UI:N'. What does this tell the Information Owner about how the vulnerability is exploited?",
+    "options": [
+      "It requires local access and administrative credentials",
+      "It can be exploited remotely over the network, with low complexity, requiring no privileges or user interaction",
+      "It requires physical access to the device and user interaction",
+      "It is a temporal metric that will decrease next week"
+    ],
+    "answer": 1,
+    "explanation": "AV:N (Network), AC:L (Low Complexity), PR:N (No Privileges), UI:N (No User Interaction) denotes a highly critical, easily exploitable remote attack vector."
+  },
+  {
+    "id": 11148,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11149,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Lead Network Engineer is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11150,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11151,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "CVSS Metrics",
+    "question": "A vulnerability is rated as CVSS 9.8. The vector string contains 'AV:N/AC:L/PR:N/UI:N'. What does this tell the Chief Information Security Officer (CISO) about how the vulnerability is exploited?",
+    "options": [
+      "It requires local access and administrative credentials",
+      "It can be exploited remotely over the network, with low complexity, requiring no privileges or user interaction",
+      "It requires physical access to the device and user interaction",
+      "It is a temporal metric that will decrease next week"
+    ],
+    "answer": 1,
+    "explanation": "AV:N (Network), AC:L (Low Complexity), PR:N (No Privileges), UI:N (No User Interaction) denotes a highly critical, easily exploitable remote attack vector."
+  },
+  {
+    "id": 11152,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11153,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Security Architect is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11154,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11155,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "CVSS Metrics",
+    "question": "A vulnerability is rated as CVSS 9.8. The vector string contains 'AV:N/AC:L/PR:N/UI:N'. What does this tell the Privacy Officer about how the vulnerability is exploited?",
+    "options": [
+      "It requires local access and administrative credentials",
+      "It can be exploited remotely over the network, with low complexity, requiring no privileges or user interaction",
+      "It requires physical access to the device and user interaction",
+      "It is a temporal metric that will decrease next week"
+    ],
+    "answer": 1,
+    "explanation": "AV:N (Network), AC:L (Low Complexity), PR:N (No Privileges), UI:N (No User Interaction) denotes a highly critical, easily exploitable remote attack vector."
+  },
+  {
+    "id": 11156,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11157,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "CVSS Metrics",
+    "question": "A vulnerability is rated as CVSS 9.8. The vector string contains 'AV:N/AC:L/PR:N/UI:N'. What does this tell the Senior Security Auditor about how the vulnerability is exploited?",
+    "options": [
+      "It requires local access and administrative credentials",
+      "It can be exploited remotely over the network, with low complexity, requiring no privileges or user interaction",
+      "It requires physical access to the device and user interaction",
+      "It is a temporal metric that will decrease next week"
+    ],
+    "answer": 1,
+    "explanation": "AV:N (Network), AC:L (Low Complexity), PR:N (No Privileges), UI:N (No User Interaction) denotes a highly critical, easily exploitable remote attack vector."
+  },
+  {
+    "id": 11158,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Lead Network Engineer is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11159,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11160,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "CVSS Metrics",
+    "question": "A vulnerability is rated as CVSS 9.8. The vector string contains 'AV:N/AC:L/PR:N/UI:N'. What does this tell the Chief Information Security Officer (CISO) about how the vulnerability is exploited?",
+    "options": [
+      "It requires local access and administrative credentials",
+      "It can be exploited remotely over the network, with low complexity, requiring no privileges or user interaction",
+      "It requires physical access to the device and user interaction",
+      "It is a temporal metric that will decrease next week"
+    ],
+    "answer": 1,
+    "explanation": "AV:N (Network), AC:L (Low Complexity), PR:N (No Privileges), UI:N (No User Interaction) denotes a highly critical, easily exploitable remote attack vector."
+  },
+  {
+    "id": 11161,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Privacy Officer is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11162,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "CVSS Metrics",
+    "question": "A vulnerability is rated as CVSS 9.8. The vector string contains 'AV:N/AC:L/PR:N/UI:N'. What does this tell the Privacy Officer about how the vulnerability is exploited?",
+    "options": [
+      "It requires local access and administrative credentials",
+      "It can be exploited remotely over the network, with low complexity, requiring no privileges or user interaction",
+      "It requires physical access to the device and user interaction",
+      "It is a temporal metric that will decrease next week"
+    ],
+    "answer": 1,
+    "explanation": "AV:N (Network), AC:L (Low Complexity), PR:N (No Privileges), UI:N (No User Interaction) denotes a highly critical, easily exploitable remote attack vector."
+  },
+  {
+    "id": 11163,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Lead Network Engineer is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11164,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Chief Information Security Officer (CISO) is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11165,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Chief Information Security Officer (CISO) is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11166,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11167,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11168,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11169,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11170,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11171,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11172,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11173,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "CVSS Metrics",
+    "question": "A vulnerability is rated as CVSS 9.8. The vector string contains 'AV:N/AC:L/PR:N/UI:N'. What does this tell the Privacy Officer about how the vulnerability is exploited?",
+    "options": [
+      "It requires local access and administrative credentials",
+      "It can be exploited remotely over the network, with low complexity, requiring no privileges or user interaction",
+      "It requires physical access to the device and user interaction",
+      "It is a temporal metric that will decrease next week"
+    ],
+    "answer": 1,
+    "explanation": "AV:N (Network), AC:L (Low Complexity), PR:N (No Privileges), UI:N (No User Interaction) denotes a highly critical, easily exploitable remote attack vector."
+  },
+  {
+    "id": 11174,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Lead Network Engineer is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11175,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11176,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11177,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "CVSS Metrics",
+    "question": "A vulnerability is rated as CVSS 9.8. The vector string contains 'AV:N/AC:L/PR:N/UI:N'. What does this tell the Security Architect about how the vulnerability is exploited?",
+    "options": [
+      "It requires local access and administrative credentials",
+      "It can be exploited remotely over the network, with low complexity, requiring no privileges or user interaction",
+      "It requires physical access to the device and user interaction",
+      "It is a temporal metric that will decrease next week"
+    ],
+    "answer": 1,
+    "explanation": "AV:N (Network), AC:L (Low Complexity), PR:N (No Privileges), UI:N (No User Interaction) denotes a highly critical, easily exploitable remote attack vector."
+  },
+  {
+    "id": 11178,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "CVSS Metrics",
+    "question": "A vulnerability is rated as CVSS 9.8. The vector string contains 'AV:N/AC:L/PR:N/UI:N'. What does this tell the Senior Security Auditor about how the vulnerability is exploited?",
+    "options": [
+      "It requires local access and administrative credentials",
+      "It can be exploited remotely over the network, with low complexity, requiring no privileges or user interaction",
+      "It requires physical access to the device and user interaction",
+      "It is a temporal metric that will decrease next week"
+    ],
+    "answer": 1,
+    "explanation": "AV:N (Network), AC:L (Low Complexity), PR:N (No Privileges), UI:N (No User Interaction) denotes a highly critical, easily exploitable remote attack vector."
+  },
+  {
+    "id": 11179,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Privacy Officer is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11180,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11181,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "CVSS Metrics",
+    "question": "A vulnerability is rated as CVSS 9.8. The vector string contains 'AV:N/AC:L/PR:N/UI:N'. What does this tell the Senior Security Auditor about how the vulnerability is exploited?",
+    "options": [
+      "It requires local access and administrative credentials",
+      "It can be exploited remotely over the network, with low complexity, requiring no privileges or user interaction",
+      "It requires physical access to the device and user interaction",
+      "It is a temporal metric that will decrease next week"
+    ],
+    "answer": 1,
+    "explanation": "AV:N (Network), AC:L (Low Complexity), PR:N (No Privileges), UI:N (No User Interaction) denotes a highly critical, easily exploitable remote attack vector."
+  },
+  {
+    "id": 11182,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11183,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11184,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Senior Security Auditor is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11185,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Lead Network Engineer is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11186,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "CVSS Metrics",
+    "question": "A vulnerability is rated as CVSS 9.8. The vector string contains 'AV:N/AC:L/PR:N/UI:N'. What does this tell the Privacy Officer about how the vulnerability is exploited?",
+    "options": [
+      "It requires local access and administrative credentials",
+      "It can be exploited remotely over the network, with low complexity, requiring no privileges or user interaction",
+      "It requires physical access to the device and user interaction",
+      "It is a temporal metric that will decrease next week"
+    ],
+    "answer": 1,
+    "explanation": "AV:N (Network), AC:L (Low Complexity), PR:N (No Privileges), UI:N (No User Interaction) denotes a highly critical, easily exploitable remote attack vector."
+  },
+  {
+    "id": 11187,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "CVSS Metrics",
+    "question": "A vulnerability is rated as CVSS 9.8. The vector string contains 'AV:N/AC:L/PR:N/UI:N'. What does this tell the Security Architect about how the vulnerability is exploited?",
+    "options": [
+      "It requires local access and administrative credentials",
+      "It can be exploited remotely over the network, with low complexity, requiring no privileges or user interaction",
+      "It requires physical access to the device and user interaction",
+      "It is a temporal metric that will decrease next week"
+    ],
+    "answer": 1,
+    "explanation": "AV:N (Network), AC:L (Low Complexity), PR:N (No Privileges), UI:N (No User Interaction) denotes a highly critical, easily exploitable remote attack vector."
+  },
+  {
+    "id": 11188,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "CVSS Metrics",
+    "question": "A vulnerability is rated as CVSS 9.8. The vector string contains 'AV:N/AC:L/PR:N/UI:N'. What does this tell the Database Custodian about how the vulnerability is exploited?",
+    "options": [
+      "It requires local access and administrative credentials",
+      "It can be exploited remotely over the network, with low complexity, requiring no privileges or user interaction",
+      "It requires physical access to the device and user interaction",
+      "It is a temporal metric that will decrease next week"
+    ],
+    "answer": 1,
+    "explanation": "AV:N (Network), AC:L (Low Complexity), PR:N (No Privileges), UI:N (No User Interaction) denotes a highly critical, easily exploitable remote attack vector."
+  },
+  {
+    "id": 11189,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "CVSS Metrics",
+    "question": "A vulnerability is rated as CVSS 9.8. The vector string contains 'AV:N/AC:L/PR:N/UI:N'. What does this tell the Lead Network Engineer about how the vulnerability is exploited?",
+    "options": [
+      "It requires local access and administrative credentials",
+      "It can be exploited remotely over the network, with low complexity, requiring no privileges or user interaction",
+      "It requires physical access to the device and user interaction",
+      "It is a temporal metric that will decrease next week"
+    ],
+    "answer": 1,
+    "explanation": "AV:N (Network), AC:L (Low Complexity), PR:N (No Privileges), UI:N (No User Interaction) denotes a highly critical, easily exploitable remote attack vector."
+  },
+  {
+    "id": 11190,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "CVSS Metrics",
+    "question": "A vulnerability is rated as CVSS 9.8. The vector string contains 'AV:N/AC:L/PR:N/UI:N'. What does this tell the Lead Network Engineer about how the vulnerability is exploited?",
+    "options": [
+      "It requires local access and administrative credentials",
+      "It can be exploited remotely over the network, with low complexity, requiring no privileges or user interaction",
+      "It requires physical access to the device and user interaction",
+      "It is a temporal metric that will decrease next week"
+    ],
+    "answer": 1,
+    "explanation": "AV:N (Network), AC:L (Low Complexity), PR:N (No Privileges), UI:N (No User Interaction) denotes a highly critical, easily exploitable remote attack vector."
+  },
+  {
+    "id": 11191,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11192,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "CVSS Metrics",
+    "question": "A vulnerability is rated as CVSS 9.8. The vector string contains 'AV:N/AC:L/PR:N/UI:N'. What does this tell the Chief Information Security Officer (CISO) about how the vulnerability is exploited?",
+    "options": [
+      "It requires local access and administrative credentials",
+      "It can be exploited remotely over the network, with low complexity, requiring no privileges or user interaction",
+      "It requires physical access to the device and user interaction",
+      "It is a temporal metric that will decrease next week"
+    ],
+    "answer": 1,
+    "explanation": "AV:N (Network), AC:L (Low Complexity), PR:N (No Privileges), UI:N (No User Interaction) denotes a highly critical, easily exploitable remote attack vector."
+  },
+  {
+    "id": 11193,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "CVSS Metrics",
+    "question": "A vulnerability is rated as CVSS 9.8. The vector string contains 'AV:N/AC:L/PR:N/UI:N'. What does this tell the Security Architect about how the vulnerability is exploited?",
+    "options": [
+      "It requires local access and administrative credentials",
+      "It can be exploited remotely over the network, with low complexity, requiring no privileges or user interaction",
+      "It requires physical access to the device and user interaction",
+      "It is a temporal metric that will decrease next week"
+    ],
+    "answer": 1,
+    "explanation": "AV:N (Network), AC:L (Low Complexity), PR:N (No Privileges), UI:N (No User Interaction) denotes a highly critical, easily exploitable remote attack vector."
+  },
+  {
+    "id": 11194,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11195,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11196,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "CVSS Metrics",
+    "question": "A vulnerability is rated as CVSS 9.8. The vector string contains 'AV:N/AC:L/PR:N/UI:N'. What does this tell the Lead Network Engineer about how the vulnerability is exploited?",
+    "options": [
+      "It requires local access and administrative credentials",
+      "It can be exploited remotely over the network, with low complexity, requiring no privileges or user interaction",
+      "It requires physical access to the device and user interaction",
+      "It is a temporal metric that will decrease next week"
+    ],
+    "answer": 1,
+    "explanation": "AV:N (Network), AC:L (Low Complexity), PR:N (No Privileges), UI:N (No User Interaction) denotes a highly critical, easily exploitable remote attack vector."
+  },
+  {
+    "id": 11197,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "CVSS Metrics",
+    "question": "A vulnerability is rated as CVSS 9.8. The vector string contains 'AV:N/AC:L/PR:N/UI:N'. What does this tell the Chief Information Security Officer (CISO) about how the vulnerability is exploited?",
+    "options": [
+      "It requires local access and administrative credentials",
+      "It can be exploited remotely over the network, with low complexity, requiring no privileges or user interaction",
+      "It requires physical access to the device and user interaction",
+      "It is a temporal metric that will decrease next week"
+    ],
+    "answer": 1,
+    "explanation": "AV:N (Network), AC:L (Low Complexity), PR:N (No Privileges), UI:N (No User Interaction) denotes a highly critical, easily exploitable remote attack vector."
+  },
+  {
+    "id": 11198,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "CVSS Metrics",
+    "question": "A vulnerability is rated as CVSS 9.8. The vector string contains 'AV:N/AC:L/PR:N/UI:N'. What does this tell the Database Custodian about how the vulnerability is exploited?",
+    "options": [
+      "It requires local access and administrative credentials",
+      "It can be exploited remotely over the network, with low complexity, requiring no privileges or user interaction",
+      "It requires physical access to the device and user interaction",
+      "It is a temporal metric that will decrease next week"
+    ],
+    "answer": 1,
+    "explanation": "AV:N (Network), AC:L (Low Complexity), PR:N (No Privileges), UI:N (No User Interaction) denotes a highly critical, easily exploitable remote attack vector."
+  },
+  {
+    "id": 11199,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11200,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "CVSS Metrics",
+    "question": "A vulnerability is rated as CVSS 9.8. The vector string contains 'AV:N/AC:L/PR:N/UI:N'. What does this tell the Information Owner about how the vulnerability is exploited?",
+    "options": [
+      "It requires local access and administrative credentials",
+      "It can be exploited remotely over the network, with low complexity, requiring no privileges or user interaction",
+      "It requires physical access to the device and user interaction",
+      "It is a temporal metric that will decrease next week"
+    ],
+    "answer": 1,
+    "explanation": "AV:N (Network), AC:L (Low Complexity), PR:N (No Privileges), UI:N (No User Interaction) denotes a highly critical, easily exploitable remote attack vector."
+  },
+  {
+    "id": 11201,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11202,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "CVSS Metrics",
+    "question": "A vulnerability is rated as CVSS 9.8. The vector string contains 'AV:N/AC:L/PR:N/UI:N'. What does this tell the Senior Security Auditor about how the vulnerability is exploited?",
+    "options": [
+      "It requires local access and administrative credentials",
+      "It can be exploited remotely over the network, with low complexity, requiring no privileges or user interaction",
+      "It requires physical access to the device and user interaction",
+      "It is a temporal metric that will decrease next week"
+    ],
+    "answer": 1,
+    "explanation": "AV:N (Network), AC:L (Low Complexity), PR:N (No Privileges), UI:N (No User Interaction) denotes a highly critical, easily exploitable remote attack vector."
+  },
+  {
+    "id": 11203,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Senior Security Auditor is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11204,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Database Custodian is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11205,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "CVSS Metrics",
+    "question": "A vulnerability is rated as CVSS 9.8. The vector string contains 'AV:N/AC:L/PR:N/UI:N'. What does this tell the Chief Information Security Officer (CISO) about how the vulnerability is exploited?",
+    "options": [
+      "It requires local access and administrative credentials",
+      "It can be exploited remotely over the network, with low complexity, requiring no privileges or user interaction",
+      "It requires physical access to the device and user interaction",
+      "It is a temporal metric that will decrease next week"
+    ],
+    "answer": 1,
+    "explanation": "AV:N (Network), AC:L (Low Complexity), PR:N (No Privileges), UI:N (No User Interaction) denotes a highly critical, easily exploitable remote attack vector."
+  },
+  {
+    "id": 11206,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11207,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "CVSS Metrics",
+    "question": "A vulnerability is rated as CVSS 9.8. The vector string contains 'AV:N/AC:L/PR:N/UI:N'. What does this tell the Privacy Officer about how the vulnerability is exploited?",
+    "options": [
+      "It requires local access and administrative credentials",
+      "It can be exploited remotely over the network, with low complexity, requiring no privileges or user interaction",
+      "It requires physical access to the device and user interaction",
+      "It is a temporal metric that will decrease next week"
+    ],
+    "answer": 1,
+    "explanation": "AV:N (Network), AC:L (Low Complexity), PR:N (No Privileges), UI:N (No User Interaction) denotes a highly critical, easily exploitable remote attack vector."
+  },
+  {
+    "id": 11208,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "CVSS Metrics",
+    "question": "A vulnerability is rated as CVSS 9.8. The vector string contains 'AV:N/AC:L/PR:N/UI:N'. What does this tell the Senior Security Auditor about how the vulnerability is exploited?",
+    "options": [
+      "It requires local access and administrative credentials",
+      "It can be exploited remotely over the network, with low complexity, requiring no privileges or user interaction",
+      "It requires physical access to the device and user interaction",
+      "It is a temporal metric that will decrease next week"
+    ],
+    "answer": 1,
+    "explanation": "AV:N (Network), AC:L (Low Complexity), PR:N (No Privileges), UI:N (No User Interaction) denotes a highly critical, easily exploitable remote attack vector."
+  },
+  {
+    "id": 11209,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11210,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11211,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "CVSS Metrics",
+    "question": "A vulnerability is rated as CVSS 9.8. The vector string contains 'AV:N/AC:L/PR:N/UI:N'. What does this tell the Database Custodian about how the vulnerability is exploited?",
+    "options": [
+      "It requires local access and administrative credentials",
+      "It can be exploited remotely over the network, with low complexity, requiring no privileges or user interaction",
+      "It requires physical access to the device and user interaction",
+      "It is a temporal metric that will decrease next week"
+    ],
+    "answer": 1,
+    "explanation": "AV:N (Network), AC:L (Low Complexity), PR:N (No Privileges), UI:N (No User Interaction) denotes a highly critical, easily exploitable remote attack vector."
+  },
+  {
+    "id": 11212,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Senior Security Auditor is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11213,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Lead Network Engineer is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11214,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Information Owner is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11215,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11216,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11217,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Lead Network Engineer is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11218,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11219,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Chief Information Security Officer (CISO) is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11220,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "CVSS Metrics",
+    "question": "A vulnerability is rated as CVSS 9.8. The vector string contains 'AV:N/AC:L/PR:N/UI:N'. What does this tell the Database Custodian about how the vulnerability is exploited?",
+    "options": [
+      "It requires local access and administrative credentials",
+      "It can be exploited remotely over the network, with low complexity, requiring no privileges or user interaction",
+      "It requires physical access to the device and user interaction",
+      "It is a temporal metric that will decrease next week"
+    ],
+    "answer": 1,
+    "explanation": "AV:N (Network), AC:L (Low Complexity), PR:N (No Privileges), UI:N (No User Interaction) denotes a highly critical, easily exploitable remote attack vector."
+  },
+  {
+    "id": 11221,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "CVSS Metrics",
+    "question": "A vulnerability is rated as CVSS 9.8. The vector string contains 'AV:N/AC:L/PR:N/UI:N'. What does this tell the Privacy Officer about how the vulnerability is exploited?",
+    "options": [
+      "It requires local access and administrative credentials",
+      "It can be exploited remotely over the network, with low complexity, requiring no privileges or user interaction",
+      "It requires physical access to the device and user interaction",
+      "It is a temporal metric that will decrease next week"
+    ],
+    "answer": 1,
+    "explanation": "AV:N (Network), AC:L (Low Complexity), PR:N (No Privileges), UI:N (No User Interaction) denotes a highly critical, easily exploitable remote attack vector."
+  },
+  {
+    "id": 11222,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Lead Network Engineer is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11223,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11224,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11225,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Lead Network Engineer is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11226,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "CVSS Metrics",
+    "question": "A vulnerability is rated as CVSS 9.8. The vector string contains 'AV:N/AC:L/PR:N/UI:N'. What does this tell the Information Owner about how the vulnerability is exploited?",
+    "options": [
+      "It requires local access and administrative credentials",
+      "It can be exploited remotely over the network, with low complexity, requiring no privileges or user interaction",
+      "It requires physical access to the device and user interaction",
+      "It is a temporal metric that will decrease next week"
+    ],
+    "answer": 1,
+    "explanation": "AV:N (Network), AC:L (Low Complexity), PR:N (No Privileges), UI:N (No User Interaction) denotes a highly critical, easily exploitable remote attack vector."
+  },
+  {
+    "id": 11227,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "CVSS Metrics",
+    "question": "A vulnerability is rated as CVSS 9.8. The vector string contains 'AV:N/AC:L/PR:N/UI:N'. What does this tell the Information Owner about how the vulnerability is exploited?",
+    "options": [
+      "It requires local access and administrative credentials",
+      "It can be exploited remotely over the network, with low complexity, requiring no privileges or user interaction",
+      "It requires physical access to the device and user interaction",
+      "It is a temporal metric that will decrease next week"
+    ],
+    "answer": 1,
+    "explanation": "AV:N (Network), AC:L (Low Complexity), PR:N (No Privileges), UI:N (No User Interaction) denotes a highly critical, easily exploitable remote attack vector."
+  },
+  {
+    "id": 11228,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Chief Information Security Officer (CISO) is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11229,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Security Architect is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11230,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Privacy Officer is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11231,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Security Architect is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11232,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "CVSS Metrics",
+    "question": "A vulnerability is rated as CVSS 9.8. The vector string contains 'AV:N/AC:L/PR:N/UI:N'. What does this tell the Database Custodian about how the vulnerability is exploited?",
+    "options": [
+      "It requires local access and administrative credentials",
+      "It can be exploited remotely over the network, with low complexity, requiring no privileges or user interaction",
+      "It requires physical access to the device and user interaction",
+      "It is a temporal metric that will decrease next week"
+    ],
+    "answer": 1,
+    "explanation": "AV:N (Network), AC:L (Low Complexity), PR:N (No Privileges), UI:N (No User Interaction) denotes a highly critical, easily exploitable remote attack vector."
+  },
+  {
+    "id": 11233,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11234,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11235,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Security Architect is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11236,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Chief Information Security Officer (CISO) is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11237,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11238,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Database Custodian is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11239,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Lead Network Engineer is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11240,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "CVSS Metrics",
+    "question": "A vulnerability is rated as CVSS 9.8. The vector string contains 'AV:N/AC:L/PR:N/UI:N'. What does this tell the Privacy Officer about how the vulnerability is exploited?",
+    "options": [
+      "It requires local access and administrative credentials",
+      "It can be exploited remotely over the network, with low complexity, requiring no privileges or user interaction",
+      "It requires physical access to the device and user interaction",
+      "It is a temporal metric that will decrease next week"
+    ],
+    "answer": 1,
+    "explanation": "AV:N (Network), AC:L (Low Complexity), PR:N (No Privileges), UI:N (No User Interaction) denotes a highly critical, easily exploitable remote attack vector."
+  },
+  {
+    "id": 11241,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Information Owner is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11242,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11243,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "CVSS Metrics",
+    "question": "A vulnerability is rated as CVSS 9.8. The vector string contains 'AV:N/AC:L/PR:N/UI:N'. What does this tell the Chief Information Security Officer (CISO) about how the vulnerability is exploited?",
+    "options": [
+      "It requires local access and administrative credentials",
+      "It can be exploited remotely over the network, with low complexity, requiring no privileges or user interaction",
+      "It requires physical access to the device and user interaction",
+      "It is a temporal metric that will decrease next week"
+    ],
+    "answer": 1,
+    "explanation": "AV:N (Network), AC:L (Low Complexity), PR:N (No Privileges), UI:N (No User Interaction) denotes a highly critical, easily exploitable remote attack vector."
+  },
+  {
+    "id": 11244,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Senior Security Auditor is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11245,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11246,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Chief Information Security Officer (CISO) is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11247,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11248,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "CVSS Metrics",
+    "question": "A vulnerability is rated as CVSS 9.8. The vector string contains 'AV:N/AC:L/PR:N/UI:N'. What does this tell the Security Architect about how the vulnerability is exploited?",
+    "options": [
+      "It requires local access and administrative credentials",
+      "It can be exploited remotely over the network, with low complexity, requiring no privileges or user interaction",
+      "It requires physical access to the device and user interaction",
+      "It is a temporal metric that will decrease next week"
+    ],
+    "answer": 1,
+    "explanation": "AV:N (Network), AC:L (Low Complexity), PR:N (No Privileges), UI:N (No User Interaction) denotes a highly critical, easily exploitable remote attack vector."
+  },
+  {
+    "id": 11249,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "CVSS Metrics",
+    "question": "A vulnerability is rated as CVSS 9.8. The vector string contains 'AV:N/AC:L/PR:N/UI:N'. What does this tell the Privacy Officer about how the vulnerability is exploited?",
+    "options": [
+      "It requires local access and administrative credentials",
+      "It can be exploited remotely over the network, with low complexity, requiring no privileges or user interaction",
+      "It requires physical access to the device and user interaction",
+      "It is a temporal metric that will decrease next week"
+    ],
+    "answer": 1,
+    "explanation": "AV:N (Network), AC:L (Low Complexity), PR:N (No Privileges), UI:N (No User Interaction) denotes a highly critical, easily exploitable remote attack vector."
+  },
+  {
+    "id": 11250,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Privacy Officer is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11251,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11252,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "CVSS Metrics",
+    "question": "A vulnerability is rated as CVSS 9.8. The vector string contains 'AV:N/AC:L/PR:N/UI:N'. What does this tell the Chief Information Security Officer (CISO) about how the vulnerability is exploited?",
+    "options": [
+      "It requires local access and administrative credentials",
+      "It can be exploited remotely over the network, with low complexity, requiring no privileges or user interaction",
+      "It requires physical access to the device and user interaction",
+      "It is a temporal metric that will decrease next week"
+    ],
+    "answer": 1,
+    "explanation": "AV:N (Network), AC:L (Low Complexity), PR:N (No Privileges), UI:N (No User Interaction) denotes a highly critical, easily exploitable remote attack vector."
+  },
+  {
+    "id": 11253,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11254,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "CVSS Metrics",
+    "question": "A vulnerability is rated as CVSS 9.8. The vector string contains 'AV:N/AC:L/PR:N/UI:N'. What does this tell the Security Architect about how the vulnerability is exploited?",
+    "options": [
+      "It requires local access and administrative credentials",
+      "It can be exploited remotely over the network, with low complexity, requiring no privileges or user interaction",
+      "It requires physical access to the device and user interaction",
+      "It is a temporal metric that will decrease next week"
+    ],
+    "answer": 1,
+    "explanation": "AV:N (Network), AC:L (Low Complexity), PR:N (No Privileges), UI:N (No User Interaction) denotes a highly critical, easily exploitable remote attack vector."
+  },
+  {
+    "id": 11255,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "CVSS Metrics",
+    "question": "A vulnerability is rated as CVSS 9.8. The vector string contains 'AV:N/AC:L/PR:N/UI:N'. What does this tell the Security Architect about how the vulnerability is exploited?",
+    "options": [
+      "It requires local access and administrative credentials",
+      "It can be exploited remotely over the network, with low complexity, requiring no privileges or user interaction",
+      "It requires physical access to the device and user interaction",
+      "It is a temporal metric that will decrease next week"
+    ],
+    "answer": 1,
+    "explanation": "AV:N (Network), AC:L (Low Complexity), PR:N (No Privileges), UI:N (No User Interaction) denotes a highly critical, easily exploitable remote attack vector."
+  },
+  {
+    "id": 11256,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11257,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Security Architect is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11258,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11259,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11260,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11261,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Information Owner is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11262,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11263,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Database Custodian is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11264,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11265,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Information Owner is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11266,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Lead Network Engineer is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11267,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Chief Information Security Officer (CISO) is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11268,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Chief Information Security Officer (CISO) is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11269,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "CVSS Metrics",
+    "question": "A vulnerability is rated as CVSS 9.8. The vector string contains 'AV:N/AC:L/PR:N/UI:N'. What does this tell the Chief Information Security Officer (CISO) about how the vulnerability is exploited?",
+    "options": [
+      "It requires local access and administrative credentials",
+      "It can be exploited remotely over the network, with low complexity, requiring no privileges or user interaction",
+      "It requires physical access to the device and user interaction",
+      "It is a temporal metric that will decrease next week"
+    ],
+    "answer": 1,
+    "explanation": "AV:N (Network), AC:L (Low Complexity), PR:N (No Privileges), UI:N (No User Interaction) denotes a highly critical, easily exploitable remote attack vector."
+  },
+  {
+    "id": 11270,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Database Custodian is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11271,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Senior Security Auditor is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11272,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Senior Security Auditor is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11273,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Privacy Officer is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11274,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Privacy Officer is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11275,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Privacy Officer is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11276,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Privacy Officer is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11277,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11278,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Privacy Officer is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11279,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Privacy Officer is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11280,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11281,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "CVSS Metrics",
+    "question": "A vulnerability is rated as CVSS 9.8. The vector string contains 'AV:N/AC:L/PR:N/UI:N'. What does this tell the Senior Security Auditor about how the vulnerability is exploited?",
+    "options": [
+      "It requires local access and administrative credentials",
+      "It can be exploited remotely over the network, with low complexity, requiring no privileges or user interaction",
+      "It requires physical access to the device and user interaction",
+      "It is a temporal metric that will decrease next week"
+    ],
+    "answer": 1,
+    "explanation": "AV:N (Network), AC:L (Low Complexity), PR:N (No Privileges), UI:N (No User Interaction) denotes a highly critical, easily exploitable remote attack vector."
+  },
+  {
+    "id": 11282,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Database Custodian is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11283,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Senior Security Auditor is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11284,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Lead Network Engineer is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11285,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11286,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11287,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "CVSS Metrics",
+    "question": "A vulnerability is rated as CVSS 9.8. The vector string contains 'AV:N/AC:L/PR:N/UI:N'. What does this tell the Chief Information Security Officer (CISO) about how the vulnerability is exploited?",
+    "options": [
+      "It requires local access and administrative credentials",
+      "It can be exploited remotely over the network, with low complexity, requiring no privileges or user interaction",
+      "It requires physical access to the device and user interaction",
+      "It is a temporal metric that will decrease next week"
+    ],
+    "answer": 1,
+    "explanation": "AV:N (Network), AC:L (Low Complexity), PR:N (No Privileges), UI:N (No User Interaction) denotes a highly critical, easily exploitable remote attack vector."
+  },
+  {
+    "id": 11288,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11289,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Information Owner is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11290,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11291,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Security Architect is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11292,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Information Owner is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11293,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11294,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "CVSS Metrics",
+    "question": "A vulnerability is rated as CVSS 9.8. The vector string contains 'AV:N/AC:L/PR:N/UI:N'. What does this tell the Chief Information Security Officer (CISO) about how the vulnerability is exploited?",
+    "options": [
+      "It requires local access and administrative credentials",
+      "It can be exploited remotely over the network, with low complexity, requiring no privileges or user interaction",
+      "It requires physical access to the device and user interaction",
+      "It is a temporal metric that will decrease next week"
+    ],
+    "answer": 1,
+    "explanation": "AV:N (Network), AC:L (Low Complexity), PR:N (No Privileges), UI:N (No User Interaction) denotes a highly critical, easily exploitable remote attack vector."
+  },
+  {
+    "id": 11295,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11296,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "CVSS Metrics",
+    "question": "A vulnerability is rated as CVSS 9.8. The vector string contains 'AV:N/AC:L/PR:N/UI:N'. What does this tell the Security Architect about how the vulnerability is exploited?",
+    "options": [
+      "It requires local access and administrative credentials",
+      "It can be exploited remotely over the network, with low complexity, requiring no privileges or user interaction",
+      "It requires physical access to the device and user interaction",
+      "It is a temporal metric that will decrease next week"
+    ],
+    "answer": 1,
+    "explanation": "AV:N (Network), AC:L (Low Complexity), PR:N (No Privileges), UI:N (No User Interaction) denotes a highly critical, easily exploitable remote attack vector."
+  },
+  {
+    "id": 11297,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Privacy Officer is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11298,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Database Custodian is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11299,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11300,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "CVSS Metrics",
+    "question": "A vulnerability is rated as CVSS 9.8. The vector string contains 'AV:N/AC:L/PR:N/UI:N'. What does this tell the Privacy Officer about how the vulnerability is exploited?",
+    "options": [
+      "It requires local access and administrative credentials",
+      "It can be exploited remotely over the network, with low complexity, requiring no privileges or user interaction",
+      "It requires physical access to the device and user interaction",
+      "It is a temporal metric that will decrease next week"
+    ],
+    "answer": 1,
+    "explanation": "AV:N (Network), AC:L (Low Complexity), PR:N (No Privileges), UI:N (No User Interaction) denotes a highly critical, easily exploitable remote attack vector."
+  },
+  {
+    "id": 11301,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Database Custodian is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11302,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11303,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "CVSS Metrics",
+    "question": "A vulnerability is rated as CVSS 9.8. The vector string contains 'AV:N/AC:L/PR:N/UI:N'. What does this tell the Senior Security Auditor about how the vulnerability is exploited?",
+    "options": [
+      "It requires local access and administrative credentials",
+      "It can be exploited remotely over the network, with low complexity, requiring no privileges or user interaction",
+      "It requires physical access to the device and user interaction",
+      "It is a temporal metric that will decrease next week"
+    ],
+    "answer": 1,
+    "explanation": "AV:N (Network), AC:L (Low Complexity), PR:N (No Privileges), UI:N (No User Interaction) denotes a highly critical, easily exploitable remote attack vector."
+  },
+  {
+    "id": 11304,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Lead Network Engineer is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11305,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Security Architect is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11306,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11307,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Lead Network Engineer is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11308,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Lead Network Engineer is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11309,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "CVSS Metrics",
+    "question": "A vulnerability is rated as CVSS 9.8. The vector string contains 'AV:N/AC:L/PR:N/UI:N'. What does this tell the Information Owner about how the vulnerability is exploited?",
+    "options": [
+      "It requires local access and administrative credentials",
+      "It can be exploited remotely over the network, with low complexity, requiring no privileges or user interaction",
+      "It requires physical access to the device and user interaction",
+      "It is a temporal metric that will decrease next week"
+    ],
+    "answer": 1,
+    "explanation": "AV:N (Network), AC:L (Low Complexity), PR:N (No Privileges), UI:N (No User Interaction) denotes a highly critical, easily exploitable remote attack vector."
+  },
+  {
+    "id": 11310,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11311,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "CVSS Metrics",
+    "question": "A vulnerability is rated as CVSS 9.8. The vector string contains 'AV:N/AC:L/PR:N/UI:N'. What does this tell the Senior Security Auditor about how the vulnerability is exploited?",
+    "options": [
+      "It requires local access and administrative credentials",
+      "It can be exploited remotely over the network, with low complexity, requiring no privileges or user interaction",
+      "It requires physical access to the device and user interaction",
+      "It is a temporal metric that will decrease next week"
+    ],
+    "answer": 1,
+    "explanation": "AV:N (Network), AC:L (Low Complexity), PR:N (No Privileges), UI:N (No User Interaction) denotes a highly critical, easily exploitable remote attack vector."
+  },
+  {
+    "id": 11312,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11313,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11314,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Privacy Officer is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11315,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Senior Security Auditor is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11316,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Lead Network Engineer is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11317,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "CVSS Metrics",
+    "question": "A vulnerability is rated as CVSS 9.8. The vector string contains 'AV:N/AC:L/PR:N/UI:N'. What does this tell the Security Architect about how the vulnerability is exploited?",
+    "options": [
+      "It requires local access and administrative credentials",
+      "It can be exploited remotely over the network, with low complexity, requiring no privileges or user interaction",
+      "It requires physical access to the device and user interaction",
+      "It is a temporal metric that will decrease next week"
+    ],
+    "answer": 1,
+    "explanation": "AV:N (Network), AC:L (Low Complexity), PR:N (No Privileges), UI:N (No User Interaction) denotes a highly critical, easily exploitable remote attack vector."
+  },
+  {
+    "id": 11318,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "CVSS Metrics",
+    "question": "A vulnerability is rated as CVSS 9.8. The vector string contains 'AV:N/AC:L/PR:N/UI:N'. What does this tell the Information Owner about how the vulnerability is exploited?",
+    "options": [
+      "It requires local access and administrative credentials",
+      "It can be exploited remotely over the network, with low complexity, requiring no privileges or user interaction",
+      "It requires physical access to the device and user interaction",
+      "It is a temporal metric that will decrease next week"
+    ],
+    "answer": 1,
+    "explanation": "AV:N (Network), AC:L (Low Complexity), PR:N (No Privileges), UI:N (No User Interaction) denotes a highly critical, easily exploitable remote attack vector."
+  },
+  {
+    "id": 11319,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Privacy Officer is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11320,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Database Custodian is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11321,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Database Custodian is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11322,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11323,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "CVSS Metrics",
+    "question": "A vulnerability is rated as CVSS 9.8. The vector string contains 'AV:N/AC:L/PR:N/UI:N'. What does this tell the Chief Information Security Officer (CISO) about how the vulnerability is exploited?",
+    "options": [
+      "It requires local access and administrative credentials",
+      "It can be exploited remotely over the network, with low complexity, requiring no privileges or user interaction",
+      "It requires physical access to the device and user interaction",
+      "It is a temporal metric that will decrease next week"
+    ],
+    "answer": 1,
+    "explanation": "AV:N (Network), AC:L (Low Complexity), PR:N (No Privileges), UI:N (No User Interaction) denotes a highly critical, easily exploitable remote attack vector."
+  },
+  {
+    "id": 11324,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SAST vs DAST",
+    "question": "A software team wants to identify runtime memory leaks and session management flaws in a running application before release. What type of testing tool should they use?",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Software Composition Analysis (SCA)",
+      "Code linting tool"
+    ],
+    "answer": 1,
+    "explanation": "DAST (Dynamic testing) is a black-box test that evaluates the running application to find runtime and interface flaws."
+  },
+  {
+    "id": 11325,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "SOC Reports",
+    "question": "A Database Custodian is evaluating a SaaS provider. The provider provides a SOC 2 Type I report. Why might the auditor reject this in favor of a Type II report?",
+    "options": [
+      "Type I reports do not cover the Trust Services Criteria",
+      "Type I only evaluates control design at a single point in time, whereas Type II tests operating effectiveness over a period",
+      "Type I reports are self-assessments and not independently audited",
+      "Type I reports are public-facing summaries"
+    ],
+    "answer": 1,
+    "explanation": "A Type I report verifies control design at a single point in time. Auditors prefer Type II reports because they prove the controls actually worked effectively over a long period (6+ months)."
+  },
+  {
+    "id": 11326,
+    "domain": 6,
+    "domain_name": "Domain 6",
+    "scenario": "CVSS Metrics",
+    "question": "A vulnerability is rated as CVSS 9.8. The vector string contains 'AV:N/AC:L/PR:N/UI:N'. What does this tell the Senior Security Auditor about how the vulnerability is exploited?",
+    "options": [
+      "It requires local access and administrative credentials",
+      "It can be exploited remotely over the network, with low complexity, requiring no privileges or user interaction",
+      "It requires physical access to the device and user interaction",
+      "It is a temporal metric that will decrease next week"
+    ],
+    "answer": 1,
+    "explanation": "AV:N (Network), AC:L (Low Complexity), PR:N (No Privileges), UI:N (No User Interaction) denotes a highly critical, easily exploitable remote attack vector."
+  },
+  {
+    "id": 11327,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11328,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Senior Security Auditor is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11329,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11330,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11331,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11332,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Senior Security Auditor is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11333,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11334,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11335,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Information Owner is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11336,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Security Architect is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11337,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11338,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11339,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11340,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11341,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Senior Security Auditor is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11342,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Lead Network Engineer is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11343,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11344,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11345,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11346,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11347,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Senior Security Auditor is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11348,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Security Architect is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11349,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11350,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11351,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11352,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11353,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11354,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11355,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Chief Information Security Officer (CISO) is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11356,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Security Architect is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11357,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11358,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11359,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11360,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11361,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11362,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11363,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11364,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11365,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Privacy Officer is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11366,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11367,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11368,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11369,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Chief Information Security Officer (CISO) is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11370,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Security Architect is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11371,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11372,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Senior Security Auditor is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11373,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11374,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11375,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11376,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11377,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11378,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11379,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Privacy Officer is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11380,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Lead Network Engineer is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11381,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11382,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Security Architect is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11383,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Information Owner is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11384,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Information Owner is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11385,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Senior Security Auditor is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11386,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Lead Network Engineer is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11387,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11388,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11389,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11390,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Senior Security Auditor is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11391,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Information Owner is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11392,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Lead Network Engineer is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11393,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11394,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11395,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11396,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11397,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11398,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Lead Network Engineer is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11399,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11400,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11401,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Database Custodian is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11402,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Information Owner is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11403,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Security Architect is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11404,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Chief Information Security Officer (CISO) is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11405,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11406,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11407,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11408,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11409,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11410,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11411,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11412,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11413,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11414,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11415,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Chief Information Security Officer (CISO) is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11416,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11417,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11418,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11419,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11420,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Information Owner is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11421,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11422,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11423,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11424,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Privacy Officer is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11425,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11426,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11427,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11428,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11429,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Senior Security Auditor is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11430,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11431,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11432,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11433,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11434,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11435,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11436,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11437,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11438,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Information Owner is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11439,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Information Owner is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11440,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11441,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11442,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11443,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11444,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Lead Network Engineer is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11445,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11446,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Information Owner is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11447,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Chief Information Security Officer (CISO) is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11448,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11449,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Privacy Officer is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11450,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11451,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Information Owner is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11452,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11453,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11454,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11455,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11456,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11457,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11458,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11459,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11460,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11461,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11462,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Chief Information Security Officer (CISO) is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11463,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11464,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11465,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11466,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11467,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Security Architect is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11468,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11469,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11470,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11471,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Information Owner is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11472,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11473,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Senior Security Auditor is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11474,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11475,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11476,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11477,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Chief Information Security Officer (CISO) is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11478,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Senior Security Auditor is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11479,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Privacy Officer is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11480,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11481,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Security Architect is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11482,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11483,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Chief Information Security Officer (CISO) is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11484,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11485,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Senior Security Auditor is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11486,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11487,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11488,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11489,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11490,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Senior Security Auditor is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11491,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11492,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11493,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11494,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11495,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11496,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11497,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11498,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Security Architect is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11499,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11500,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Chief Information Security Officer (CISO) is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11501,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11502,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11503,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Privacy Officer is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11504,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Database Custodian is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11505,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11506,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Chief Information Security Officer (CISO) is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11507,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11508,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Information Owner is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11509,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11510,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11511,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11512,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11513,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Security Architect is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11514,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Senior Security Auditor is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11515,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Senior Security Auditor is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11516,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Privacy Officer is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11517,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11518,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11519,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Chief Information Security Officer (CISO) is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11520,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11521,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11522,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11523,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11524,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11525,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11526,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11527,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11528,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11529,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Privacy Officer is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11530,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Security Architect is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11531,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Security Architect is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11532,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11533,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Senior Security Auditor is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11534,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11535,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11536,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Information Owner is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11537,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "DRP Testing",
+    "question": "A Chief Information Security Officer (CISO) is planning a disaster recovery test. The plan is to physically shut down the primary data center and cut power to verify that the warm backup site can fully assume production loads. What test type is this?",
+    "options": [
+      "Tabletop simulation",
+      "Parallel test",
+      "Full Interruption test",
+      "Checklist review"
+    ],
+    "answer": 2,
+    "explanation": "A Full Interruption test cuts off the primary site and verifies that disaster recovery operations can handle real workloads, which is high-risk but the most thorough test."
+  },
+  {
+    "id": 11538,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11539,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11540,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11541,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11542,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Backup Types",
+    "question": "To minimize the nightly backup window, what backup scheme should a database administrator configure?",
+    "options": [
+      "Nightly full backups",
+      "Sunday full backup followed by nightly differential backups",
+      "Sunday full backup followed by nightly incremental backups",
+      "Continuous replication without backups"
+    ],
+    "answer": 2,
+    "explanation": "Incremental backups only copy files modified since the last backup (full or incremental), resulting in the smallest daily backup size and window."
+  },
+  {
+    "id": 11543,
+    "domain": 7,
+    "domain_name": "Domain 7",
+    "scenario": "Forensics Order of Volatility",
+    "question": "A compromised server needs to be investigated. According to the order of volatility, which item must the digital forensics team capture first?",
+    "options": [
+      "The routing table and ARP cache",
+      "CPU registers and L1/L2 cache",
+      "System RAM contents",
+      "Local solid state drive image"
+    ],
+    "answer": 1,
+    "explanation": "CPU registers and caches are the most volatile components and are modified or lost instantly during normal operations or reboots."
+  },
+  {
+    "id": 11544,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SDLC Security",
+    "question": "In a secure software development lifecycle, at what phase should threat modeling and security requirements definition ideally take place?",
+    "options": [
+      "During implementation / coding",
+      "During design and requirements gathering",
+      "Immediately before deployment",
+      "During post-release maintenance"
+    ],
+    "answer": 1,
+    "explanation": "Shifting left requires defining security requirements and threat modeling early, during the requirements and design phases, to prevent expensive structural fixes later."
+  },
+  {
+    "id": 11545,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11546,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SDLC Security",
+    "question": "In a secure software development lifecycle, at what phase should threat modeling and security requirements definition ideally take place?",
+    "options": [
+      "During implementation / coding",
+      "During design and requirements gathering",
+      "Immediately before deployment",
+      "During post-release maintenance"
+    ],
+    "answer": 1,
+    "explanation": "Shifting left requires defining security requirements and threat modeling early, during the requirements and design phases, to prevent expensive structural fixes later."
+  },
+  {
+    "id": 11547,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11548,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SQL Injection Defenses",
+    "question": "A web application database is compromised via an SQL injection attack. Which of the following code-level changes is the most effective prevention strategy?",
+    "options": [
+      "Implementing client-side validation using HTML5 patterns",
+      "Using parameterized queries (prepared statements)",
+      "Running periodic vulnerability scans against the website",
+      "Hashing the database fields using SHA-256"
+    ],
+    "answer": 1,
+    "explanation": "Parameterized queries separate SQL statements from the parameters (user inputs), ensuring the database interpreter handles inputs strictly as data, neutralizing SQLi."
+  },
+  {
+    "id": 11549,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SDLC Security",
+    "question": "In a secure software development lifecycle, at what phase should threat modeling and security requirements definition ideally take place?",
+    "options": [
+      "During implementation / coding",
+      "During design and requirements gathering",
+      "Immediately before deployment",
+      "During post-release maintenance"
+    ],
+    "answer": 1,
+    "explanation": "Shifting left requires defining security requirements and threat modeling early, during the requirements and design phases, to prevent expensive structural fixes later."
+  },
+  {
+    "id": 11550,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11551,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SDLC Security",
+    "question": "In a secure software development lifecycle, at what phase should threat modeling and security requirements definition ideally take place?",
+    "options": [
+      "During implementation / coding",
+      "During design and requirements gathering",
+      "Immediately before deployment",
+      "During post-release maintenance"
+    ],
+    "answer": 1,
+    "explanation": "Shifting left requires defining security requirements and threat modeling early, during the requirements and design phases, to prevent expensive structural fixes later."
+  },
+  {
+    "id": 11552,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11553,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SDLC Security",
+    "question": "In a secure software development lifecycle, at what phase should threat modeling and security requirements definition ideally take place?",
+    "options": [
+      "During implementation / coding",
+      "During design and requirements gathering",
+      "Immediately before deployment",
+      "During post-release maintenance"
+    ],
+    "answer": 1,
+    "explanation": "Shifting left requires defining security requirements and threat modeling early, during the requirements and design phases, to prevent expensive structural fixes later."
+  },
+  {
+    "id": 11554,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SQL Injection Defenses",
+    "question": "A web application database is compromised via an SQL injection attack. Which of the following code-level changes is the most effective prevention strategy?",
+    "options": [
+      "Implementing client-side validation using HTML5 patterns",
+      "Using parameterized queries (prepared statements)",
+      "Running periodic vulnerability scans against the website",
+      "Hashing the database fields using SHA-256"
+    ],
+    "answer": 1,
+    "explanation": "Parameterized queries separate SQL statements from the parameters (user inputs), ensuring the database interpreter handles inputs strictly as data, neutralizing SQLi."
+  },
+  {
+    "id": 11555,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SDLC Security",
+    "question": "In a secure software development lifecycle, at what phase should threat modeling and security requirements definition ideally take place?",
+    "options": [
+      "During implementation / coding",
+      "During design and requirements gathering",
+      "Immediately before deployment",
+      "During post-release maintenance"
+    ],
+    "answer": 1,
+    "explanation": "Shifting left requires defining security requirements and threat modeling early, during the requirements and design phases, to prevent expensive structural fixes later."
+  },
+  {
+    "id": 11556,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11557,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SQL Injection Defenses",
+    "question": "A web application database is compromised via an SQL injection attack. Which of the following code-level changes is the most effective prevention strategy?",
+    "options": [
+      "Implementing client-side validation using HTML5 patterns",
+      "Using parameterized queries (prepared statements)",
+      "Running periodic vulnerability scans against the website",
+      "Hashing the database fields using SHA-256"
+    ],
+    "answer": 1,
+    "explanation": "Parameterized queries separate SQL statements from the parameters (user inputs), ensuring the database interpreter handles inputs strictly as data, neutralizing SQLi."
+  },
+  {
+    "id": 11558,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11559,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SQL Injection Defenses",
+    "question": "A web application database is compromised via an SQL injection attack. Which of the following code-level changes is the most effective prevention strategy?",
+    "options": [
+      "Implementing client-side validation using HTML5 patterns",
+      "Using parameterized queries (prepared statements)",
+      "Running periodic vulnerability scans against the website",
+      "Hashing the database fields using SHA-256"
+    ],
+    "answer": 1,
+    "explanation": "Parameterized queries separate SQL statements from the parameters (user inputs), ensuring the database interpreter handles inputs strictly as data, neutralizing SQLi."
+  },
+  {
+    "id": 11560,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SDLC Security",
+    "question": "In a secure software development lifecycle, at what phase should threat modeling and security requirements definition ideally take place?",
+    "options": [
+      "During implementation / coding",
+      "During design and requirements gathering",
+      "Immediately before deployment",
+      "During post-release maintenance"
+    ],
+    "answer": 1,
+    "explanation": "Shifting left requires defining security requirements and threat modeling early, during the requirements and design phases, to prevent expensive structural fixes later."
+  },
+  {
+    "id": 11561,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SDLC Security",
+    "question": "In a secure software development lifecycle, at what phase should threat modeling and security requirements definition ideally take place?",
+    "options": [
+      "During implementation / coding",
+      "During design and requirements gathering",
+      "Immediately before deployment",
+      "During post-release maintenance"
+    ],
+    "answer": 1,
+    "explanation": "Shifting left requires defining security requirements and threat modeling early, during the requirements and design phases, to prevent expensive structural fixes later."
+  },
+  {
+    "id": 11562,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SDLC Security",
+    "question": "In a secure software development lifecycle, at what phase should threat modeling and security requirements definition ideally take place?",
+    "options": [
+      "During implementation / coding",
+      "During design and requirements gathering",
+      "Immediately before deployment",
+      "During post-release maintenance"
+    ],
+    "answer": 1,
+    "explanation": "Shifting left requires defining security requirements and threat modeling early, during the requirements and design phases, to prevent expensive structural fixes later."
+  },
+  {
+    "id": 11563,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11564,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SQL Injection Defenses",
+    "question": "A web application database is compromised via an SQL injection attack. Which of the following code-level changes is the most effective prevention strategy?",
+    "options": [
+      "Implementing client-side validation using HTML5 patterns",
+      "Using parameterized queries (prepared statements)",
+      "Running periodic vulnerability scans against the website",
+      "Hashing the database fields using SHA-256"
+    ],
+    "answer": 1,
+    "explanation": "Parameterized queries separate SQL statements from the parameters (user inputs), ensuring the database interpreter handles inputs strictly as data, neutralizing SQLi."
+  },
+  {
+    "id": 11565,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SQL Injection Defenses",
+    "question": "A web application database is compromised via an SQL injection attack. Which of the following code-level changes is the most effective prevention strategy?",
+    "options": [
+      "Implementing client-side validation using HTML5 patterns",
+      "Using parameterized queries (prepared statements)",
+      "Running periodic vulnerability scans against the website",
+      "Hashing the database fields using SHA-256"
+    ],
+    "answer": 1,
+    "explanation": "Parameterized queries separate SQL statements from the parameters (user inputs), ensuring the database interpreter handles inputs strictly as data, neutralizing SQLi."
+  },
+  {
+    "id": 11566,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SQL Injection Defenses",
+    "question": "A web application database is compromised via an SQL injection attack. Which of the following code-level changes is the most effective prevention strategy?",
+    "options": [
+      "Implementing client-side validation using HTML5 patterns",
+      "Using parameterized queries (prepared statements)",
+      "Running periodic vulnerability scans against the website",
+      "Hashing the database fields using SHA-256"
+    ],
+    "answer": 1,
+    "explanation": "Parameterized queries separate SQL statements from the parameters (user inputs), ensuring the database interpreter handles inputs strictly as data, neutralizing SQLi."
+  },
+  {
+    "id": 11567,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11568,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11569,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11570,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SQL Injection Defenses",
+    "question": "A web application database is compromised via an SQL injection attack. Which of the following code-level changes is the most effective prevention strategy?",
+    "options": [
+      "Implementing client-side validation using HTML5 patterns",
+      "Using parameterized queries (prepared statements)",
+      "Running periodic vulnerability scans against the website",
+      "Hashing the database fields using SHA-256"
+    ],
+    "answer": 1,
+    "explanation": "Parameterized queries separate SQL statements from the parameters (user inputs), ensuring the database interpreter handles inputs strictly as data, neutralizing SQLi."
+  },
+  {
+    "id": 11571,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11572,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SQL Injection Defenses",
+    "question": "A web application database is compromised via an SQL injection attack. Which of the following code-level changes is the most effective prevention strategy?",
+    "options": [
+      "Implementing client-side validation using HTML5 patterns",
+      "Using parameterized queries (prepared statements)",
+      "Running periodic vulnerability scans against the website",
+      "Hashing the database fields using SHA-256"
+    ],
+    "answer": 1,
+    "explanation": "Parameterized queries separate SQL statements from the parameters (user inputs), ensuring the database interpreter handles inputs strictly as data, neutralizing SQLi."
+  },
+  {
+    "id": 11573,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11574,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SQL Injection Defenses",
+    "question": "A web application database is compromised via an SQL injection attack. Which of the following code-level changes is the most effective prevention strategy?",
+    "options": [
+      "Implementing client-side validation using HTML5 patterns",
+      "Using parameterized queries (prepared statements)",
+      "Running periodic vulnerability scans against the website",
+      "Hashing the database fields using SHA-256"
+    ],
+    "answer": 1,
+    "explanation": "Parameterized queries separate SQL statements from the parameters (user inputs), ensuring the database interpreter handles inputs strictly as data, neutralizing SQLi."
+  },
+  {
+    "id": 11575,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11576,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SQL Injection Defenses",
+    "question": "A web application database is compromised via an SQL injection attack. Which of the following code-level changes is the most effective prevention strategy?",
+    "options": [
+      "Implementing client-side validation using HTML5 patterns",
+      "Using parameterized queries (prepared statements)",
+      "Running periodic vulnerability scans against the website",
+      "Hashing the database fields using SHA-256"
+    ],
+    "answer": 1,
+    "explanation": "Parameterized queries separate SQL statements from the parameters (user inputs), ensuring the database interpreter handles inputs strictly as data, neutralizing SQLi."
+  },
+  {
+    "id": 11577,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SQL Injection Defenses",
+    "question": "A web application database is compromised via an SQL injection attack. Which of the following code-level changes is the most effective prevention strategy?",
+    "options": [
+      "Implementing client-side validation using HTML5 patterns",
+      "Using parameterized queries (prepared statements)",
+      "Running periodic vulnerability scans against the website",
+      "Hashing the database fields using SHA-256"
+    ],
+    "answer": 1,
+    "explanation": "Parameterized queries separate SQL statements from the parameters (user inputs), ensuring the database interpreter handles inputs strictly as data, neutralizing SQLi."
+  },
+  {
+    "id": 11578,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SQL Injection Defenses",
+    "question": "A web application database is compromised via an SQL injection attack. Which of the following code-level changes is the most effective prevention strategy?",
+    "options": [
+      "Implementing client-side validation using HTML5 patterns",
+      "Using parameterized queries (prepared statements)",
+      "Running periodic vulnerability scans against the website",
+      "Hashing the database fields using SHA-256"
+    ],
+    "answer": 1,
+    "explanation": "Parameterized queries separate SQL statements from the parameters (user inputs), ensuring the database interpreter handles inputs strictly as data, neutralizing SQLi."
+  },
+  {
+    "id": 11579,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11580,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SQL Injection Defenses",
+    "question": "A web application database is compromised via an SQL injection attack. Which of the following code-level changes is the most effective prevention strategy?",
+    "options": [
+      "Implementing client-side validation using HTML5 patterns",
+      "Using parameterized queries (prepared statements)",
+      "Running periodic vulnerability scans against the website",
+      "Hashing the database fields using SHA-256"
+    ],
+    "answer": 1,
+    "explanation": "Parameterized queries separate SQL statements from the parameters (user inputs), ensuring the database interpreter handles inputs strictly as data, neutralizing SQLi."
+  },
+  {
+    "id": 11581,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SQL Injection Defenses",
+    "question": "A web application database is compromised via an SQL injection attack. Which of the following code-level changes is the most effective prevention strategy?",
+    "options": [
+      "Implementing client-side validation using HTML5 patterns",
+      "Using parameterized queries (prepared statements)",
+      "Running periodic vulnerability scans against the website",
+      "Hashing the database fields using SHA-256"
+    ],
+    "answer": 1,
+    "explanation": "Parameterized queries separate SQL statements from the parameters (user inputs), ensuring the database interpreter handles inputs strictly as data, neutralizing SQLi."
+  },
+  {
+    "id": 11582,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11583,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SDLC Security",
+    "question": "In a secure software development lifecycle, at what phase should threat modeling and security requirements definition ideally take place?",
+    "options": [
+      "During implementation / coding",
+      "During design and requirements gathering",
+      "Immediately before deployment",
+      "During post-release maintenance"
+    ],
+    "answer": 1,
+    "explanation": "Shifting left requires defining security requirements and threat modeling early, during the requirements and design phases, to prevent expensive structural fixes later."
+  },
+  {
+    "id": 11584,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11585,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11586,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11587,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SQL Injection Defenses",
+    "question": "A web application database is compromised via an SQL injection attack. Which of the following code-level changes is the most effective prevention strategy?",
+    "options": [
+      "Implementing client-side validation using HTML5 patterns",
+      "Using parameterized queries (prepared statements)",
+      "Running periodic vulnerability scans against the website",
+      "Hashing the database fields using SHA-256"
+    ],
+    "answer": 1,
+    "explanation": "Parameterized queries separate SQL statements from the parameters (user inputs), ensuring the database interpreter handles inputs strictly as data, neutralizing SQLi."
+  },
+  {
+    "id": 11588,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SQL Injection Defenses",
+    "question": "A web application database is compromised via an SQL injection attack. Which of the following code-level changes is the most effective prevention strategy?",
+    "options": [
+      "Implementing client-side validation using HTML5 patterns",
+      "Using parameterized queries (prepared statements)",
+      "Running periodic vulnerability scans against the website",
+      "Hashing the database fields using SHA-256"
+    ],
+    "answer": 1,
+    "explanation": "Parameterized queries separate SQL statements from the parameters (user inputs), ensuring the database interpreter handles inputs strictly as data, neutralizing SQLi."
+  },
+  {
+    "id": 11589,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11590,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11591,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SDLC Security",
+    "question": "In a secure software development lifecycle, at what phase should threat modeling and security requirements definition ideally take place?",
+    "options": [
+      "During implementation / coding",
+      "During design and requirements gathering",
+      "Immediately before deployment",
+      "During post-release maintenance"
+    ],
+    "answer": 1,
+    "explanation": "Shifting left requires defining security requirements and threat modeling early, during the requirements and design phases, to prevent expensive structural fixes later."
+  },
+  {
+    "id": 11592,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SDLC Security",
+    "question": "In a secure software development lifecycle, at what phase should threat modeling and security requirements definition ideally take place?",
+    "options": [
+      "During implementation / coding",
+      "During design and requirements gathering",
+      "Immediately before deployment",
+      "During post-release maintenance"
+    ],
+    "answer": 1,
+    "explanation": "Shifting left requires defining security requirements and threat modeling early, during the requirements and design phases, to prevent expensive structural fixes later."
+  },
+  {
+    "id": 11593,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SDLC Security",
+    "question": "In a secure software development lifecycle, at what phase should threat modeling and security requirements definition ideally take place?",
+    "options": [
+      "During implementation / coding",
+      "During design and requirements gathering",
+      "Immediately before deployment",
+      "During post-release maintenance"
+    ],
+    "answer": 1,
+    "explanation": "Shifting left requires defining security requirements and threat modeling early, during the requirements and design phases, to prevent expensive structural fixes later."
+  },
+  {
+    "id": 11594,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11595,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SQL Injection Defenses",
+    "question": "A web application database is compromised via an SQL injection attack. Which of the following code-level changes is the most effective prevention strategy?",
+    "options": [
+      "Implementing client-side validation using HTML5 patterns",
+      "Using parameterized queries (prepared statements)",
+      "Running periodic vulnerability scans against the website",
+      "Hashing the database fields using SHA-256"
+    ],
+    "answer": 1,
+    "explanation": "Parameterized queries separate SQL statements from the parameters (user inputs), ensuring the database interpreter handles inputs strictly as data, neutralizing SQLi."
+  },
+  {
+    "id": 11596,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SQL Injection Defenses",
+    "question": "A web application database is compromised via an SQL injection attack. Which of the following code-level changes is the most effective prevention strategy?",
+    "options": [
+      "Implementing client-side validation using HTML5 patterns",
+      "Using parameterized queries (prepared statements)",
+      "Running periodic vulnerability scans against the website",
+      "Hashing the database fields using SHA-256"
+    ],
+    "answer": 1,
+    "explanation": "Parameterized queries separate SQL statements from the parameters (user inputs), ensuring the database interpreter handles inputs strictly as data, neutralizing SQLi."
+  },
+  {
+    "id": 11597,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SDLC Security",
+    "question": "In a secure software development lifecycle, at what phase should threat modeling and security requirements definition ideally take place?",
+    "options": [
+      "During implementation / coding",
+      "During design and requirements gathering",
+      "Immediately before deployment",
+      "During post-release maintenance"
+    ],
+    "answer": 1,
+    "explanation": "Shifting left requires defining security requirements and threat modeling early, during the requirements and design phases, to prevent expensive structural fixes later."
+  },
+  {
+    "id": 11598,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SQL Injection Defenses",
+    "question": "A web application database is compromised via an SQL injection attack. Which of the following code-level changes is the most effective prevention strategy?",
+    "options": [
+      "Implementing client-side validation using HTML5 patterns",
+      "Using parameterized queries (prepared statements)",
+      "Running periodic vulnerability scans against the website",
+      "Hashing the database fields using SHA-256"
+    ],
+    "answer": 1,
+    "explanation": "Parameterized queries separate SQL statements from the parameters (user inputs), ensuring the database interpreter handles inputs strictly as data, neutralizing SQLi."
+  },
+  {
+    "id": 11599,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11600,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11601,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SQL Injection Defenses",
+    "question": "A web application database is compromised via an SQL injection attack. Which of the following code-level changes is the most effective prevention strategy?",
+    "options": [
+      "Implementing client-side validation using HTML5 patterns",
+      "Using parameterized queries (prepared statements)",
+      "Running periodic vulnerability scans against the website",
+      "Hashing the database fields using SHA-256"
+    ],
+    "answer": 1,
+    "explanation": "Parameterized queries separate SQL statements from the parameters (user inputs), ensuring the database interpreter handles inputs strictly as data, neutralizing SQLi."
+  },
+  {
+    "id": 11602,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SQL Injection Defenses",
+    "question": "A web application database is compromised via an SQL injection attack. Which of the following code-level changes is the most effective prevention strategy?",
+    "options": [
+      "Implementing client-side validation using HTML5 patterns",
+      "Using parameterized queries (prepared statements)",
+      "Running periodic vulnerability scans against the website",
+      "Hashing the database fields using SHA-256"
+    ],
+    "answer": 1,
+    "explanation": "Parameterized queries separate SQL statements from the parameters (user inputs), ensuring the database interpreter handles inputs strictly as data, neutralizing SQLi."
+  },
+  {
+    "id": 11603,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SDLC Security",
+    "question": "In a secure software development lifecycle, at what phase should threat modeling and security requirements definition ideally take place?",
+    "options": [
+      "During implementation / coding",
+      "During design and requirements gathering",
+      "Immediately before deployment",
+      "During post-release maintenance"
+    ],
+    "answer": 1,
+    "explanation": "Shifting left requires defining security requirements and threat modeling early, during the requirements and design phases, to prevent expensive structural fixes later."
+  },
+  {
+    "id": 11604,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SQL Injection Defenses",
+    "question": "A web application database is compromised via an SQL injection attack. Which of the following code-level changes is the most effective prevention strategy?",
+    "options": [
+      "Implementing client-side validation using HTML5 patterns",
+      "Using parameterized queries (prepared statements)",
+      "Running periodic vulnerability scans against the website",
+      "Hashing the database fields using SHA-256"
+    ],
+    "answer": 1,
+    "explanation": "Parameterized queries separate SQL statements from the parameters (user inputs), ensuring the database interpreter handles inputs strictly as data, neutralizing SQLi."
+  },
+  {
+    "id": 11605,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SDLC Security",
+    "question": "In a secure software development lifecycle, at what phase should threat modeling and security requirements definition ideally take place?",
+    "options": [
+      "During implementation / coding",
+      "During design and requirements gathering",
+      "Immediately before deployment",
+      "During post-release maintenance"
+    ],
+    "answer": 1,
+    "explanation": "Shifting left requires defining security requirements and threat modeling early, during the requirements and design phases, to prevent expensive structural fixes later."
+  },
+  {
+    "id": 11606,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SQL Injection Defenses",
+    "question": "A web application database is compromised via an SQL injection attack. Which of the following code-level changes is the most effective prevention strategy?",
+    "options": [
+      "Implementing client-side validation using HTML5 patterns",
+      "Using parameterized queries (prepared statements)",
+      "Running periodic vulnerability scans against the website",
+      "Hashing the database fields using SHA-256"
+    ],
+    "answer": 1,
+    "explanation": "Parameterized queries separate SQL statements from the parameters (user inputs), ensuring the database interpreter handles inputs strictly as data, neutralizing SQLi."
+  },
+  {
+    "id": 11607,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SQL Injection Defenses",
+    "question": "A web application database is compromised via an SQL injection attack. Which of the following code-level changes is the most effective prevention strategy?",
+    "options": [
+      "Implementing client-side validation using HTML5 patterns",
+      "Using parameterized queries (prepared statements)",
+      "Running periodic vulnerability scans against the website",
+      "Hashing the database fields using SHA-256"
+    ],
+    "answer": 1,
+    "explanation": "Parameterized queries separate SQL statements from the parameters (user inputs), ensuring the database interpreter handles inputs strictly as data, neutralizing SQLi."
+  },
+  {
+    "id": 11608,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SDLC Security",
+    "question": "In a secure software development lifecycle, at what phase should threat modeling and security requirements definition ideally take place?",
+    "options": [
+      "During implementation / coding",
+      "During design and requirements gathering",
+      "Immediately before deployment",
+      "During post-release maintenance"
+    ],
+    "answer": 1,
+    "explanation": "Shifting left requires defining security requirements and threat modeling early, during the requirements and design phases, to prevent expensive structural fixes later."
+  },
+  {
+    "id": 11609,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SDLC Security",
+    "question": "In a secure software development lifecycle, at what phase should threat modeling and security requirements definition ideally take place?",
+    "options": [
+      "During implementation / coding",
+      "During design and requirements gathering",
+      "Immediately before deployment",
+      "During post-release maintenance"
+    ],
+    "answer": 1,
+    "explanation": "Shifting left requires defining security requirements and threat modeling early, during the requirements and design phases, to prevent expensive structural fixes later."
+  },
+  {
+    "id": 11610,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SDLC Security",
+    "question": "In a secure software development lifecycle, at what phase should threat modeling and security requirements definition ideally take place?",
+    "options": [
+      "During implementation / coding",
+      "During design and requirements gathering",
+      "Immediately before deployment",
+      "During post-release maintenance"
+    ],
+    "answer": 1,
+    "explanation": "Shifting left requires defining security requirements and threat modeling early, during the requirements and design phases, to prevent expensive structural fixes later."
+  },
+  {
+    "id": 11611,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SDLC Security",
+    "question": "In a secure software development lifecycle, at what phase should threat modeling and security requirements definition ideally take place?",
+    "options": [
+      "During implementation / coding",
+      "During design and requirements gathering",
+      "Immediately before deployment",
+      "During post-release maintenance"
+    ],
+    "answer": 1,
+    "explanation": "Shifting left requires defining security requirements and threat modeling early, during the requirements and design phases, to prevent expensive structural fixes later."
+  },
+  {
+    "id": 11612,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11613,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11614,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11615,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SQL Injection Defenses",
+    "question": "A web application database is compromised via an SQL injection attack. Which of the following code-level changes is the most effective prevention strategy?",
+    "options": [
+      "Implementing client-side validation using HTML5 patterns",
+      "Using parameterized queries (prepared statements)",
+      "Running periodic vulnerability scans against the website",
+      "Hashing the database fields using SHA-256"
+    ],
+    "answer": 1,
+    "explanation": "Parameterized queries separate SQL statements from the parameters (user inputs), ensuring the database interpreter handles inputs strictly as data, neutralizing SQLi."
+  },
+  {
+    "id": 11616,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11617,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SDLC Security",
+    "question": "In a secure software development lifecycle, at what phase should threat modeling and security requirements definition ideally take place?",
+    "options": [
+      "During implementation / coding",
+      "During design and requirements gathering",
+      "Immediately before deployment",
+      "During post-release maintenance"
+    ],
+    "answer": 1,
+    "explanation": "Shifting left requires defining security requirements and threat modeling early, during the requirements and design phases, to prevent expensive structural fixes later."
+  },
+  {
+    "id": 11618,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SQL Injection Defenses",
+    "question": "A web application database is compromised via an SQL injection attack. Which of the following code-level changes is the most effective prevention strategy?",
+    "options": [
+      "Implementing client-side validation using HTML5 patterns",
+      "Using parameterized queries (prepared statements)",
+      "Running periodic vulnerability scans against the website",
+      "Hashing the database fields using SHA-256"
+    ],
+    "answer": 1,
+    "explanation": "Parameterized queries separate SQL statements from the parameters (user inputs), ensuring the database interpreter handles inputs strictly as data, neutralizing SQLi."
+  },
+  {
+    "id": 11619,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SDLC Security",
+    "question": "In a secure software development lifecycle, at what phase should threat modeling and security requirements definition ideally take place?",
+    "options": [
+      "During implementation / coding",
+      "During design and requirements gathering",
+      "Immediately before deployment",
+      "During post-release maintenance"
+    ],
+    "answer": 1,
+    "explanation": "Shifting left requires defining security requirements and threat modeling early, during the requirements and design phases, to prevent expensive structural fixes later."
+  },
+  {
+    "id": 11620,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11621,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11622,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SQL Injection Defenses",
+    "question": "A web application database is compromised via an SQL injection attack. Which of the following code-level changes is the most effective prevention strategy?",
+    "options": [
+      "Implementing client-side validation using HTML5 patterns",
+      "Using parameterized queries (prepared statements)",
+      "Running periodic vulnerability scans against the website",
+      "Hashing the database fields using SHA-256"
+    ],
+    "answer": 1,
+    "explanation": "Parameterized queries separate SQL statements from the parameters (user inputs), ensuring the database interpreter handles inputs strictly as data, neutralizing SQLi."
+  },
+  {
+    "id": 11623,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SQL Injection Defenses",
+    "question": "A web application database is compromised via an SQL injection attack. Which of the following code-level changes is the most effective prevention strategy?",
+    "options": [
+      "Implementing client-side validation using HTML5 patterns",
+      "Using parameterized queries (prepared statements)",
+      "Running periodic vulnerability scans against the website",
+      "Hashing the database fields using SHA-256"
+    ],
+    "answer": 1,
+    "explanation": "Parameterized queries separate SQL statements from the parameters (user inputs), ensuring the database interpreter handles inputs strictly as data, neutralizing SQLi."
+  },
+  {
+    "id": 11624,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SQL Injection Defenses",
+    "question": "A web application database is compromised via an SQL injection attack. Which of the following code-level changes is the most effective prevention strategy?",
+    "options": [
+      "Implementing client-side validation using HTML5 patterns",
+      "Using parameterized queries (prepared statements)",
+      "Running periodic vulnerability scans against the website",
+      "Hashing the database fields using SHA-256"
+    ],
+    "answer": 1,
+    "explanation": "Parameterized queries separate SQL statements from the parameters (user inputs), ensuring the database interpreter handles inputs strictly as data, neutralizing SQLi."
+  },
+  {
+    "id": 11625,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SDLC Security",
+    "question": "In a secure software development lifecycle, at what phase should threat modeling and security requirements definition ideally take place?",
+    "options": [
+      "During implementation / coding",
+      "During design and requirements gathering",
+      "Immediately before deployment",
+      "During post-release maintenance"
+    ],
+    "answer": 1,
+    "explanation": "Shifting left requires defining security requirements and threat modeling early, during the requirements and design phases, to prevent expensive structural fixes later."
+  },
+  {
+    "id": 11626,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11627,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SQL Injection Defenses",
+    "question": "A web application database is compromised via an SQL injection attack. Which of the following code-level changes is the most effective prevention strategy?",
+    "options": [
+      "Implementing client-side validation using HTML5 patterns",
+      "Using parameterized queries (prepared statements)",
+      "Running periodic vulnerability scans against the website",
+      "Hashing the database fields using SHA-256"
+    ],
+    "answer": 1,
+    "explanation": "Parameterized queries separate SQL statements from the parameters (user inputs), ensuring the database interpreter handles inputs strictly as data, neutralizing SQLi."
+  },
+  {
+    "id": 11628,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SDLC Security",
+    "question": "In a secure software development lifecycle, at what phase should threat modeling and security requirements definition ideally take place?",
+    "options": [
+      "During implementation / coding",
+      "During design and requirements gathering",
+      "Immediately before deployment",
+      "During post-release maintenance"
+    ],
+    "answer": 1,
+    "explanation": "Shifting left requires defining security requirements and threat modeling early, during the requirements and design phases, to prevent expensive structural fixes later."
+  },
+  {
+    "id": 11629,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11630,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SDLC Security",
+    "question": "In a secure software development lifecycle, at what phase should threat modeling and security requirements definition ideally take place?",
+    "options": [
+      "During implementation / coding",
+      "During design and requirements gathering",
+      "Immediately before deployment",
+      "During post-release maintenance"
+    ],
+    "answer": 1,
+    "explanation": "Shifting left requires defining security requirements and threat modeling early, during the requirements and design phases, to prevent expensive structural fixes later."
+  },
+  {
+    "id": 11631,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11632,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SQL Injection Defenses",
+    "question": "A web application database is compromised via an SQL injection attack. Which of the following code-level changes is the most effective prevention strategy?",
+    "options": [
+      "Implementing client-side validation using HTML5 patterns",
+      "Using parameterized queries (prepared statements)",
+      "Running periodic vulnerability scans against the website",
+      "Hashing the database fields using SHA-256"
+    ],
+    "answer": 1,
+    "explanation": "Parameterized queries separate SQL statements from the parameters (user inputs), ensuring the database interpreter handles inputs strictly as data, neutralizing SQLi."
+  },
+  {
+    "id": 11633,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SDLC Security",
+    "question": "In a secure software development lifecycle, at what phase should threat modeling and security requirements definition ideally take place?",
+    "options": [
+      "During implementation / coding",
+      "During design and requirements gathering",
+      "Immediately before deployment",
+      "During post-release maintenance"
+    ],
+    "answer": 1,
+    "explanation": "Shifting left requires defining security requirements and threat modeling early, during the requirements and design phases, to prevent expensive structural fixes later."
+  },
+  {
+    "id": 11634,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11635,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11636,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11637,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11638,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SDLC Security",
+    "question": "In a secure software development lifecycle, at what phase should threat modeling and security requirements definition ideally take place?",
+    "options": [
+      "During implementation / coding",
+      "During design and requirements gathering",
+      "Immediately before deployment",
+      "During post-release maintenance"
+    ],
+    "answer": 1,
+    "explanation": "Shifting left requires defining security requirements and threat modeling early, during the requirements and design phases, to prevent expensive structural fixes later."
+  },
+  {
+    "id": 11639,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11640,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11641,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SQL Injection Defenses",
+    "question": "A web application database is compromised via an SQL injection attack. Which of the following code-level changes is the most effective prevention strategy?",
+    "options": [
+      "Implementing client-side validation using HTML5 patterns",
+      "Using parameterized queries (prepared statements)",
+      "Running periodic vulnerability scans against the website",
+      "Hashing the database fields using SHA-256"
+    ],
+    "answer": 1,
+    "explanation": "Parameterized queries separate SQL statements from the parameters (user inputs), ensuring the database interpreter handles inputs strictly as data, neutralizing SQLi."
+  },
+  {
+    "id": 11642,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11643,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11644,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11645,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SDLC Security",
+    "question": "In a secure software development lifecycle, at what phase should threat modeling and security requirements definition ideally take place?",
+    "options": [
+      "During implementation / coding",
+      "During design and requirements gathering",
+      "Immediately before deployment",
+      "During post-release maintenance"
+    ],
+    "answer": 1,
+    "explanation": "Shifting left requires defining security requirements and threat modeling early, during the requirements and design phases, to prevent expensive structural fixes later."
+  },
+  {
+    "id": 11646,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SQL Injection Defenses",
+    "question": "A web application database is compromised via an SQL injection attack. Which of the following code-level changes is the most effective prevention strategy?",
+    "options": [
+      "Implementing client-side validation using HTML5 patterns",
+      "Using parameterized queries (prepared statements)",
+      "Running periodic vulnerability scans against the website",
+      "Hashing the database fields using SHA-256"
+    ],
+    "answer": 1,
+    "explanation": "Parameterized queries separate SQL statements from the parameters (user inputs), ensuring the database interpreter handles inputs strictly as data, neutralizing SQLi."
+  },
+  {
+    "id": 11647,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11648,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11649,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11650,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SDLC Security",
+    "question": "In a secure software development lifecycle, at what phase should threat modeling and security requirements definition ideally take place?",
+    "options": [
+      "During implementation / coding",
+      "During design and requirements gathering",
+      "Immediately before deployment",
+      "During post-release maintenance"
+    ],
+    "answer": 1,
+    "explanation": "Shifting left requires defining security requirements and threat modeling early, during the requirements and design phases, to prevent expensive structural fixes later."
+  },
+  {
+    "id": 11651,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SQL Injection Defenses",
+    "question": "A web application database is compromised via an SQL injection attack. Which of the following code-level changes is the most effective prevention strategy?",
+    "options": [
+      "Implementing client-side validation using HTML5 patterns",
+      "Using parameterized queries (prepared statements)",
+      "Running periodic vulnerability scans against the website",
+      "Hashing the database fields using SHA-256"
+    ],
+    "answer": 1,
+    "explanation": "Parameterized queries separate SQL statements from the parameters (user inputs), ensuring the database interpreter handles inputs strictly as data, neutralizing SQLi."
+  },
+  {
+    "id": 11652,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SQL Injection Defenses",
+    "question": "A web application database is compromised via an SQL injection attack. Which of the following code-level changes is the most effective prevention strategy?",
+    "options": [
+      "Implementing client-side validation using HTML5 patterns",
+      "Using parameterized queries (prepared statements)",
+      "Running periodic vulnerability scans against the website",
+      "Hashing the database fields using SHA-256"
+    ],
+    "answer": 1,
+    "explanation": "Parameterized queries separate SQL statements from the parameters (user inputs), ensuring the database interpreter handles inputs strictly as data, neutralizing SQLi."
+  },
+  {
+    "id": 11653,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SDLC Security",
+    "question": "In a secure software development lifecycle, at what phase should threat modeling and security requirements definition ideally take place?",
+    "options": [
+      "During implementation / coding",
+      "During design and requirements gathering",
+      "Immediately before deployment",
+      "During post-release maintenance"
+    ],
+    "answer": 1,
+    "explanation": "Shifting left requires defining security requirements and threat modeling early, during the requirements and design phases, to prevent expensive structural fixes later."
+  },
+  {
+    "id": 11654,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11655,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SQL Injection Defenses",
+    "question": "A web application database is compromised via an SQL injection attack. Which of the following code-level changes is the most effective prevention strategy?",
+    "options": [
+      "Implementing client-side validation using HTML5 patterns",
+      "Using parameterized queries (prepared statements)",
+      "Running periodic vulnerability scans against the website",
+      "Hashing the database fields using SHA-256"
+    ],
+    "answer": 1,
+    "explanation": "Parameterized queries separate SQL statements from the parameters (user inputs), ensuring the database interpreter handles inputs strictly as data, neutralizing SQLi."
+  },
+  {
+    "id": 11656,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SQL Injection Defenses",
+    "question": "A web application database is compromised via an SQL injection attack. Which of the following code-level changes is the most effective prevention strategy?",
+    "options": [
+      "Implementing client-side validation using HTML5 patterns",
+      "Using parameterized queries (prepared statements)",
+      "Running periodic vulnerability scans against the website",
+      "Hashing the database fields using SHA-256"
+    ],
+    "answer": 1,
+    "explanation": "Parameterized queries separate SQL statements from the parameters (user inputs), ensuring the database interpreter handles inputs strictly as data, neutralizing SQLi."
+  },
+  {
+    "id": 11657,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11658,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SQL Injection Defenses",
+    "question": "A web application database is compromised via an SQL injection attack. Which of the following code-level changes is the most effective prevention strategy?",
+    "options": [
+      "Implementing client-side validation using HTML5 patterns",
+      "Using parameterized queries (prepared statements)",
+      "Running periodic vulnerability scans against the website",
+      "Hashing the database fields using SHA-256"
+    ],
+    "answer": 1,
+    "explanation": "Parameterized queries separate SQL statements from the parameters (user inputs), ensuring the database interpreter handles inputs strictly as data, neutralizing SQLi."
+  },
+  {
+    "id": 11659,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11660,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11661,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11662,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11663,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SDLC Security",
+    "question": "In a secure software development lifecycle, at what phase should threat modeling and security requirements definition ideally take place?",
+    "options": [
+      "During implementation / coding",
+      "During design and requirements gathering",
+      "Immediately before deployment",
+      "During post-release maintenance"
+    ],
+    "answer": 1,
+    "explanation": "Shifting left requires defining security requirements and threat modeling early, during the requirements and design phases, to prevent expensive structural fixes later."
+  },
+  {
+    "id": 11664,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11665,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SDLC Security",
+    "question": "In a secure software development lifecycle, at what phase should threat modeling and security requirements definition ideally take place?",
+    "options": [
+      "During implementation / coding",
+      "During design and requirements gathering",
+      "Immediately before deployment",
+      "During post-release maintenance"
+    ],
+    "answer": 1,
+    "explanation": "Shifting left requires defining security requirements and threat modeling early, during the requirements and design phases, to prevent expensive structural fixes later."
+  },
+  {
+    "id": 11666,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11667,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SDLC Security",
+    "question": "In a secure software development lifecycle, at what phase should threat modeling and security requirements definition ideally take place?",
+    "options": [
+      "During implementation / coding",
+      "During design and requirements gathering",
+      "Immediately before deployment",
+      "During post-release maintenance"
+    ],
+    "answer": 1,
+    "explanation": "Shifting left requires defining security requirements and threat modeling early, during the requirements and design phases, to prevent expensive structural fixes later."
+  },
+  {
+    "id": 11668,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11669,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SQL Injection Defenses",
+    "question": "A web application database is compromised via an SQL injection attack. Which of the following code-level changes is the most effective prevention strategy?",
+    "options": [
+      "Implementing client-side validation using HTML5 patterns",
+      "Using parameterized queries (prepared statements)",
+      "Running periodic vulnerability scans against the website",
+      "Hashing the database fields using SHA-256"
+    ],
+    "answer": 1,
+    "explanation": "Parameterized queries separate SQL statements from the parameters (user inputs), ensuring the database interpreter handles inputs strictly as data, neutralizing SQLi."
+  },
+  {
+    "id": 11670,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SDLC Security",
+    "question": "In a secure software development lifecycle, at what phase should threat modeling and security requirements definition ideally take place?",
+    "options": [
+      "During implementation / coding",
+      "During design and requirements gathering",
+      "Immediately before deployment",
+      "During post-release maintenance"
+    ],
+    "answer": 1,
+    "explanation": "Shifting left requires defining security requirements and threat modeling early, during the requirements and design phases, to prevent expensive structural fixes later."
+  },
+  {
+    "id": 11671,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11672,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SQL Injection Defenses",
+    "question": "A web application database is compromised via an SQL injection attack. Which of the following code-level changes is the most effective prevention strategy?",
+    "options": [
+      "Implementing client-side validation using HTML5 patterns",
+      "Using parameterized queries (prepared statements)",
+      "Running periodic vulnerability scans against the website",
+      "Hashing the database fields using SHA-256"
+    ],
+    "answer": 1,
+    "explanation": "Parameterized queries separate SQL statements from the parameters (user inputs), ensuring the database interpreter handles inputs strictly as data, neutralizing SQLi."
+  },
+  {
+    "id": 11673,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SDLC Security",
+    "question": "In a secure software development lifecycle, at what phase should threat modeling and security requirements definition ideally take place?",
+    "options": [
+      "During implementation / coding",
+      "During design and requirements gathering",
+      "Immediately before deployment",
+      "During post-release maintenance"
+    ],
+    "answer": 1,
+    "explanation": "Shifting left requires defining security requirements and threat modeling early, during the requirements and design phases, to prevent expensive structural fixes later."
+  },
+  {
+    "id": 11674,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SDLC Security",
+    "question": "In a secure software development lifecycle, at what phase should threat modeling and security requirements definition ideally take place?",
+    "options": [
+      "During implementation / coding",
+      "During design and requirements gathering",
+      "Immediately before deployment",
+      "During post-release maintenance"
+    ],
+    "answer": 1,
+    "explanation": "Shifting left requires defining security requirements and threat modeling early, during the requirements and design phases, to prevent expensive structural fixes later."
+  },
+  {
+    "id": 11675,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SQL Injection Defenses",
+    "question": "A web application database is compromised via an SQL injection attack. Which of the following code-level changes is the most effective prevention strategy?",
+    "options": [
+      "Implementing client-side validation using HTML5 patterns",
+      "Using parameterized queries (prepared statements)",
+      "Running periodic vulnerability scans against the website",
+      "Hashing the database fields using SHA-256"
+    ],
+    "answer": 1,
+    "explanation": "Parameterized queries separate SQL statements from the parameters (user inputs), ensuring the database interpreter handles inputs strictly as data, neutralizing SQLi."
+  },
+  {
+    "id": 11676,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11677,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SQL Injection Defenses",
+    "question": "A web application database is compromised via an SQL injection attack. Which of the following code-level changes is the most effective prevention strategy?",
+    "options": [
+      "Implementing client-side validation using HTML5 patterns",
+      "Using parameterized queries (prepared statements)",
+      "Running periodic vulnerability scans against the website",
+      "Hashing the database fields using SHA-256"
+    ],
+    "answer": 1,
+    "explanation": "Parameterized queries separate SQL statements from the parameters (user inputs), ensuring the database interpreter handles inputs strictly as data, neutralizing SQLi."
+  },
+  {
+    "id": 11678,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11679,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SDLC Security",
+    "question": "In a secure software development lifecycle, at what phase should threat modeling and security requirements definition ideally take place?",
+    "options": [
+      "During implementation / coding",
+      "During design and requirements gathering",
+      "Immediately before deployment",
+      "During post-release maintenance"
+    ],
+    "answer": 1,
+    "explanation": "Shifting left requires defining security requirements and threat modeling early, during the requirements and design phases, to prevent expensive structural fixes later."
+  },
+  {
+    "id": 11680,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SDLC Security",
+    "question": "In a secure software development lifecycle, at what phase should threat modeling and security requirements definition ideally take place?",
+    "options": [
+      "During implementation / coding",
+      "During design and requirements gathering",
+      "Immediately before deployment",
+      "During post-release maintenance"
+    ],
+    "answer": 1,
+    "explanation": "Shifting left requires defining security requirements and threat modeling early, during the requirements and design phases, to prevent expensive structural fixes later."
+  },
+  {
+    "id": 11681,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11682,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SQL Injection Defenses",
+    "question": "A web application database is compromised via an SQL injection attack. Which of the following code-level changes is the most effective prevention strategy?",
+    "options": [
+      "Implementing client-side validation using HTML5 patterns",
+      "Using parameterized queries (prepared statements)",
+      "Running periodic vulnerability scans against the website",
+      "Hashing the database fields using SHA-256"
+    ],
+    "answer": 1,
+    "explanation": "Parameterized queries separate SQL statements from the parameters (user inputs), ensuring the database interpreter handles inputs strictly as data, neutralizing SQLi."
+  },
+  {
+    "id": 11683,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11684,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SQL Injection Defenses",
+    "question": "A web application database is compromised via an SQL injection attack. Which of the following code-level changes is the most effective prevention strategy?",
+    "options": [
+      "Implementing client-side validation using HTML5 patterns",
+      "Using parameterized queries (prepared statements)",
+      "Running periodic vulnerability scans against the website",
+      "Hashing the database fields using SHA-256"
+    ],
+    "answer": 1,
+    "explanation": "Parameterized queries separate SQL statements from the parameters (user inputs), ensuring the database interpreter handles inputs strictly as data, neutralizing SQLi."
+  },
+  {
+    "id": 11685,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SDLC Security",
+    "question": "In a secure software development lifecycle, at what phase should threat modeling and security requirements definition ideally take place?",
+    "options": [
+      "During implementation / coding",
+      "During design and requirements gathering",
+      "Immediately before deployment",
+      "During post-release maintenance"
+    ],
+    "answer": 1,
+    "explanation": "Shifting left requires defining security requirements and threat modeling early, during the requirements and design phases, to prevent expensive structural fixes later."
+  },
+  {
+    "id": 11686,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11687,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11688,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SDLC Security",
+    "question": "In a secure software development lifecycle, at what phase should threat modeling and security requirements definition ideally take place?",
+    "options": [
+      "During implementation / coding",
+      "During design and requirements gathering",
+      "Immediately before deployment",
+      "During post-release maintenance"
+    ],
+    "answer": 1,
+    "explanation": "Shifting left requires defining security requirements and threat modeling early, during the requirements and design phases, to prevent expensive structural fixes later."
+  },
+  {
+    "id": 11689,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SQL Injection Defenses",
+    "question": "A web application database is compromised via an SQL injection attack. Which of the following code-level changes is the most effective prevention strategy?",
+    "options": [
+      "Implementing client-side validation using HTML5 patterns",
+      "Using parameterized queries (prepared statements)",
+      "Running periodic vulnerability scans against the website",
+      "Hashing the database fields using SHA-256"
+    ],
+    "answer": 1,
+    "explanation": "Parameterized queries separate SQL statements from the parameters (user inputs), ensuring the database interpreter handles inputs strictly as data, neutralizing SQLi."
+  },
+  {
+    "id": 11690,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11691,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SDLC Security",
+    "question": "In a secure software development lifecycle, at what phase should threat modeling and security requirements definition ideally take place?",
+    "options": [
+      "During implementation / coding",
+      "During design and requirements gathering",
+      "Immediately before deployment",
+      "During post-release maintenance"
+    ],
+    "answer": 1,
+    "explanation": "Shifting left requires defining security requirements and threat modeling early, during the requirements and design phases, to prevent expensive structural fixes later."
+  },
+  {
+    "id": 11692,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SQL Injection Defenses",
+    "question": "A web application database is compromised via an SQL injection attack. Which of the following code-level changes is the most effective prevention strategy?",
+    "options": [
+      "Implementing client-side validation using HTML5 patterns",
+      "Using parameterized queries (prepared statements)",
+      "Running periodic vulnerability scans against the website",
+      "Hashing the database fields using SHA-256"
+    ],
+    "answer": 1,
+    "explanation": "Parameterized queries separate SQL statements from the parameters (user inputs), ensuring the database interpreter handles inputs strictly as data, neutralizing SQLi."
+  },
+  {
+    "id": 11693,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SQL Injection Defenses",
+    "question": "A web application database is compromised via an SQL injection attack. Which of the following code-level changes is the most effective prevention strategy?",
+    "options": [
+      "Implementing client-side validation using HTML5 patterns",
+      "Using parameterized queries (prepared statements)",
+      "Running periodic vulnerability scans against the website",
+      "Hashing the database fields using SHA-256"
+    ],
+    "answer": 1,
+    "explanation": "Parameterized queries separate SQL statements from the parameters (user inputs), ensuring the database interpreter handles inputs strictly as data, neutralizing SQLi."
+  },
+  {
+    "id": 11694,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SQL Injection Defenses",
+    "question": "A web application database is compromised via an SQL injection attack. Which of the following code-level changes is the most effective prevention strategy?",
+    "options": [
+      "Implementing client-side validation using HTML5 patterns",
+      "Using parameterized queries (prepared statements)",
+      "Running periodic vulnerability scans against the website",
+      "Hashing the database fields using SHA-256"
+    ],
+    "answer": 1,
+    "explanation": "Parameterized queries separate SQL statements from the parameters (user inputs), ensuring the database interpreter handles inputs strictly as data, neutralizing SQLi."
+  },
+  {
+    "id": 11695,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SQL Injection Defenses",
+    "question": "A web application database is compromised via an SQL injection attack. Which of the following code-level changes is the most effective prevention strategy?",
+    "options": [
+      "Implementing client-side validation using HTML5 patterns",
+      "Using parameterized queries (prepared statements)",
+      "Running periodic vulnerability scans against the website",
+      "Hashing the database fields using SHA-256"
+    ],
+    "answer": 1,
+    "explanation": "Parameterized queries separate SQL statements from the parameters (user inputs), ensuring the database interpreter handles inputs strictly as data, neutralizing SQLi."
+  },
+  {
+    "id": 11696,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11697,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11698,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11699,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11700,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SDLC Security",
+    "question": "In a secure software development lifecycle, at what phase should threat modeling and security requirements definition ideally take place?",
+    "options": [
+      "During implementation / coding",
+      "During design and requirements gathering",
+      "Immediately before deployment",
+      "During post-release maintenance"
+    ],
+    "answer": 1,
+    "explanation": "Shifting left requires defining security requirements and threat modeling early, during the requirements and design phases, to prevent expensive structural fixes later."
+  },
+  {
+    "id": 11701,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11702,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SQL Injection Defenses",
+    "question": "A web application database is compromised via an SQL injection attack. Which of the following code-level changes is the most effective prevention strategy?",
+    "options": [
+      "Implementing client-side validation using HTML5 patterns",
+      "Using parameterized queries (prepared statements)",
+      "Running periodic vulnerability scans against the website",
+      "Hashing the database fields using SHA-256"
+    ],
+    "answer": 1,
+    "explanation": "Parameterized queries separate SQL statements from the parameters (user inputs), ensuring the database interpreter handles inputs strictly as data, neutralizing SQLi."
+  },
+  {
+    "id": 11703,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11704,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SQL Injection Defenses",
+    "question": "A web application database is compromised via an SQL injection attack. Which of the following code-level changes is the most effective prevention strategy?",
+    "options": [
+      "Implementing client-side validation using HTML5 patterns",
+      "Using parameterized queries (prepared statements)",
+      "Running periodic vulnerability scans against the website",
+      "Hashing the database fields using SHA-256"
+    ],
+    "answer": 1,
+    "explanation": "Parameterized queries separate SQL statements from the parameters (user inputs), ensuring the database interpreter handles inputs strictly as data, neutralizing SQLi."
+  },
+  {
+    "id": 11705,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11706,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SDLC Security",
+    "question": "In a secure software development lifecycle, at what phase should threat modeling and security requirements definition ideally take place?",
+    "options": [
+      "During implementation / coding",
+      "During design and requirements gathering",
+      "Immediately before deployment",
+      "During post-release maintenance"
+    ],
+    "answer": 1,
+    "explanation": "Shifting left requires defining security requirements and threat modeling early, during the requirements and design phases, to prevent expensive structural fixes later."
+  },
+  {
+    "id": 11707,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11708,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SDLC Security",
+    "question": "In a secure software development lifecycle, at what phase should threat modeling and security requirements definition ideally take place?",
+    "options": [
+      "During implementation / coding",
+      "During design and requirements gathering",
+      "Immediately before deployment",
+      "During post-release maintenance"
+    ],
+    "answer": 1,
+    "explanation": "Shifting left requires defining security requirements and threat modeling early, during the requirements and design phases, to prevent expensive structural fixes later."
+  },
+  {
+    "id": 11709,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SDLC Security",
+    "question": "In a secure software development lifecycle, at what phase should threat modeling and security requirements definition ideally take place?",
+    "options": [
+      "During implementation / coding",
+      "During design and requirements gathering",
+      "Immediately before deployment",
+      "During post-release maintenance"
+    ],
+    "answer": 1,
+    "explanation": "Shifting left requires defining security requirements and threat modeling early, during the requirements and design phases, to prevent expensive structural fixes later."
+  },
+  {
+    "id": 11710,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SDLC Security",
+    "question": "In a secure software development lifecycle, at what phase should threat modeling and security requirements definition ideally take place?",
+    "options": [
+      "During implementation / coding",
+      "During design and requirements gathering",
+      "Immediately before deployment",
+      "During post-release maintenance"
+    ],
+    "answer": 1,
+    "explanation": "Shifting left requires defining security requirements and threat modeling early, during the requirements and design phases, to prevent expensive structural fixes later."
+  },
+  {
+    "id": 11711,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SQL Injection Defenses",
+    "question": "A web application database is compromised via an SQL injection attack. Which of the following code-level changes is the most effective prevention strategy?",
+    "options": [
+      "Implementing client-side validation using HTML5 patterns",
+      "Using parameterized queries (prepared statements)",
+      "Running periodic vulnerability scans against the website",
+      "Hashing the database fields using SHA-256"
+    ],
+    "answer": 1,
+    "explanation": "Parameterized queries separate SQL statements from the parameters (user inputs), ensuring the database interpreter handles inputs strictly as data, neutralizing SQLi."
+  },
+  {
+    "id": 11712,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11713,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11714,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SQL Injection Defenses",
+    "question": "A web application database is compromised via an SQL injection attack. Which of the following code-level changes is the most effective prevention strategy?",
+    "options": [
+      "Implementing client-side validation using HTML5 patterns",
+      "Using parameterized queries (prepared statements)",
+      "Running periodic vulnerability scans against the website",
+      "Hashing the database fields using SHA-256"
+    ],
+    "answer": 1,
+    "explanation": "Parameterized queries separate SQL statements from the parameters (user inputs), ensuring the database interpreter handles inputs strictly as data, neutralizing SQLi."
+  },
+  {
+    "id": 11715,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SQL Injection Defenses",
+    "question": "A web application database is compromised via an SQL injection attack. Which of the following code-level changes is the most effective prevention strategy?",
+    "options": [
+      "Implementing client-side validation using HTML5 patterns",
+      "Using parameterized queries (prepared statements)",
+      "Running periodic vulnerability scans against the website",
+      "Hashing the database fields using SHA-256"
+    ],
+    "answer": 1,
+    "explanation": "Parameterized queries separate SQL statements from the parameters (user inputs), ensuring the database interpreter handles inputs strictly as data, neutralizing SQLi."
+  },
+  {
+    "id": 11716,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SDLC Security",
+    "question": "In a secure software development lifecycle, at what phase should threat modeling and security requirements definition ideally take place?",
+    "options": [
+      "During implementation / coding",
+      "During design and requirements gathering",
+      "Immediately before deployment",
+      "During post-release maintenance"
+    ],
+    "answer": 1,
+    "explanation": "Shifting left requires defining security requirements and threat modeling early, during the requirements and design phases, to prevent expensive structural fixes later."
+  },
+  {
+    "id": 11717,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SDLC Security",
+    "question": "In a secure software development lifecycle, at what phase should threat modeling and security requirements definition ideally take place?",
+    "options": [
+      "During implementation / coding",
+      "During design and requirements gathering",
+      "Immediately before deployment",
+      "During post-release maintenance"
+    ],
+    "answer": 1,
+    "explanation": "Shifting left requires defining security requirements and threat modeling early, during the requirements and design phases, to prevent expensive structural fixes later."
+  },
+  {
+    "id": 11718,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SQL Injection Defenses",
+    "question": "A web application database is compromised via an SQL injection attack. Which of the following code-level changes is the most effective prevention strategy?",
+    "options": [
+      "Implementing client-side validation using HTML5 patterns",
+      "Using parameterized queries (prepared statements)",
+      "Running periodic vulnerability scans against the website",
+      "Hashing the database fields using SHA-256"
+    ],
+    "answer": 1,
+    "explanation": "Parameterized queries separate SQL statements from the parameters (user inputs), ensuring the database interpreter handles inputs strictly as data, neutralizing SQLi."
+  },
+  {
+    "id": 11719,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11720,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SQL Injection Defenses",
+    "question": "A web application database is compromised via an SQL injection attack. Which of the following code-level changes is the most effective prevention strategy?",
+    "options": [
+      "Implementing client-side validation using HTML5 patterns",
+      "Using parameterized queries (prepared statements)",
+      "Running periodic vulnerability scans against the website",
+      "Hashing the database fields using SHA-256"
+    ],
+    "answer": 1,
+    "explanation": "Parameterized queries separate SQL statements from the parameters (user inputs), ensuring the database interpreter handles inputs strictly as data, neutralizing SQLi."
+  },
+  {
+    "id": 11721,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11722,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SDLC Security",
+    "question": "In a secure software development lifecycle, at what phase should threat modeling and security requirements definition ideally take place?",
+    "options": [
+      "During implementation / coding",
+      "During design and requirements gathering",
+      "Immediately before deployment",
+      "During post-release maintenance"
+    ],
+    "answer": 1,
+    "explanation": "Shifting left requires defining security requirements and threat modeling early, during the requirements and design phases, to prevent expensive structural fixes later."
+  },
+  {
+    "id": 11723,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SQL Injection Defenses",
+    "question": "A web application database is compromised via an SQL injection attack. Which of the following code-level changes is the most effective prevention strategy?",
+    "options": [
+      "Implementing client-side validation using HTML5 patterns",
+      "Using parameterized queries (prepared statements)",
+      "Running periodic vulnerability scans against the website",
+      "Hashing the database fields using SHA-256"
+    ],
+    "answer": 1,
+    "explanation": "Parameterized queries separate SQL statements from the parameters (user inputs), ensuring the database interpreter handles inputs strictly as data, neutralizing SQLi."
+  },
+  {
+    "id": 11724,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SDLC Security",
+    "question": "In a secure software development lifecycle, at what phase should threat modeling and security requirements definition ideally take place?",
+    "options": [
+      "During implementation / coding",
+      "During design and requirements gathering",
+      "Immediately before deployment",
+      "During post-release maintenance"
+    ],
+    "answer": 1,
+    "explanation": "Shifting left requires defining security requirements and threat modeling early, during the requirements and design phases, to prevent expensive structural fixes later."
+  },
+  {
+    "id": 11725,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SDLC Security",
+    "question": "In a secure software development lifecycle, at what phase should threat modeling and security requirements definition ideally take place?",
+    "options": [
+      "During implementation / coding",
+      "During design and requirements gathering",
+      "Immediately before deployment",
+      "During post-release maintenance"
+    ],
+    "answer": 1,
+    "explanation": "Shifting left requires defining security requirements and threat modeling early, during the requirements and design phases, to prevent expensive structural fixes later."
+  },
+  {
+    "id": 11726,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SQL Injection Defenses",
+    "question": "A web application database is compromised via an SQL injection attack. Which of the following code-level changes is the most effective prevention strategy?",
+    "options": [
+      "Implementing client-side validation using HTML5 patterns",
+      "Using parameterized queries (prepared statements)",
+      "Running periodic vulnerability scans against the website",
+      "Hashing the database fields using SHA-256"
+    ],
+    "answer": 1,
+    "explanation": "Parameterized queries separate SQL statements from the parameters (user inputs), ensuring the database interpreter handles inputs strictly as data, neutralizing SQLi."
+  },
+  {
+    "id": 11727,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SQL Injection Defenses",
+    "question": "A web application database is compromised via an SQL injection attack. Which of the following code-level changes is the most effective prevention strategy?",
+    "options": [
+      "Implementing client-side validation using HTML5 patterns",
+      "Using parameterized queries (prepared statements)",
+      "Running periodic vulnerability scans against the website",
+      "Hashing the database fields using SHA-256"
+    ],
+    "answer": 1,
+    "explanation": "Parameterized queries separate SQL statements from the parameters (user inputs), ensuring the database interpreter handles inputs strictly as data, neutralizing SQLi."
+  },
+  {
+    "id": 11728,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SDLC Security",
+    "question": "In a secure software development lifecycle, at what phase should threat modeling and security requirements definition ideally take place?",
+    "options": [
+      "During implementation / coding",
+      "During design and requirements gathering",
+      "Immediately before deployment",
+      "During post-release maintenance"
+    ],
+    "answer": 1,
+    "explanation": "Shifting left requires defining security requirements and threat modeling early, during the requirements and design phases, to prevent expensive structural fixes later."
+  },
+  {
+    "id": 11729,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11730,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11731,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SQL Injection Defenses",
+    "question": "A web application database is compromised via an SQL injection attack. Which of the following code-level changes is the most effective prevention strategy?",
+    "options": [
+      "Implementing client-side validation using HTML5 patterns",
+      "Using parameterized queries (prepared statements)",
+      "Running periodic vulnerability scans against the website",
+      "Hashing the database fields using SHA-256"
+    ],
+    "answer": 1,
+    "explanation": "Parameterized queries separate SQL statements from the parameters (user inputs), ensuring the database interpreter handles inputs strictly as data, neutralizing SQLi."
+  },
+  {
+    "id": 11732,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11733,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SDLC Security",
+    "question": "In a secure software development lifecycle, at what phase should threat modeling and security requirements definition ideally take place?",
+    "options": [
+      "During implementation / coding",
+      "During design and requirements gathering",
+      "Immediately before deployment",
+      "During post-release maintenance"
+    ],
+    "answer": 1,
+    "explanation": "Shifting left requires defining security requirements and threat modeling early, during the requirements and design phases, to prevent expensive structural fixes later."
+  },
+  {
+    "id": 11734,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11735,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "Secure Design",
+    "question": "Which secure software design principle is violated when an application allows access to system resources by skipping security checks if a specific internal variable is set to true?",
+    "options": [
+      "Least Privilege",
+      "Complete Mediation",
+      "Fail-Secure",
+      "Economy of Mechanism"
+    ],
+    "answer": 1,
+    "explanation": "Complete Mediation requires checking authorization for *every* access to an object, without bypasses, caching, or backdoors."
+  },
+  {
+    "id": 11736,
+    "domain": 8,
+    "domain_name": "Domain 8",
+    "scenario": "SDLC Security",
+    "question": "In a secure software development lifecycle, at what phase should threat modeling and security requirements definition ideally take place?",
+    "options": [
+      "During implementation / coding",
+      "During design and requirements gathering",
+      "Immediately before deployment",
+      "During post-release maintenance"
+    ],
+    "answer": 1,
+    "explanation": "Shifting left requires defining security requirements and threat modeling early, during the requirements and design phases, to prevent expensive structural fixes later."
   }
 ];

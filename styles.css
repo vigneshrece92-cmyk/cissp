@@ -3512,3 +3512,325 @@ h4 {
 :root[data-theme="light"] .gq-option:hover {
   background: rgba(8, 145, 178, 0.08) !important;
 }
+
+/* =================================================================
+   EXAM DAY SIMULATOR
+   ================================================================= */
+.examday-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.examday-topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.examday-topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.examday-timer {
+  font-size: 28px;
+  font-weight: 800;
+  font-family: 'Outfit', monospace;
+  color: var(--primary);
+  letter-spacing: 0.05em;
+  transition: color 0.3s ease;
+}
+
+.examday-timer.warning {
+  color: #f59e0b;
+  animation: timerPulse 1s ease infinite;
+}
+
+.examday-timer.critical {
+  color: #ef4444;
+  animation: timerPulse 0.5s ease infinite;
+}
+
+@keyframes timerPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.examday-body {
+  display: grid;
+  grid-template-columns: 1fr 200px;
+  gap: 20px;
+  align-items: start;
+}
+
+@media (max-width: 1024px) {
+  .examday-body {
+    grid-template-columns: 1fr;
+  }
+}
+
+.examday-question-panel {
+  padding: 28px;
+  min-height: 400px;
+}
+
+.examday-nav-panel {
+  padding: 16px;
+  position: sticky;
+  top: 20px;
+}
+
+.examday-q-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 5px;
+}
+
+.ed-q-tile {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--card-border);
+  font-size: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+  color: var(--text-muted);
+}
+
+.ed-q-tile:hover { background: var(--primary-glow); border-color: var(--primary); }
+.ed-q-tile.answered { background: rgba(6,182,212,0.2); border-color: var(--primary); color: var(--primary); }
+.ed-q-tile.flagged { background: rgba(245,158,11,0.2); border-color: #f59e0b; color: #f59e0b; }
+.ed-q-tile.current { border-color: #fff; color: #fff; box-shadow: 0 0 0 2px rgba(255,255,255,0.2); }
+
+.ed-legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.examday-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 18px;
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1.55;
+  transition: all 0.2s ease;
+}
+
+.examday-option:hover { border-color: var(--primary); background: var(--primary-glow); }
+.examday-option.selected { border-color: var(--primary); background: rgba(6,182,212,0.15); }
+.examday-option-letter { font-weight: 800; color: var(--primary); min-width: 22px; font-size: 14px; }
+
+.ed-domain-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.ed-domain-bar-label { font-size: 12px; color: var(--text-muted); min-width: 170px; }
+.ed-domain-bar-track { flex: 1; height: 8px; background: rgba(255,255,255,0.06); border-radius: 8px; overflow: hidden; }
+.ed-domain-bar-fill { height: 100%; border-radius: 8px; transition: width 0.6s ease; }
+.ed-domain-bar-pct { font-size: 12px; font-weight: 700; min-width: 35px; text-align: right; }
+
+.examday-wrong-item {
+  border: 1px solid rgba(239,68,68,0.2);
+  border-radius: 12px;
+  padding: 18px;
+  margin-bottom: 16px;
+  background: rgba(239,68,68,0.04);
+}
+
+/* =================================================================
+   CONCEPT COMPARISON MODAL
+   ================================================================= */
+.compare-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(10,15,30,0.92);
+  backdrop-filter: blur(8px);
+  overflow-y: auto;
+  padding: 40px 20px;
+  display: none;
+}
+
+.compare-modal.active { display: block; }
+
+.compare-container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.compare-pair-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.compare-card {
+  padding: 20px;
+  border-radius: 14px;
+  border: 1px solid var(--card-border);
+}
+
+.compare-card.side-a {
+  border-color: rgba(6,182,212,0.3);
+  background: rgba(6,182,212,0.04);
+}
+
+.compare-card.side-b {
+  border-color: rgba(139,92,246,0.3);
+  background: rgba(139,92,246,0.04);
+}
+
+.compare-card h4 { margin: 0 0 12px; font-size: 14px; }
+.compare-card.side-a h4 { color: var(--primary); }
+.compare-card.side-b h4 { color: #8b5cf6; }
+
+.compare-attr { display: flex; gap: 8px; margin-bottom: 8px; font-size: 12.5px; line-height: 1.5; }
+.compare-attr-label { font-weight: 700; min-width: 90px; color: var(--text-muted); flex-shrink: 0; }
+
+.compare-chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.compare-chip {
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+  background: rgba(255,255,255,0.06);
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 1px solid var(--card-border);
+}
+
+.compare-chip:hover, .compare-chip.active {
+  background: var(--primary-glow);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+/* =================================================================
+   PRINT CHEAT SHEET — @media print
+   ================================================================= */
+@media print {
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+
+  .sidebar, .hamburger-btn, .scroll-top-btn, #scroll-top-btn,
+  .tab-header, .cheatsheet-filter-card, .tag-filter-btn,
+  .btn, button, nav, footer, .mobile-nav-overlay,
+  .bg-glow { display: none !important; }
+
+  .main-content {
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    height: auto !important;
+  }
+
+  #cheatsheet {
+    display: block !important;
+  }
+
+  #cheatsheet-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 10px !important;
+  }
+
+  .cheatsheet-card {
+    break-inside: avoid;
+    border: 1px solid #ccc !important;
+    background: #fff !important;
+    box-shadow: none !important;
+    padding: 10px !important;
+    border-radius: 6px !important;
+  }
+
+  .card-type-badge {
+    background: #eee !important;
+    color: #333 !important;
+  }
+
+  .print-header {
+    display: block !important;
+    text-align: center;
+    margin-bottom: 16px;
+    font-family: 'Inter', sans-serif;
+    border-bottom: 2px solid #000;
+    padding-bottom: 10px;
+  }
+
+  @page {
+    margin: 15mm;
+    size: A4 landscape;
+  }
+}
+
+.print-header { display: none; }
+
+/* =================================================================
+   MOBILE PERFORMANCE OPTIMIZATIONS
+   ================================================================= */
+@media (max-width: 768px) {
+  /* Disable expensive GPU-bound backdrop filters which cause massive scrolling lag on mobile Safari/Chrome */
+  .glass, 
+  .compare-modal, 
+  #guide-quick-quiz-modal, 
+  #login-overlay,
+  .examday-question-panel,
+  .examday-nav-panel {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: rgba(15, 23, 42, 0.98) !important; /* Fallback to solid translucent dark background */
+    border-color: rgba(255, 255, 255, 0.08) !important;
+  }
+
+  /* Optimize layout shifts and transitions for mobile CPUs */
+  * {
+    transition-duration: 0.15s !important; /* Shorten transitions to make navigation feel faster */
+  }
+
+  /* Force hardware acceleration on scroll elements for buttery smooth touch scrolling */
+  .main-content,
+  .sidebar,
+  .guides-sidebar,
+  .guide-content {
+    -webkit-overflow-scrolling: touch;
+    will-change: scroll-position;
+  }
+
+  /* Disable heavy box shadows on cards to save render passes */
+  .card, .glass {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  }
+}
+

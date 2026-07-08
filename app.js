@@ -2461,6 +2461,7 @@ function initApp() {
   checkWeakestDomain();
   renderDomainProgressBadges();
   renderSRSLabels();
+  initExamDay();
 }
 
 function loadFromLocalStorage() {
@@ -2468,6 +2469,7 @@ function loadFromLocalStorage() {
   STATE.checkedTopics = JSON.parse(localStorage.getItem("cissp_checked_topics")) || [];
   STATE.quizHistory = JSON.parse(localStorage.getItem("cissp_quiz_history")) || [];
   STATE.countdownDate = localStorage.getItem("cissp_countdown_date");
+  STATE.mistakes = JSON.parse(localStorage.getItem("cissp_mistakes") || "[]");
 
   if (!STATE.countdownDate) {
     const defaultTarget = new Date();
@@ -2647,6 +2649,9 @@ function switchTab(tabId) {
   }
   if (tabId === "cheatsheet") {
     renderCheatSheet();
+  }
+  if (tabId === "mistake-log") {
+    renderMistakeLog();
   }
   if (tabId === "memory") {
     runCalculators();
@@ -2974,7 +2979,11 @@ function submitExam() {
     const userAns = quiz.answers[q.id];
     const isCorrect = userAns === q.answer;
 
-    if (isCorrect) correct++;
+    if (isCorrect) {
+      correct++;
+    } else if (userAns !== undefined) {
+      logMistake(q, userAns);
+    }
 
     if (!domainPerformance[q.domain]) {
       domainPerformance[q.domain] = { total: 0, correct: 0 };
@@ -3066,12 +3075,12 @@ function renderGuideContent(domainNum) {
   if (!bodyContainer) {
     const viewer = document.getElementById("guide-viewer");
     if (!viewer) return;
-    const data = DOMAIN_GUIDES[domainNum];
+    const data = getDomainContent(domainNum);
     if (data) viewer.innerHTML = `<h3>${data.title}</h3><div class="outline-content">${data.html}</div>`;
     return;
   }
 
-  const data = DOMAIN_GUIDES[domainNum];
+  const data = getDomainContent(domainNum);
   if (!data) { bodyContainer.innerHTML = ""; if(tocContainer) tocContainer.innerHTML = ""; return; }
 
   // 1. Render the main body content
@@ -4744,6 +4753,7 @@ function handleDailyAnswer(selectedIdx, question, todayKey, currentStreak) {
     newStreak = 0;
     localStorage.setItem("cissp_daily_streak", "0");
     localStorage.setItem(todayKey, "wrong");
+    logMistake(question, selectedIdx);
     playErrorSound();
     showSystemNotification("Incorrect daily challenge attempt. Streak reset.");
   }
@@ -6749,7 +6759,7 @@ function launchGuideQuickQuiz(domainNum) {
   _gqState.answered = false;
 
   // Get all questions for this domain and shuffle
-  const pool = (typeof QUESTIONS !== "undefined" ? QUESTIONS : []).filter(q => q.domain === domainNum);
+  const pool = (typeof CISSP_QUESTIONS !== "undefined" ? CISSP_QUESTIONS : []).filter(q => q.domain === domainNum);
   const shuffled = pool.sort(() => Math.random() - 0.5).slice(0, Math.min(10, pool.length));
   _gqState.questions = shuffled;
 
@@ -6815,7 +6825,11 @@ function handleGQAnswer(selectedIndex) {
   const q = _gqState.questions[_gqState.index];
   const correct = q.answer;
   const isCorrect = selectedIndex === correct;
-  if (isCorrect) _gqState.score++;
+  if (isCorrect) {
+    _gqState.score++;
+  } else {
+    logMistake(q, selectedIndex);
+  }
 
   // Highlight options
   const opts = document.querySelectorAll(".gq-option");
@@ -6935,3 +6949,648 @@ function renderSRSLabels() {
 
   injectSRSBadge(currentCardIndex || 0);
 }
+
+// =================================================================
+// EXAM DAY SIMULATOR ENGINE
+// =================================================================
+const EXAMDAY_WEIGHTS = [
+  { domain: 1, label: "D1: Security & Risk Mgmt",   pct: 16, count: 20 },
+  { domain: 2, label: "D2: Asset Security",          pct: 10, count: 13 },
+  { domain: 3, label: "D3: Security Engineering",    pct: 13, count: 16 },
+  { domain: 4, label: "D4: Communication & Network", pct: 13, count: 16 },
+  { domain: 5, label: "D5: Identity & Access",       pct: 13, count: 16 },
+  { domain: 6, label: "D6: Security Assessment",     pct: 12, count: 15 },
+  { domain: 7, label: "D7: Security Operations",     pct: 13, count: 16 },
+  { domain: 8, label: "D8: Software Development",    pct: 10, count: 13 },
+];
+const EXAMDAY_TOTAL = 125;
+const EXAMDAY_PASS_SCORE = 88;
+const EXAMDAY_DURATION = 4 * 60 * 60; // seconds
+
+let _edState = {
+  questions: [],      // array of 125 question objects with orig domain
+  answers: {},        // index → chosen option index
+  flagged: new Set(), // flagged question indices
+  currentIndex: 0,
+  timerSeconds: EXAMDAY_DURATION,
+  timerInterval: null,
+  startTime: null,
+};
+
+function initExamDay() {
+  // Render domain weights on setup screen
+  const weightsEl = document.getElementById("examday-domain-weights");
+  if (weightsEl) {
+    weightsEl.innerHTML = EXAMDAY_WEIGHTS.map(w => `
+      <div style="display:flex; align-items:center; gap:10px;">
+        <span style="font-size:12px; color:var(--text-muted); min-width:185px;">${w.label}</span>
+        <div style="flex:1; height:6px; background:rgba(255,255,255,0.06); border-radius:6px; overflow:hidden;">
+          <div style="width:${w.pct}%; height:100%; background:var(--primary); border-radius:6px;"></div>
+        </div>
+        <span style="font-size:12px; font-weight:700; color:var(--primary);">${w.pct}% (${w.count}Q)</span>
+      </div>
+    `).join("");
+  }
+
+  // Load previous attempts
+  const prev = JSON.parse(localStorage.getItem("cissp_examday_history") || "[]");
+  const prevEl = document.getElementById("examday-prev-attempts");
+  if (prevEl && prev.length > 0) {
+    prevEl.innerHTML = prev.slice(-3).reverse().map(a => `
+      <div style="display:flex; justify-content:space-between; align-items:center; padding:8px 0; border-bottom:1px solid var(--card-border);">
+        <span style="font-size:12px; color:var(--text-muted);">${new Date(a.date).toLocaleDateString()}</span>
+        <span style="font-size:13px; font-weight:700; color:${a.score >= EXAMDAY_PASS_SCORE ? '#10b981' : '#ef4444'};">${a.score}/125 (${Math.round(a.score/125*100)}%)</span>
+        <span style="font-size:11px; font-weight:700; padding:2px 8px; border-radius:6px; background:${a.score >= EXAMDAY_PASS_SCORE ? 'rgba(16,185,129,0.15)' : 'rgba(239,68,68,0.15)'}; color:${a.score >= EXAMDAY_PASS_SCORE ? '#10b981' : '#ef4444'};">${a.score >= EXAMDAY_PASS_SCORE ? 'PASS' : 'FAIL'}</span>
+      </div>
+    `).join("");
+  }
+
+  // Start button
+  document.getElementById("examday-start-btn")?.addEventListener("click", startExamDay);
+  document.getElementById("ed-flag-btn")?.addEventListener("click", toggleFlagQuestion);
+  document.getElementById("ed-submit-btn")?.addEventListener("click", () => {
+    const answered = Object.keys(_edState.answers).length;
+    const unanswered = EXAMDAY_TOTAL - answered;
+    const msg = unanswered > 0
+      ? `You have ${unanswered} unanswered questions. Are you sure you want to submit?`
+      : "Submit exam now?";
+    if (confirm(msg)) submitExamDay();
+  });
+}
+
+function startExamDay() {
+  // Build question set proportionally by domain
+  const allQ = typeof CISSP_QUESTIONS !== "undefined" ? CISSP_QUESTIONS : [];
+  let selected = [];
+
+  EXAMDAY_WEIGHTS.forEach(w => {
+    const pool = allQ.filter(q => q.domain === w.domain).sort(() => Math.random() - 0.5);
+    const pick = pool.slice(0, w.count).map(q => ({ ...q, _edDomain: w.domain }));
+    selected = selected.concat(pick);
+  });
+
+  // Shuffle the full set
+  selected = selected.sort(() => Math.random() - 0.5);
+  if (selected.length < 10) {
+    alert("Not enough questions in the database. Please ensure questions.js is loaded.");
+    return;
+  }
+
+  // Pad or trim to exactly 125
+  while (selected.length < EXAMDAY_TOTAL) selected = [...selected, ...selected].slice(0, EXAMDAY_TOTAL);
+  selected = selected.slice(0, EXAMDAY_TOTAL);
+
+  // Reset state
+  _edState.questions = selected;
+  _edState.answers = {};
+  _edState.flagged = new Set();
+  _edState.currentIndex = 0;
+  _edState.timerSeconds = EXAMDAY_DURATION;
+  _edState.startTime = Date.now();
+
+  // Build nav grid
+  buildEdNavGrid();
+
+  // Show exam screen
+  document.getElementById("examday-setup-screen").style.display = "none";
+  document.getElementById("examday-exam-screen").style.display = "block";
+  document.getElementById("examday-result-screen").style.display = "none";
+
+  renderEdQuestion(0);
+  startEdTimer();
+}
+
+function buildEdNavGrid() {
+  const grid = document.getElementById("examday-q-grid");
+  if (!grid) return;
+  grid.innerHTML = _edState.questions.map((q, i) => `
+    <div class="ed-q-tile${i === 0 ? ' current' : ''}" id="ed-tile-${i}" onclick="edJumpTo(${i})">${i + 1}</div>
+  `).join("");
+}
+
+function renderEdQuestion(idx) {
+  _edState.currentIndex = idx;
+  const q = _edState.questions[idx];
+  if (!q) return;
+
+  const LETTERS = ["A", "B", "C", "D", "E"];
+  const panel = document.getElementById("examday-question-panel");
+  if (!panel) return;
+
+  const selectedAnswer = _edState.answers[idx];
+  const isFlagged = _edState.flagged.has(idx);
+
+  panel.innerHTML = `
+    <div style="margin-bottom:16px; display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+      <span style="font-size:11px; font-weight:700; text-transform:uppercase; padding:3px 10px; border-radius:8px; background:rgba(6,182,212,0.1); color:var(--primary);">Domain ${q._edDomain || q.domain}</span>
+      ${isFlagged ? '<span style="font-size:11px; font-weight:700; padding:3px 10px; border-radius:8px; background:rgba(245,158,11,0.15); color:#f59e0b;"><i class="fa-solid fa-flag"></i> Flagged</span>' : ''}
+    </div>
+    <p style="font-size:15px; line-height:1.7; color:var(--text-main); margin:0 0 22px; font-weight:500;">${q.question}</p>
+    <div id="ed-options">
+      ${q.options.map((opt, i) => `
+        <div class="examday-option${selectedAnswer === i ? ' selected' : ''}" onclick="edSelectAnswer(${i})">
+          <span class="examday-option-letter">${LETTERS[i]}.</span>
+          <span>${opt}</span>
+        </div>
+      `).join("")}
+    </div>
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-top:24px; flex-wrap:wrap; gap:10px;">
+      <button class="btn btn-secondary" onclick="edJumpTo(${Math.max(0, idx - 1)})" ${idx === 0 ? 'disabled' : ''} style="font-size:12px; padding:8px 16px;">
+        <i class="fa-solid fa-arrow-left"></i> Previous
+      </button>
+      <span style="font-size:12px; color:var(--text-muted);">${Object.keys(_edState.answers).length} / ${EXAMDAY_TOTAL} answered</span>
+      <button class="btn btn-secondary" onclick="edJumpTo(${Math.min(EXAMDAY_TOTAL - 1, idx + 1)})" ${idx === EXAMDAY_TOTAL - 1 ? 'disabled' : ''} style="font-size:12px; padding:8px 16px;">
+        Next <i class="fa-solid fa-arrow-right"></i>
+      </button>
+    </div>
+  `;
+
+  // Update header Q number
+  document.getElementById("ed-q-num").textContent = idx + 1;
+
+  // Update flag badge
+  const flagBadge = document.getElementById("ed-flag-badge");
+  if (flagBadge) flagBadge.style.display = isFlagged ? "inline-flex" : "none";
+
+  // Update nav grid tiles
+  document.querySelectorAll(".ed-q-tile").forEach((t, i) => {
+    t.className = "ed-q-tile" +
+      (_edState.answers[i] !== undefined ? " answered" : "") +
+      (_edState.flagged.has(i) ? " flagged" : "") +
+      (i === idx ? " current" : "");
+  });
+}
+
+function edSelectAnswer(optionIdx) {
+  _edState.answers[_edState.currentIndex] = optionIdx;
+  renderEdQuestion(_edState.currentIndex);
+}
+
+function edJumpTo(idx) {
+  renderEdQuestion(Math.max(0, Math.min(EXAMDAY_TOTAL - 1, idx)));
+}
+
+function toggleFlagQuestion() {
+  const idx = _edState.currentIndex;
+  if (_edState.flagged.has(idx)) _edState.flagged.delete(idx);
+  else _edState.flagged.add(idx);
+  renderEdQuestion(idx);
+}
+
+function startEdTimer() {
+  clearInterval(_edState.timerInterval);
+  const el = document.getElementById("examday-timer");
+
+  _edState.timerInterval = setInterval(() => {
+    _edState.timerSeconds--;
+    const h = Math.floor(_edState.timerSeconds / 3600);
+    const m = Math.floor((_edState.timerSeconds % 3600) / 60);
+    const s = _edState.timerSeconds % 60;
+    if (el) {
+      el.textContent = `${h}:${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`;
+      el.className = "examday-timer" +
+        (_edState.timerSeconds < 1800 ? " warning" : "") +
+        (_edState.timerSeconds < 300 ? " critical" : "");
+    }
+    if (_edState.timerSeconds <= 0) {
+      clearInterval(_edState.timerInterval);
+      alert("Time is up! Your exam is being submitted automatically.");
+      submitExamDay();
+    }
+  }, 1000);
+}
+
+function submitExamDay() {
+  clearInterval(_edState.timerInterval);
+  const timeTaken = Date.now() - _edState.startTime;
+
+  // Score calculation
+  let correct = 0;
+  const domainStats = {};
+  EXAMDAY_WEIGHTS.forEach(w => { domainStats[w.domain] = { correct: 0, total: 0, label: w.label }; });
+
+  const wrongList = [];
+  _edState.questions.forEach((q, i) => {
+    const chosen = _edState.answers[i];
+    const isCorrect = chosen === q.answer;
+    const d = q._edDomain || q.domain;
+    if (!domainStats[d]) domainStats[d] = { correct: 0, total: 0, label: `Domain ${d}` };
+    domainStats[d].total++;
+    if (isCorrect) {
+      correct++;
+      domainStats[d].correct++;
+    } else if (chosen !== undefined) {
+      wrongList.push({ q, chosen, i });
+      logMistake(q, chosen);
+    }
+  });
+
+  const pct = Math.round((correct / EXAMDAY_TOTAL) * 100);
+  const passed = correct >= EXAMDAY_PASS_SCORE;
+
+  // Save to history
+  const history = JSON.parse(localStorage.getItem("cissp_examday_history") || "[]");
+  history.push({ date: new Date().toISOString(), score: correct, pct, passed });
+  localStorage.setItem("cissp_examday_history", JSON.stringify(history.slice(-10)));
+
+  // Switch to result screen
+  document.getElementById("examday-exam-screen").style.display = "none";
+  document.getElementById("examday-result-screen").style.display = "block";
+
+  // Verdict banner
+  const verdictEl = document.getElementById("examday-verdict-banner");
+  if (verdictEl) {
+    verdictEl.style.borderColor = passed ? "rgba(16,185,129,0.35)" : "rgba(239,68,68,0.35)";
+    verdictEl.style.background = passed ? "rgba(16,185,129,0.06)" : "rgba(239,68,68,0.06)";
+    verdictEl.innerHTML = `
+      <div style="font-size:56px; margin-bottom:8px;">${passed ? "🎉" : "📖"}</div>
+      <h2 style="margin:0 0 8px; font-size:28px; color:${passed ? '#10b981' : '#ef4444'};">${passed ? "PASS" : "FAIL"}</h2>
+      <p style="font-size:16px; color:var(--text-main); margin:0 0 4px;">${correct} / ${EXAMDAY_TOTAL} correct (${pct}%)</p>
+      <p style="font-size:13px; color:var(--text-muted); margin:0;">${passed ? "You have met the 70% passing threshold. Congratulations!" : `You need ${EXAMDAY_PASS_SCORE - correct} more correct answers to pass.`}</p>
+    `;
+  }
+
+  // Stats row
+  const mm = Math.floor(timeTaken / 60000);
+  const ss = Math.floor((timeTaken % 60000) / 1000);
+  const statsEl = document.getElementById("examday-stats-row");
+  if (statsEl) {
+    const stats = [
+      { icon: "fa-check-circle", label: "Correct", val: correct, col: "#10b981" },
+      { icon: "fa-circle-xmark", label: "Wrong", val: EXAMDAY_TOTAL - correct - (EXAMDAY_TOTAL - Object.keys(_edState.answers).length), col: "#ef4444" },
+      { icon: "fa-circle-question", label: "Unanswered", val: EXAMDAY_TOTAL - Object.keys(_edState.answers).length, col: "#f59e0b" },
+      { icon: "fa-clock", label: "Time Taken", val: `${mm}m ${ss}s`, col: "var(--primary)" },
+    ];
+    statsEl.innerHTML = stats.map(s => `
+      <div class="card glass" style="padding:18px; text-align:center;">
+        <i class="fa-solid ${s.icon}" style="font-size:22px; color:${s.col}; margin-bottom:8px; display:block;"></i>
+        <div style="font-size:22px; font-weight:800; color:${s.col};">${s.val}</div>
+        <div style="font-size:11px; color:var(--text-muted); margin-top:4px;">${s.label}</div>
+      </div>
+    `).join("");
+  }
+
+  // Domain breakdown
+  const breakEl = document.getElementById("examday-domain-breakdown");
+  if (breakEl) {
+    breakEl.innerHTML = Object.values(domainStats).map(d => {
+      if (d.total === 0) return "";
+      const p = Math.round((d.correct / d.total) * 100);
+      const col = p >= 75 ? "#10b981" : p >= 55 ? "#f59e0b" : "#ef4444";
+      return `
+        <div class="ed-domain-bar">
+          <span class="ed-domain-bar-label">${d.label}</span>
+          <div class="ed-domain-bar-track"><div class="ed-domain-bar-fill" style="width:${p}%; background:${col};"></div></div>
+          <span class="ed-domain-bar-pct" style="color:${col};">${d.correct}/${d.total}</span>
+        </div>
+      `;
+    }).join("");
+  }
+
+  // Store wrong answers for later review
+  window._edWrongList = wrongList;
+}
+
+function toggleExamdayWrong() {
+  const el = document.getElementById("examday-wrong-answers-list");
+  const btn = document.getElementById("examday-toggle-wrong");
+  if (!el || !btn) return;
+  const visible = el.style.display !== "none";
+  el.style.display = visible ? "none" : "block";
+  btn.textContent = visible ? "Show Wrong Answers" : "Hide Wrong Answers";
+
+  if (!visible && window._edWrongList) {
+    const LETTERS = ["A", "B", "C", "D", "E"];
+    el.innerHTML = window._edWrongList.length === 0
+      ? "<p style='color:#10b981; text-align:center; padding:20px;'>🎉 No wrong answers to review!</p>"
+      : window._edWrongList.map(({ q, chosen, i }) => `
+        <div class="examday-wrong-item">
+          <p style="font-size:13px; color:var(--text-muted); margin:0 0 6px;">Question ${i + 1} · Domain ${q._edDomain || q.domain}</p>
+          <p style="font-size:14px; font-weight:500; color:var(--text-main); margin:0 0 12px;">${q.question}</p>
+          <p style="font-size:13px; color:#ef4444; margin:0 0 4px;"><i class="fa-solid fa-xmark"></i> Your answer: ${LETTERS[chosen]}. ${q.options[chosen]}</p>
+          <p style="font-size:13px; color:#10b981; margin:0 0 10px;"><i class="fa-solid fa-check"></i> Correct answer: ${LETTERS[q.answer]}. ${q.options[q.answer]}</p>
+          ${q.explanation ? `<p style="font-size:12.5px; color:var(--text-muted); border-top:1px solid var(--card-border); padding-top:10px; margin:0;">${q.explanation}</p>` : ""}
+        </div>
+      `).join("");
+  }
+}
+
+function resetExamDay() {
+  clearInterval(_edState.timerInterval);
+  document.getElementById("examday-setup-screen").style.display = "block";
+  document.getElementById("examday-exam-screen").style.display = "none";
+  document.getElementById("examday-result-screen").style.display = "none";
+  initExamDay();
+}
+
+// =================================================================
+// CONCEPT COMPARISON SYSTEM
+// =================================================================
+const COMPARE_PAIRS = [
+  { id: "bcp-drp", label: "BCP vs DRP", a: { name: "BCP — Business Continuity Plan", points: ["Focuses on keeping business functions running during a disaster","Broader scope — covers the entire organization","Addresses people, processes, and technology","Activated BEFORE/DURING a disaster","RTO and RPO are key metrics","Includes crisis communications, alternate sites"] }, b: { name: "DRP — Disaster Recovery Plan", points: ["Focuses on restoring IT systems and data after a disaster","Narrower scope — IT/technology focused","Covers data backups, failover systems, recovery procedures","Activated AFTER a disaster","Part of the BCP — a subset","Includes system recovery steps, backup restoration"] } },
+  { id: "mac-dac", label: "MAC vs DAC vs RBAC vs ABAC", a: { name: "MAC — Mandatory Access Control", points: ["Access controlled by the SYSTEM based on labels","No user discretion — enforced by policy","Used in military/government (Top Secret, Secret, etc.)","Subject clearance must meet or exceed object classification","Bell-LaPadula model enforces MAC","Least flexible, most secure"] }, b: { name: "DAC — Discretionary Access Control", points: ["Resource OWNER controls access permissions","Users can grant access to others (discretionary)","Most common in commercial systems (Windows NTFS ACLs)","More flexible but less secure than MAC","Vulnerable to Trojan horse attacks","Owner can grant permissions without admin intervention"] } },
+  { id: "ids-ips", label: "IDS vs IPS vs WAF", a: { name: "IDS — Intrusion Detection System", points: ["Monitors and ALERTS only — passive","Does NOT block traffic","Sits out-of-band (not in line with traffic)","False positive = alert on benign traffic","False negative = missed attack (more dangerous)","Can be host-based (HIDS) or network-based (NIDS)"] }, b: { name: "IPS — Intrusion Prevention System", points: ["Monitors AND BLOCKS — active/inline","Sits in-line with network traffic","Can drop packets, reset connections, block IP","False positive = blocks legitimate traffic (availability impact)","Requires tuning to avoid over-blocking","NGFW typically includes IPS functionality"] } },
+  { id: "sym-asym", label: "Symmetric vs Asymmetric Encryption", a: { name: "Symmetric Encryption", points: ["Same key used to encrypt AND decrypt","Faster — suitable for bulk data encryption","Key distribution problem (securely sharing the key)","Examples: AES (128/192/256-bit), 3DES, ChaCha20","AES-256 is NIST recommended standard","Key count for n users: n(n-1)/2"] }, b: { name: "Asymmetric Encryption", points: ["Public key encrypts, Private key decrypts (and vice versa for signing)","Slower — used for key exchange and digital signatures","Solves the key distribution problem","Examples: RSA, ECC, Diffie-Hellman, El Gamal","RSA 2048-bit minimum; ECC 256-bit equivalent strength","Used in TLS, PKI, SSH, PGP"] } },
+  { id: "vuln-risk", label: "Vulnerability vs Threat vs Risk vs Exposure", a: { name: "Vulnerability", points: ["A WEAKNESS in a system that can be exploited","Can be technical (unpatched software), procedural (no policy), or physical (unlocked door)","Measured by CVSS score (0-10)","Not all vulnerabilities are exploitable","CVE database catalogues known vulnerabilities","Remediated by: patching, configuration changes, compensating controls"] }, b: { name: "Threat", points: ["A potential CAUSE of harm — any actor or event that could exploit a vulnerability","Can be: natural (earthquake), human (hacker), environmental (fire)","Threat agents: script kiddies, nation states, insiders, competitors","Threat likelihood assessed in risk analysis","STIX format used to share threat intelligence","Risk = Threat × Vulnerability × Impact"] } },
+  { id: "rto-rpo", label: "RTO vs RPO vs MTD vs MTBF vs MTTR", a: { name: "Recovery Time Objective (RTO)", points: ["Maximum acceptable time to restore a system after failure","Example: RTO = 4 hours means system must be back online within 4 hours","Drives decisions on hot/warm/cold site selection","Lower RTO = more expensive recovery solution","Also: RPO = how much DATA loss is acceptable (measured in time)","MTD (Max Tolerable Downtime) = must NOT exceed RTO"] }, b: { name: "MTBF vs MTTR", points: ["MTBF = Mean Time Between Failures — avg time a system runs before failing","Higher MTBF = more reliable system","MTTR = Mean Time To Repair — avg time to fix after failure","Lower MTTR = better recovery capability","MTTF = Mean Time to Failure (non-repairable systems)","Availability = MTBF / (MTBF + MTTR) × 100%"] } },
+  { id: "soc123", label: "SOC 1 vs SOC 2 vs SOC 3", a: { name: "SOC 1 (SSAE 18)", points: ["Focuses on financial reporting controls","Used by service organizations affecting client financial statements","Type I: design effectiveness at a point in time","Type II: operating effectiveness over a 6-12 month period","Replaced the old SAS 70 standard","Audience: auditors and user entities"] }, b: { name: "SOC 2 / SOC 3", points: ["Focuses on Trust Services Criteria: Security, Availability, Processing Integrity, Confidentiality, Privacy","SOC 2: Detailed report — restricted to specific users","SOC 3: General use report — can be publicly shared (no details)","Most relevant to cloud providers and SaaS companies","Type I and Type II also apply","SOC 2 Type II is the gold standard for vendor security assessment"] } },
+  { id: "clear-purge", label: "Clearing vs Purging vs Destroying Media", a: { name: "Clearing", points: ["Overwriting data with 1s, 0s, or random patterns","Prevents software-based recovery tools","Suitable for reuse within same classification level","Example: DoD 5220.22-M (7-pass wipe)","Ineffective against advanced lab recovery techniques","SSD clearing requires special consideration (wear leveling)"] }, b: { name: "Purging vs Destroying", points: ["Purging: Removes data so lab-level recovery is not feasible","Methods: Cryptographic Erase (CE), Degaussing (magnetic media only)","Degaussing ineffective on SSDs, flash memory, CDs","Destroying: Physical destruction — shredding, disintegration, incineration","NIST SP 800-88 is the authoritative guide","Destruction required for highest classification data"] } },
+  { id: "white-black-grey", label: "White Box vs Black Box vs Grey Box Pen Test", a: { name: "Black Box Testing", points: ["Tester has NO prior knowledge of the target","Simulates an external attacker perspective","Most realistic for external threat modeling","Time-consuming — requires reconnaissance phase","Less efficient at finding all vulnerabilities","Also called: zero-knowledge testing"] }, b: { name: "White Box / Grey Box Testing", points: ["White Box: Full knowledge — architecture, source code, credentials","Most efficient — targets specific areas of concern","Grey Box: Partial knowledge — some credentials or architecture info","Grey Box simulates insider threat or compromised account","White Box used for code review, secure SDLC integration","Grey Box is the most common for modern penetration tests"] } },
+  { id: "authentication-factors", label: "Authentication Factors (1FA/2FA/MFA)", a: { name: "Something You Know (Type 1)", points: ["Passwords, PINs, passphrases, security questions","Easiest to implement, easiest to compromise","Subject to: phishing, shoulder surfing, brute force, dictionary attacks","NIST SP 800-63B recommends long passphrases over complex short passwords","Should never be transmitted in plaintext","Weakest factor — always combine with another"] }, b: { name: "Something You Have + Are (Type 2 + 3)", points: ["Type 2 (Have): Smart cards, hardware tokens (TOTP/HOTP), mobile authenticators","Type 3 (Are): Biometrics — fingerprint, iris, retina, face, voice, gait","Somewhere you are (Type 4): Geolocation, IP restriction","MFA = any 2+ different factor TYPES (not two of the same type)","FIDO2/WebAuthn passkeys eliminate passwords entirely","Biometrics: FAR, FRR, CER — lower CER = better accuracy"] } },
+];
+
+let _compareCurrentId = null;
+
+function initCompareModal() {
+  // Inject compare modal into DOM if not present
+  if (document.getElementById("compare-modal")) return;
+  const modal = document.createElement("div");
+  modal.id = "compare-modal";
+  modal.className = "compare-modal";
+  modal.innerHTML = `
+    <div class="compare-container">
+      <div class="card glass" style="padding: 28px;">
+        <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:20px; flex-wrap:wrap; gap:12px;">
+          <h3 style="margin:0;"><i class="fa-solid fa-scale-balanced" style="color:var(--primary);"></i> Concept Comparisons</h3>
+          <button onclick="document.getElementById('compare-modal').classList.remove('active')" style="background:none;border:none;color:var(--text-muted);cursor:pointer;font-size:22px;line-height:1;">&times;</button>
+        </div>
+        <p style="font-size:13px; color:var(--text-muted); margin:0 0 16px;">Click any card to compare commonly confused CISSP concepts side-by-side.</p>
+        <div class="compare-chip-list" id="compare-chip-list">
+          ${COMPARE_PAIRS.map(p => `<span class="compare-chip" data-cid="${p.id}" onclick="showComparePair('${p.id}')">${p.label}</span>`).join("")}
+        </div>
+        <div id="compare-pair-display" style="margin-top:20px;"></div>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(modal);
+}
+
+function showComparePair(id) {
+  _compareCurrentId = id;
+  const pair = COMPARE_PAIRS.find(p => p.id === id);
+  if (!pair) return;
+
+  // Highlight active chip
+  document.querySelectorAll(".compare-chip").forEach(c => {
+    c.classList.toggle("active", c.dataset.cid === id);
+  });
+
+  const display = document.getElementById("compare-pair-display");
+  if (!display) return;
+  display.innerHTML = `
+    <h4 style="text-align:center; margin:0 0 16px; color:var(--text-muted); font-size:13px; text-transform:uppercase; letter-spacing:.08em;">${pair.label}</h4>
+    <div class="compare-pair-grid">
+      <div class="compare-card side-a">
+        <h4>${pair.a.name}</h4>
+        <ul style="margin:0; padding-left:18px; font-size:13px; line-height:1.8;">
+          ${pair.a.points.map(p => `<li>${p}</li>`).join("")}
+        </ul>
+      </div>
+      <div class="compare-card side-b">
+        <h4>${pair.b.name}</h4>
+        <ul style="margin:0; padding-left:18px; font-size:13px; line-height:1.8;">
+          ${pair.b.points.map(p => `<li>${p}</li>`).join("")}
+        </ul>
+      </div>
+    </div>
+  `;
+}
+
+function openCompareModal() {
+  initCompareModal();
+  document.getElementById("compare-modal").classList.add("active");
+  if (!_compareCurrentId && COMPARE_PAIRS.length > 0) showComparePair(COMPARE_PAIRS[0].id);
+}
+
+// =================================================================
+// PRINT CHEAT SHEET
+// =================================================================
+function printCheatSheet() {
+  // Switch to cheat sheet tab first
+  switchTab("cheatsheet");
+  // Add print header temporarily
+  const header = document.createElement("div");
+  header.className = "print-header";
+  header.innerHTML = `<h1 style="font-size:20px; margin:0;">CISSP ExamPro — Searchable Cheat Sheet</h1><p style="margin:4px 0 0; font-size:13px; color:#666;">Printed ${new Date().toLocaleDateString()} · cissp-exampro.vercel.app</p>`;
+  const grid = document.getElementById("cheatsheet-grid");
+  if (grid) grid.parentNode.insertBefore(header, grid);
+  setTimeout(() => {
+    window.print();
+    setTimeout(() => header.remove(), 1000);
+  }, 400);
+}
+
+// =================================================================
+// DOMAIN CONTENT INTEGRATION HOOK
+// =================================================================
+function getDomainContent(domainNum) {
+  // Check for expanded content from domain_content.js (loaded before app.js)
+  const expanded = window.CISSP_DOMAIN_CONTENT;
+  if (expanded && expanded[domainNum]) return expanded[domainNum];
+  // Fallback to base content
+  return DOMAIN_GUIDES[domainNum];
+}
+
+// =================================================================
+// MISTAKE LOG / WRONG ANSWER REVIEWER LOGIC
+// =================================================================
+function logMistake(question, chosenOptionIdx) {
+  if (!STATE.mistakes) STATE.mistakes = [];
+  
+  // Prevent duplicate logs for the same question
+  if (STATE.mistakes.some(m => m.question.id === question.id)) {
+    const idx = STATE.mistakes.findIndex(m => m.question.id === question.id);
+    STATE.mistakes[idx].chosen = chosenOptionIdx;
+    STATE.mistakes[idx].timestamp = new Date().toISOString();
+  } else {
+    STATE.mistakes.push({
+      question: question,
+      chosen: chosenOptionIdx,
+      timestamp: new Date().toISOString()
+    });
+  }
+  localStorage.setItem("cissp_mistakes", JSON.stringify(STATE.mistakes));
+}
+
+function renderMistakeLog() {
+  const container = document.getElementById("mistakes-list-container");
+  const countVal = document.getElementById("mistakes-count-val");
+  
+  if (!STATE.mistakes) STATE.mistakes = JSON.parse(localStorage.getItem("cissp_mistakes") || "[]");
+  
+  if (countVal) countVal.textContent = STATE.mistakes.length;
+  if (!container) return;
+
+  if (STATE.mistakes.length === 0) {
+    container.innerHTML = `
+      <div class="card glass" style="padding: 40px; text-align: center;">
+        <i class="fa-solid fa-circle-check" style="font-size: 48px; color: #10b981; margin-bottom: 16px;"></i>
+        <h3 style="margin: 0 0 8px;">No logged mistakes!</h3>
+        <p style="font-size: 13px; color: var(--text-muted); margin: 0;">Great job! You have resolved all incorrect answers. Take practice tests to challenge yourself.</p>
+      </div>
+    `;
+    return;
+  }
+
+  const LETTERS = ["A", "B", "C", "D", "E"];
+  container.innerHTML = STATE.mistakes.map((m, idx) => {
+    const q = m.question;
+    const isMock = q.options.length > 0;
+    
+    return `
+      <div class="card glass" id="mistake-card-${q.id}" style="padding: 24px; margin-bottom: 16px; border-left: 4px solid #ef4444; transition: all 0.3s ease;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:8px;">
+          <span style="font-size: 11px; font-weight: 700; text-transform: uppercase; padding: 3px 8px; border-radius: 6px; background: rgba(239,68,68,0.1); color: #ef4444;">Domain ${q.domain}</span>
+          <span style="font-size: 11px; color: var(--text-muted);">${new Date(m.timestamp).toLocaleDateString()}</span>
+        </div>
+        <p style="font-size: 14px; font-weight: 600; line-height: 1.6; color: var(--text-main); margin: 0 0 16px;">${q.question}</p>
+        
+        <!-- Interactive retake option block -->
+        <div style="display:flex; flex-direction:column; gap:8px; margin-bottom:16px;">
+          ${q.options.map((opt, oIdx) => `
+            <div class="examday-option" id="mistake-opt-${q.id}-${oIdx}" onclick="selectMistakeOption(${q.id}, ${oIdx})" style="padding: 10px 14px; border-radius:8px;">
+              <span class="examday-option-letter" style="min-width:18px;">${LETTERS[oIdx]}.</span>
+              <span style="font-size: 13px;">${opt}</span>
+            </div>
+          `).join("")}
+        </div>
+
+        <div style="font-size:12.5px; color: #ef4444; margin-bottom:14px; background:rgba(239,68,68,0.06); padding:8px 12px; border-radius:6px; display:inline-flex; align-items:center; gap:8px;">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          <span>Previously picked: <strong>${LETTERS[m.chosen]}. ${q.options[m.chosen]}</strong></span>
+        </div>
+
+        <div id="mistake-feedback-${q.id}" style="display:none; margin-bottom:14px; padding:10px 14px; border-radius:8px; font-size:13px; line-height:1.5;"></div>
+
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+          <button class="btn btn-primary btn-sm" onclick="checkMistakeAnswer(${q.id})" style="font-size: 12px; padding: 6px 14px;">
+            <i class="fa-solid fa-square-check"></i> Verify Answer
+          </button>
+          <button class="btn btn-secondary btn-sm" id="mistake-exp-btn-${q.id}" onclick="toggleMistakeExplanation(${q.id})" style="font-size: 12px; padding: 6px 14px; display:none;">
+            Show Explanation
+          </button>
+        </div>
+      </div>
+    `;
+  }).join("");
+}
+
+// Stores the selected option during the retake session
+window._mistakeSelections = {};
+
+function selectMistakeOption(qId, oIdx) {
+  window._mistakeSelections[qId] = oIdx;
+  
+  // Highlight chosen option
+  document.querySelectorAll(`[id^="mistake-opt-${qId}-"]`).forEach((el, idx) => {
+    el.classList.toggle("selected", idx === oIdx);
+  });
+}
+
+function checkMistakeAnswer(qId) {
+  const chosen = window._mistakeSelections[qId];
+  if (chosen === undefined) {
+    alert("Please select an option before verifying.");
+    return;
+  }
+
+  const index = STATE.mistakes.findIndex(m => m.question.id === qId);
+  if (index === -1) return;
+
+  const m = STATE.mistakes[index];
+  const correct = m.question.answer;
+  const isCorrect = chosen === correct;
+
+  const feedback = document.getElementById(`mistake-feedback-${qId}`);
+  const expBtn = document.getElementById(`mistake-exp-btn-${qId}`);
+  
+  if (feedback) {
+    feedback.style.display = "block";
+    feedback.style.background = isCorrect ? "rgba(16,185,129,0.08)" : "rgba(239,68,68,0.08)";
+    feedback.style.borderLeft = `3px solid ${isCorrect ? '#10b981' : '#ef4444'}`;
+    feedback.style.color = isCorrect ? "#10b981" : "#ef4444";
+    feedback.innerHTML = isCorrect 
+      ? `<strong>✓ Resolved!</strong> That is correct. This mistake has been cleared from your log.`
+      : `<strong>✗ Incorrect.</strong> Try again or view the explanation below to learn why.`;
+  }
+
+  if (isCorrect) {
+    // Play success sound
+    try {
+      const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = "sine";
+      osc.frequency.setValueAtTime(523.25, audioCtx.currentTime);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start();
+      osc.stop(audioCtx.currentTime + 0.15);
+    } catch(e) {}
+
+    // Highlight correct options
+    const optEl = document.getElementById(`mistake-opt-${qId}-${correct}`);
+    if (optEl) optEl.style.borderColor = "#10b981";
+
+    // Remove from array and save after a delay so user sees success feedback
+    setTimeout(() => {
+      const card = document.getElementById(`mistake-card-${qId}`);
+      if (card) {
+        card.style.opacity = "0";
+        card.style.transform = "translateX(50px)";
+        setTimeout(() => {
+          STATE.mistakes.splice(index, 1);
+          localStorage.setItem("cissp_mistakes", JSON.stringify(STATE.mistakes));
+          renderMistakeLog();
+        }, 300);
+      }
+    }, 1500);
+  } else {
+    // Play error sound
+    try {
+      const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = "sawtooth";
+      osc.frequency.setValueAtTime(150, audioCtx.currentTime);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start();
+      osc.stop(audioCtx.currentTime + 0.2);
+    } catch(e) {}
+    
+    if (expBtn) expBtn.style.display = "block";
+  }
+}
+
+function toggleMistakeExplanation(qId) {
+  const index = STATE.mistakes.findIndex(m => m.question.id === qId);
+  if (index === -1) return;
+  
+  const m = STATE.mistakes[index];
+  const feedback = document.getElementById(`mistake-feedback-${qId}`);
+  const btn = document.getElementById(`mistake-exp-btn-${qId}`);
+  
+  if (feedback && m.question.explanation) {
+    const isShowingExp = feedback.innerHTML.includes("Explanation:");
+    if (isShowingExp) {
+      feedback.innerHTML = `<strong>✗ Incorrect.</strong> Try again or view the explanation below to learn why.`;
+      btn.textContent = "Show Explanation";
+    } else {
+      feedback.style.color = "var(--text-main)";
+      feedback.style.background = "rgba(255,255,255,0.03)";
+      feedback.style.borderLeft = "3px solid var(--primary)";
+      feedback.innerHTML = `<strong>Explanation:</strong> ${m.question.explanation}`;
+      btn.textContent = "Hide Explanation";
+    }
+  }
+}
+
+function clearAllMistakes() {
+  if (confirm("Are you sure you want to clear all logged mistakes? This cannot be undone.")) {
+    STATE.mistakes = [];
+    localStorage.setItem("cissp_mistakes", JSON.stringify(STATE.mistakes));
+    renderMistakeLog();
+  }
+}
+
