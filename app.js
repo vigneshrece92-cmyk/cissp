@@ -2455,6 +2455,12 @@ function initApp() {
   initGames();
   initDailyChallenge();
   initAITutor();
+  initMobileNav();
+  initScrollToTop();
+  renderStudyHeatmap();
+  checkWeakestDomain();
+  renderDomainProgressBadges();
+  renderSRSLabels();
 }
 
 function loadFromLocalStorage() {
@@ -3051,17 +3057,64 @@ function exitExamEarly() {
 // DOMAIN GUIDE VIEWER
 // =================================================================
 function renderGuideContent(domainNum) {
-  const viewer = document.getElementById("guide-viewer");
-  if (!viewer) return;
+  const tocContainer = document.getElementById("guide-toc-container");
+  const bodyContainer = document.getElementById("guide-body-content");
+  const actionsRow = document.getElementById("guide-actions-row");
+  const notesPanel = document.getElementById("domain-notes-panel");
+
+  // Fallback: if new split DOM isn't present, use old single viewer
+  if (!bodyContainer) {
+    const viewer = document.getElementById("guide-viewer");
+    if (!viewer) return;
+    const data = DOMAIN_GUIDES[domainNum];
+    if (data) viewer.innerHTML = `<h3>${data.title}</h3><div class="outline-content">${data.html}</div>`;
+    return;
+  }
 
   const data = DOMAIN_GUIDES[domainNum];
-  if (data) {
-    viewer.innerHTML = `
-      <h3>${data.title}</h3>
-      <div class="outline-content">
-        ${data.html}
-      </div>
-    `;
+  if (!data) { bodyContainer.innerHTML = ""; if(tocContainer) tocContainer.innerHTML = ""; return; }
+
+  // 1. Render the main body content
+  bodyContainer.innerHTML = `<h3 style="margin-bottom: 18px;">${data.title}</h3><div class="outline-content" id="guide-outline-inner">${data.html}</div>`;
+
+  // 2. Build the TOC from the h4 elements
+  if (tocContainer) buildGuideTOC(tocContainer);
+
+  // 3. Show actions row
+  if (actionsRow) actionsRow.style.display = "flex";
+
+  // 4. Hide notes panel by default on domain switch
+  if (notesPanel) notesPanel.style.display = "none";
+
+  // 5. Load domain study notes
+  loadDomainNotes(domainNum);
+
+  // 6. Wire quick-quiz button
+  const qqBtn = document.getElementById("guide-quick-quiz-btn");
+  if (qqBtn) {
+    qqBtn.onclick = () => launchGuideQuickQuiz(domainNum);
+  }
+
+  // 7. Wire notes toggle button
+  const notesToggle = document.getElementById("guide-notes-toggle-btn");
+  if (notesToggle) {
+    notesToggle.onclick = () => {
+      if (notesPanel) {
+        const visible = notesPanel.style.display !== "none";
+        notesPanel.style.display = visible ? "none" : "block";
+        notesToggle.innerHTML = visible
+          ? '<i class="fa-solid fa-pen-to-square"></i> My Study Notes'
+          : '<i class="fa-solid fa-eye-slash"></i> Hide Notes';
+      }
+    };
+  }
+
+  // 8. Wire auto-save on textarea
+  const ta = document.getElementById("domain-notes-textarea");
+  if (ta) {
+    ta.oninput = () => {
+      localStorage.setItem(`cissp_notes_d${domainNum}`, ta.value);
+    };
   }
 }
 
@@ -6396,4 +6449,489 @@ function showMindMapConceptDrawer(termName) {
   });
 }
 
+// =================================================================
+// MOBILE NAVIGATION DRAWER
+// =================================================================
+function initMobileNav() {
+  const hamburger = document.getElementById("sidebar-hamburger");
+  if (!hamburger) return;
 
+  // Build the overlay + drawer DOM
+  const overlay = document.createElement("div");
+  overlay.className = "mobile-nav-overlay";
+  overlay.id = "mobile-nav-overlay";
+
+  const drawer = document.createElement("div");
+  drawer.className = "mobile-nav-drawer";
+
+  // Build nav items from sidebar nav-links
+  const navItems = [
+    { tab: "dashboard", icon: "fa-chart-line", label: "Dashboard" },
+    { tab: "ai-tutor", icon: "fa-robot", label: "AI Study Tutor" },
+    { tab: "practice", icon: "fa-laptop-code", label: "Practice Simulator" },
+    { tab: "guides", icon: "fa-book-open", label: "Domain Guides" },
+    { tab: "cheatsheet", icon: "fa-scroll", label: "Cheat Sheet" },
+    { tab: "pdf-library", icon: "fa-file-pdf", label: "PDF Library" },
+    { tab: "mindmaps", icon: "fa-diagram-project", label: "Mind Maps" },
+    { tab: "games", icon: "fa-gamepad", label: "Study Games" },
+    { tab: "memory", icon: "fa-brain", label: "Memory Palace" },
+    { tab: "flashcards", icon: "fa-clone", label: "Flashcards" },
+    { tab: "planner", icon: "fa-calendar-days", label: "Study Planner" },
+  ];
+
+  navItems.forEach(item => {
+    const el = document.createElement("div");
+    el.className = "mobile-nav-item" + (STATE.activeTab === item.tab ? " active" : "");
+    el.dataset.tab = item.tab;
+    el.innerHTML = `<i class="fa-solid ${item.icon}"></i><span>${item.label}</span>`;
+    el.addEventListener("click", () => {
+      // Deactivate all items
+      drawer.querySelectorAll(".mobile-nav-item").forEach(n => n.classList.remove("active"));
+      el.classList.add("active");
+      // Switch tab and close drawer
+      switchTab(item.tab);
+      closeHamburger();
+    });
+    drawer.appendChild(el);
+  });
+
+  overlay.appendChild(drawer);
+  document.body.appendChild(overlay);
+
+  // Toggle hamburger
+  hamburger.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const isOpen = overlay.classList.contains("active");
+    if (isOpen) {
+      closeHamburger();
+    } else {
+      overlay.classList.add("active");
+      hamburger.classList.add("active");
+    }
+  });
+
+  // Clicking outside drawer closes it
+  overlay.addEventListener("click", (e) => {
+    if (e.target === overlay) {
+      closeHamburger();
+    }
+  });
+
+  function closeHamburger() {
+    overlay.classList.remove("active");
+    hamburger.classList.remove("active");
+  }
+}
+
+// =================================================================
+// SCROLL TO TOP BUTTON
+// =================================================================
+function initScrollToTop() {
+  const btn = document.getElementById("scroll-top-btn");
+  if (!btn) return;
+
+  const mainContent = document.querySelector(".main-content");
+  if (!mainContent) return;
+
+  // Show/hide based on scroll position
+  mainContent.addEventListener("scroll", () => {
+    if (mainContent.scrollTop > 300) {
+      btn.style.display = "flex";
+      btn.style.opacity = "1";
+    } else {
+      btn.style.opacity = "0";
+      setTimeout(() => {
+        if (mainContent.scrollTop <= 300) btn.style.display = "none";
+      }, 300);
+    }
+  });
+
+  // Scroll to top smoothly on click
+  btn.addEventListener("click", () => {
+    mainContent.scrollTo({ top: 0, behavior: "smooth" });
+  });
+}
+
+// =================================================================
+// GUIDE TABLE OF CONTENTS (TOC)
+// =================================================================
+function buildGuideTOC(tocContainer) {
+  const outline = document.getElementById("guide-outline-inner");
+  if (!outline) { tocContainer.innerHTML = ""; return; }
+
+  const headings = outline.querySelectorAll("h4");
+  if (headings.length === 0) { tocContainer.innerHTML = ""; return; }
+
+  // Assign anchor IDs to headings
+  headings.forEach((h, i) => {
+    const id = `guide-h4-${i}`;
+    h.id = id;
+    h.style.scrollMarginTop = "20px";
+  });
+
+  const items = Array.from(headings).map((h, i) => {
+    return `<li><a href="#guide-h4-${i}">${h.textContent.trim()}</a></li>`;
+  }).join("");
+
+  tocContainer.innerHTML = `
+    <div class="guide-toc">
+      <p class="guide-toc-title"><i class="fa-solid fa-list-ul"></i> Quick Navigation</p>
+      <ul class="guide-toc-list">${items}</ul>
+    </div>
+  `;
+
+  // Smooth scroll within guide-viewer on link click
+  tocContainer.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", e => {
+      e.preventDefault();
+      const target = document.getElementById(link.getAttribute("href").slice(1));
+      if (target) {
+        const viewer = document.getElementById("guide-viewer");
+        if (viewer) {
+          const offset = target.offsetTop - viewer.offsetTop - 20;
+          viewer.scrollTo({ top: offset, behavior: "smooth" });
+        }
+      }
+    });
+  });
+}
+
+// =================================================================
+// DOMAIN STUDY NOTES (LOAD / SAVE)
+// =================================================================
+function loadDomainNotes(domainNum) {
+  const ta = document.getElementById("domain-notes-textarea");
+  if (!ta) return;
+  ta.value = localStorage.getItem(`cissp_notes_d${domainNum}`) || "";
+}
+
+// =================================================================
+// DOMAIN PROGRESS BADGES (guide sidebar)
+// =================================================================
+function renderDomainProgressBadges() {
+  const history = STATE.quizHistory || [];
+  if (history.length === 0) return;
+
+  for (let d = 1; d <= 8; d++) {
+    // Collect answers for this domain from quiz history
+    const domainAnswers = [];
+    history.forEach(attempt => {
+      if (attempt.answers) {
+        attempt.answers.forEach(a => {
+          if (a.domain === d) domainAnswers.push(a.correct);
+        });
+      }
+    });
+
+    const badge = document.getElementById(`guide-badge-${d}`);
+    if (!badge) continue;
+
+    if (domainAnswers.length === 0) {
+      badge.textContent = "—";
+      badge.className = "guide-domain-badge badge-grey";
+      continue;
+    }
+
+    const pct = Math.round((domainAnswers.filter(Boolean).length / domainAnswers.length) * 100);
+    badge.textContent = `${pct}%`;
+    if (pct >= 75) badge.className = "guide-domain-badge badge-green";
+    else if (pct >= 55) badge.className = "guide-domain-badge badge-orange";
+    else badge.className = "guide-domain-badge badge-red";
+  }
+}
+
+// =================================================================
+// 30-DAY STUDY HEATMAP
+// =================================================================
+function renderStudyHeatmap() {
+  const container = document.getElementById("study-heatmap");
+  if (!container) return;
+
+  const logs = STATE.studyLogs || [];
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  // Build date → hours map
+  const dateMap = {};
+  logs.forEach(log => {
+    if (!log.date || !log.hours) return;
+    const d = log.date.split("T")[0];
+    dateMap[d] = (dateMap[d] || 0) + parseFloat(log.hours);
+  });
+
+  // Build 30 cells (oldest → newest)
+  const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  let html = "";
+  for (let i = 29; i >= 0; i--) {
+    const d = new Date(today);
+    d.setDate(today.getDate() - i);
+    const key = d.toISOString().split("T")[0];
+    const hours = dateMap[key] || 0;
+    const hoursInt = Math.min(Math.ceil(hours), 4);
+    const isToday = (i === 0);
+    const label = `${MONTHS[d.getMonth()]} ${d.getDate()}`;
+    const tip = hours > 0 ? `${label}: ${hours.toFixed(1)}h studied` : `${label}: No study logged`;
+    html += `<div class="heatmap-cell${hours > 0 ? " has-activity" : ""}${isToday ? " is-today" : ""}" data-hours="${hoursInt}" title="${tip}"></div>`;
+  }
+  container.innerHTML = html;
+}
+
+// =================================================================
+// WEAKEST DOMAIN DETECTION BANNER
+// =================================================================
+function checkWeakestDomain() {
+  const banner = document.getElementById("weak-domain-banner");
+  if (!banner) return;
+
+  const history = STATE.quizHistory || [];
+  const domainStats = {};
+
+  // Tally correct / total per domain from all quiz attempts
+  history.forEach(attempt => {
+    if (!attempt.answers) return;
+    attempt.answers.forEach(a => {
+      if (!a.domain) return;
+      if (!domainStats[a.domain]) domainStats[a.domain] = { correct: 0, total: 0 };
+      domainStats[a.domain].total++;
+      if (a.correct) domainStats[a.domain].correct++;
+    });
+  });
+
+  // Need at least 20 total answers to show the banner
+  const totalAnswered = Object.values(domainStats).reduce((s, d) => s + d.total, 0);
+  if (totalAnswered < 20) return;
+
+  // Find weakest domain (lowest percentage, min 5 questions)
+  let weakestDomain = null;
+  let weakestPct = Infinity;
+  Object.entries(domainStats).forEach(([d, stat]) => {
+    if (stat.total < 5) return;
+    const pct = stat.correct / stat.total;
+    if (pct < weakestPct) {
+      weakestPct = pct;
+      weakestDomain = parseInt(d);
+    }
+  });
+
+  if (!weakestDomain) return;
+
+  const pctDisplay = Math.round(weakestPct * 100);
+  const domainName = DOMAIN_GUIDES[weakestDomain]?.title?.replace(/^Domain \d+: /, "") || `Domain ${weakestDomain}`;
+  const title = document.getElementById("weak-banner-title");
+  const desc = document.getElementById("weak-banner-desc");
+  const cta = document.getElementById("weak-banner-cta");
+
+  if (title) title.textContent = `⚠ Focus Area: ${domainName}`;
+  if (desc) desc.textContent = `You're scoring ${pctDisplay}% in Domain ${weakestDomain} — your weakest area. Targeted practice can boost your readiness fast!`;
+  if (cta) {
+    cta.onclick = () => {
+      // Pre-select the weak domain in the domain quiz selector
+      const sel = document.getElementById("domain-select");
+      if (sel) sel.value = String(weakestDomain);
+      // Switch to practice tab
+      switchTab("practice");
+      banner.style.display = "none";
+    };
+  }
+
+  banner.style.display = "block";
+}
+
+// =================================================================
+// GUIDE QUICK QUIZ (10 Questions from a specific Domain)
+// =================================================================
+let _gqState = { questions: [], index: 0, score: 0, answered: false, domainNum: 1 };
+
+function launchGuideQuickQuiz(domainNum) {
+  _gqState.domainNum = domainNum;
+  _gqState.index = 0;
+  _gqState.score = 0;
+  _gqState.answered = false;
+
+  // Get all questions for this domain and shuffle
+  const pool = (typeof QUESTIONS !== "undefined" ? QUESTIONS : []).filter(q => q.domain === domainNum);
+  const shuffled = pool.sort(() => Math.random() - 0.5).slice(0, Math.min(10, pool.length));
+  _gqState.questions = shuffled;
+
+  if (shuffled.length === 0) {
+    alert("No questions available for this domain yet.");
+    return;
+  }
+
+  const modal = document.getElementById("guide-quick-quiz-modal");
+  const title = document.getElementById("guide-quiz-modal-title");
+  if (title) title.innerHTML = `<i class="fa-solid fa-bolt" style="color:var(--primary);"></i> Quick Practice — ${DOMAIN_GUIDES[domainNum]?.title?.split(":")[0] || "Domain " + domainNum}`;
+
+  document.getElementById("guide-quick-quiz-result").style.display = "none";
+  modal.style.display = "block";
+  document.body.style.overflow = "hidden";
+
+  renderGQQuestion();
+}
+
+function renderGQQuestion() {
+  const { questions, index, score } = _gqState;
+  const q = questions[index];
+  if (!q) return;
+
+  const total = questions.length;
+  const pct = Math.round((index / total) * 100);
+
+  const progressEl = document.getElementById("guide-quick-quiz-progress");
+  if (progressEl) {
+    progressEl.innerHTML = `
+      <div style="display:flex; justify-content:space-between; font-size:12px; color:var(--text-muted); margin-bottom:4px;">
+        <span>Question ${index + 1} of ${total}</span>
+        <span>Score: ${score}/${index}</span>
+      </div>
+      <div class="gq-progress-bar"><div class="gq-progress-fill" style="width:${pct}%"></div></div>
+    `;
+  }
+
+  const LETTERS = ["A", "B", "C", "D"];
+  const body = document.getElementById("guide-quick-quiz-body");
+  if (body) {
+    body.innerHTML = `
+      <p class="gq-question-text">${q.question}</p>
+      <div id="gq-options">
+        ${q.options.map((opt, i) => `
+          <div class="gq-option" data-index="${i}" onclick="handleGQAnswer(${i})">
+            <span class="gq-option-letter">${LETTERS[i]}.</span>
+            <span>${opt}</span>
+          </div>
+        `).join("")}
+      </div>
+    `;
+  }
+
+  document.getElementById("guide-quick-quiz-actions").innerHTML = "";
+  _gqState.answered = false;
+}
+
+function handleGQAnswer(selectedIndex) {
+  if (_gqState.answered) return;
+  _gqState.answered = true;
+
+  const q = _gqState.questions[_gqState.index];
+  const correct = q.answer;
+  const isCorrect = selectedIndex === correct;
+  if (isCorrect) _gqState.score++;
+
+  // Highlight options
+  const opts = document.querySelectorAll(".gq-option");
+  opts.forEach((el, i) => {
+    el.style.pointerEvents = "none";
+    if (i === selectedIndex && isCorrect) el.classList.add("correct");
+    else if (i === selectedIndex && !isCorrect) el.classList.add("incorrect");
+    if (i === correct && !isCorrect) el.classList.add("reveal-correct");
+  });
+
+  // Show explanation if available
+  const body = document.getElementById("guide-quick-quiz-body");
+  if (q.explanation && body) {
+    const expDiv = document.createElement("div");
+    expDiv.style.cssText = "margin-top:14px; padding:14px 16px; border-radius:10px; font-size:13px; line-height:1.6; border-left: 3px solid " + (isCorrect ? "#10b981" : "#ef4444");
+    expDiv.style.background = isCorrect ? "rgba(16,185,129,0.07)" : "rgba(239,68,68,0.07)";
+    expDiv.innerHTML = `<strong>${isCorrect ? "✓ Correct!" : "✗ Incorrect."}</strong> ${q.explanation}`;
+    body.appendChild(expDiv);
+  }
+
+  // Show Next / Finish button
+  const actions = document.getElementById("guide-quick-quiz-actions");
+  const isLast = (_gqState.index >= _gqState.questions.length - 1);
+  actions.innerHTML = isLast
+    ? `<button class="btn btn-primary" onclick="showGQResult()"><i class="fa-solid fa-flag-checkered"></i> See Results</button>`
+    : `<button class="btn btn-primary" onclick="nextGQQuestion()"><i class="fa-solid fa-arrow-right"></i> Next Question</button>`;
+}
+
+function nextGQQuestion() {
+  _gqState.index++;
+  renderGQQuestion();
+}
+
+function showGQResult() {
+  const { score, questions } = _gqState;
+  const total = questions.length;
+  const pct = Math.round((score / total) * 100);
+  const color = pct >= 75 ? "#10b981" : pct >= 55 ? "#f59e0b" : "#ef4444";
+  const msg = pct >= 75 ? "Great job! 🎉" : pct >= 55 ? "Keep practicing! 💪" : "Review this domain carefully 📖";
+
+  document.getElementById("guide-quick-quiz-body").innerHTML = "";
+  document.getElementById("guide-quick-quiz-actions").innerHTML = `
+    <button class="btn btn-primary" onclick="launchGuideQuickQuiz(${_gqState.domainNum})"><i class="fa-solid fa-rotate"></i> Retry</button>
+    <button class="btn btn-secondary" onclick="closeGuideQuickQuiz()"><i class="fa-solid fa-times"></i> Close</button>
+  `;
+  document.getElementById("guide-quick-quiz-progress").innerHTML = "";
+
+  const result = document.getElementById("guide-quick-quiz-result");
+  result.style.display = "block";
+  result.innerHTML = `
+    <div class="gq-result-card">
+      <div class="gq-score-circle" style="background: ${color}22; color: ${color};">
+        <span>${pct}%</span>
+        <span style="font-size:12px; font-weight:500;">${score}/${total}</span>
+      </div>
+      <h3 style="margin: 0 0 6px;">${msg}</h3>
+      <p style="color:var(--text-muted); font-size:13px;">You answered ${score} out of ${total} questions correctly.</p>
+    </div>
+  `;
+}
+
+function closeGuideQuickQuiz() {
+  document.getElementById("guide-quick-quiz-modal").style.display = "none";
+  document.body.style.overflow = "";
+}
+
+// =================================================================
+// SPACED REPETITION LABELS (Flashcards)
+// =================================================================
+function renderSRSLabels() {
+  // Load SRS state from localStorage
+  const srsData = JSON.parse(localStorage.getItem("cissp_srs_data") || "{}");
+
+  // Patch renderActiveFlashcard to show SRS label
+  const origRender = window._originalRenderFlashcard || renderActiveFlashcard;
+  const cardFront = document.getElementById("card-front-text");
+  if (!cardFront) return;
+
+  // Inject SRS label badge into the active flashcard view
+  function injectSRSBadge(cardIndex) {
+    const existingBadge = document.getElementById("srs-badge");
+    if (existingBadge) existingBadge.remove();
+
+    const srsInfo = srsData[cardIndex] || { correct: 0, seen: 0 };
+    let label, cls;
+    const ratio = srsInfo.seen > 0 ? srsInfo.correct / srsInfo.seen : 0;
+
+    if (srsInfo.seen === 0) { label = "New"; cls = "srs-new"; }
+    else if (srsInfo.seen < 3 || ratio < 0.5) { label = "Learning"; cls = "srs-learning"; }
+    else if (ratio < 0.8) { label = "Review"; cls = "srs-review"; }
+    else { label = "Mastered"; cls = "srs-mastered"; }
+
+    const badge = document.createElement("span");
+    badge.id = "srs-badge";
+    badge.className = `srs-label ${cls}`;
+    badge.innerHTML = `<i class="fa-solid fa-brain"></i> ${label}`;
+    badge.style.cssText = "position:absolute; top: 12px; right: 14px;";
+
+    const card = document.getElementById("active-flashcard");
+    if (card) {
+      card.style.position = "relative";
+      card.appendChild(badge);
+    }
+  }
+
+  // Hook into flashcard navigation buttons to update SRS on answer
+  document.querySelectorAll(".mark-known-btn, .mark-unknown-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const idx = currentCardIndex;
+      if (!srsData[idx]) srsData[idx] = { correct: 0, seen: 0 };
+      srsData[idx].seen++;
+      if (btn.classList.contains("mark-known-btn")) srsData[idx].correct++;
+      localStorage.setItem("cissp_srs_data", JSON.stringify(srsData));
+      setTimeout(() => injectSRSBadge(currentCardIndex), 50);
+    });
+  });
+
+  injectSRSBadge(currentCardIndex || 0);
+}

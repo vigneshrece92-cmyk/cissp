@@ -6,13 +6,40 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
-  <title>CISSP Pro Exam Prep Portal | Free Comprehensive Study Center</title>
+  <title>CISSP ExamPro | Free Comprehensive Exam Prep Portal</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="The ultimate free CISSP exam preparation portal. AI Study Tutor, 983+ practice questions, domain guides, interactive flashcards, cheat sheets, mind maps, and study games. Created by Vignesh Ravichandran.">
+  <meta name="keywords" content="CISSP, CISSP exam prep, CISSP practice questions, CISSP study guide, information security certification, ISC2, free CISSP portal">
+  <meta name="author" content="Vignesh Ravichandran">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph (Social sharing: LinkedIn, WhatsApp, Twitter) -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://cissp-exampro.vercel.app/">
+  <meta property="og:title" content="CISSP ExamPro | Free CISSP Exam Prep Portal">
+  <meta property="og:description" content="The ultimate free CISSP exam preparation portal with AI Tutor, 983+ practice questions, flashcards, study games and domain guides.">
+  <meta property="og:image" content="https://cissp-exampro.vercel.app/og-preview.png">
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:title" content="CISSP ExamPro | Free CISSP Exam Prep Portal">
+  <meta property="twitter:description" content="AI Tutor, 983+ practice questions, domain guides, flashcards, study games. 100% Free.">
+
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#06b6d4">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="CISSP Pro">
+
+  <!-- Favicon (inline SVG as data URI for portability) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230a0f1e'/%3E%3Cpath d='M16 4 L24 8 L24 18 Q24 24 16 28 Q8 24 8 18 L8 8 Z' fill='%2306b6d4' opacity='0.9'/%3E%3Cpath d='M13 15 L15 17 L19 13' stroke='white' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+
   <!-- Google Fonts & Font Awesome -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="styles.css?v=5.0">
+  <link rel="stylesheet" href="styles.css?v=5.1">
   <!-- PDF.js Ebook Reader Library -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
   <!-- Google Identity Services (GIS) for Google Sign-In -->
@@ -55,10 +82,19 @@
         <i class="fa-solid fa-user-lock"></i> Member Sign-In
       </button>
     </div>
+    <!-- Mobile hamburger toggle -->
+    <button class="hamburger-btn" id="sidebar-hamburger" aria-label="Toggle Navigation Menu" title="Navigation Menu">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
 
   <!-- Main Content Container -->
   <main class="main-content">
+
+  <!-- Scroll to Top Button -->
+  <button id="scroll-top-btn" title="Back to Top" style="display:none; position:fixed; bottom:24px; right:24px; z-index:9999; width:44px; height:44px; border-radius:50%; background: var(--primary); border: none; color:#fff; font-size:18px; cursor:pointer; box-shadow:0 4px 16px rgba(6,182,212,0.4); transition: all 0.3s ease; align-items:center; justify-content:center;">
+    <i class="fa-solid fa-chevron-up"></i>
+  </button>
     
     <!-- ======================================================= -->
     <!-- 1. DASHBOARD TAB -->
@@ -258,6 +294,24 @@
         </div>
       </div>
 
+      <!-- Study Activity Heatmap -->
+      <div class="card glass" style="margin-bottom: 20px; padding: 20px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; flex-wrap: wrap; gap: 8px;">
+          <h3 style="margin: 0;"><i class="fa-solid fa-fire" style="color: var(--primary);"></i> 30-Day Study Activity</h3>
+          <div style="display: flex; align-items: center; gap: 8px; font-size: 11px; color: var(--text-muted);">
+            <span>Less</span>
+            <span class="heatmap-legend-cell" style="opacity:.15;"></span>
+            <span class="heatmap-legend-cell" style="opacity:.4;"></span>
+            <span class="heatmap-legend-cell" style="opacity:.65;"></span>
+            <span class="heatmap-legend-cell" style="opacity:1;"></span>
+            <span>More</span>
+          </div>
+        </div>
+        <div id="study-heatmap" class="study-heatmap-grid">
+          <!-- Populated via renderStudyHeatmap() in app.js -->
+        </div>
+      </div>
+
       <!-- Row 6: Interactive Triggers (Preserved Mock Exam Card) -->
       <div class="action-panel">
         <div class="action-card card glass primary-gradient">
@@ -341,6 +395,23 @@
         </div>
       </div>
 
+      <!-- Weakest Domain Banner (shown after 20+ Q answered) -->
+      <div id="weak-domain-banner" style="display:none; margin-bottom: 16px;" class="card glass weak-banner">
+        <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap;">
+          <div style="background: rgba(245,158,11,0.15); border-radius: 10px; padding: 10px 14px;">
+            <i class="fa-solid fa-triangle-exclamation" style="color:#f59e0b; font-size: 22px;"></i>
+          </div>
+          <div style="flex: 1; min-width: 200px;">
+            <strong id="weak-banner-title" style="font-size: 14px; color: var(--text-main);">Focus Area Detected</strong>
+            <p id="weak-banner-desc" style="margin: 2px 0 0; font-size: 12.5px; color: var(--text-muted);">Loading...</p>
+          </div>
+          <button class="btn btn-primary" id="weak-banner-cta" style="white-space: nowrap; font-size: 12px; padding: 8px 16px;">
+            <i class="fa-solid fa-bullseye"></i> Practice Weak Domain
+          </button>
+          <button onclick="document.getElementById('weak-domain-banner').style.display='none'" style="background:none;border:none;color:var(--text-muted);cursor:pointer;font-size:18px;line-height:1;" title="Dismiss">&times;</button>
+        </div>
+      </div>
+
       <!-- Mock Exam Attempt History Card & Trend Graph -->
       <div class="card glass exam-history-card" id="exam-history-card">
         <div>
@@ -397,22 +468,84 @@
       <div class="guides-container">
         <div class="guides-sidebar card glass">
           <ul class="guide-tabs" id="guide-tab-links">
-            <li class="active" data-guide="1">Domain 1: Security & Risk</li>
-            <li data-guide="2">Domain 2: Asset Security</li>
-            <li data-guide="3">Domain 3: Security Engineering</li>
-            <li data-guide="4">Domain 4: Network Security</li>
-            <li data-guide="5">Domain 5: Identity & Access</li>
-            <li data-guide="6">Domain 6: Security Testing</li>
-            <li data-guide="7">Domain 7: Security Operations</li>
-            <li data-guide="8">Domain 8: Software Security</li>
-            <li data-guide="9" style="border-top: 1px solid rgba(255,255,255,0.08); margin-top: 8px; padding-top: 8px; color: var(--accent);"><i class="fa-solid fa-globe"></i> Online Resources</li>
+            <li class="active" data-guide="1">
+              <span class="guide-tab-label">D1: Security &amp; Risk</span>
+              <span class="guide-domain-badge" id="guide-badge-1"></span>
+            </li>
+            <li data-guide="2">
+              <span class="guide-tab-label">D2: Asset Security</span>
+              <span class="guide-domain-badge" id="guide-badge-2"></span>
+            </li>
+            <li data-guide="3">
+              <span class="guide-tab-label">D3: Architecture</span>
+              <span class="guide-domain-badge" id="guide-badge-3"></span>
+            </li>
+            <li data-guide="4">
+              <span class="guide-tab-label">D4: Network Security</span>
+              <span class="guide-domain-badge" id="guide-badge-4"></span>
+            </li>
+            <li data-guide="5">
+              <span class="guide-tab-label">D5: Identity &amp; Access</span>
+              <span class="guide-domain-badge" id="guide-badge-5"></span>
+            </li>
+            <li data-guide="6">
+              <span class="guide-tab-label">D6: Security Testing</span>
+              <span class="guide-domain-badge" id="guide-badge-6"></span>
+            </li>
+            <li data-guide="7">
+              <span class="guide-tab-label">D7: Operations</span>
+              <span class="guide-domain-badge" id="guide-badge-7"></span>
+            </li>
+            <li data-guide="8">
+              <span class="guide-tab-label">D8: Software Security</span>
+              <span class="guide-domain-badge" id="guide-badge-8"></span>
+            </li>
+            <li data-guide="9" style="border-top: 1px solid rgba(255,255,255,0.08); margin-top: 8px; padding-top: 8px; color: var(--accent);">
+              <span class="guide-tab-label"><i class="fa-solid fa-globe"></i> Online Resources</span>
+            </li>
           </ul>
         </div>
         <div class="guide-content card glass" id="guide-viewer">
+          <!-- Section TOC injected here by buildGuideTOC() -->
+          <div id="guide-toc-container"></div>
           <!-- Populated dynamically via app.js with rich text -->
+          <div id="guide-body-content"></div>
+          <!-- Quick Quiz button row -->
+          <div id="guide-actions-row" style="display:none; margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--card-border); display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+            <button class="btn btn-primary" id="guide-quick-quiz-btn" style="font-size: 13px; padding: 9px 18px;">
+              <i class="fa-solid fa-bolt"></i> Quick Practice (10 Q)
+            </button>
+            <button class="btn btn-secondary" id="guide-notes-toggle-btn" style="font-size: 13px; padding: 9px 18px;">
+              <i class="fa-solid fa-pen-to-square"></i> My Study Notes
+            </button>
+          </div>
+          <!-- Study Notes Panel (collapsible) -->
+          <div id="domain-notes-panel" style="display:none; margin-top: 16px; border-top: 1px solid var(--card-border); padding-top: 16px;">
+            <h4 style="margin: 0 0 10px; font-size: 13px; color: var(--primary);"><i class="fa-solid fa-sticky-note"></i> My Notes for This Domain</h4>
+            <textarea id="domain-notes-textarea" rows="6" class="form-control" placeholder="Type your own study notes, mnemonics, or reminders here... (auto-saved)" style="width: 100%; font-size: 13px; line-height: 1.6; resize: vertical;"></textarea>
+            <p style="font-size: 11px; color: var(--text-muted); margin-top: 6px;"><i class="fa-solid fa-floppy-disk"></i> Auto-saved to your browser</p>
+          </div>
         </div>
       </div>
     </section>
+
+    <!-- ======================================================= -->
+    <!-- GUIDE QUICK QUIZ MODAL OVERLAY                          -->
+    <!-- ======================================================= -->
+    <div id="guide-quick-quiz-modal" style="display:none; position:fixed; inset:0; z-index:2000; background:rgba(10,15,30,0.92); backdrop-filter:blur(8px); overflow-y:auto; padding: 40px 20px;">
+      <div style="max-width: 720px; margin: 0 auto;">
+        <div class="card glass" style="padding: 28px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
+            <h3 id="guide-quiz-modal-title" style="margin:0;"><i class="fa-solid fa-bolt" style="color:var(--primary);"></i> Quick Practice</h3>
+            <button onclick="closeGuideQuickQuiz()" style="background:none;border:none;color:var(--text-muted);cursor:pointer;font-size:22px;line-height:1;" title="Close">&times;</button>
+          </div>
+          <div id="guide-quick-quiz-progress" style="margin-bottom: 16px;"></div>
+          <div id="guide-quick-quiz-body"><!-- Q content injected by JS --></div>
+          <div id="guide-quick-quiz-actions" style="margin-top: 20px; display: flex; gap: 12px; flex-wrap: wrap;"></div>
+          <div id="guide-quick-quiz-result" style="display:none; margin-top: 20px;"></div>
+        </div>
+      </div>
+    </div>
 
     <!-- ======================================================= -->
     <!-- 3.5 INTERACTIVE CHEAT SHEET TAB -->
@@ -1218,6 +1351,16 @@
   <!-- Cheat Sheet DB -->
   <script src="cheatsheet_data.js?v=2.1"></script>
   <!-- Application Logic -->
-  <script src="app.js?v=3.9"></script>
+  <script src="app.js?v=4.0"></script>
+  <!-- Service Worker Registration -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+          .then(reg => console.log('[PWA] Service Worker registered:', reg.scope))
+          .catch(err => console.log('[PWA] Service Worker registration failed:', err));
+      });
+    }
+  </script>
 </body>
 </html>
