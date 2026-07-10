@@ -518,5 +518,293 @@ const CHEATSHEET_TERMS = [
     formula: "Third-party custody of product source code",
     explanation: "A legal agreement where a software developer deposits application source code with a trusted third-party escrow agent. If the software developer goes out of business or fails to support the product, the customer receives the source code to maintain it themselves.",
     exam_context: "Protects business continuity when acquiring critical proprietary software from small third-party vendors."
-  }
+  },
+  {
+    title: "Threat vs Vulnerability vs Risk",
+    domain: 1,
+    tags: ["model"],
+    formula: "Risk = Threat \u00d7 Vulnerability \u00d7 Asset Value",
+    explanation: "A Threat is any potential danger (e.g. a hacker). A Vulnerability is a weakness that can be exploited (e.g. unpatched software). Risk is the likelihood and impact of a threat exploiting a vulnerability against an asset.",
+    exam_context: "ISC2 defines Risk = Threat \u00d7 Vulnerability. Remove either the threat or the vulnerability and the risk drops to zero."
+  },
+  {
+    title: "BCP vs DRP",
+    domain: 1,
+    tags: ["process"],
+    formula: "BCP = Continuing operations | DRP = Restoring IT systems",
+    explanation: "Business Continuity Planning (BCP) focuses on keeping critical business functions running during a disaster. Disaster Recovery Planning (DRP) is the subset of BCP focused specifically on recovering IT infrastructure, systems, and data after a disruption.",
+    exam_context: "BCP is the broader plan; DRP is nested inside BCP. BCP = keep business alive. DRP = restore technology."
+  },
+  {
+    title: "RTO, RPO, MTD",
+    domain: 1,
+    tags: ["formula"],
+    formula: "MTD \u2265 RTO | RPO = max data loss window",
+    explanation: "Recovery Time Objective (RTO) is the maximum acceptable downtime before operations must be restored. Recovery Point Objective (RPO) is the maximum acceptable data loss measured in time (e.g. last backup). Maximum Tolerable Downtime (MTD) is the absolute outer limit before business survival is at risk. RTO must always be less than or equal to MTD.",
+    exam_context: "If MTD = 24 hours and RTO = 36 hours, the recovery plan is INVALID. Always verify RTO < MTD."
+  },
+  {
+    title: "Qualitative vs Quantitative Risk",
+    domain: 1,
+    tags: ["model"],
+    formula: "Qualitative = Subjective (High/Med/Low) | Quantitative = Financial ($ALE)",
+    explanation: "Qualitative risk analysis uses expert judgment and subjective scales (High/Medium/Low). Quantitative risk analysis uses numerical values and financial metrics (SLE, ALE, ARO). Most organizations use a hybrid approach.",
+    exam_context: "Quantitative requires MORE data and effort but gives actionable financial justification. Qualitative is faster but less precise."
+  },
+  {
+    title: "Security Governance vs Management",
+    domain: 1,
+    tags: ["model"],
+    formula: "Governance = Strategic direction (Board) | Management = Operations (CISO)",
+    explanation: "Governance provides the strategic policies and oversight from the Board of Directors and C-suite. Management is the tactical execution of those policies by the CISO and security operations team.",
+    exam_context: "Board approves Risk Appetite. CISO implements controls. Never mix governance authority with operational management responsibilities."
+  },
+  {
+    title: "Data Roles: Owner, Custodian, Processor",
+    domain: 2,
+    tags: ["model"],
+    formula: "Owner = Accountability | Custodian = Day-to-day | Processor = Acts on behalf",
+    explanation: "Data Owner: business executive who has accountability and classification authority. Data Custodian: IT/system administrator who implements controls defined by the owner. Data Processor (GDPR): third-party entity that processes data on behalf of the Controller.",
+    exam_context: "The Owner classifies data and accepts liability. The Custodian implements but does NOT own the data. Confusing these on the exam is a common trap."
+  },
+  {
+    title: "Data Classification Levels",
+    domain: 2,
+    tags: ["model"],
+    formula: "Gov: Top Secret > Secret > Confidential > Unclassified | Corp: Confidential > Private > Sensitive > Public",
+    explanation: "Government uses: Top Secret (grave damage), Secret (serious damage), Confidential (damage), Unclassified. Commercial equivalents: Confidential/Proprietary, Private (PII), Sensitive (internal only), Public.",
+    exam_context: "Classification is the Data Owner's responsibility, not IT. Data must be classified before controls can be applied."
+  },
+  {
+    title: "Data Remanence & Sanitization",
+    domain: 2,
+    tags: ["process"],
+    formula: "Clearing < Purging < Destruction | Degaussing works on magnetic ONLY",
+    explanation: "Data remanence is residual data left after deletion. Clearing: overwriting for reuse within the same organization. Purging (e.g. degaussing, cryptographic erase): removes data before releasing media externally. Destruction: shredding, incineration \u2014 media cannot be reused.",
+    exam_context: "Degaussing is INEFFECTIVE on SSDs/flash media. Use Cryptographic Erase for SSDs (encrypt then discard the key). NIST SP 800-88 is the authoritative reference."
+  },
+  {
+    title: "Scoping vs Tailoring",
+    domain: 2,
+    tags: ["process"],
+    formula: "Scoping = Remove inapplicable controls | Tailoring = Modify controls to fit needs",
+    explanation: "Scoping eliminates controls from a baseline that do not apply to a system (e.g. removing physical controls for a cloud-only system). Tailoring adjusts or supplements controls to better fit the environment's specific requirements.",
+    exam_context: "Both happen AFTER selecting a baseline security control set (e.g. NIST 800-53 Moderate). Scoping removes; Tailoring adapts."
+  },
+  {
+    title: "Retention & Legal Hold",
+    domain: 2,
+    tags: ["law"],
+    formula: "Legal Hold = Suspend routine destruction | Retention = Minimum storage period",
+    explanation: "Data retention defines minimum periods to keep records (e.g. 7 years for financial records under SOX). A Legal Hold (or Litigation Hold) is a directive to suspend normal data destruction schedules when litigation is anticipated or pending.",
+    exam_context: "Destroying data subject to a Legal Hold can result in criminal charges (spoliation of evidence). Always check for holds before executing any deletion process."
+  },
+  {
+    title: "Clark-Wilson Integrity Model",
+    domain: 3,
+    tags: ["model"],
+    formula: "CDI + IVP + TP + UVP = Integrity enforcement",
+    explanation: "Clark-Wilson uses: Constrained Data Items (CDIs - protected data), Unconstrained Data Items (UDIs - user input), Integrity Verification Procedures (IVPs - validate CDI integrity), and Transformation Procedures (TPs - the only legitimate way to modify CDIs). Enforces separation of duties and well-formed transactions.",
+    exam_context: "Clark-Wilson is the commercial integrity model (finance/banking). Biba is the military integrity model. Clark-Wilson requires subjects to access data ONLY through TPs."
+  },
+  {
+    title: "Graham-Denning Model",
+    domain: 3,
+    tags: ["model"],
+    formula: "8 Rules for safe creation, deletion and access rights of subjects/objects",
+    explanation: "Defines 8 protection rights: Create object, Create subject, Delete object, Delete subject, Read access right, Grant access right, Delete access right, Transfer access right. Focuses on how subjects and objects are created and how rights are transferred safely.",
+    exam_context: "Less common on exam but distinguishable from Bell-LaPadula (confidentiality) and Biba (integrity) \u2014 Graham-Denning is about access right management."
+  },
+  {
+    title: "Kerckhoffs's Principle",
+    domain: 3,
+    tags: ["cipher"],
+    formula: "A cryptosystem should be secure even if everything about it except the KEY is public knowledge",
+    explanation: "Kerckhoffs's Principle states that the security of a cryptographic system must rest entirely on the secrecy of the key, not on the secrecy of the algorithm. Modern crypto (AES, RSA) is open-source and peer-reviewed \u2014 the algorithm is public, only the key is secret.",
+    exam_context: "Security through obscurity (hiding the algorithm) is a design antipattern. The exam tests whether you understand that open-source algorithms are STRONGER because they are publicly vetted."
+  },
+  {
+    title: "Trusted Computing Base (TCB)",
+    domain: 3,
+    tags: ["model"],
+    formula: "TCB = All hardware + firmware + software that enforces the security policy",
+    explanation: "The Trusted Computing Base is the totality of all protection mechanisms in a computer system \u2014 hardware, firmware, and software \u2014 whose correct functioning is critical to enforcing the security policy. A smaller TCB = fewer components to audit = more trustworthy.",
+    exam_context: "The Reference Monitor is the abstract concept; the Security Kernel is its implementation within the TCB. TCB must be tamper-proof, verifiable, and always invoked."
+  },
+  {
+    title: "Side-Channel Attacks",
+    domain: 3,
+    tags: ["attack"],
+    formula: "Timing | Power Analysis | Electromagnetic | Acoustic | Cache",
+    explanation: "Side-channel attacks exploit physical implementation characteristics rather than algorithmic weaknesses. Types: Timing (measure execution time), Power Analysis (measure power consumption to infer key bits), Electromagnetic (capture EM emissions), Acoustic (microphone picks up CPU sounds), Cache (observe cache access patterns).",
+    exam_context: "These attacks bypass cryptographic strength entirely. Countermeasures include constant-time algorithms, noise injection, and hardware shielding."
+  },
+  {
+    title: "Key Exchange: Diffie-Hellman",
+    domain: 3,
+    tags: ["cipher"],
+    formula: "g^a mod p (Alice) + g^b mod p (Bob) \u2192 shared secret g^ab mod p",
+    explanation: "Diffie-Hellman allows two parties to establish a shared secret key over an insecure channel without any prior shared secret. Both parties agree on public values g and p. Each generates a private key (a, b) and exchanges public keys. The shared secret is derived independently.",
+    exam_context: "DH solves the key distribution problem but is vulnerable to Man-in-the-Middle attacks unless authenticated. ECDH (Elliptic Curve DH) provides same security with shorter keys."
+  },
+  {
+    title: "OSI Model \u2014 All 7 Layers",
+    domain: 4,
+    tags: ["model"],
+    formula: "Please Do Not Throw Sausage Pizza Away \u2192 Physical, Data Link, Network, Transport, Session, Presentation, Application",
+    explanation: "Layer 1 Physical (bits/cables), Layer 2 Data Link (frames/MAC/switches), Layer 3 Network (packets/IP/routers), Layer 4 Transport (segments/TCP-UDP), Layer 5 Session (connections/NetBIOS), Layer 6 Presentation (encryption/compression/format), Layer 7 Application (HTTP/DNS/SMTP).",
+    exam_context: "Firewalls operate at L3-L4. WAFs at L7. Switches at L2. VLANs are L2. IPsec operates at L3. TLS operates between L4-L7."
+  },
+  {
+    title: "DKIM, SPF, DMARC",
+    domain: 4,
+    tags: ["protocol", "defense"],
+    formula: "SPF = IP whitelist | DKIM = Cryptographic signature | DMARC = Policy enforcement",
+    explanation: "SPF (Sender Policy Framework): DNS TXT record listing authorized IPs for sending email. DKIM (Domain Keys Identified Mail): cryptographically signs the email header/body using a private key. DMARC (Domain-based Message Authentication, Reporting and Conformance): policy that specifies what to do when SPF/DKIM fail (none/quarantine/reject).",
+    exam_context: "All three are DNS-based email anti-spoofing controls. DMARC requires both SPF AND DKIM to be configured \u2014 it orchestrates both."
+  },
+  {
+    title: "VPN Protocols Comparison",
+    domain: 4,
+    tags: ["protocol"],
+    formula: "IPsec (L3) | SSL/TLS VPN (L7) | WireGuard (modern) | L2TP (deprecated alone)",
+    explanation: "IPsec VPN: strong, works at network layer (L3), supports Tunnel and Transport modes. SSL/TLS VPN: works at application layer (L7), easier to deploy through firewalls (port 443). L2TP/IPsec: combines L2TP tunneling with IPsec encryption. WireGuard: modern, fast, minimal codebase.",
+    exam_context: "IPsec ESP provides encryption and authentication; AH provides only authentication. For site-to-site VPNs, IPsec Tunnel Mode with ESP is the standard."
+  },
+  {
+    title: "Wireless Security Protocols",
+    domain: 4,
+    tags: ["protocol"],
+    formula: "WEP (broken) \u2192 WPA \u2192 WPA2 (CCMP/AES) \u2192 WPA3 (SAE/GCMP-256)",
+    explanation: "WEP: deprecated, uses RC4 with weak IVs \u2014 easily broken. WPA: transitional, TKIP encryption. WPA2: uses CCMP (AES-128) \u2014 current enterprise standard. WPA3: uses SAE (Simultaneous Authentication of Equals) replacing PSK handshake, protects against offline dictionary attacks.",
+    exam_context: "WEP is NEVER the right answer. WPA3 is the strongest. WPA2-Enterprise uses 802.1X/EAP with RADIUS for individual authentication, superior to WPA2-Personal (PSK)."
+  },
+  {
+    title: "Authentication Factors (MFA)",
+    domain: 5,
+    tags: ["model"],
+    formula: "Type 1 = Something you KNOW | Type 2 = Something you HAVE | Type 3 = Something you ARE",
+    explanation: "Type 1 (Knowledge): password, PIN, passphrase. Type 2 (Possession): smart card, OTP token, mobile app. Type 3 (Inherence): fingerprint, retina, voice recognition. MFA requires at least two DIFFERENT types. Adding a second password is NOT MFA.",
+    exam_context: "Using a PIN + fingerprint = MFA (Type 1 + Type 3). Using password + security question = NOT MFA (both are Type 1). Somewhere-you-are and Something-you-do are additional contextual factors."
+  },
+  {
+    title: "LDAP vs RADIUS vs TACACS+",
+    domain: 5,
+    tags: ["protocol"],
+    formula: "LDAP = Directory queries | RADIUS = AAA (UDP) | TACACS+ = AAA (TCP, full encryption)",
+    explanation: "LDAP: queries directory services (Active Directory) for user info \u2014 port 389 (636 for LDAPS). RADIUS: Authentication, Authorization, Accounting using UDP \u2014 encrypts only the password field. TACACS+: Cisco proprietary, uses TCP, encrypts the ENTIRE payload, separates Authentication/Authorization/Accounting independently.",
+    exam_context: "For network device administration (routers/switches), prefer TACACS+ (full encryption, separate A/A/A). For remote user access, RADIUS is standard."
+  },
+  {
+    title: "SAML vs OAuth vs OIDC",
+    domain: 5,
+    tags: ["protocol"],
+    formula: "SAML = XML SSO assertions | OAuth = Authorization delegation | OIDC = Authentication layer on OAuth",
+    explanation: "SAML 2.0: XML-based federated SSO, ideal for enterprise B2B. OAuth 2.0: authorization framework \u2014 grants third-party apps limited access to user resources WITHOUT sharing credentials. OpenID Connect (OIDC): identity layer built on top of OAuth 2.0, adds authentication.",
+    exam_context: "'Login with Google' uses OIDC. Sharing your Google contacts with a third-party app uses OAuth. Enterprise SSO between orgs uses SAML."
+  },
+  {
+    title: "Privileged Access Management (PAM)",
+    domain: 5,
+    tags: ["defense"],
+    formula: "Just-in-Time (JIT) + Session Recording + Vault + Least Privilege",
+    explanation: "PAM controls and monitors access by privileged accounts (admins, service accounts). Key components: Password Vaulting (store and rotate admin credentials), Session Recording (full audit of privileged sessions), Just-in-Time (JIT) access (grant elevated rights only when needed, for limited time).",
+    exam_context: "PAM is the #1 control against insider threat and credential theft. After a breach, attackers seek privileged accounts \u2014 PAM limits the blast radius."
+  },
+  {
+    title: "MAC vs DAC vs RBAC vs ABAC",
+    domain: 5,
+    tags: ["model"],
+    formula: "MAC=Labels|DAC=Owner decides|RBAC=Role|ABAC=Attributes",
+    explanation: "MAC (Mandatory): system enforces access via security labels \u2014 used in military/high-security. DAC (Discretionary): resource owner grants access \u2014 most OS file systems. RBAC (Role-Based): access based on job role \u2014 most enterprise applications. ABAC (Attribute-Based): access based on multiple attributes (user, resource, environment) \u2014 most flexible.",
+    exam_context: "MAC is most secure (no user discretion). DAC is least secure (users can share freely). RBAC is best for principle of least privilege in enterprises. ABAC is best for complex dynamic environments."
+  },
+  {
+    title: "Penetration Testing Phases",
+    domain: 6,
+    tags: ["process"],
+    formula: "Recon \u2192 Scanning \u2192 Exploitation \u2192 Post-Exploitation \u2192 Reporting",
+    explanation: "Reconnaissance: passive/active info gathering. Scanning: identify open ports, services, vulnerabilities. Exploitation: leverage vulnerabilities to gain access. Post-Exploitation: escalate privileges, pivot, maintain persistence. Reporting: document findings with evidence and remediation recommendations.",
+    exam_context: "Always obtain WRITTEN authorization (Rules of Engagement) before testing. Unauthorized testing \u2014 even against your own infrastructure \u2014 may violate computer crime laws."
+  },
+  {
+    title: "White Box vs Grey Box vs Black Box",
+    domain: 6,
+    tags: ["process"],
+    formula: "White = Full knowledge | Grey = Partial | Black = Zero knowledge",
+    explanation: "White Box (Crystal Box): tester has full access to source code, architecture diagrams, credentials. Grey Box: tester has partial info (e.g. knows the application type but not the code). Black Box: tester has no prior knowledge \u2014 simulates an external attacker.",
+    exam_context: "White Box finds the most vulnerabilities (most efficient). Black Box best simulates real-world attacker. Most real engagements use Grey Box for balance of thoroughness and realism."
+  },
+  {
+    title: "Vulnerability vs Patch Management",
+    domain: 6,
+    tags: ["process"],
+    formula: "Scan \u2192 Prioritize (CVSS) \u2192 Test patch \u2192 Deploy \u2192 Verify",
+    explanation: "Vulnerability management is a continuous cycle of scanning, prioritizing by severity (CVSS score), testing patches in a non-production environment, deploying patches, and verifying remediation. Emergency patches for critical CVSS 9.0+ vulnerabilities may require accelerated timelines.",
+    exam_context: "CVSS Base Score: 0.0=None, 0.1-3.9=Low, 4.0-6.9=Medium, 7.0-8.9=High, 9.0-10.0=Critical. Prioritize Critical first."
+  },
+  {
+    title: "SIEM and Log Management",
+    domain: 6,
+    tags: ["tool"],
+    formula: "Collect \u2192 Normalize \u2192 Correlate \u2192 Alert \u2192 Investigate",
+    explanation: "Security Information and Event Management (SIEM) aggregates logs from multiple sources (firewalls, IDS, endpoints), normalizes formats, correlates events using rules to detect patterns, and generates alerts. Enables incident detection, compliance reporting, and forensic investigation.",
+    exam_context: "SIEM is detective, not preventive. Must configure log retention to meet compliance requirements (often 1 year online, 7 years archive). Log integrity is critical \u2014 use write-once log storage."
+  },
+  {
+    title: "CVE, CVSS, CWE, CPE",
+    domain: 6,
+    tags: ["tool"],
+    formula: "CVE=Instance | CVSS=Score | CWE=Type | CPE=Platform",
+    explanation: "CVE (Common Vulnerabilities and Exposures): unique identifier for a specific vulnerability instance. CVSS (Common Vulnerability Scoring System): numeric severity score 0-10. CWE (Common Weakness Enumeration): categorizes vulnerability types (e.g. CWE-89=SQLi). CPE (Common Platform Enumeration): standardized naming for hardware/software.",
+    exam_context: "CVE-2021-44228 = specific Log4Shell instance. CWE-79 = Cross-Site Scripting (the TYPE). Always patch CVEs with highest CVSS score first."
+  },
+  {
+    title: "Chain of Custody",
+    domain: 7,
+    tags: ["process"],
+    formula: "Document every person who handled evidence + when + what was done",
+    explanation: "Chain of Custody is the documented record of all individuals who collected, handled, transferred, or analyzed digital evidence. Each transfer must be logged and evidence must remain in a sealed, tamper-evident container. Breaks in chain of custody can make evidence inadmissible in court.",
+    exam_context: "Forensic examiners work only on forensic COPIES, never on original evidence. Hashing (MD5/SHA-256) proves evidence integrity."
+  },
+  {
+    title: "Incident Response Phases (NIST)",
+    domain: 7,
+    tags: ["process"],
+    formula: "Preparation \u2192 Detection \u2192 Containment \u2192 Eradication \u2192 Recovery \u2192 Lessons Learned",
+    explanation: "NIST SP 800-61 defines 4 main phases: 1. Preparation (policies, tools, team), 2. Detection & Analysis (identify incident scope), 3. Containment/Eradication/Recovery (stop, remove, restore), 4. Post-Incident Activity (lessons learned).",
+    exam_context: "Containment comes BEFORE eradication. Never eradicate before containing \u2014 the attacker may still be active. CIRT = Computer Incident Response Team."
+  },
+  {
+    title: "MTBF, MTTR, MTTF",
+    domain: 7,
+    tags: ["formula"],
+    formula: "MTBF = MTTF + MTTR | Availability = MTBF / (MTBF + MTTR)",
+    explanation: "Mean Time Between Failures (MTBF): average time a system operates between failures \u2014 measures reliability. Mean Time To Repair (MTTR): average time to fix a failed system \u2014 measures maintainability. Mean Time To Failure (MTTF): used for non-repairable components.",
+    exam_context: "Higher MTBF = more reliable. Lower MTTR = faster recovery. Availability = MTBF / (MTBF + MTTR) \u2014 this formula appears on exams."
+  },
+  {
+    title: "OWASP Top 10 (2021)",
+    domain: 8,
+    tags: ["attack"],
+    formula: "A01:BrokenAccess A02:Crypto A03:Injection A04:InsecureDesign A05:Misconfig A06:VulnComp A07:AuthFail A08:Integrity A09:Logging A10:SSRF",
+    explanation: "OWASP 2021: A01 Broken Access Control (was #5), A02 Cryptographic Failures (was Sensitive Data Exposure), A03 Injection (SQLi, LDAP, OS), A04 Insecure Design (NEW), A05 Security Misconfiguration, A06 Vulnerable Components, A07 ID & Auth Failures, A08 Software & Data Integrity Failures (NEW - includes insecure deserialization), A09 Logging Failures, A10 SSRF (NEW).",
+    exam_context: "Broken Access Control moved to #1. The 2021 list added SSRF and Insecure Design as standalone categories. Know the top 5 cold."
+  },
+  {
+    title: "DevSecOps & Shift Left",
+    domain: 8,
+    tags: ["process"],
+    formula: "Security integrated at EVERY phase \u2014 not just at the end",
+    explanation: "DevSecOps integrates security practices into the DevOps pipeline. 'Shift Left' means moving security testing earlier in the SDLC \u2014 to requirements and design phases \u2014 rather than at the end (right). Includes SAST in CI/CD pipelines, dependency scanning (SCA), IaC security scanning, and security gates before deployment.",
+    exam_context: "Cost to fix bugs increases exponentially as you move right in the SDLC. A design flaw costs 100x more to fix post-deployment than in requirements."
+  },
+  {
+    title: "Input Validation & Defense-in-Depth",
+    domain: 8,
+    tags: ["defense"],
+    formula: "Allowlist > Denylist | Server-side > Client-side | Validate + Sanitize + Encode",
+    explanation: "Input validation prevents injection attacks by ensuring only acceptable data reaches the application. Allowlisting (only permit known-good input) is always stronger than denylisting (block known-bad). Validation must happen server-side \u2014 client-side validation is easily bypassed. Encode output to prevent XSS.",
+    exam_context: "The correct order: Validate (check format) \u2192 Sanitize (strip dangerous chars) \u2192 Parameterize (use prepared statements for DB). Never rely on client-side validation alone."
+  },
 ];

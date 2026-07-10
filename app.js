@@ -2444,6 +2444,35 @@ const STATE = {
 };
 
 // 5. INITIALIZATION & STORAGE
+let _questionsDbPromise = null;
+function loadQuestionsDatabase() {
+  if (_questionsDbPromise) return _questionsDbPromise;
+
+  _questionsDbPromise = new Promise((resolve, reject) => {
+    if (typeof CISSP_QUESTIONS !== 'undefined' && CISSP_QUESTIONS.length > 0) {
+      resolve(CISSP_QUESTIONS);
+      return;
+    }
+
+    console.log('[Database] Lazy loading questions database...');
+    const script = document.createElement('script');
+    script.src = 'questions.js?v=2.0';
+    script.onload = () => {
+      console.log('[Database] Questions database loaded successfully! Total:', CISSP_QUESTIONS.length);
+      initDailyChallenge();
+      resolve(CISSP_QUESTIONS);
+    };
+    script.onerror = (err) => {
+      console.error('[Database] Failed to load questions database:', err);
+      _questionsDbPromise = null; // Reset to allow retry
+      reject(err);
+    };
+    document.body.appendChild(script);
+  });
+
+  return _questionsDbPromise;
+}
+
 function initApp() {
   loadFromLocalStorage();
   setupEventListeners();
@@ -2451,25 +2480,43 @@ function initApp() {
   renderChecklist();
   renderStudyLogs();
   renderActiveFlashcard();
-  initCheatSheet();
-  initGames();
-  initDailyChallenge();
-  initAITutor();
   initMobileNav();
   initScrollToTop();
-  renderStudyHeatmap();
-  checkWeakestDomain();
-  renderDomainProgressBadges();
-  renderSRSLabels();
-  initExamDay();
+  initAITutor();
+
+  // Defer non-critical and heavy components to optimize startup on mobile
+  setTimeout(() => {
+    initCheatSheet();
+    initGames();
+    initDailyChallenge();
+    renderStudyHeatmap();
+    checkWeakestDomain();
+    renderDomainProgressBadges();
+    renderSRSLabels();
+    initExamDay();
+  }, 100);
+
+  // Background pre-fetch after 2.5 seconds when CPU is idle
+  setTimeout(loadQuestionsDatabase, 2500);
+}
+
+function safeJsonParse(key, fallbackValue) {
+  try {
+    const val = localStorage.getItem(key);
+    if (!val || val === 'undefined') return fallbackValue;
+    return JSON.parse(val);
+  } catch (e) {
+    console.warn(`[Storage] Failed to parse localStorage key "${key}":`, e);
+    return fallbackValue;
+  }
 }
 
 function loadFromLocalStorage() {
-  STATE.studyLogs = JSON.parse(localStorage.getItem("cissp_study_logs")) || [];
-  STATE.checkedTopics = JSON.parse(localStorage.getItem("cissp_checked_topics")) || [];
-  STATE.quizHistory = JSON.parse(localStorage.getItem("cissp_quiz_history")) || [];
+  STATE.studyLogs = safeJsonParse("cissp_study_logs", []);
+  STATE.checkedTopics = safeJsonParse("cissp_checked_topics", []);
+  STATE.quizHistory = safeJsonParse("cissp_quiz_history", []);
   STATE.countdownDate = localStorage.getItem("cissp_countdown_date");
-  STATE.mistakes = JSON.parse(localStorage.getItem("cissp_mistakes") || "[]");
+  STATE.mistakes = safeJsonParse("cissp_mistakes", []);
 
   if (!STATE.countdownDate) {
     const defaultTarget = new Date();
@@ -2644,6 +2691,9 @@ function switchTab(tabId) {
   STATE.activeTab = tabId;
 
   // Specific tab resets/inits
+  if (tabId === "practice" || tabId === "exam-day" || tabId === "mistake-log") {
+    loadQuestionsDatabase();
+  }
   if (tabId === "guides") {
     renderGuideContent(1); // Default to Domain 1
   }
@@ -2781,56 +2831,78 @@ function renderDomainProgressBars() {
 let quizTimeInterval = null;
 
 function startExam(isMock) {
-  STATE.currentQuiz.currentIndex = 0;
-  STATE.currentQuiz.answers = {};
-  STATE.currentQuiz.flagged = [];
-  clearInterval(quizTimeInterval);
-
-  let targetQuestions = [];
-  if (isMock) {
-    // Select all available questions (randomized)
-    targetQuestions = [...CISSP_QUESTIONS].sort(() => 0.5 - Math.random());
-    document.getElementById("exam-title-lbl").innerText = "Full-Length CISSP Simulated Exam";
-    STATE.currentQuiz.timeRemaining = 4 * 60 * 60; // 4 Hours in seconds
-  } else {
-    // Targeted domain quiz
-    const domVal = parseInt(document.getElementById("domain-select").value);
-    targetQuestions = CISSP_QUESTIONS.filter(q => q.domain === domVal);
-    document.getElementById("exam-title-lbl").innerText = DOMAIN_GUIDES[domVal].title + " Practice";
-    STATE.currentQuiz.timeRemaining = targetQuestions.length * 90; // 90 Secs per question
+  const btn = (typeof event !== 'undefined' && event?.currentTarget) || null;
+  let originalText = '';
+  if (btn && btn.tagName === 'BUTTON') {
+    originalText = btn.innerHTML;
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Loading...';
   }
 
-  if (targetQuestions.length === 0) {
-    alert("No practice questions found for this domain yet.");
-    return;
-  }
-
-  STATE.currentQuiz.questions = targetQuestions;
-  
-  // Show exam modal overlay
-  document.getElementById("exam-engine-modal").classList.add("active");
-  
-  // Hide submit button, show next/prev buttons
-  document.getElementById("exam-submit-btn").classList.add("hidden");
-  document.getElementById("exam-next-btn").classList.remove("hidden");
-  document.getElementById("exam-show-ans-btn").classList.remove("hidden");
-  
-  // Reset explanation box
-  document.getElementById("exam-explanation-box").classList.add("hidden");
-
-  // Start Timer Loop
-  updateExamTimerUI();
-  quizTimeInterval = setInterval(() => {
-    STATE.currentQuiz.timeRemaining--;
-    updateExamTimerUI();
-    if (STATE.currentQuiz.timeRemaining <= 0) {
-      clearInterval(quizTimeInterval);
-      alert("Time limit reached. Submitting your exam.");
-      submitExam();
+  loadQuestionsDatabase().then(() => {
+    if (btn && btn.tagName === 'BUTTON') {
+      btn.disabled = false;
+      btn.innerHTML = originalText;
     }
-  }, 1000);
 
-  renderExamQuestion();
+    STATE.currentQuiz.currentIndex = 0;
+    STATE.currentQuiz.answers = {};
+    STATE.currentQuiz.flagged = [];
+    clearInterval(quizTimeInterval);
+
+    let targetQuestions = [];
+    if (isMock) {
+      // Select all available questions (randomized)
+      targetQuestions = [...CISSP_QUESTIONS].sort(() => 0.5 - Math.random());
+      document.getElementById("exam-title-lbl").innerText = "Full-Length CISSP Simulated Exam";
+      STATE.currentQuiz.timeRemaining = 4 * 60 * 60; // 4 Hours in seconds
+    } else {
+      // Targeted domain quiz
+      const domVal = parseInt(document.getElementById("domain-select").value);
+      targetQuestions = CISSP_QUESTIONS.filter(q => q.domain === domVal);
+      document.getElementById("exam-title-lbl").innerText = DOMAIN_GUIDES[domVal].title + " Practice";
+      STATE.currentQuiz.timeRemaining = targetQuestions.length * 90; // 90 Secs per question
+    }
+
+    if (targetQuestions.length === 0) {
+      alert("No practice questions found for this domain yet.");
+      return;
+    }
+
+    STATE.currentQuiz.questions = targetQuestions;
+    
+    // Show exam modal overlay
+    document.getElementById("exam-engine-modal").classList.add("active");
+    
+    // Hide submit button, show next/prev buttons
+    document.getElementById("exam-submit-btn").classList.add("hidden");
+    document.getElementById("exam-next-btn").classList.remove("hidden");
+    document.getElementById("exam-show-ans-btn").classList.remove("hidden");
+    
+    // Reset explanation box
+    document.getElementById("exam-explanation-box").classList.add("hidden");
+
+    // Start Timer Loop
+    updateExamTimerUI();
+    quizTimeInterval = setInterval(() => {
+      STATE.currentQuiz.timeRemaining--;
+      updateExamTimerUI();
+      if (STATE.currentQuiz.timeRemaining <= 0) {
+        clearInterval(quizTimeInterval);
+        alert("Time limit reached. Submitting your exam.");
+        submitExam();
+      }
+    }, 1000);
+
+    renderExamQuestion();
+  }).catch(err => {
+    if (btn && btn.tagName === 'BUTTON') {
+      btn.disabled = false;
+      btn.innerHTML = originalText;
+    }
+    console.error(err);
+    alert("Failed to load questions database. Please check your network and try again.");
+  });
 }
 
 function updateExamTimerUI() {
@@ -3452,15 +3524,97 @@ function activateBookFallback() {
 }
 
 // =======================================================
-// 8. INTERACTIVE CHEAT SHEET ENGINE
+// 8. INTERACTIVE CHEAT SHEET ENGINE (UPGRADED)
 // =======================================================
+
+// Cheat sheet state
+let _csView = 'grid'; // 'grid' | 'list'
+let _csStateFilter = 'all'; // 'all' | 'starred' | 'needs-review'
+
 function initCheatSheet() {
+  STATE.csStarred = safeJsonParse('cissp_cs_starred', []);
+  STATE.csMastered = safeJsonParse('cissp_cs_mastered', []);
+
   const defaultBtn = document.querySelector('.tag-filter-btn[data-tag="all"]');
   if (defaultBtn) {
     defaultBtn.classList.add("btn-primary");
     defaultBtn.classList.remove("btn-secondary");
-    defaultBtn.style.borderColor = "var(--primary)";
   }
+
+  // Bind tag buttons
+  document.querySelectorAll('.tag-filter-btn').forEach(btn => {
+    btn.onclick = () => {
+      STATE.cheatsheetActiveTag = btn.getAttribute('data-tag');
+      document.querySelectorAll('.tag-filter-btn').forEach(b => {
+        b.classList.remove('btn-primary');
+        b.classList.add('btn-secondary');
+        b.style.borderColor = '';
+      });
+      btn.classList.add('btn-primary');
+      btn.classList.remove('btn-secondary');
+      btn.style.borderColor = 'var(--primary)';
+      renderCheatSheet();
+    };
+  });
+
+  // Bind search + domain filter
+  const searchEl = document.getElementById('cheatsheet-search');
+  const domainEl = document.getElementById('cheatsheet-domain-select');
+  if (searchEl) searchEl.addEventListener('input', renderCheatSheet);
+  if (domainEl) domainEl.addEventListener('change', renderCheatSheet);
+
+  updateCheatsheetStats();
+  renderCheatSheet();
+}
+
+function updateCheatsheetStats() {
+  const starred = STATE.csStarred || [];
+  const mastered = STATE.csMastered || [];
+  const el = (id) => document.getElementById(id);
+  if (el('cs-stat-total')) el('cs-stat-total').textContent = CHEATSHEET_TERMS.length;
+  if (el('cs-stat-starred')) el('cs-stat-starred').textContent = starred.length;
+  if (el('cs-stat-mastered')) el('cs-stat-mastered').textContent = mastered.length;
+}
+
+function setCheatsheetView(mode) {
+  _csView = mode;
+  const grid = document.getElementById('cheatsheet-grid');
+  const gridBtn = document.getElementById('cs-view-grid-btn');
+  const listBtn = document.getElementById('cs-view-list-btn');
+  if (mode === 'grid') {
+    if (grid) grid.style.gridTemplateColumns = 'repeat(auto-fill, minmax(320px, 1fr))';
+    if (gridBtn) { gridBtn.style.background = 'var(--primary)'; gridBtn.style.color = '#fff'; }
+    if (listBtn) { listBtn.style.background = 'transparent'; listBtn.style.color = 'var(--text-muted)'; }
+  } else {
+    if (grid) grid.style.gridTemplateColumns = '1fr';
+    if (gridBtn) { gridBtn.style.background = 'transparent'; gridBtn.style.color = 'var(--text-muted)'; }
+    if (listBtn) { listBtn.style.background = 'var(--primary)'; listBtn.style.color = '#fff'; }
+  }
+  renderCheatSheet();
+}
+
+function filterCheatsheetByState(state) {
+  _csStateFilter = state;
+  renderCheatSheet();
+}
+
+function toggleCsStar(termTitle) {
+  if (!STATE.csStarred) STATE.csStarred = [];
+  const idx = STATE.csStarred.indexOf(termTitle);
+  if (idx > -1) STATE.csStarred.splice(idx, 1);
+  else STATE.csStarred.push(termTitle);
+  localStorage.setItem('cissp_cs_starred', JSON.stringify(STATE.csStarred));
+  updateCheatsheetStats();
+  renderCheatSheet();
+}
+
+function toggleCsMastered(termTitle) {
+  if (!STATE.csMastered) STATE.csMastered = [];
+  const idx = STATE.csMastered.indexOf(termTitle);
+  if (idx > -1) STATE.csMastered.splice(idx, 1);
+  else STATE.csMastered.push(termTitle);
+  localStorage.setItem('cissp_cs_mastered', JSON.stringify(STATE.csMastered));
+  updateCheatsheetStats();
   renderCheatSheet();
 }
 
@@ -3468,76 +3622,146 @@ function renderCheatSheet() {
   const grid = document.getElementById("cheatsheet-grid");
   if (!grid) return;
 
+  STATE.csStarred = safeJsonParse('cissp_cs_starred', []);
+  STATE.csMastered = safeJsonParse('cissp_cs_mastered', []);
+
   const searchQuery = (document.getElementById("cheatsheet-search")?.value || "").toLowerCase().trim();
   const domainFilter = document.getElementById("cheatsheet-domain-select")?.value || "all";
   const activeTag = STATE.cheatsheetActiveTag || "all";
+  const sortMode = document.getElementById("cheatsheet-sort-select")?.value || "default";
 
-  // Filter terms
-  const filteredTerms = CHEATSHEET_TERMS.filter(term => {
-    const matchesSearch = term.title.toLowerCase().includes(searchQuery) ||
-                          term.explanation.toLowerCase().includes(searchQuery) ||
-                          term.formula.toLowerCase().includes(searchQuery) ||
-                          term.exam_context.toLowerCase().includes(searchQuery);
-
+  // Filter
+  let filteredTerms = CHEATSHEET_TERMS.filter(term => {
+    const matchesSearch = !searchQuery ||
+      term.title.toLowerCase().includes(searchQuery) ||
+      term.explanation.toLowerCase().includes(searchQuery) ||
+      term.formula.toLowerCase().includes(searchQuery) ||
+      term.exam_context.toLowerCase().includes(searchQuery);
     const matchesDomain = (domainFilter === "all" || term.domain.toString() === domainFilter);
     const matchesTag = (activeTag === "all" || term.tags.includes(activeTag));
-
-    return matchesSearch && matchesDomain && matchesTag;
+    const isStarred = STATE.csStarred.includes(term.title);
+    const isMastered = STATE.csMastered.includes(term.title);
+    const matchesState =
+      _csStateFilter === 'all' ||
+      (_csStateFilter === 'starred' && isStarred) ||
+      (_csStateFilter === 'needs-review' && !isMastered);
+    return matchesSearch && matchesDomain && matchesTag && matchesState;
   });
 
-  // Render cards
+  // Sort
+  if (sortMode === 'az') filteredTerms.sort((a, b) => a.title.localeCompare(b.title));
+  else if (sortMode === 'za') filteredTerms.sort((a, b) => b.title.localeCompare(a.title));
+  else if (sortMode === 'domain') filteredTerms.sort((a, b) => a.domain - b.domain);
+  else if (sortMode === 'starred') filteredTerms.sort((a, b) =>
+    (STATE.csStarred.includes(a.title) ? 0 : 1) - (STATE.csStarred.includes(b.title) ? 0 : 1));
+  else if (sortMode === 'unmastered') filteredTerms.sort((a, b) =>
+    (STATE.csMastered.includes(a.title) ? 1 : 0) - (STATE.csMastered.includes(b.title) ? 1 : 0));
+
+  // Update showing count
+  const showingEl = document.getElementById('cs-stat-showing');
+  if (showingEl) showingEl.textContent = filteredTerms.length;
+
   if (filteredTerms.length === 0) {
     grid.innerHTML = `
-      <div style="grid-column: 1 / -1; text-align: center; padding: 40px; color: var(--text-muted); width: 100%;">
-        <i class="fa-regular fa-folder-open" style="font-size: 40px; margin-bottom: 10px; display: block; color: var(--primary);"></i>
-        <p style="margin: 0; font-size: 14px;">No cheat sheet terms match your filters. Try search keywords like "AES", "Biba", "GDPR", or change filters.</p>
-      </div>
-    `;
+      <div style="grid-column:1/-1; text-align:center; padding:40px; color:var(--text-muted);">
+        <i class="fa-regular fa-folder-open" style="font-size:40px; margin-bottom:10px; display:block; color:var(--primary);"></i>
+        <p style="margin:0; font-size:14px;">No terms match your filters. Try clearing filters or a different search keyword.</p>
+      </div>`;
     return;
   }
 
-  grid.innerHTML = filteredTerms.map(term => {
-    const domainColors = {
-      1: "#0ea5e9", // Sky Blue
-      2: "#10b981", // Emerald
-      3: "#8b5cf6", // Purple
-      4: "#ec4899", // Pink
-      5: "#f59e0b", // Amber
-      6: "#3b82f6", // Blue
-      7: "#ef4444", // Red
-      8: "#14b8a6"  // Teal
-    };
-    const color = domainColors[term.domain] || "var(--primary)";
-    
+  const DOMAIN_COLORS = {
+    1:"#0ea5e9", 2:"#10b981", 3:"#8b5cf6",
+    4:"#ec4899", 5:"#f59e0b", 6:"#3b82f6",
+    7:"#ef4444", 8:"#14b8a6"
+  };
+
+  const isListView = _csView === 'list';
+
+  // Build HTML using safe data-idx approach (NO inline onclick to avoid quote issues)
+  grid.innerHTML = filteredTerms.map((term, i) => {
+    const color = DOMAIN_COLORS[term.domain] || "var(--primary)";
+    const termIdx = CHEATSHEET_TERMS.indexOf(term);
+    const isStarred = STATE.csStarred.includes(term.title);
+    const isMastered = STATE.csMastered.includes(term.title);
+    const border = isMastered ? '1px solid rgba(16,185,129,0.3)' : '1px solid rgba(255,255,255,0.05)';
+    const opacity = isMastered ? '0.65' : '1';
+    const starColor = isStarred ? '#facc15' : 'var(--text-muted)';
+    const starIcon = isStarred ? 'fa-solid fa-star' : 'fa-regular fa-star';
+    const mastIcon = isMastered ? 'fa-solid fa-circle-check' : 'fa-regular fa-circle-check';
+    const mastColor = isMastered ? '#10b981' : 'var(--text-muted)';
+
+    if (isListView) {
+      return `
+        <div class="card glass cheatsheet-card" style="padding:12px 18px; border-radius:10px; border:${border}; opacity:${opacity}; display:flex; align-items:center; gap:14px; transition:all 0.2s;">
+          <span style="font-size:10px; color:${color}; font-weight:700; padding:2px 8px; background:${color}1a; border-radius:20px; white-space:nowrap; border:1px solid ${color}33; min-width:52px; text-align:center;">D${term.domain}</span>
+          <span style="font-size:13px; font-weight:600; color:#fff; flex:1; min-width:0;">${term.title}</span>
+          <span style="font-size:11px; color:var(--text-muted); font-family:'Courier New',monospace; flex:2; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; min-width:0;">${term.formula}</span>
+          <div style="display:flex; gap:6px; flex-shrink:0;">
+            <button class="cs-star-btn" data-term-idx="${termIdx}" title="${isStarred ? 'Unstar' : 'Star'}" style="background:none; border:none; cursor:pointer; font-size:15px; color:${starColor}; padding:2px 4px;"><i class="${starIcon}"></i></button>
+            <button class="cs-mast-btn" data-term-idx="${termIdx}" title="${isMastered ? 'Unmark' : 'Mark mastered'}" style="background:none; border:none; cursor:pointer; font-size:15px; color:${mastColor}; padding:2px 4px;"><i class="${mastIcon}"></i></button>
+            <button class="cheatsheet-speak-btn" data-term-index="${termIdx}" title="Read aloud" style="background:none; border:none; cursor:pointer; font-size:13px; color:var(--text-muted); padding:2px 4px;"><i class="fa-solid fa-volume-low"></i></button>
+          </div>
+        </div>`;
+    }
+
+    // Full grid card
     return `
-      <div class="card glass cheatsheet-card" style="padding: 20px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.05); display: flex; flex-direction: column; gap: 12px; transition: transform 0.2s, box-shadow 0.2s; background: rgba(30, 41, 59, 0.4);">
-        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px;">
-          <span style="font-size: 10px; color: ${color}; font-weight: 700; padding: 3px 8px; background: ${color}1a; border-radius: 20px; text-transform: uppercase; border: 1px solid ${color}33;">Domain ${term.domain}</span>
-          <span style="font-size: 10px; color: var(--text-muted); font-weight: 600; text-transform: uppercase; background: rgba(255,255,255,0.03); padding: 3px 8px; border-radius: 20px;">${term.tags.join(' | ')}</span>
+      <div class="card glass cheatsheet-card" style="padding:20px; border-radius:14px; border:${border}; opacity:${opacity}; display:flex; flex-direction:column; gap:12px; transition:all 0.2s; background:rgba(30,41,59,0.4);">
+        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid rgba(255,255,255,0.05); padding-bottom:8px;">
+          <span style="font-size:10px; color:${color}; font-weight:700; padding:3px 8px; background:${color}1a; border-radius:20px; text-transform:uppercase; border:1px solid ${color}33;">Domain ${term.domain}</span>
+          <div style="display:flex; gap:4px; align-items:center;">
+            ${isMastered ? '<span style="font-size:10px; color:#10b981; background:rgba(16,185,129,0.1); padding:2px 8px; border-radius:20px; border:1px solid rgba(16,185,129,0.2); font-weight:600;">✓ Mastered</span>' : ''}
+            <span style="font-size:10px; color:var(--text-muted); background:rgba(255,255,255,0.03); padding:3px 8px; border-radius:20px;">${term.tags.join(' · ')}</span>
+          </div>
         </div>
-        <div style="display: flex; justify-content: space-between; align-items: center; gap: 8px;">
-          <h4 style="margin: 0; color: #fff; font-size: 17px; font-weight: 600; letter-spacing: 0.3px;">${term.title}</h4>
-          <button class="tts-play-btn cheatsheet-speak-btn" data-term-index="${CHEATSHEET_TERMS.indexOf(term)}" title="Read definition aloud" style="margin: 0;"><i class="fa-solid fa-volume-low"></i></button>
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:8px;">
+          <h4 style="margin:0; color:#fff; font-size:16px; font-weight:600; flex:1;">${term.title}</h4>
+          <div style="display:flex; gap:4px; flex-shrink:0;">
+            <button class="cs-star-btn" data-term-idx="${termIdx}" title="${isStarred ? 'Unstar' : 'Star'}" style="background:none; border:none; cursor:pointer; font-size:17px; color:${starColor}; padding:2px 4px; transition:color 0.2s;"><i class="${starIcon}"></i></button>
+            <button class="tts-play-btn cheatsheet-speak-btn" data-term-index="${termIdx}" title="Read aloud" style="margin:0;"><i class="fa-solid fa-volume-low"></i></button>
+          </div>
         </div>
-        <div class="formula-box" style="margin: 0; padding: 10px; font-size: 12px; background: rgba(0,0,0,0.25); border-left: 3px solid ${color}; border-radius: 4px; font-family: 'Courier New', Courier, monospace; white-space: pre-wrap; word-break: break-word; color: #e2e8f0; font-weight: 500;">${term.formula}</div>
-        <p style="margin: 0; font-size: 13.5px; line-height: 1.6; color: var(--text-muted); font-weight: 400;">${term.explanation}</p>
-        <div style="font-size: 12.5px; color: #facc15; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 10px; line-height: 1.5; font-weight: 500;">
-          <span style="color: #facc15; font-weight: 700; text-transform: uppercase; font-size: 10.5px; display: block; margin-bottom: 2px;"><i class="fa-solid fa-triangle-exclamation"></i> Exam Trap / Context</span>
-          ${term.exam_context}
+        <div style="padding:10px; font-size:12px; background:rgba(0,0,0,0.3); border-left:3px solid ${color}; border-radius:4px; font-family:'Courier New',monospace; white-space:pre-wrap; word-break:break-word; color:#e2e8f0;">${term.formula}</div>
+        <p style="margin:0; font-size:13px; line-height:1.65; color:var(--text-muted);">${term.explanation}</p>
+        <div style="font-size:12.5px; border-top:1px solid rgba(255,255,255,0.05); padding-top:10px; line-height:1.5;">
+          <span style="color:#facc15; font-weight:700; text-transform:uppercase; font-size:10.5px; display:block; margin-bottom:4px;"><i class="fa-solid fa-triangle-exclamation"></i> Exam Trap</span>
+          <span style="color:var(--text-muted);">${term.exam_context}</span>
         </div>
-      </div>
-    `;
+        <div style="border-top:1px solid rgba(255,255,255,0.05); padding-top:10px;">
+          <button class="cs-mast-btn" data-term-idx="${termIdx}" style="background:${isMastered ? 'rgba(16,185,129,0.12)' : 'rgba(255,255,255,0.03)'}; border:1px solid ${isMastered ? 'rgba(16,185,129,0.3)' : 'rgba(255,255,255,0.08)'}; color:${mastColor}; padding:5px 14px; border-radius:20px; font-size:11px; cursor:pointer; font-weight:600;">
+            <i class="${mastIcon}"></i> ${isMastered ? 'Mastered ✓' : 'Mark as Mastered'}
+          </button>
+        </div>
+      </div>`;
   }).join("");
 
-  // Bind speaker click handlers
+  // ---- Event delegation: bind all star / mastered / speak buttons ----
+  grid.querySelectorAll(".cs-star-btn").forEach(btn => {
+    btn.addEventListener("click", e => {
+      e.stopPropagation();
+      const idx = parseInt(btn.getAttribute("data-term-idx"));
+      const term = CHEATSHEET_TERMS[idx];
+      if (term) toggleCsStar(term.title);
+    });
+  });
+
+  grid.querySelectorAll(".cs-mast-btn").forEach(btn => {
+    btn.addEventListener("click", e => {
+      e.stopPropagation();
+      const idx = parseInt(btn.getAttribute("data-term-idx"));
+      const term = CHEATSHEET_TERMS[idx];
+      if (term) toggleCsMastered(term.title);
+    });
+  });
+
   grid.querySelectorAll(".cheatsheet-speak-btn").forEach(btn => {
-    btn.addEventListener("click", (e) => {
+    btn.addEventListener("click", e => {
       e.stopPropagation();
       const idx = parseInt(btn.getAttribute("data-term-index"));
       const term = CHEATSHEET_TERMS[idx];
       if (term) {
-        const readText = `${term.title}. Formula: ${term.formula}. Explanation: ${term.explanation}. Exam Context: ${term.exam_context}`;
-        speakText(readText, btn);
+        speakText(`${term.title}. Formula: ${term.formula}. Explanation: ${term.explanation}. Exam Context: ${term.exam_context}`, btn);
       }
     });
   });
@@ -3546,6 +3770,7 @@ function renderCheatSheet() {
 // =======================================================
 // 8.5 CERTMIKE PDF STUDY GUIDE READER
 // =======================================================
+
 let certmikePdfDoc = null,
     certmikePageNum = 1,
     certmikePageRendering = false,
@@ -4656,6 +4881,15 @@ const SEQUENCE_PUZZLES = {
 function initDailyChallenge() {
   const card = document.getElementById("daily-challenge-card");
   if (!card) return;
+
+  if (typeof CISSP_QUESTIONS === "undefined" || !CISSP_QUESTIONS.length) {
+    card.innerHTML = `
+      <div style="text-align: center; padding: 25px; color: var(--text-muted);">
+        <i class="fa-solid fa-spinner fa-spin" style="font-size: 24px; margin-bottom: 10px; display: block; color: var(--primary);"></i>
+        <p style="margin: 0; font-size: 13px;">Preparing today's Daily Challenge...</p>
+      </div>`;
+    return;
+  }
 
   const now = new Date();
   const startOfYear = new Date(now.getFullYear(), 0, 0);
@@ -7019,45 +7253,67 @@ function initExamDay() {
 }
 
 function startExamDay() {
-  // Build question set proportionally by domain
-  const allQ = typeof CISSP_QUESTIONS !== "undefined" ? CISSP_QUESTIONS : [];
-  let selected = [];
-
-  EXAMDAY_WEIGHTS.forEach(w => {
-    const pool = allQ.filter(q => q.domain === w.domain).sort(() => Math.random() - 0.5);
-    const pick = pool.slice(0, w.count).map(q => ({ ...q, _edDomain: w.domain }));
-    selected = selected.concat(pick);
-  });
-
-  // Shuffle the full set
-  selected = selected.sort(() => Math.random() - 0.5);
-  if (selected.length < 10) {
-    alert("Not enough questions in the database. Please ensure questions.js is loaded.");
-    return;
+  const btn = (typeof event !== 'undefined' && event?.currentTarget) || null;
+  let originalText = '';
+  if (btn && btn.tagName === 'BUTTON') {
+    originalText = btn.innerHTML;
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Initializing Exam...';
   }
 
-  // Pad or trim to exactly 125
-  while (selected.length < EXAMDAY_TOTAL) selected = [...selected, ...selected].slice(0, EXAMDAY_TOTAL);
-  selected = selected.slice(0, EXAMDAY_TOTAL);
+  loadQuestionsDatabase().then(() => {
+    if (btn && btn.tagName === 'BUTTON') {
+      btn.disabled = false;
+      btn.innerHTML = originalText;
+    }
 
-  // Reset state
-  _edState.questions = selected;
-  _edState.answers = {};
-  _edState.flagged = new Set();
-  _edState.currentIndex = 0;
-  _edState.timerSeconds = EXAMDAY_DURATION;
-  _edState.startTime = Date.now();
+    // Build question set proportionally by domain
+    const allQ = typeof CISSP_QUESTIONS !== "undefined" ? CISSP_QUESTIONS : [];
+    let selected = [];
 
-  // Build nav grid
-  buildEdNavGrid();
+    EXAMDAY_WEIGHTS.forEach(w => {
+      const pool = allQ.filter(q => q.domain === w.domain).sort(() => Math.random() - 0.5);
+      const pick = pool.slice(0, w.count).map(q => ({ ...q, _edDomain: w.domain }));
+      selected = selected.concat(pick);
+    });
 
-  // Show exam screen
-  document.getElementById("examday-setup-screen").style.display = "none";
-  document.getElementById("examday-exam-screen").style.display = "block";
-  document.getElementById("examday-result-screen").style.display = "none";
+    // Shuffle the full set
+    selected = selected.sort(() => Math.random() - 0.5);
+    if (selected.length < 10) {
+      alert("Not enough questions in the database. Please ensure questions.js is loaded.");
+      return;
+    }
 
-  renderEdQuestion(0);
-  startEdTimer();
+    // Pad or trim to exactly 125
+    while (selected.length < EXAMDAY_TOTAL) selected = [...selected, ...selected].slice(0, EXAMDAY_TOTAL);
+    selected = selected.slice(0, EXAMDAY_TOTAL);
+
+    // Reset state
+    _edState.questions = selected;
+    _edState.answers = {};
+    _edState.flagged = new Set();
+    _edState.currentIndex = 0;
+    _edState.timerSeconds = EXAMDAY_DURATION;
+    _edState.startTime = Date.now();
+
+    // Build nav grid
+    buildEdNavGrid();
+
+    // Show exam screen
+    document.getElementById("examday-setup-screen").style.display = "none";
+    document.getElementById("examday-exam-screen").style.display = "block";
+    document.getElementById("examday-result-screen").style.display = "none";
+
+    renderEdQuestion(0);
+    startEdTimer();
+  }).catch(err => {
+    if (btn && btn.tagName === 'BUTTON') {
+      btn.disabled = false;
+      btn.innerHTML = originalText;
+    }
+    console.error(err);
+    alert("Failed to load questions database. Please check your network and try again.");
+  });
 }
 
 function buildEdNavGrid() {

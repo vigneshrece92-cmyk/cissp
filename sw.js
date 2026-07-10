@@ -1,15 +1,16 @@
-const CACHE_NAME = 'cissp-exampro-v1';
+const CACHE_NAME = 'cissp-exampro-v3'; // Bump version to bust old caches
 const CORE_ASSETS = [
   '/',
   '/index.html',
-  '/styles.css',
-  '/app.js',
-  '/questions.js',
-  '/cheatsheet_data.js',
+  '/styles.css?v=5.1',
+  '/app.js?v=4.1',
+  '/questions.js?v=2.0',
+  '/cheatsheet_data.js?v=2.1',
+  '/domain_content.js?v=1.0',
+  '/icon-192.png',
+  '/icon-512.png',
   'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;800&display=swap',
-  'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css',
-  'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js',
-  'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js'
+  'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css'
 ];
 
 // Install: Pre-cache core assets
@@ -18,13 +19,14 @@ self.addEventListener('install', event => {
     caches.open(CACHE_NAME)
       .then(cache => {
         console.log('[SW] Pre-caching core assets');
+        // Cache local assets only, skip external CDN to avoid CORS issues
         return cache.addAll(CORE_ASSETS.filter(url => !url.startsWith('http')));
       })
       .then(() => self.skipWaiting())
   );
 });
 
-// Activate: Delete old caches
+// Activate: Delete ALL old caches to force fresh load
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(keys =>
@@ -39,7 +41,7 @@ self.addEventListener('activate', event => {
   );
 });
 
-// Fetch: Cache-first for local assets, network-first for external
+// Fetch: Network-first for JS/HTML (always get fresh), cache-first for CSS/fonts
 self.addEventListener('fetch', event => {
   const url = new URL(event.request.url);
   
@@ -50,20 +52,41 @@ self.addEventListener('fetch', event => {
   // Skip API calls (visitor counter, google auth) - always network
   if (url.hostname.includes('counterapi.dev') || 
       url.hostname.includes('accounts.google.com') ||
-      url.hostname.includes('googleapis.com') && url.pathname.includes('gsi')) {
+      (url.hostname.includes('googleapis.com') && url.pathname.includes('gsi'))) {
     return;
   }
 
-  // For large PDF files - network-first (no caching to preserve storage)
-  if (event.request.url.endsWith('.txt') && event.request.url.includes('cissp')) {
+  // Network-first for JS files (to always get updated question banks and app logic)
+  if (url.pathname.endsWith('.js')) {
     event.respondWith(
       fetch(event.request)
+        .then(response => {
+          if (!response || response.status !== 200) return response;
+          const responseClone = response.clone();
+          caches.open(CACHE_NAME).then(cache => cache.put(event.request, responseClone));
+          return response;
+        })
         .catch(() => caches.match(event.request))
     );
     return;
   }
 
-  // Cache-first strategy for all other requests
+  // Network-first for HTML
+  if (url.pathname.endsWith('.html') || url.pathname === '/') {
+    event.respondWith(
+      fetch(event.request)
+        .then(response => {
+          if (!response || response.status !== 200) return response;
+          const responseClone = response.clone();
+          caches.open(CACHE_NAME).then(cache => cache.put(event.request, responseClone));
+          return response;
+        })
+        .catch(() => caches.match('/index.html'))
+    );
+    return;
+  }
+
+  // Cache-first for CSS, fonts, images (rarely change)
   event.respondWith(
     caches.match(event.request)
       .then(cached => {
