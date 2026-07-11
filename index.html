@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8">
   <script>
     window.onerror = function(msg, url, line, col, error) {
       const div = document.createElement('div');
@@ -26,7 +27,6 @@
       return false;
     };
   </script>
-  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
@@ -64,7 +64,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="styles.css?v=5.2">
+  <link rel="stylesheet" href="styles.css?v=5.3">
   <!-- PDF.js Ebook Reader Library (Deferred for performance) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js" defer></script>
   <!-- Google Identity Services (GIS) for Google Sign-In -->
@@ -679,7 +679,7 @@
           <!-- Populated dynamically via app.js with rich text -->
           <div id="guide-body-content"></div>
           <!-- Quick Quiz button row -->
-          <div id="guide-actions-row" style="display:none; margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--card-border); display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
+          <div id="guide-actions-row" style="display: none; margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--card-border); align-items: center; gap: 12px; flex-wrap: wrap;">
             <button class="btn btn-primary" id="guide-quick-quiz-btn" style="font-size: 13px; padding: 9px 18px;">
               <i class="fa-solid fa-bolt"></i> Quick Practice (10 Q)
             </button>
@@ -1562,7 +1562,7 @@
   <!-- Expanded Domain Content (Deferred for performance) -->
   <script src="domain_content.js?v=1.0" defer></script>
   <!-- Application Logic (Deferred for performance) -->
-  <script src="app.js?v=4.2" defer></script>
+  <script src="app.js?v=4.3" defer></script>
   <!-- Auto Cache-Buster & SW Cleanup -->
   <script>
     if ('serviceWorker' in navigator) {

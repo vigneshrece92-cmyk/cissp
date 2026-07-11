@@ -6708,11 +6708,13 @@ function initMobileNav() {
   const drawer = document.createElement("div");
   drawer.className = "mobile-nav-drawer";
 
-  // Build nav items from sidebar nav-links
+  // Build nav items from sidebar nav-links (All 13 items)
   const navItems = [
     { tab: "dashboard", icon: "fa-chart-line", label: "Dashboard" },
-    { tab: "ai-tutor", icon: "fa-robot", label: "AI Study Tutor" },
-    { tab: "practice", icon: "fa-laptop-code", label: "Practice Simulator" },
+    { tab: "ai-tutor", icon: "fa-robot", label: "AI Tutor" },
+    { tab: "practice", icon: "fa-laptop-code", label: "Practice Sim" },
+    { tab: "exam-day", icon: "fa-shield-check", label: "Exam Day Sim" },
+    { tab: "mistake-log", icon: "fa-circle-xmark", label: "Review Mistakes" },
     { tab: "guides", icon: "fa-book-open", label: "Domain Guides" },
     { tab: "cheatsheet", icon: "fa-scroll", label: "Cheat Sheet" },
     { tab: "pdf-library", icon: "fa-file-pdf", label: "PDF Library" },
@@ -6727,7 +6729,16 @@ function initMobileNav() {
     const el = document.createElement("div");
     el.className = "mobile-nav-item" + (STATE.activeTab === item.tab ? " active" : "");
     el.dataset.tab = item.tab;
-    el.innerHTML = `<i class="fa-solid ${item.icon}"></i><span>${item.label}</span>`;
+    
+    // Custom premium styling for exam-day and mistake-log inside mobile drawer
+    if (item.tab === "exam-day" || item.tab === "mistake-log") {
+      el.style.border = "1px solid rgba(239, 68, 68, 0.25)";
+      el.style.background = "rgba(239, 68, 68, 0.03)";
+      el.innerHTML = `<i class="fa-solid ${item.icon}" style="color:#ef4444; width:20px; display:inline-flex; justify-content:center;"></i><span style="color:#ef4444; font-weight:700;">${item.label}</span>`;
+    } else {
+      el.innerHTML = `<i class="fa-solid ${item.icon}"></i><span>${item.label}</span>`;
+    }
+
     el.addEventListener("click", () => {
       // Deactivate all items
       drawer.querySelectorAll(".mobile-nav-item").forEach(n => n.classList.remove("active"));
@@ -6738,6 +6749,76 @@ function initMobileNav() {
     });
     drawer.appendChild(el);
   });
+
+  // Replicate Theme Toggle and Member Sign-In buttons for mobile navigation drawer
+  const drawerFooter = document.createElement("div");
+  drawerFooter.className = "mobile-drawer-footer";
+  drawerFooter.style.marginTop = "auto";
+  drawerFooter.style.paddingTop = "16px";
+  drawerFooter.style.borderTop = "1px solid var(--card-border)";
+  drawerFooter.style.display = "flex";
+  drawerFooter.style.flexDirection = "column";
+  drawerFooter.style.gap = "10px";
+
+  const themeBtn = document.createElement("button");
+  themeBtn.className = "btn btn-secondary";
+  themeBtn.style.width = "100%";
+  themeBtn.style.display = "flex";
+  themeBtn.style.alignItems = "center";
+  themeBtn.style.justifyContent = "center";
+  themeBtn.style.gap = "8px";
+  themeBtn.style.fontSize = "13px";
+  themeBtn.style.padding = "10px";
+  const currentTheme = document.documentElement.getAttribute("data-theme") || "dark";
+  themeBtn.innerHTML = currentTheme === "light" 
+    ? '<i class="fa-solid fa-moon"></i> Dark Mode' 
+    : '<i class="fa-solid fa-sun"></i> Light Mode';
+
+  themeBtn.addEventListener("click", () => {
+    const existingToggle = document.getElementById("theme-toggle-btn");
+    if (existingToggle) {
+      existingToggle.click();
+      const newTheme = document.documentElement.getAttribute("data-theme") || "dark";
+      themeBtn.innerHTML = newTheme === "light" 
+        ? '<i class="fa-solid fa-moon"></i> Dark Mode' 
+        : '<i class="fa-solid fa-sun"></i> Light Mode';
+    }
+    closeHamburger();
+  });
+
+  const signinBtn = document.createElement("button");
+  signinBtn.className = "btn btn-primary";
+  signinBtn.style.width = "100%";
+  signinBtn.style.display = "flex";
+  signinBtn.style.alignItems = "center";
+  signinBtn.style.justifyContent = "center";
+  signinBtn.style.gap = "8px";
+  signinBtn.style.fontSize = "13px";
+  signinBtn.style.padding = "10px";
+  const user = STATE.currentUser;
+  signinBtn.innerHTML = user 
+    ? '<i class="fa-solid fa-user"></i> My Profile' 
+    : '<i class="fa-solid fa-user-lock"></i> Member Sign-In';
+
+  signinBtn.addEventListener("click", () => {
+    const existingBtn = document.getElementById("header-signin-btn");
+    if (existingBtn) {
+      existingBtn.click();
+    }
+    closeHamburger();
+  });
+
+  // Handle dynamic login changes for mobile button text representation
+  window.addEventListener("cissp_auth_state_change", () => {
+    const freshUser = STATE.currentUser;
+    signinBtn.innerHTML = freshUser 
+      ? '<i class="fa-solid fa-user"></i> My Profile' 
+      : '<i class="fa-solid fa-user-lock"></i> Member Sign-In';
+  });
+
+  drawerFooter.appendChild(themeBtn);
+  drawerFooter.appendChild(signinBtn);
+  drawer.appendChild(drawerFooter);
 
   overlay.appendChild(drawer);
   document.body.appendChild(overlay);
