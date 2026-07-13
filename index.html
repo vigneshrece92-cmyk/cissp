@@ -1392,6 +1392,9 @@
             <option value="crypto">Symmetric vs Asymmetric Encryption Visualizer</option>
             <option value="mfa">MFA Challenge-Response Flow</option>
             <option value="bcp-drp">BCP vs DRP Timeline Lifecycle</option>
+            <option value="bell-biba">Bell-LaPadula vs Biba Access Control</option>
+            <option value="kerberos">Kerberos Protocol Authentication Handshake</option>
+            <option value="oauth">OAuth 2.0 Authorization Flow</option>
           </select>
         </div>
       </header>
@@ -1561,6 +1564,127 @@
           <h4 style="margin: 0 0 6px; font-size: 13.5px; color: var(--primary);"><i class="fa-solid fa-circle-question"></i> BCP vs DRP Timeline Parameters</h4>
           <p id="vl-bcp-explanation" style="margin: 0; font-size: 12.5px; color: var(--text-muted); line-height: 1.6;">Click 'Trigger Disaster Event' to watch the continuity timeline and see how BCP and DRP coordinate.</p>
         </div>
+      </div>
+
+      <!-- SIMULATOR 5: Bell-LaPadula vs Biba -->
+      <div id="vl-bell-biba" class="card glass vl-card hidden">
+        <div class="vl-controls" style="display: flex; gap: 14px; margin-bottom: 20px; flex-wrap: wrap; align-items: center; border-bottom: 1px solid var(--card-border); padding-bottom: 14px;">
+          <div>
+            <label style="font-size: 12px; color: var(--text-muted); display: block; margin-bottom: 4px;">Security Model Rule Engine</label>
+            <div style="display: flex; gap: 8px;">
+              <button class="btn btn-secondary btn-sm active-game-tab" data-model="bell">Bell-LaPadula (Confidentiality)</button>
+              <button class="btn btn-secondary btn-sm" data-model="biba">Biba (Integrity)</button>
+            </div>
+          </div>
+          <div>
+            <label style="font-size: 12px; color: var(--text-muted); display: block; margin-bottom: 4px;">Subject Clearance</label>
+            <select id="vl-bb-sub" class="form-control" style="background:rgba(0,0,0,0.3); border-color:var(--card-border); color:#fff; font-size:12px; padding: 4px 10px; border-radius:6px; outline:none; height:32px;">
+              <option value="2">Secret Clearance</option>
+              <option value="1">Confidential Clearance</option>
+              <option value="0">Unclassified Clearance</option>
+            </select>
+          </div>
+          <div>
+            <label style="font-size: 12px; color: var(--text-muted); display: block; margin-bottom: 4px;">Object Classification</label>
+            <select id="vl-bb-obj" class="form-control" style="background:rgba(0,0,0,0.3); border-color:var(--card-border); color:#fff; font-size:12px; padding: 4px 10px; border-radius:6px; outline:none; height:32px;">
+              <option value="2">Secret Document</option>
+              <option value="1">Confidential Document</option>
+              <option value="0">Unclassified Document</option>
+            </select>
+          </div>
+          <div style="display: flex; gap: 8px; margin-left: auto;">
+            <button class="btn btn-primary" id="vl-bb-read-btn" style="padding: 8px 16px; font-weight:600;"><i class="fa-solid fa-book-open"></i> Read Object</button>
+            <button class="btn btn-secondary" id="vl-bb-write-btn" style="padding: 8px 16px; font-weight:600;"><i class="fa-solid fa-pen-fancy"></i> Write Object</button>
+          </div>
+        </div>
+
+        <div class="vl-board" id="vl-bb-board" style="position: relative; height: 350px; background: rgba(15, 23, 42, 0.4); border-radius: 12px; border: 1px solid var(--card-border); overflow: hidden; display: flex; align-items: center; justify-content: space-around; padding: 20px 40px; box-sizing: border-box;">
+          
+          <!-- Stacked Tiers Visualizer -->
+          <div style="display:flex; flex-direction:column; gap:12px; width:220px;">
+            <div class="bb-tier" data-tier="2" style="padding: 10px; border-radius:8px; border: 1px solid rgba(239,68,68,0.3); background: rgba(239,68,68,0.06); text-align:center; font-weight:700; color:#ef4444; font-size:12px;">SECRET TIER</div>
+            <div class="bb-tier" data-tier="1" style="padding: 10px; border-radius:8px; border: 1px solid rgba(245,158,11,0.3); background: rgba(245,158,11,0.06); text-align:center; font-weight:700; color:#f59e0b; font-size:12px;">CONFIDENTIAL TIER</div>
+            <div class="bb-tier" data-tier="0" style="padding: 10px; border-radius:8px; border: 1px solid rgba(16,185,129,0.3); background: rgba(16,185,129,0.06); text-align:center; font-weight:700; color:#10b981; font-size:12px;">UNCLASSIFIED TIER</div>
+          </div>
+
+          <!-- Subject and Object simulation nodes -->
+          <div style="display:flex; flex-direction:column; gap:40px; align-items:center;">
+            <div class="vl-node" id="vl-bb-sub-node" style="border-color:var(--primary);"><i class="fa-solid fa-user-shield" style="font-size:28px; color:var(--primary);"></i><span style="font-size:11px; display:block; margin-top:4px;">Subject (User)</span></div>
+            <div class="vl-node" id="vl-bb-obj-node" style="border-color:var(--warning);"><i class="fa-solid fa-file-shield" style="font-size:28px; color:var(--warning);"></i><span style="font-size:11px; display:block; margin-top:4px;">Object (Data)</span></div>
+          </div>
+
+          <!-- Animation Arrow / Overlay status -->
+          <div id="vl-bb-arrow" class="hidden" style="position:absolute; width:4px; background:var(--primary); opacity:0.8; z-index:4;"></div>
+          <div id="vl-bb-status" class="hidden" style="position: absolute; padding: 12px 24px; border-radius: 8px; font-weight: 700; font-size: 14px; text-transform: uppercase; z-index: 5;">ACCESS GRANTED</div>
+        </div>
+
+        <div class="vl-explanation-box card glass" style="margin-top: 16px; padding: 14px;">
+          <h4 style="margin: 0 0 6px; font-size: 13.5px; color: var(--primary);"><i class="fa-solid fa-circle-question"></i> Access Model Verification</h4>
+          <p id="vl-bb-explanation" style="margin: 0; font-size: 12.5px; color: var(--text-muted); line-height: 1.6;">Configure Clearance and Classification, select a Model, and click 'Read' or 'Write' to test security rules.</p>
+        </div>
+      </div>
+
+      <!-- SIMULATOR 6: Kerberos Handshake -->
+      <div id="vl-kerberos" class="card glass vl-card hidden">
+        <div class="vl-controls" style="display: flex; gap: 14px; margin-bottom: 20px; flex-wrap: wrap; align-items: center; border-bottom: 1px solid var(--card-border); padding-bottom: 14px;">
+          <button class="btn btn-primary" id="vl-kb-btn" style="padding: 10px 22px; font-weight: 600;"><i class="fa-solid fa-forward"></i> Next Step Handshake</button>
+          <button class="btn btn-secondary" id="vl-kb-reset-btn" style="padding: 10px 16px; font-weight: 600;"><i class="fa-solid fa-rotate-left"></i> Reset Handshake</button>
+          <div id="vl-kb-step-lbl" style="font-size:12px; color:var(--text-muted); font-weight:700; margin-left: 10px;">Step 1: Client Authentication Request</div>
+        </div>
+
+        <div class="vl-board" id="vl-kb-board" style="position: relative; height: 350px; background: rgba(15, 23, 42, 0.4); border-radius: 12px; border: 1px solid var(--card-border); overflow: hidden; display: flex; align-items: center; justify-content: space-around; padding: 20px 40px; box-sizing: border-box;">
+          
+          <div class="vl-node" id="vl-kb-client" style="z-index: 2;"><i class="fa-solid fa-desktop" style="font-size:28px; color:var(--primary);"></i><span style="font-size:10px; display:block; margin-top:4px;">Client Browser</span></div>
+          
+          <!-- Key Distribution Center (KDC) Box -->
+          <div style="border: 1px solid rgba(245,158,11,0.25); background:rgba(245,158,11,0.02); padding: 14px; border-radius:12px; display:flex; flex-direction:column; gap:14px; align-items:center; z-index:2;">
+            <div style="font-size: 9px; font-weight:700; color:var(--warning); text-transform:uppercase; letter-spacing:1px;">KDC (Key Distribution Center)</div>
+            <div style="display:flex; gap:14px;">
+              <div class="vl-node" id="vl-kb-as" style="min-width:80px; padding:10px;"><i class="fa-solid fa-server" style="font-size:20px; color:var(--warning);"></i><span style="font-size:9px; display:block; margin-top:4px;">Authentication Server (AS)</span></div>
+              <div class="vl-node" id="vl-kb-tgs" style="min-width:80px; padding:10px;"><i class="fa-solid fa-ticket-simple" style="font-size:20px; color:var(--warning);"></i><span style="font-size:9px; display:block; margin-top:4px;">Ticket Granting (TGS)</span></div>
+            </div>
+          </div>
+
+          <div class="vl-node" id="vl-kb-server" style="z-index: 2;"><i class="fa-solid fa-database" style="font-size:28px; color:var(--success);"></i><span style="font-size:10px; display:block; margin-top:4px;">Target App Server</span></div>
+
+          <!-- Flying Ticket representation -->
+          <div id="vl-kb-ticket" class="hidden" style="position:absolute; width:40px; height:24px; border-radius:4px; background:var(--warning); color:#000; font-size:9px; font-weight:700; display:flex; align-items:center; justify-content:center; z-index:3; box-shadow:0 0 10px rgba(245,158,11,0.4);"><i class="fa-solid fa-ticket"></i> TGT</div>
+        </div>
+
+        <div class="vl-explanation-box card glass" style="margin-top: 16px; padding: 14px;">
+          <h4 style="margin: 0 0 6px; font-size: 13.5px; color: var(--primary);"><i class="fa-solid fa-circle-question"></i> Kerberos Handshake Flow Parameters</h4>
+          <p id="vl-kb-explanation" style="margin: 0; font-size: 12.5px; color: var(--text-muted); line-height: 1.6;">Click 'Next Step Handshake' to run the 6 steps of a secure Kerberos domain login.</p>
+        </div>
+      </div>
+
+      <!-- SIMULATOR 7: OAuth 2.0 Flow -->
+      <div id="vl-oauth" class="card glass vl-card hidden">
+        <div class="vl-controls" style="display: flex; gap: 14px; margin-bottom: 20px; flex-wrap: wrap; align-items: center; border-bottom: 1px solid var(--card-border); padding-bottom: 14px;">
+          <button class="btn btn-primary" id="vl-oa-btn" style="padding: 10px 22px; font-weight: 600;"><i class="fa-solid fa-play"></i> Run OAuth Flow</button>
+          <div style="font-size: 12px; color: var(--text-muted); margin-left: 20px;">
+            Simulates Auth Grant Redirections and Access Token retrieval under RFC 6749.
+          </div>
+        </div>
+
+        <div class="vl-board" id="vl-oa-board" style="position: relative; height: 350px; background: rgba(15, 23, 42, 0.4); border-radius: 12px; border: 1px solid var(--card-border); overflow: hidden; display: flex; align-items: center; justify-content: space-around; padding: 20px 40px; box-sizing: border-box;">
+          
+          <div class="vl-node" id="vl-oa-owner" style="z-index: 2;"><i class="fa-solid fa-user" style="font-size:26px; color:var(--primary);"></i><span style="font-size:9px; display:block; margin-top:4px;">Resource Owner (User)</span></div>
+          <div class="vl-node" id="vl-oa-client" style="z-index: 2;"><i class="fa-solid fa-laptop-code" style="font-size:26px; color:var(--primary);"></i><span style="font-size:9px; display:block; margin-top:4px;">OAuth Client (App)</span></div>
+          
+          <div style="display:flex; flex-direction:column; gap:20px; z-index: 2;">
+            <div class="vl-node" id="vl-oa-auth" style="min-width:110px; padding:10px;"><i class="fa-solid fa-key" style="font-size:20px; color:var(--warning);"></i><span style="font-size:9px; display:block; margin-top:4px;">Authorization Server</span></div>
+            <div class="vl-node" id="vl-oa-resource" style="min-width:110px; padding:10px;"><i class="fa-solid fa-cloud" style="font-size:20px; color:var(--success);"></i><span style="font-size:9px; display:block; margin-top:4px;">Resource Server</span></div>
+          </div>
+
+          <!-- Token animator bubble -->
+          <div id="vl-oa-bubble" class="hidden" style="position:absolute; width:45px; height:24px; border-radius:12px; background:var(--primary); color:#fff; font-size:8px; font-weight:700; display:flex; align-items:center; justify-content:center; z-index:3; box-shadow:0 0 10px var(--primary-glow);">Code</div>
+        </div>
+
+        <div class="vl-explanation-box card glass" style="margin-top: 16px; padding: 14px;">
+          <h4 style="margin: 0 0 6px; font-size: 13.5px; color: var(--primary);"><i class="fa-solid fa-circle-question"></i> OAuth 2.0 Flow Sequence</h4>
+          <p id="vl-oa-explanation" style="margin: 0; font-size: 12.5px; color: var(--text-muted); line-height: 1.6;">Click 'Run OAuth Flow' to visualize the Auth Code Grant flow redirection mechanics.</p>
+        </div>
+      </div>
       </div>
     </section>
 

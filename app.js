@@ -8099,6 +8099,7 @@ let vlCryptoRunning = false;
 let vlMfaRunning = false;
 let vlBcpRunning = false;
 let vlBcpInterval = null;
+let vlKbStep = 1;
 
 function initVisualLab() {
   // 1. Selector tab change binding
@@ -8116,6 +8117,12 @@ function initVisualLab() {
       document.getElementById("vl-mfa")?.classList.remove("hidden");
     } else if (val === "bcp-drp") {
       document.getElementById("vl-bcp-drp")?.classList.remove("hidden");
+    } else if (val === "bell-biba") {
+      document.getElementById("vl-bell-biba")?.classList.remove("hidden");
+    } else if (val === "kerberos") {
+      document.getElementById("vl-kerberos")?.classList.remove("hidden");
+    } else if (val === "oauth") {
+      document.getElementById("vl-oauth")?.classList.remove("hidden");
     }
     resetVisualLabSims();
   });
@@ -8218,6 +8225,30 @@ function initVisualLab() {
 
   // 5. Simulator 4 (BCP/DRP) controls
   document.getElementById("vl-bcp-btn")?.addEventListener("click", runBcpSim);
+
+  // 6. Simulator 5 (Bell-LaPadula vs Biba) controls
+  const bbControls = document.querySelector("#vl-bell-biba .vl-controls");
+  if (bbControls) {
+    bbControls.querySelectorAll("[data-model]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        bbControls.querySelectorAll("[data-model]").forEach(b => b.classList.remove("active-game-tab"));
+        btn.classList.add("active-game-tab");
+        updateBellBibaTiersUI();
+      });
+    });
+
+    document.getElementById("vl-bb-sub")?.addEventListener("change", updateBellBibaTiersUI);
+    document.getElementById("vl-bb-obj")?.addEventListener("change", updateBellBibaTiersUI);
+    document.getElementById("vl-bb-read-btn")?.addEventListener("click", () => runBellBibaSim("read"));
+    document.getElementById("vl-bb-write-btn")?.addEventListener("click", () => runBellBibaSim("write"));
+  }
+
+  // 7. Simulator 6 (Kerberos) controls
+  document.getElementById("vl-kb-btn")?.addEventListener("click", runKerberosSim);
+  document.getElementById("vl-kb-reset-btn")?.addEventListener("click", resetKerberosHandshake);
+
+  // 8. Simulator 7 (OAuth 2.0) controls
+  document.getElementById("vl-oa-btn")?.addEventListener("click", runOAuthSim);
 }
 
 function resetVisualLabSims() {
@@ -8266,6 +8297,35 @@ function resetVisualLabSims() {
     fill.style.width = "0%";
   }
   document.getElementById("vl-bcp-explanation").innerText = "Click 'Trigger Disaster Event' to watch the timeline.";
+
+  // Reset Bell-LaPadula vs Biba
+  const bbArrow = document.getElementById("vl-bb-arrow");
+  if (bbArrow) {
+    bbArrow.className = "hidden";
+    bbArrow.style.animation = "";
+  }
+  document.getElementById("vl-bb-status")?.classList.add("hidden");
+  document.getElementById("vl-bb-explanation").innerText = "Configure Clearance and Classification, select a Model, and click 'Read' or 'Write' to test security rules.";
+  updateBellBibaTiersUI();
+
+  // Reset Kerberos
+  vlKbStep = 1;
+  const kbTicket = document.getElementById("vl-kb-ticket");
+  if (kbTicket) {
+    kbTicket.className = "hidden";
+    kbTicket.style.animation = "";
+  }
+  const kbStepLbl = document.getElementById("vl-kb-step-lbl");
+  if (kbStepLbl) kbStepLbl.innerText = "Step 1: Client Authentication Request";
+  document.getElementById("vl-kb-explanation").innerText = "Click 'Next Step Handshake' to run the 6 steps of a secure Kerberos domain login.";
+
+  // Reset OAuth
+  const oaBubble = document.getElementById("vl-oa-bubble");
+  if (oaBubble) {
+    oaBubble.className = "hidden";
+    oaBubble.style.animation = "";
+  }
+  document.getElementById("vl-oa-explanation").innerText = "Click 'Run OAuth Flow' to visualize the Auth Code Grant flow redirection mechanics.";
 }
 
 // ----------------------------------------------------
@@ -8606,6 +8666,228 @@ function runBcpSim() {
     setTimeout(() => {
       vlBcpRunning = false;
     }, 8000);
+  }, 50);
+}
+
+// ----------------------------------------------------
+// SIMULATOR 5: Bell-LaPadula vs Biba
+// ----------------------------------------------------
+function updateBellBibaTiersUI() {
+  const subEl = document.getElementById("vl-bb-sub");
+  const objEl = document.getElementById("vl-bb-obj");
+  if (!subEl || !objEl) return;
+
+  const subLvl = parseInt(subEl.value);
+  const objLvl = parseInt(objEl.value);
+
+  document.querySelectorAll(".bb-tier").forEach(el => {
+    const tierLvl = parseInt(el.dataset.tier);
+    el.classList.remove("active-tier");
+    
+    let labelSuffix = "";
+    if (tierLvl === subLvl && tierLvl === objLvl) {
+      el.classList.add("active-tier");
+      labelSuffix = " [Subject & Object]";
+    } else if (tierLvl === subLvl) {
+      el.classList.add("active-tier");
+      labelSuffix = " [Subject]";
+    } else if (tierLvl === objLvl) {
+      el.classList.add("active-tier");
+      labelSuffix = " [Object]";
+    }
+
+    if (tierLvl === 2) el.innerText = "SECRET TIER" + labelSuffix;
+    else if (tierLvl === 1) el.innerText = "CONFIDENTIAL TIER" + labelSuffix;
+    else el.innerText = "UNCLASSIFIED TIER" + labelSuffix;
+  });
+}
+
+function runBellBibaSim(action) {
+  const bbControls = document.querySelector("#vl-bell-biba .vl-controls");
+  const activeBtn = bbControls.querySelector("[data-model].active-game-tab");
+  if (!activeBtn) return;
+
+  const model = activeBtn.dataset.model;
+  const subLvl = parseInt(document.getElementById("vl-bb-sub").value);
+  const objLvl = parseInt(document.getElementById("vl-bb-obj").value);
+
+  const status = document.getElementById("vl-bb-status");
+  const explanation = document.getElementById("vl-bb-explanation");
+  const arrow = document.getElementById("vl-bb-arrow");
+
+  // Reset
+  status.className = "hidden";
+  arrow.className = "hidden";
+  arrow.style.animation = "";
+
+  let allowed = false;
+  let ruleViolated = "";
+
+  if (model === "bell") {
+    // Bell-LaPadula Confidentiality Rules
+    if (action === "read") {
+      // Simple Security Property: No Read Up
+      allowed = (subLvl >= objLvl);
+      ruleViolated = "Simple Security Property Violation (No Read Up)";
+    } else {
+      // *-Property: No Write Down
+      allowed = (subLvl <= objLvl);
+      ruleViolated = "*-Property Violation (No Write Down)";
+    }
+  } else {
+    // Biba Integrity Rules
+    if (action === "read") {
+      // Simple Integrity Property: No Read Down
+      allowed = (subLvl <= objLvl);
+      ruleViolated = "Simple Integrity Property Violation (No Read Down)";
+    } else {
+      // *-Integrity Property: No Write Up
+      allowed = (subLvl >= objLvl);
+      ruleViolated = "*-Integrity Property Violation (No Write Up)";
+    }
+  }
+
+  // Trigger visual status check
+  setTimeout(() => {
+    status.classList.remove("hidden");
+    if (allowed) {
+      status.innerText = "Access Granted";
+      status.style.border = "2px solid var(--success)";
+      status.style.color = "var(--success)";
+      status.style.background = "rgba(16,185,129,0.15)";
+      status.style.animation = "pulse-green-glow 1.5s infinite";
+
+      if (model === "bell") {
+        explanation.innerHTML = `<strong>Bell-LaPadula Allowed:</strong> ${action === "read" ? "No Read Up rule satisfied" : "No Write Down rule satisfied"}. Alice's operation maintains confidentiality constraints.`;
+      } else {
+        explanation.innerHTML = `<strong>Biba Allowed:</strong> ${action === "read" ? "No Read Down rule satisfied" : "No Write Up rule satisfied"}. Alice's operation maintains integrity constraints.`;
+      }
+    } else {
+      status.innerText = "Access Denied";
+      status.style.border = "2px solid var(--danger)";
+      status.style.color = "var(--danger)";
+      status.style.background = "rgba(239,68,68,0.15)";
+      status.style.animation = "bb-shake 0.4s ease forwards, pulse-red-glow 1.5s infinite";
+
+      if (model === "bell") {
+        explanation.innerHTML = `<strong>Bell-LaPadula Blocked:</strong> ${ruleViolated}. Access Denied to prevent confidentiality compromise.`;
+      } else {
+        explanation.innerHTML = `<strong>Biba Blocked:</strong> ${ruleViolated}. Access Denied to prevent low-integrity corruption of high-integrity info.`;
+      }
+    }
+  }, 50);
+}
+
+// ----------------------------------------------------
+// SIMULATOR 6: Kerberos Protocol Handshake
+// ----------------------------------------------------
+function runKerberosSim() {
+  const ticket = document.getElementById("vl-kb-ticket");
+  const explanation = document.getElementById("vl-kb-explanation");
+  const stepLbl = document.getElementById("vl-kb-step-lbl");
+  if (!ticket || !explanation || !stepLbl) return;
+
+  ticket.className = "hidden";
+  ticket.style.animation = "";
+
+  setTimeout(() => {
+    ticket.classList.remove("hidden");
+
+    if (vlKbStep === 1) {
+      stepLbl.innerText = "Step 2: AS Response with TGT";
+      ticket.innerText = "TGT";
+      ticket.style.animation = "kb-flow-as-to-c 2s forwards linear";
+      explanation.innerHTML = "<strong>AS Response:</strong> The Authentication Server validates the client's request and responds with a Ticket Granting Ticket (TGT) and a session key encrypted with the client's password hash.";
+      vlKbStep = 2;
+    } else if (vlKbStep === 2) {
+      stepLbl.innerText = "Step 3: Client requests Service Ticket";
+      ticket.innerText = "TGS REQ";
+      ticket.style.animation = "kb-flow-c-to-tgs 2s forwards linear";
+      explanation.innerHTML = "<strong>TGS Request:</strong> Client presents the decrypted TGT to the Ticket Granting Service (TGS) to request access to the Application Server.";
+      vlKbStep = 3;
+    } else if (vlKbStep === 3) {
+      stepLbl.innerText = "Step 4: TGS responds with Service Ticket";
+      ticket.innerText = "ST";
+      ticket.style.animation = "kb-flow-tgs-to-c 2s forwards linear";
+      explanation.innerHTML = "<strong>TGS Response:</strong> The KDC decrypts the TGT, verifies the client session, and returns a Service Ticket (ST) encrypted with the Application Server's key.";
+      vlKbStep = 4;
+    } else if (vlKbStep === 4) {
+      stepLbl.innerText = "Step 5: Client presents Service Ticket";
+      ticket.innerText = "ST";
+      ticket.style.animation = "kb-flow-c-to-server 2s forwards linear";
+      explanation.innerHTML = "<strong>App Service Request:</strong> Client presents the Service Ticket directly to the target application database server to authenticate.";
+      vlKbStep = 5;
+    } else if (vlKbStep === 5) {
+      stepLbl.innerText = "Step 6: Handshake Concluded (Active Session)";
+      ticket.className = "hidden";
+      explanation.innerHTML = "<strong>Handshake Concluded:</strong> Application Server decrypts the ticket, authenticates the client session, and grants access. Tickets establish Single Sign-On (SSO) securely.";
+      vlKbStep = 6;
+    } else {
+      resetKerberosHandshake();
+    }
+  }, 50);
+}
+
+function resetKerberosHandshake() {
+  vlKbStep = 1;
+  const ticket = document.getElementById("vl-kb-ticket");
+  if (ticket) {
+    ticket.className = "hidden";
+    ticket.style.animation = "";
+  }
+  const lbl = document.getElementById("vl-kb-step-lbl");
+  if (lbl) lbl.innerText = "Step 1: Client Authentication Request";
+  document.getElementById("vl-kb-explanation").innerText = "Click 'Next Step Handshake' to restart Kerberos domain verification.";
+}
+
+// ----------------------------------------------------
+// SIMULATOR 7: OAuth 2.0 Flow
+// ----------------------------------------------------
+function runOAuthSim() {
+  const bubble = document.getElementById("vl-oa-bubble");
+  const explanation = document.getElementById("vl-oa-explanation");
+  if (!bubble || !explanation) return;
+
+  bubble.className = "hidden";
+  bubble.style.animation = "";
+
+  setTimeout(() => {
+    bubble.classList.remove("hidden");
+
+    // Phase 1: Owner grants Auth
+    bubble.innerText = "GRANT";
+    bubble.style.animation = "oa-flow-owner-to-client 2s forwards linear";
+    explanation.innerHTML = "<strong>OAuth Phase 1 (Auth Grant):</strong> User redirects application request, authorizing developer client permissions.";
+
+    // Phase 2: Code returned
+    setTimeout(() => {
+      bubble.style.animation = "";
+      setTimeout(() => {
+        bubble.innerText = "CODE";
+        bubble.style.animation = "oa-flow-auth-to-client 2s forwards linear";
+        explanation.innerHTML = "<strong>OAuth Phase 2 (Authorization Code):</strong> Auth Server redirects user back to the client application with a temporary Authorization Code.";
+      }, 50);
+    }, 2200);
+
+    // Phase 3: Token Exchange
+    setTimeout(() => {
+      bubble.style.animation = "";
+      setTimeout(() => {
+        bubble.innerText = "TOKEN";
+        bubble.style.animation = "oa-flow-client-to-auth 2s forwards linear";
+        explanation.innerHTML = "<strong>OAuth Phase 3 (Access Token Exchange):</strong> Client exchanges Authorization Code directly with Auth Server for a secure Access Token.";
+      }, 50);
+    }, 4400);
+
+    // Phase 4: API query
+    setTimeout(() => {
+      bubble.style.animation = "";
+      setTimeout(() => {
+        bubble.innerText = "DATA";
+        bubble.style.animation = "oa-flow-client-to-resource 2s forwards linear";
+        explanation.innerHTML = "<strong>OAuth Phase 4 (Resource Query):</strong> Client presents Access Token to Resource Server. API verifies token signature and returns database payload.";
+      }, 50);
+    }, 6600);
   }, 50);
 }
 

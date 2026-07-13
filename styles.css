@@ -3909,4 +3909,79 @@ h4 {
   100% { transform: translate(-50%, 0) scale(1); opacity: 1; }
 }
 
+/* Tiers layout */
+.bb-tier {
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+.bb-tier.active-tier {
+  transform: scale(1.04);
+  box-shadow: 0 0 15px rgba(255,255,255,0.15);
+  border-width: 2px !important;
+}
+
+/* Shake and Pulse Animations for BL/Biba */
+@keyframes bb-shake {
+  0%, 100% { transform: translate(-50%, -50%) translateX(0); }
+  20%, 60% { transform: translate(-50%, -50%) translateX(-8px); }
+  40%, 80% { transform: translate(-50%, -50%) translateX(8px); }
+}
+
+@keyframes pulse-green-glow {
+  0% { box-shadow: 0 0 0 0 rgba(16,185,129,0.6); }
+  70% { box-shadow: 0 0 0 16px rgba(16,185,129,0); }
+  100% { box-shadow: 0 0 0 0 rgba(16,185,129,0); }
+}
+
+@keyframes pulse-red-glow {
+  0% { box-shadow: 0 0 0 0 rgba(239,68,68,0.6); }
+  70% { box-shadow: 0 0 0 16px rgba(239,68,68,0); }
+  100% { box-shadow: 0 0 0 0 rgba(239,68,68,0); }
+}
+
+/* Kerberos Wire Paths Keyframes */
+@keyframes kb-flow-c-to-as {
+  0% { left: 80px; top: 160px; opacity: 1; }
+  100% { left: calc(50% - 110px); top: 120px; opacity: 1; }
+}
+@keyframes kb-flow-as-to-c {
+  0% { left: calc(50% - 110px); top: 120px; opacity: 1; }
+  100% { left: 80px; top: 160px; opacity: 1; }
+}
+@keyframes kb-flow-c-to-tgs {
+  0% { left: 80px; top: 160px; opacity: 1; }
+  100% { left: calc(50% - 110px); top: 220px; opacity: 1; }
+}
+@keyframes kb-flow-tgs-to-c {
+  0% { left: calc(50% - 110px); top: 220px; opacity: 1; }
+  100% { left: 80px; top: 160px; opacity: 1; }
+}
+@keyframes kb-flow-c-to-server {
+  0% { left: 80px; top: 160px; opacity: 1; }
+  100% { left: calc(100% - 140px); top: 160px; opacity: 1; }
+}
+
+/* OAuth Wire Paths Keyframes */
+@keyframes oa-flow-owner-to-client {
+  0% { left: 10%; top: 100px; opacity: 1; }
+  100% { left: 10%; top: 220px; opacity: 1; }
+}
+@keyframes oa-flow-client-to-auth {
+  0% { left: 15%; top: 220px; opacity: 1; }
+  100% { left: calc(50% - 50px); top: 120px; opacity: 1; }
+}
+@keyframes oa-flow-auth-to-client {
+  0% { left: calc(50% - 50px); top: 120px; opacity: 1; }
+  100% { left: 15%; top: 220px; opacity: 1; }
+}
+@keyframes oa-flow-client-to-resource {
+  0% { left: 15%; top: 220px; opacity: 1; }
+  100% { left: calc(50% - 50px); top: 220px; opacity: 1; }
+}
+@keyframes oa-flow-resource-to-client {
+  0% { left: calc(50% - 50px); top: 220px; opacity: 1; }
+  100% { left: 15%; top: 220px; opacity: 1; }
+}
+
+
 
