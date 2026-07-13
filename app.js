@@ -8373,7 +8373,13 @@ function runNetSecSim() {
     // Determine flow behavior path
     if (packetType === "normal") {
       packet.style.animation = "net-normal-flow 2.5s forwards linear";
-      explanation.innerHTML = "<strong>Normal Packet Flow:</strong> A safe web request is sent from the browser client, travels unimpeded across the network interface, passes security scans, and reaches the server successfully.";
+      explanation.innerHTML = `<strong>Normal Packet Flow (Safe Request)</strong><br>
+      <ul style="margin: 6px 0 0; padding-left: 20px; font-size: 11.5px; line-height: 1.5; color: var(--text-muted);">
+        <li><strong>Mechanism:</strong> A standard client HTTP GET request is transmitted over port 443.</li>
+        <li><strong>Behavior:</strong> The packet travels through the network interface without triggering any signature rules.</li>
+        <li><strong>Exam Takeaway:</strong> Safe traffic proceeds unimpeded to maximize network throughput and minimize user latency.</li>
+        <li><strong>Real-World Example:</strong> A user visiting the portal home page to check their study dashboard.</li>
+      </ul>`;
       
       setTimeout(() => {
         vlNetSecRunning = false;
@@ -8382,7 +8388,13 @@ function runNetSecSim() {
     } else if (packetType === "exploit") {
       if (device === "ids") {
         packet.style.animation = "net-normal-flow 2.5s forwards linear";
-        explanation.innerHTML = "<strong>IDS Behavior (Passive Detection):</strong> The malicious packet travels to the server. The Intrusion Detection System parses it off-line, detects the signature, and triggers an <strong>Alert log</strong>. Because it is passive, the threat still hits the server!";
+        explanation.innerHTML = `<strong>IDS (Passive Detection) - Exploit Sent</strong><br>
+        <ul style="margin: 6px 0 0; padding-left: 20px; font-size: 11.5px; line-height: 1.5; color: var(--text-muted);">
+          <li><strong>Mechanism:</strong> Out-of-band monitoring. The IDS inspects copies of packet streams mirrored from a TAP/SPAN port.</li>
+          <li><strong>Behavior:</strong> The packet reaches the server because the IDS is not inline and cannot block traffic. An alert log is immediately generated.</li>
+          <li><strong>Exam Trap:</strong> IDS is <strong>passive</strong>. It logs alerts but DOES NOT prevent. It will not stop the exploit from executing on the target.</li>
+          <li><strong>Real-World Example:</strong> A Snort sensor flagging a known CVE overflow exploit but letting the connection complete.</li>
+        </ul>`;
         
         setTimeout(() => {
           alertBox.classList.remove("hidden");
@@ -8395,7 +8407,13 @@ function runNetSecSim() {
       } else {
         // IPS or WAF blocks network exploit
         packet.style.animation = "net-block-flow 2.5s forwards linear";
-        explanation.innerHTML = `<strong>${device.toUpperCase()} Behavior (Inline Prevention):</strong> The inline device detects the malicious exploit signature and actively drops/blocks the packet before it can reach the target server.`;
+        explanation.innerHTML = `<strong>${device.toUpperCase()} (Inline Prevention) - Exploit Blocked</strong><br>
+        <ul style="margin: 6px 0 0; padding-left: 20px; font-size: 11.5px; line-height: 1.5; color: var(--text-muted);">
+          <li><strong>Mechanism:</strong> In-line deployment (bridge mode). All traffic physically passes through the device.</li>
+          <li><strong>Behavior:</strong> The device inspects packet payload, matches a known signature, drops the connection, and logs the block event.</li>
+          <li><strong>Exam Trap:</strong> IPS active blocking introduces a <strong>Single Point of Failure (SPOF)</strong> and latency constraints if overloaded.</li>
+          <li><strong>Real-World Example:</strong> Palo Alto inline IPS matching a known command shell payload and dropping the packet instantly.</li>
+        </ul>`;
         
         setTimeout(() => {
           shield.classList.remove("hidden");
@@ -8410,7 +8428,13 @@ function runNetSecSim() {
       // SQL Injection
       if (device === "waf") {
         packet.style.animation = "net-block-flow 2.5s forwards linear";
-        explanation.innerHTML = "<strong>WAF Behavior (Layer 7 Inspection):</strong> Web Application Firewalls inspect application layer traffic. The WAF parses the HTTP stream, identifies SQL Injection tokens (e.g. `' OR 1=1`), and drops the packet. Server database is protected.";
+        explanation.innerHTML = `<strong>WAF (Layer 7 Inspection) - SQLi Blocked</strong><br>
+        <ul style="margin: 6px 0 0; padding-left: 20px; font-size: 11.5px; line-height: 1.5; color: var(--text-muted);">
+          <li><strong>Mechanism:</strong> Application Layer inspection. WAF parses HTTP variables, query strings, headers, and POST bodies.</li>
+          <li><strong>Behavior:</strong> The WAF scans the HTTP content, identifies SQL tokens (e.g., <code>' OR 1=1</code>), blocks the session, and returns a 403 Forbidden.</li>
+          <li><strong>Exam Trap:</strong> Traditional Layer 3/4 firewalls and basic IPS are blind to application payloads. Only a WAF decodes HTTP sessions.</li>
+          <li><strong>Real-World Example:</strong> AWS WAF blocking SQL injection requests targeting an active login screen form.</li>
+        </ul>`;
         
         setTimeout(() => {
           shield.classList.remove("hidden");
@@ -8421,9 +8445,14 @@ function runNetSecSim() {
           vlNetSecRunning = false;
         }, 2500);
       } else if (device === "ips") {
-        // IPS blocks L3/L4 exploits but might miss L7 SQLi if not running deep packet inspection
         packet.style.animation = "net-block-flow 2.5s forwards linear";
-        explanation.innerHTML = "<strong>IPS Behavior:</strong> If configured for Application Layer signature matches, the IPS will block SQLi. The packet is dropped at the security node.";
+        explanation.innerHTML = `<strong>IPS (L3/L4/L7 Signature Match) - SQLi Blocked</strong><br>
+        <ul style="margin: 6px 0 0; padding-left: 20px; font-size: 11.5px; line-height: 1.5; color: var(--text-muted);">
+          <li><strong>Mechanism:</strong> Inline packet inspection matching signature databases.</li>
+          <li><strong>Behavior:</strong> If application signature updates are enabled, the IPS drops the SQLi connection.</li>
+          <li><strong>Exam Takeaway:</strong> Modern Next-Gen Firewalls bundle IPS and application signatures, but are less specialized than WAFs for custom web apps.</li>
+          <li><strong>Real-World Example:</strong> Fortinet IPS blocking a SQL Injection attack targeting an unpatched CMS database.</li>
+        </ul>`;
         
         setTimeout(() => {
           shield.classList.remove("hidden");
@@ -8436,7 +8465,13 @@ function runNetSecSim() {
       } else {
         // IDS alerts but L7 exploit hits server
         packet.style.animation = "net-normal-flow 2.5s forwards linear";
-        explanation.innerHTML = "<strong>IDS Behavior:</strong> The passive IDS analyzes L7 payload signatures, triggers an alert flag, but is unable to stop the SQL Injection from executing database commands on the server.";
+        explanation.innerHTML = `<strong>IDS (Passive Warning) - SQLi Attack Succeeded</strong><br>
+        <ul style="margin: 6px 0 0; padding-left: 20px; font-size: 11.5px; line-height: 1.5; color: var(--text-muted);">
+          <li><strong>Mechanism:</strong> Passive monitoring of network packets.</li>
+          <li><strong>Behavior:</strong> The IDS matches the SQL Injection signature, logs the alarm, but the SQL statement still executes on the database server.</li>
+          <li><strong>Exam Takeaway:</strong> Passive IDS relies on incident response teams to contain the damage *after* it occurs.</li>
+          <li><strong>Real-World Example:</strong> An alerts database showing a SQL injection threat while the attacker successfully extracts records.</li>
+        </ul>`;
         
         setTimeout(() => {
           alertBox.classList.remove("hidden");
@@ -8474,7 +8509,13 @@ function runCryptoSim() {
     msg.classList.remove("hidden");
     
     if (mode === "sym") {
-      explanation.innerHTML = "<strong>Symmetric Key Cycle:</strong> Alice encrypts the message using the Shared Key (K). The encrypted payload travels securely. Bob decrypts it using the exact same Shared Key (K). Simple and fast.";
+      explanation.innerHTML = `<strong>Symmetric Cryptography (Shared Secret Key)</strong><br>
+      <ul style="margin: 6px 0 0; padding-left: 20px; font-size: 11.5px; line-height: 1.5; color: var(--text-muted);">
+        <li><strong>Key Distribution:</strong> Out-of-band key sharing. Alice and Bob must securely exchange the single key (K) beforehand.</li>
+        <li><strong>Formulas & Scaling:</strong> Requires \\(n(n-1)/2\\) keys for \\(n\\) communication nodes. E.g., 10 users need 45 keys; 1,000 users need 499,500 keys (poor scalability).</li>
+        <li><strong>Exam Takeaway:</strong> Symmetric is fast and computationally lightweight. Used for bulk data encryption. However, it **does not** provide non-repudiation because both parties share the exact same key.</li>
+        <li><strong>Real Ciphers:</strong> AES (standard), DES, 3DES, Blowfish, Twofish, RC4 (stream cipher).</li>
+      </ul>`;
       msg.style.animation = "crypto-normal-flow 3s forwards linear";
       
       // Lock envelope mid-route
@@ -8493,7 +8534,11 @@ function runCryptoSim() {
       
     } else {
       // Asymmetric Key Exchange
-      explanation.innerHTML = "<strong>Asymmetric Key cycle:</strong> 1. Bob transmits his Public Key lock to Alice. Alice locks her secret inside using Bob's Public Key. Only Bob's Private Key can unlock it.";
+      explanation.innerHTML = `<strong>Asymmetric Exchange (Public Key Distribution)</strong><br>
+      <ul style="margin: 6px 0 0; padding-left: 20px; font-size: 11.5px; line-height: 1.5; color: var(--text-muted);">
+        <li><strong>Mechanism:</strong> Bob generates a key pair (Public Key & Private Key). Bob distributes his Public Key openly.</li>
+        <li><strong>Exam Trap:</strong> Anyone can read Bob's Public Key. It does not need to be kept secret. Only Bob's Private Key must be guarded.</li>
+      </ul>`;
       
       // Step A: Bob sends Public Key
       msg.innerHTML = '<i class="fa-solid fa-unlock-keyhole" style="color:var(--warning);"></i>';
@@ -8501,7 +8546,12 @@ function runCryptoSim() {
       
       setTimeout(() => {
         // Step B: Alice locks box and sends to Bob
-        explanation.innerHTML = "<strong>Asymmetric Key cycle:</strong> 2. Alice uses Bob's Public Key to encrypt. She sends the ciphertext envelope. Eve cannot decrypt it without Bob's Private Key.";
+        explanation.innerHTML = `<strong>Asymmetric Exchange (Message Encryption)</strong><br>
+        <ul style="margin: 6px 0 0; padding-left: 20px; font-size: 11.5px; line-height: 1.5; color: var(--text-muted);">
+          <li><strong>Mechanism:</strong> Alice encrypts her plaintext message using Bob's Public Key. The locked ciphertext is sent across the wire.</li>
+          <li><strong>Security Properties:</strong> Confidentiality is achieved. If Eve intercepts the packet, she cannot decrypt it.</li>
+          <li><strong>Key Formula:</strong> Asymmetric key scale requires \\(2n\\) keys (each user gets 1 public/1 private). Highly scalable.</li>
+        </ul>`;
         msg.style.animation = "";
         
         setTimeout(() => {
@@ -8510,7 +8560,12 @@ function runCryptoSim() {
           
           setTimeout(() => {
             // Step C: Bob decrypts
-            explanation.innerHTML = "<strong>Asymmetric Key cycle:</strong> 3. Bob receives the package and unlocks it using his Private Key. Secure transmission complete.";
+            explanation.innerHTML = `<strong>Asymmetric Exchange (Private Key Decryption)</strong><br>
+            <ul style="margin: 6px 0 0; padding-left: 20px; font-size: 11.5px; line-height: 1.5; color: var(--text-muted);">
+              <li><strong>Mechanism:</strong> Bob receives the ciphertext box and decrypts it using his matching Private Key.</li>
+              <li><strong>Exam Takeaway:</strong> What one key encrypts, only the other key in the pair can decrypt. Under RSA, encrypting with a public key guarantees confidentiality; encrypting with a private key (signing) guarantees authenticity and non-repudiation.</li>
+              <li><strong>Real Ciphers:</strong> RSA, ECC (high strength with short keys), Diffie-Hellman (key negotiation), ElGamal, PGP.</li>
+            </ul>`;
             msg.innerHTML = '<i class="fa-solid fa-envelope-open" style="color:var(--success);"></i>';
           }, 2400);
 
@@ -8549,7 +8604,12 @@ function runMfaSim() {
     if (mode === "pwd") {
       packet.innerText = "PWD";
       packet.style.animation = "net-normal-flow 2s forwards linear";
-      explanation.innerHTML = "<strong>1-Factor Auth (Something You Know):</strong> The client transmits a password hash. The server validates it. Auth is granted immediately. (Low security, susceptible to credential stuffing).";
+      explanation.innerHTML = `<strong>1-Factor Authentication (Something You Know)</strong><br>
+      <ul style="margin: 6px 0 0; padding-left: 20px; font-size: 11.5px; line-height: 1.5; color: var(--text-muted);">
+        <li><strong>Mechanism:</strong> User provides a single credential type (e.g., password, PIN, passphrase).</li>
+        <li><strong>Verification:</strong> Server hashes the password and compares it to stored database hashes (e.g., salted bcrypt).</li>
+        <li><strong>Exam Takeaway:</strong> Weakest identity form. Vulnerable to dictionary attacks, keyloggers, credential stuffing, and social engineering.</li>
+      </ul>`;
       
       setTimeout(() => {
         status.classList.remove("hidden");
@@ -8563,7 +8623,12 @@ function runMfaSim() {
     } else if (mode === "otp") {
       packet.innerText = "PWD";
       packet.style.animation = "net-normal-flow 1.5s forwards linear";
-      explanation.innerHTML = "<strong>2-Factor Auth (Password + Token):</strong> Step 1: User sends password. Step 2: Server issues an OTP challenge challenge to the user's registered OTP App.";
+      explanation.innerHTML = `<strong>2-Factor Auth (Password + Token Challenge)</strong><br>
+      <ul style="margin: 6px 0 0; padding-left: 20px; font-size: 11.5px; line-height: 1.5; color: var(--text-muted);">
+        <li><strong>Step 1:</strong> User enters password (Something You Know).</li>
+        <li><strong>Step 2:</strong> Server validates password, then challenges client for a token code (Something You Have).</li>
+        <li><strong>Exam Trap:</strong> Multi-factor authentication requires credentials from <strong>distinct</strong> categories. E.g., combining a password and a PIN is NOT MFA (both are "Something You Know").</li>
+      </ul>`;
       
       setTimeout(() => {
         // Challenge back to client
@@ -8571,7 +8636,12 @@ function runMfaSim() {
         packet.style.animation = "crypto-key-exchange-flow 1.5s forwards linear";
         
         setTimeout(() => {
-          explanation.innerHTML = "<strong>2-Factor Auth:</strong> Step 3: User inputs 6-digit App OTP (Something You Have). Server verifies code match and grants access.";
+          explanation.innerHTML = `<strong>2-Factor Auth (Verification Approved)</strong><br>
+          <ul style="margin: 6px 0 0; padding-left: 20px; font-size: 11.5px; line-height: 1.5; color: var(--text-muted);">
+            <li><strong>Mechanism:</strong> User enters the time-based OTP (TOTP) generated by their app.</li>
+            <li><strong>Verification:</strong> Server validates code against shared seed values and synced timestamps.</li>
+            <li><strong>Exam Trap:</strong> TOTP relies on clock synchronization (time drift can block auth). HOTP increments mathematically on each submit.</li>
+          </ul>`;
           packet.innerText = "OTP";
           packet.style.animation = "net-normal-flow 1.5s forwards linear";
           
@@ -8587,12 +8657,22 @@ function runMfaSim() {
       }, 1600);
       
     } else if (mode === "bio") {
-      explanation.innerHTML = "<strong>Biometric Authentication (Something You Are):</strong> User triggers fingerprint/face scanner. The local device extracts Minutiae templates and checks FRR (Type 1 error) and FAR (Type 2 error).";
+      explanation.innerHTML = `<strong>Biometric Authentication (Something You Are)</strong><br>
+      <ul style="margin: 6px 0 0; padding-left: 20px; font-size: 11.5px; line-height: 1.5; color: var(--text-muted);">
+        <li><strong>Scanning Mechanism:</strong> Fingerprint reader or face scanner extracts minutiae templates.</li>
+        <li><strong>Errors:</strong> Type I (False Rejection Rate / FRR - authorized user denied) vs Type II (False Acceptance Rate / FAR - unauthorized user approved).</li>
+        <li><strong>Exam Trap:</strong> Type II error (FAR) is the most critical security risk because it allows unauthorized access.</li>
+      </ul>`;
       
       packet.classList.add("hidden");
       // Simulate scanning delay
       setTimeout(() => {
-        explanation.innerHTML = "<strong>Biometric Verification:</strong> Server measures templates against registration database. Crossover Error Rate (CER) establishes threshold accuracy. Access authorized.";
+        explanation.innerHTML = `<strong>Biometric Verification (Crossover Error Rate)</strong><br>
+        <ul style="margin: 6px 0 0; padding-left: 20px; font-size: 11.5px; line-height: 1.5; color: var(--text-muted);">
+          <li><strong>CER (Crossover Error Rate):</strong> The point where FRR and FAR intersect.</li>
+          <li><strong>Takeaway:</strong> CER is the standard metric for biometric scanner accuracy. A lower CER indicates a more precise and secure system.</li>
+          <li><strong>Real-World Example:</strong> Apple Face ID threshold calibrated to minimize FAR while keeping FRR low for user convenience.</li>
+        </ul>`;
         
         packet.classList.remove("hidden");
         packet.innerText = "BIO";
@@ -8636,7 +8716,12 @@ function runBcpSim() {
   setTimeout(() => {
     // 1. Disaster triggers
     fire.classList.remove("hidden");
-    explanation.innerHTML = "<strong>Disaster Event Triggered:</strong> Datacenter goes offline. BCP team triggers recovery plans. RTO (Recovery Time Objective) countdown begins.";
+    explanation.innerHTML = `<strong>Disaster Event (T=0) - BCP & DRP Activated</strong><br>
+    <ul style="margin: 6px 0 0; padding-left: 20px; font-size: 11.5px; line-height: 1.5; color: var(--text-muted);">
+      <li><strong>RPO (Recovery Point Objective):</strong> Target age of data backups that must be restored. E.g., daily backups mean a maximum of 24 hours of data loss.</li>
+      <li><strong>BCP Goal:</strong> Preserving business operational capabilities during the crisis.</li>
+      <li><strong>DRP Goal:</strong> Restoring primary IT structures and hardware back to normal operations.</li>
+    </ul>`;
     
     // Start timeline fill transition (lasts 8 seconds representing 8 hours)
     fill.style.transition = "width 8s linear";
@@ -8646,13 +8731,24 @@ function runBcpSim() {
     setTimeout(() => {
       hotSite.style.opacity = "1";
       hotSite.style.borderColor = "var(--warning)";
-      explanation.innerHTML = "<strong>BCP Hot Site Activated:</strong> Team redirects user DNS to alternate site. Hot site databases sync. Business operations resume (Continuous operations achieved).";
+      explanation.innerHTML = `<strong>BCP Hot Site Active (Continuous Operations)</strong><br>
+      <ul style="margin: 6px 0 0; padding-left: 20px; font-size: 11.5px; line-height: 1.5; color: var(--text-muted);">
+        <li><strong>Hot Site:</strong> Fully operational site with active server mirroring, ready in hours.</li>
+        <li><strong>Warm Site:</strong> Servers ready, but backups must be restored manually, ready in days.</li>
+        <li><strong>Cold Site:</strong> Empty room shell with power/cooling. Requires server installations, ready in weeks.</li>
+        <li><strong>Takeaway:</strong> DNS redirects to the Hot Site. Critical operations continue.</li>
+      </ul>`;
     }, 2000);
 
     // T = 4s: RTO Met (DRP restores primary databases)
     setTimeout(() => {
       rtoLbl.classList.remove("hidden");
-      explanation.innerHTML = "<strong>RTO Met (Recovery Time Objective):</strong> Disaster Recovery team finishes rebuilding databases and servers. Downtime ends, but systems need validation.";
+      explanation.innerHTML = `<strong>RTO Met (Recovery Time Objective)</strong><br>
+      <ul style="margin: 6px 0 0; padding-left: 20px; font-size: 11.5px; line-height: 1.5; color: var(--text-muted);">
+        <li><strong>RTO definition:</strong> Maximum tolerable downtime before systems must be operational again.</li>
+        <li><strong>Action:</strong> DRP team recovers primary server database instances.</li>
+        <li><strong>Exam Trap:</strong> RTO does NOT mean business is fully normal; it only means systems are powered back online.</li>
+      </ul>`;
     }, 4000);
 
     // T = 6.8s: WRT Met (Systems validated and synced back)
@@ -8660,7 +8756,12 @@ function runBcpSim() {
       wrtLbl.classList.remove("hidden");
       fire.classList.add("hidden");
       hotSite.style.opacity = "0.35";
-      explanation.innerHTML = "<strong>WRT Met (Work Recovery Time):</strong> System checks completed, data integrity verified. Operations fail back to primary datacenter. Fully restored before MTD limit.";
+      explanation.innerHTML = `<strong>WRT Met (Work Recovery Time) - Recovery Concluded</strong><br>
+      <ul style="margin: 6px 0 0; padding-left: 20px; font-size: 11.5px; line-height: 1.5; color: var(--text-muted);">
+        <li><strong>WRT definition:</strong> Time needed to validate data integrity, test ciphers, and sync data after RTO is met.</li>
+        <li><strong>MTD Constraint:</strong> \\(RTO + WRT \\le MTD\\) (Maximum Tolerable Downtime). Exceeding MTD leads to catastrophic business loss.</li>
+        <li><strong>Result:</strong> Failback to primary site complete. normal operations resume.</li>
+      </ul>`;
     }, 6800);
 
     setTimeout(() => {
@@ -8758,9 +8859,18 @@ function runBellBibaSim(action) {
       status.style.animation = "pulse-green-glow 1.5s infinite";
 
       if (model === "bell") {
-        explanation.innerHTML = `<strong>Bell-LaPadula Allowed:</strong> ${action === "read" ? "No Read Up rule satisfied" : "No Write Down rule satisfied"}. Alice's operation maintains confidentiality constraints.`;
+        explanation.innerHTML = `<strong>Bell-LaPadula Access Allowed</strong><br>
+        <ul style="margin: 6px 0 0; padding-left: 20px; font-size: 11.5px; line-height: 1.5; color: var(--text-muted);">
+          <li><strong>Property Satisfied:</strong> ${action === "read" ? "Simple Security Property satisfied (No Read Up - Subject level \\(\\ge\\) Object level)" : "*-Property satisfied (No Write Down - Subject level \\(\\le\\) Object level)"}.</li>
+          <li><strong>Security Goal:</strong> Confidentiality. Ensures classified information cannot be leaked to lower-clearance users.</li>
+          <li><strong>Strong Star Property:</strong> Under Bell-LaPadula, a subject can *only* read and write at their exact same security level (no write up, no write down).</li>
+        </ul>`;
       } else {
-        explanation.innerHTML = `<strong>Biba Allowed:</strong> ${action === "read" ? "No Read Down rule satisfied" : "No Write Up rule satisfied"}. Alice's operation maintains integrity constraints.`;
+        explanation.innerHTML = `<strong>Biba Access Allowed</strong><br>
+        <ul style="margin: 6px 0 0; padding-left: 20px; font-size: 11.5px; line-height: 1.5; color: var(--text-muted);">
+          <li><strong>Property Satisfied:</strong> ${action === "read" ? "Simple Integrity Property satisfied (No Read Down - Subject level \\(\\le\\) Object level)" : "*-Integrity Property satisfied (No Write Up - Subject level \\(\\ge\\) Object level)"}.</li>
+          <li><strong>Security Goal:</strong> Integrity. Prevents high-level integrity configurations from getting corrupted by lower-level files or subjects.</li>
+        </ul>`;
       }
     } else {
       status.innerText = "Access Denied";
@@ -8770,9 +8880,19 @@ function runBellBibaSim(action) {
       status.style.animation = "bb-shake 0.4s ease forwards, pulse-red-glow 1.5s infinite";
 
       if (model === "bell") {
-        explanation.innerHTML = `<strong>Bell-LaPadula Blocked:</strong> ${ruleViolated}. Access Denied to prevent confidentiality compromise.`;
+        explanation.innerHTML = `<strong>Bell-LaPadula Access Blocked</strong><br>
+        <ul style="margin: 6px 0 0; padding-left: 20px; font-size: 11.5px; line-height: 1.5; color: var(--text-muted);">
+          <li><strong>Violation:</strong> ${ruleViolated}.</li>
+          <li><strong>Takeaway:</strong> ${action === "read" ? "Simple Security Property: Users cannot read higher classification data (e.g. Unclassified cannot read Secret)." : "*-Property: Users cannot write lower classification data (e.g. Secret user writing down to Unclassified files, leaking secret information)."}</li>
+          <li><strong>Exam Trap:</strong> Bell-LaPadula is strictly a **Confidentiality** model. It does not address integrity or availability.</li>
+        </ul>`;
       } else {
-        explanation.innerHTML = `<strong>Biba Blocked:</strong> ${ruleViolated}. Access Denied to prevent low-integrity corruption of high-integrity info.`;
+        explanation.innerHTML = `<strong>Biba Access Blocked</strong><br>
+        <ul style="margin: 6px 0 0; padding-left: 20px; font-size: 11.5px; line-height: 1.5; color: var(--text-muted);">
+          <li><strong>Violation:</strong> ${ruleViolated}.</li>
+          <li><strong>Takeaway:</strong> ${action === "read" ? "Simple Integrity Property: High-level subjects cannot read low-integrity objects (no read down) to prevent corrupting their decisions." : "*-Integrity Property: Low-integrity subjects cannot write up to high-integrity files (no write up) to prevent system corruption."}</li>
+          <li><strong>Exam Trap:</strong> Biba is strictly an **Integrity** model. It is the mathematical dual of Bell-LaPadula.</li>
+        </ul>`;
       }
     }
   }, 50);
@@ -8797,30 +8917,51 @@ function runKerberosSim() {
       stepLbl.innerText = "Step 2: AS Response with TGT";
       ticket.innerText = "TGT";
       ticket.style.animation = "kb-flow-as-to-c 2s forwards linear";
-      explanation.innerHTML = "<strong>AS Response:</strong> The Authentication Server validates the client's request and responds with a Ticket Granting Ticket (TGT) and a session key encrypted with the client's password hash.";
+      explanation.innerHTML = `<strong>Step 2: AS Response with Ticket Granting Ticket (AS REP)</strong><br>
+      <ul style="margin: 6px 0 0; padding-left: 20px; font-size: 11.5px; line-height: 1.5; color: var(--text-muted);">
+        <li><strong>AS Action:</strong> AS returns a Ticket Granting Ticket (TGT) and a client/TGS session key.</li>
+        <li><strong>Encryption:</strong> The TGT is encrypted with the KDC's secret key (which only the KDC knows). The session key is encrypted with the client's password hash.</li>
+        <li><strong>Takeaway:</strong> Once the client decrypts their session key using their password hash, they are authenticated.</li>
+      </ul>`;
       vlKbStep = 2;
     } else if (vlKbStep === 2) {
       stepLbl.innerText = "Step 3: Client requests Service Ticket";
       ticket.innerText = "TGS REQ";
       ticket.style.animation = "kb-flow-c-to-tgs 2s forwards linear";
-      explanation.innerHTML = "<strong>TGS Request:</strong> Client presents the decrypted TGT to the Ticket Granting Service (TGS) to request access to the Application Server.";
+      explanation.innerHTML = `<strong>Step 3: Client requests Service Ticket (TGS REQ)</strong><br>
+      <ul style="margin: 6px 0 0; padding-left: 20px; font-size: 11.5px; line-height: 1.5; color: var(--text-muted);">
+        <li><strong>Action:</strong> Client presents the encrypted TGT and an Authenticator block to the Ticket Granting Service (TGS).</li>
+        <li><strong>Drift Limit:</strong> Authenticators are timestamped. If client clock drift exceeds <strong>5 minutes</strong> from the KDC clock, the ticket is rejected (replay attack prevention).</li>
+      </ul>`;
       vlKbStep = 3;
     } else if (vlKbStep === 3) {
       stepLbl.innerText = "Step 4: TGS responds with Service Ticket";
       ticket.innerText = "ST";
       ticket.style.animation = "kb-flow-tgs-to-c 2s forwards linear";
-      explanation.innerHTML = "<strong>TGS Response:</strong> The KDC decrypts the TGT, verifies the client session, and returns a Service Ticket (ST) encrypted with the Application Server's key.";
+      explanation.innerHTML = `<strong>Step 4: TGS responds with Service Ticket (TGS REP)</strong><br>
+      <ul style="margin: 6px 0 0; padding-left: 20px; font-size: 11.5px; line-height: 1.5; color: var(--text-muted);">
+        <li><strong>TGS Action:</strong> TGS decrypts the TGT, validates the client session, and returns a Service Ticket (ST) and client/Server session key.</li>
+        <li><strong>Encryption:</strong> The Service Ticket is encrypted with the target Application Server's password key, so the client cannot modify it.</li>
+      </ul>`;
       vlKbStep = 4;
     } else if (vlKbStep === 4) {
       stepLbl.innerText = "Step 5: Client presents Service Ticket";
       ticket.innerText = "ST";
       ticket.style.animation = "kb-flow-c-to-server 2s forwards linear";
-      explanation.innerHTML = "<strong>App Service Request:</strong> Client presents the Service Ticket directly to the target application database server to authenticate.";
+      explanation.innerHTML = `<strong>Step 5: Client presents Service Ticket (AP REQ)</strong><br>
+      <ul style="margin: 6px 0 0; padding-left: 20px; font-size: 11.5px; line-height: 1.5; color: var(--text-muted);">
+        <li><strong>Action:</strong> Client presents the Service Ticket directly to the target application database/file server.</li>
+        <li><strong>Security Advantage:</strong> Single Sign-On (SSO). The client can present this ticket repeatedly to access the resource until it expires without re-entering credentials.</li>
+      </ul>`;
       vlKbStep = 5;
     } else if (vlKbStep === 5) {
       stepLbl.innerText = "Step 6: Handshake Concluded (Active Session)";
       ticket.className = "hidden";
-      explanation.innerHTML = "<strong>Handshake Concluded:</strong> Application Server decrypts the ticket, authenticates the client session, and grants access. Tickets establish Single Sign-On (SSO) securely.";
+      explanation.innerHTML = `<strong>Step 6: Handshake Concluded (Active Session)</strong><br>
+      <ul style="margin: 6px 0 0; padding-left: 20px; font-size: 11.5px; line-height: 1.5; color: var(--text-muted);">
+        <li><strong>Action:</strong> The Application Server decrypts the Service Ticket, authenticates the client session, and grants access.</li>
+        <li><strong>Exam Takeaways:</strong> Kerberos uses **symmetric-key** cryptography (no public keys). The KDC is a <strong>Single Point of Failure (SPOF)</strong>. It requires strict NTP clock synchronization.</li>
+      </ul>`;
       vlKbStep = 6;
     } else {
       resetKerberosHandshake();
@@ -8837,7 +8978,11 @@ function resetKerberosHandshake() {
   }
   const lbl = document.getElementById("vl-kb-step-lbl");
   if (lbl) lbl.innerText = "Step 1: Client Authentication Request";
-  document.getElementById("vl-kb-explanation").innerText = "Click 'Next Step Handshake' to restart Kerberos domain verification.";
+  document.getElementById("vl-kb-explanation").innerHTML = `<strong>Step 1: Client Authentication Request (AS REQ)</strong><br>
+  <ul style="margin: 6px 0 0; padding-left: 20px; font-size: 11.5px; line-height: 1.5; color: var(--text-muted);">
+    <li><strong>Action:</strong> Client sends their username to the Authentication Server (AS) requesting access.</li>
+    <li><strong>Security Detail:</strong> The password is never sent over the wire. Instead, the AS uses a hash of the user's password to encrypt the response.</li>
+  </ul>`;
 }
 
 // ----------------------------------------------------
@@ -8857,7 +9002,11 @@ function runOAuthSim() {
     // Phase 1: Owner grants Auth
     bubble.innerText = "GRANT";
     bubble.style.animation = "oa-flow-owner-to-client 2s forwards linear";
-    explanation.innerHTML = "<strong>OAuth Phase 1 (Auth Grant):</strong> User redirects application request, authorizing developer client permissions.";
+    explanation.innerHTML = `<strong>OAuth Phase 1 (Authorization Grant)</strong><br>
+    <ul style="margin: 6px 0 0; padding-left: 20px; font-size: 11.5px; line-height: 1.5; color: var(--text-muted);">
+      <li><strong>Flow:</strong> Client App redirects user browser to the Authorization Server. User logs in and approves application scopes.</li>
+      <li><strong>Takeaway:</strong> The Resource Owner (user) authorizes the Client (app) without sharing their password credentials directly with the app.</li>
+    </ul>`;
 
     // Phase 2: Code returned
     setTimeout(() => {
@@ -8865,7 +9014,11 @@ function runOAuthSim() {
       setTimeout(() => {
         bubble.innerText = "CODE";
         bubble.style.animation = "oa-flow-auth-to-client 2s forwards linear";
-        explanation.innerHTML = "<strong>OAuth Phase 2 (Authorization Code):</strong> Auth Server redirects user back to the client application with a temporary Authorization Code.";
+        explanation.innerHTML = `<strong>OAuth Phase 2 (Authorization Code Redirection)</strong><br>
+        <ul style="margin: 6px 0 0; padding-left: 20px; font-size: 11.5px; line-height: 1.5; color: var(--text-muted);">
+          <li><strong>Flow:</strong> Authorization Server redirects user agent back to Client redirect URI with a temporary authorization <strong>Code</strong>.</li>
+          <li><strong>Security:</strong> The code is public-facing but short-lived (usually expires in 60s) to prevent interception.</li>
+        </ul>`;
       }, 50);
     }, 2200);
 
@@ -8875,7 +9028,11 @@ function runOAuthSim() {
       setTimeout(() => {
         bubble.innerText = "TOKEN";
         bubble.style.animation = "oa-flow-client-to-auth 2s forwards linear";
-        explanation.innerHTML = "<strong>OAuth Phase 3 (Access Token Exchange):</strong> Client exchanges Authorization Code directly with Auth Server for a secure Access Token.";
+        explanation.innerHTML = `<strong>OAuth Phase 3 (Access Token Exchange)</strong><br>
+        <ul style="margin: 6px 0 0; padding-left: 20px; font-size: 11.5px; line-height: 1.5; color: var(--text-muted);">
+          <li><strong>Flow:</strong> Client App sends the authorization code + client secret directly to the token endpoint of the Authorization Server.</li>
+          <li><strong>Response:</strong> Authorization Server validates the code and returns an <strong>Access Token</strong> (usually a JWT).</li>
+        </ul>`;
       }, 50);
     }, 4400);
 
@@ -8885,7 +9042,11 @@ function runOAuthSim() {
       setTimeout(() => {
         bubble.innerText = "DATA";
         bubble.style.animation = "oa-flow-client-to-resource 2s forwards linear";
-        explanation.innerHTML = "<strong>OAuth Phase 4 (Resource Query):</strong> Client presents Access Token to Resource Server. API verifies token signature and returns database payload.";
+        explanation.innerHTML = `<strong>OAuth Phase 4 (Resource Query API)</strong><br>
+        <ul style="margin: 6px 0 0; padding-left: 20px; font-size: 11.5px; line-height: 1.5; color: var(--text-muted);">
+          <li><strong>Flow:</strong> Client presents the Access Token in the HTTP Authorization header to the Resource Server (API).</li>
+          <li><strong>Exam Takeaways:</strong> OAuth 2.0 (RFC 6749) is strictly an <strong>Authorization</strong> framework. For **Authentication**, OpenID Connect (OIDC) is stacked on top of OAuth (issuing ID tokens).</li>
+        </ul>`;
       }, 50);
     }, 6600);
   }, 50);
