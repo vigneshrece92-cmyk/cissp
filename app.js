@@ -2557,8 +2557,9 @@ function setupEventListeners() {
   });
 
   // Quiz Setup Action Buttons
-  document.querySelector(".start-full-mock")?.addEventListener("click", () => startExam(true));
-  document.querySelector(".start-domain-quiz")?.addEventListener("click", () => startExam(false));
+  document.querySelector(".start-cat-btn")?.addEventListener("click", () => startExam(true, true));
+  document.querySelector(".start-full-mock")?.addEventListener("click", () => startExam(true, false));
+  document.querySelector(".start-domain-quiz")?.addEventListener("click", () => startExam(false, false));
 
   // Exam Controls
   document.getElementById("exam-flag-btn")?.addEventListener("click", toggleFlagCurrentQuestion);
@@ -2830,7 +2831,62 @@ function renderDomainProgressBars() {
 // =================================================================
 let quizTimeInterval = null;
 
-function startExam(isMock) {
+function getQuestionDifficulty(q) {
+  // Deterministic mapping based on question ID: 0 = Easy, 1 = Medium, 2 = Hard
+  return q.id % 3;
+}
+
+function generateCatDomainSequence() {
+  const seq = [];
+  const weights = [
+    { domain: 1, count: 24 }, // 16% of 150
+    { domain: 2, count: 15 }, // 10% of 150
+    { domain: 3, count: 20 }, // 13% of 150
+    { domain: 4, count: 20 }, // 13% of 150
+    { domain: 5, count: 20 }, // 13% of 150
+    { domain: 6, count: 18 }, // 12% of 150
+    { domain: 7, count: 20 }, // 13% of 150
+    { domain: 8, count: 15 }, // 10% of 150
+  ];
+  weights.forEach(w => {
+    for (let i = 0; i < w.count; i++) seq.push(w.domain);
+  });
+  // Shuffle domain sequence
+  return seq.sort(() => Math.random() - 0.5);
+}
+
+function getNextCatQuestion() {
+  const quiz = STATE.currentQuiz;
+  const currentDomain = quiz.domainSequence[quiz.currentIndex];
+  const currentDifficulty = quiz.catDifficulty;
+
+  // Filter questions that match domain and difficulty, and haven't been used yet
+  let pool = CISSP_QUESTIONS.filter(q => 
+    q.domain === currentDomain && 
+    getQuestionDifficulty(q) === currentDifficulty &&
+    !quiz.usedIds.includes(q.id)
+  );
+
+  // Fallback 1: search domain without difficulty constraint if pool is empty
+  if (pool.length === 0) {
+    pool = CISSP_QUESTIONS.filter(q => 
+      q.domain === currentDomain && 
+      !quiz.usedIds.includes(q.id)
+    );
+  }
+
+  // Fallback 2: search any domain if we run out of questions in this domain
+  if (pool.length === 0) {
+    pool = CISSP_QUESTIONS.filter(q => !quiz.usedIds.includes(q.id));
+  }
+
+  if (pool.length === 0) return null;
+
+  // Return a random question from the matching pool
+  return pool[Math.floor(Math.random() * pool.length)];
+}
+
+function startExam(isMock, isCat = false) {
   const btn = (typeof event !== 'undefined' && event?.currentTarget) || null;
   let originalText = '';
   if (btn && btn.tagName === 'BUTTON') {
@@ -2851,17 +2907,37 @@ function startExam(isMock) {
     clearInterval(quizTimeInterval);
 
     let targetQuestions = [];
-    if (isMock) {
-      // Select exactly 125 randomized questions (representative midpoint of 100-150 range)
-      targetQuestions = [...CISSP_QUESTIONS].sort(() => 0.5 - Math.random()).slice(0, 125);
-      document.getElementById("exam-title-lbl").innerText = "Full-Length CISSP Simulated Exam";
-      STATE.currentQuiz.timeRemaining = 3 * 60 * 60; // 3 Hours in seconds (10,800s)
+    if (isCat) {
+      STATE.currentQuiz.isCat = true;
+      STATE.currentQuiz.catDifficulty = 1; // Start at Medium
+      STATE.currentQuiz.usedIds = [];
+      STATE.currentQuiz.correctCount = 0;
+      STATE.currentQuiz.domainSequence = generateCatDomainSequence();
+
+      const firstQ = getNextCatQuestion();
+      if (!firstQ) {
+        alert("Error loading first question.");
+        return;
+      }
+      targetQuestions = [firstQ];
+      STATE.currentQuiz.usedIds.push(firstQ.id);
+
+      document.getElementById("exam-title-lbl").innerText = "CISSP Simulated Adaptive CAT Exam";
+      STATE.currentQuiz.timeRemaining = 3 * 60 * 60; // 3 Hours (10,800s)
     } else {
-      // Targeted domain quiz
-      const domVal = parseInt(document.getElementById("domain-select").value);
-      targetQuestions = CISSP_QUESTIONS.filter(q => q.domain === domVal);
-      document.getElementById("exam-title-lbl").innerText = DOMAIN_GUIDES[domVal].title + " Practice";
-      STATE.currentQuiz.timeRemaining = targetQuestions.length * 90; // 90 Secs per question
+      STATE.currentQuiz.isCat = false;
+      if (isMock) {
+        // Select exactly 125 randomized questions (representative midpoint of 100-150 range)
+        targetQuestions = [...CISSP_QUESTIONS].sort(() => 0.5 - Math.random()).slice(0, 125);
+        document.getElementById("exam-title-lbl").innerText = "Full-Length CISSP Simulated Exam";
+        STATE.currentQuiz.timeRemaining = 3 * 60 * 60; // 3 Hours in seconds (10,800s)
+      } else {
+        // Targeted domain quiz
+        const domVal = parseInt(document.getElementById("domain-select").value);
+        targetQuestions = CISSP_QUESTIONS.filter(q => q.domain === domVal);
+        document.getElementById("exam-title-lbl").innerText = DOMAIN_GUIDES[domVal].title + " Practice";
+        STATE.currentQuiz.timeRemaining = targetQuestions.length * 90; // 90 Secs per question
+      }
     }
 
     if (targetQuestions.length === 0) {
@@ -2921,7 +2997,11 @@ function renderExamQuestion() {
   const quiz = STATE.currentQuiz;
   const question = quiz.questions[quiz.currentIndex];
 
-  document.getElementById("exam-progress-lbl").innerText = `Question ${quiz.currentIndex + 1} of ${quiz.questions.length}`;
+  if (quiz.isCat) {
+    document.getElementById("exam-progress-lbl").innerText = `Question ${quiz.currentIndex + 1} of 100 - 150 (Adaptive CAT)`;
+  } else {
+    document.getElementById("exam-progress-lbl").innerText = `Question ${quiz.currentIndex + 1} of ${quiz.questions.length}`;
+  }
   document.getElementById("exam-scenario-txt").innerText = question.scenario;
   document.getElementById("exam-question-txt").innerText = question.question;
 
@@ -2960,15 +3040,28 @@ function renderExamQuestion() {
   // Explanation logic
   document.getElementById("exam-explanation-box").classList.add("hidden");
 
-  // Navigation button states
-  document.getElementById("exam-prev-btn").disabled = (quiz.currentIndex === 0);
-  
-  if (quiz.currentIndex === quiz.questions.length - 1) {
-    document.getElementById("exam-next-btn").classList.add("hidden");
-    document.getElementById("exam-submit-btn").classList.remove("hidden");
-  } else {
+  // Navigation button states (adjust for CAT mode)
+  if (quiz.isCat) {
+    document.getElementById("exam-prev-btn").style.display = "none";
+    document.getElementById("exam-flag-btn").style.display = "none";
+    document.getElementById("exam-show-ans-btn").style.display = "none";
+    
     document.getElementById("exam-next-btn").classList.remove("hidden");
     document.getElementById("exam-submit-btn").classList.add("hidden");
+  } else {
+    document.getElementById("exam-prev-btn").style.display = "inline-flex";
+    document.getElementById("exam-flag-btn").style.display = "inline-flex";
+    document.getElementById("exam-show-ans-btn").style.display = "inline-flex";
+    
+    document.getElementById("exam-prev-btn").disabled = (quiz.currentIndex === 0);
+    
+    if (quiz.currentIndex === quiz.questions.length - 1) {
+      document.getElementById("exam-next-btn").classList.add("hidden");
+      document.getElementById("exam-submit-btn").classList.remove("hidden");
+    } else {
+      document.getElementById("exam-next-btn").classList.remove("hidden");
+      document.getElementById("exam-submit-btn").classList.add("hidden");
+    }
   }
 }
 
@@ -3033,9 +3126,72 @@ function prevExamQuestion() {
 }
 
 function nextExamQuestion() {
-  if (STATE.currentQuiz.currentIndex < STATE.currentQuiz.questions.length - 1) {
-    STATE.currentQuiz.currentIndex++;
+  const quiz = STATE.currentQuiz;
+  const currentQ = quiz.questions[quiz.currentIndex];
+  const userAns = quiz.answers[currentQ.id];
+
+  // In CAT mode, user MUST answer the question before moving next
+  if (quiz.isCat && userAns === undefined) {
+    alert("Please select an answer choice to proceed.");
+    return;
+  }
+
+  if (quiz.isCat) {
+    // 1. Evaluate correctness of current question
+    const isCorrect = userAns === currentQ.answer;
+    if (isCorrect) {
+      quiz.correctCount++;
+      // Elevate difficulty
+      quiz.catDifficulty = Math.min(2, quiz.catDifficulty + 1);
+    } else {
+      // Log mistake to mistakes database
+      logMistake(currentQ, userAns);
+      // Reduce difficulty
+      quiz.catDifficulty = Math.max(0, quiz.catDifficulty - 1);
+    }
+
+    // 2. Check if adaptive stopping criteria are met
+    const nextIndex = quiz.currentIndex + 1;
+    const totalAnswered = nextIndex;
+    const runningScorePct = (quiz.correctCount / totalAnswered) * 100;
+
+    // Minimum 100 questions, maximum 150 questions
+    if (totalAnswered >= 100) {
+      if (runningScorePct >= 72) {
+        alert(`Adaptive testing concluded: Passing standard met at question ${totalAnswered}!`);
+        submitExam();
+        return;
+      } else if (runningScorePct < 52) {
+        alert(`Adaptive testing concluded: Failing standard reached at question ${totalAnswered}.`);
+        submitExam();
+        return;
+      }
+    }
+
+    if (totalAnswered >= 150) {
+      alert("Adaptive testing concluded: Maximum limit of 150 questions reached.");
+      submitExam();
+      return;
+    }
+
+    // 3. Fetch and render next adaptive question
+    const nextQ = getNextCatQuestion();
+    if (!nextQ) {
+      alert("No more matching questions in database. Submitting exam.");
+      submitExam();
+      return;
+    }
+
+    quiz.questions.push(nextQ);
+    quiz.usedIds.push(nextQ.id);
+    quiz.currentIndex++;
     renderExamQuestion();
+  } else {
+    // Normal linear mode progression
+    if (quiz.currentIndex < quiz.questions.length - 1) {
+      quiz.currentIndex++;
+      renderExamQuestion();
+    }
   }
 }
 
@@ -3067,11 +3223,11 @@ function submitExam() {
   const finalScorePct = Math.round((correct / quiz.questions.length) * 100);
   const passed = finalScorePct >= 70; // 70% to pass
 
-  // Log to quiz history
+  // Log to quiz history (0 represents full mock test / CAT)
   const logEntry = {
     date: new Date().toLocaleDateString(),
     score: finalScorePct,
-    domain: quiz.questions.length === CISSP_QUESTIONS.length ? 0 : quiz.questions[0].domain
+    domain: (quiz.isCat || quiz.questions.length === CISSP_QUESTIONS.length) ? 0 : quiz.questions[0].domain
   };
   STATE.quizHistory.push(logEntry);
 

@@ -385,9 +385,23 @@
       </header>
 
       <div class="quiz-options-grid">
-        <!-- Card 1: Full Mock -->
+        <!-- Card 1: Adaptive CAT Simulator -->
         <div class="card glass quiz-type-card">
-          <div class="badge">Adaptive Mock</div>
+          <div class="badge" style="background: rgba(99, 102, 241, 0.15); color: var(--secondary); border-color: rgba(99, 102, 241, 0.3);">Adaptive CAT</div>
+          <i class="fa-solid fa-brain" style="color: var(--secondary); text-shadow: 0 0 10px rgba(99, 102, 241, 0.25);"></i>
+          <h3>Adaptive CAT Simulator</h3>
+          <p>A true simulation of the 2026 CISSP CAT exam. Difficulty adjusts dynamically based on your performance. Concludes early (100-150Q) when pass/fail confidence is met.</p>
+          <ul>
+            <li><i class="fa-solid fa-check"></i> 100 - 150 adaptive questions</li>
+            <li><i class="fa-solid fa-check"></i> No backtracking (disabled review)</li>
+            <li><i class="fa-solid fa-check"></i> Strict 3-hour limit</li>
+          </ul>
+          <button class="btn btn-secondary start-cat-btn" style="background: var(--secondary); border-color: var(--secondary); color: #fff;">Start CAT Simulator</button>
+        </div>
+
+        <!-- Card 2: Full Mock -->
+        <div class="card glass quiz-type-card">
+          <div class="badge">Linear Mock</div>
           <i class="fa-solid fa-award"></i>
           <h3>Full Scenario Mock Exam</h3>
           <p>A comprehensive assessment testing across all 8 domains. Includes a simulated 3-hour countdown timer, review flags, and post-exam domain breakdowns.</p>
@@ -399,7 +413,7 @@
           <button class="btn btn-primary start-full-mock">Start Exam Simulator</button>
         </div>
 
-        <!-- Card 2: Custom Quiz -->
+        <!-- Card 3: Custom Quiz -->
         <div class="card glass quiz-type-card">
           <div class="badge secondary">Practice Mode</div>
           <i class="fa-solid fa-sliders"></i>
