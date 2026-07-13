@@ -2852,10 +2852,10 @@ function startExam(isMock) {
 
     let targetQuestions = [];
     if (isMock) {
-      // Select all available questions (randomized)
-      targetQuestions = [...CISSP_QUESTIONS].sort(() => 0.5 - Math.random());
+      // Select exactly 125 randomized questions (representative midpoint of 100-150 range)
+      targetQuestions = [...CISSP_QUESTIONS].sort(() => 0.5 - Math.random()).slice(0, 125);
       document.getElementById("exam-title-lbl").innerText = "Full-Length CISSP Simulated Exam";
-      STATE.currentQuiz.timeRemaining = 4 * 60 * 60; // 4 Hours in seconds
+      STATE.currentQuiz.timeRemaining = 3 * 60 * 60; // 3 Hours in seconds (10,800s)
     } else {
       // Targeted domain quiz
       const domVal = parseInt(document.getElementById("domain-select").value);
@@ -7280,7 +7280,7 @@ const EXAMDAY_WEIGHTS = [
 ];
 const EXAMDAY_TOTAL = 125;
 const EXAMDAY_PASS_SCORE = 88;
-const EXAMDAY_DURATION = 4 * 60 * 60; // seconds
+const EXAMDAY_DURATION = 3 * 60 * 60; // seconds (3 hours)
 
 let _edState = {
   questions: [],      // array of 125 question objects with orig domain
