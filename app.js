@@ -2494,6 +2494,7 @@ function initApp() {
     renderDomainProgressBadges();
     renderSRSLabels();
     initExamDay();
+    initVisualLab();
   }, 100);
 
   // Background pre-fetch after 2.5 seconds when CPU is idle
@@ -2725,6 +2726,9 @@ function switchTab(tabId) {
       initMindMapsReader();
       if (mindmapsPdfDoc) renderMindMapsPage(mindmapsPageNum);
     }
+  }
+  if (tabId === "visual-lab") {
+    resetVisualLabSims();
   }
   if (tabId === "games") {
     loadActiveGame();
@@ -8085,5 +8089,523 @@ function clearAllMistakes() {
     localStorage.setItem("cissp_mistakes", JSON.stringify(STATE.mistakes));
     renderMistakeLog();
   }
+}
+
+// =================================================================
+// INTERACTIVE VISUAL CONCEPT LAB ENGINE
+// =================================================================
+let vlNetSecRunning = false;
+let vlCryptoRunning = false;
+let vlMfaRunning = false;
+let vlBcpRunning = false;
+let vlBcpInterval = null;
+
+function initVisualLab() {
+  // 1. Selector tab change binding
+  const simSelect = document.getElementById("vl-sim-select");
+  if (!simSelect) return;
+
+  simSelect.addEventListener("change", (e) => {
+    const val = e.target.value;
+    document.querySelectorAll(".vl-card").forEach(c => c.classList.add("hidden"));
+    if (val === "net-sec") {
+      document.getElementById("vl-net-sec")?.classList.remove("hidden");
+    } else if (val === "crypto") {
+      document.getElementById("vl-crypto")?.classList.remove("hidden");
+    } else if (val === "mfa") {
+      document.getElementById("vl-mfa")?.classList.remove("hidden");
+    } else if (val === "bcp-drp") {
+      document.getElementById("vl-bcp-drp")?.classList.remove("hidden");
+    }
+    resetVisualLabSims();
+  });
+
+  // 2. Simulator 1 (IDS/IPS/WAF) controls
+  const netControls = document.querySelector("#vl-net-sec .vl-controls");
+  if (netControls) {
+    // Device selections
+    netControls.querySelectorAll("[data-device]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        netControls.querySelectorAll("[data-device]").forEach(b => b.classList.remove("active-game-tab"));
+        btn.classList.add("active-game-tab");
+        const dev = btn.dataset.device;
+        const lbl = document.getElementById("vl-net-device-lbl");
+        const icon = document.querySelector("#vl-net-device i");
+        if (lbl) {
+          if (dev === "ids") lbl.innerText = "IDS (Passive)";
+          else if (dev === "ips") lbl.innerText = "IPS (Prevention)";
+          else if (dev === "waf") lbl.innerText = "WAF (L7 Firewall)";
+        }
+        if (icon) {
+          if (dev === "ids") {
+            icon.className = "fa-solid fa-shield-halved";
+            icon.style.color = "var(--warning)";
+          } else if (dev === "ips") {
+            icon.className = "fa-solid fa-shield-virus";
+            icon.style.color = "var(--danger)";
+          } else if (dev === "waf") {
+            icon.className = "fa-solid fa-hotel";
+            icon.style.color = "var(--primary)";
+          }
+        }
+      });
+    });
+
+    // Packet type selections
+    netControls.querySelectorAll("[data-packet]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        netControls.querySelectorAll("[data-packet]").forEach(b => b.classList.remove("active-game-tab"));
+        btn.classList.add("active-game-tab");
+      });
+    });
+
+    // Send Traffic button
+    document.getElementById("vl-net-sec-btn")?.addEventListener("click", runNetSecSim);
+  }
+
+  // 3. Simulator 2 (Crypto) controls
+  const cryptoControls = document.querySelector("#vl-crypto .vl-controls");
+  if (cryptoControls) {
+    cryptoControls.querySelectorAll("[data-crypto]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        cryptoControls.querySelectorAll("[data-crypto]").forEach(b => b.classList.remove("active-game-tab"));
+        btn.classList.add("active-game-tab");
+        const mode = btn.dataset.crypto;
+        
+        // Toggle key nodes visibility on board
+        const symKey = document.getElementById("vl-crypto-key-sym");
+        const pubKey = document.getElementById("vl-crypto-key-pub");
+        const privKey = document.getElementById("vl-crypto-key-priv");
+
+        if (mode === "sym") {
+          symKey?.classList.remove("hidden");
+          pubKey?.classList.add("hidden");
+          privKey?.classList.add("hidden");
+        } else {
+          symKey?.classList.add("hidden");
+          pubKey?.classList.remove("hidden");
+          privKey?.classList.remove("hidden");
+        }
+      });
+    });
+
+    document.getElementById("vl-crypto-btn")?.addEventListener("click", runCryptoSim);
+  }
+
+  // 4. Simulator 3 (MFA) controls
+  const mfaControls = document.querySelector("#vl-mfa .vl-controls");
+  if (mfaControls) {
+    mfaControls.querySelectorAll("[data-mfa]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        mfaControls.querySelectorAll("[data-mfa]").forEach(b => b.classList.remove("active-game-tab"));
+        btn.classList.add("active-game-tab");
+        const mode = btn.dataset.mfa;
+
+        // Toggle visual phone/fingerprint indicator
+        const phone = document.getElementById("vl-mfa-phone");
+        const scanner = document.getElementById("vl-mfa-scanner");
+
+        phone?.classList.add("hidden");
+        scanner?.classList.add("hidden");
+
+        if (mode === "otp") phone?.classList.remove("hidden");
+        else if (mode === "bio") scanner?.classList.remove("hidden");
+      });
+    });
+
+    document.getElementById("vl-mfa-btn")?.addEventListener("click", runMfaSim);
+  }
+
+  // 5. Simulator 4 (BCP/DRP) controls
+  document.getElementById("vl-bcp-btn")?.addEventListener("click", runBcpSim);
+}
+
+function resetVisualLabSims() {
+  // Clear any running states
+  vlNetSecRunning = false;
+  vlCryptoRunning = false;
+  vlMfaRunning = false;
+  vlBcpRunning = false;
+  clearInterval(vlBcpInterval);
+
+  // Reset Network Sim elements
+  const netPacket = document.getElementById("vl-net-packet");
+  if (netPacket) {
+    netPacket.className = "hidden";
+    netPacket.style.animation = "";
+  }
+  document.getElementById("vl-net-shield")?.classList.add("hidden");
+  document.getElementById("vl-net-alert")?.classList.add("hidden");
+  document.getElementById("vl-net-explanation").innerText = "Select options and click 'Send Traffic' to simulate.";
+
+  // Reset Crypto Sim elements
+  const cryptoMsg = document.getElementById("vl-crypto-msg");
+  if (cryptoMsg) {
+    cryptoMsg.className = "hidden";
+    cryptoMsg.style.animation = "";
+  }
+  document.getElementById("vl-crypto-explanation").innerText = "Select options and click 'Encrypt & Transmit' to simulate.";
+
+  // Reset MFA Sim elements
+  const mfaPacket = document.getElementById("vl-mfa-packet");
+  if (mfaPacket) {
+    mfaPacket.className = "hidden";
+    mfaPacket.style.animation = "";
+  }
+  document.getElementById("vl-mfa-status")?.classList.add("hidden");
+  document.getElementById("vl-mfa-explanation").innerText = "Choose options and click 'Authenticate' to run.";
+
+  // Reset BCP Sim elements
+  document.getElementById("vl-bcp-fire")?.classList.add("hidden");
+  document.getElementById("vl-bcp-hot").style.opacity = "0.35";
+  document.getElementById("vl-bcp-rto-lbl")?.classList.add("hidden");
+  document.getElementById("vl-bcp-wrt-lbl")?.classList.add("hidden");
+  const fill = document.getElementById("vl-bcp-timeline-fill");
+  if (fill) {
+    fill.style.transition = "none";
+    fill.style.width = "0%";
+  }
+  document.getElementById("vl-bcp-explanation").innerText = "Click 'Trigger Disaster Event' to watch the timeline.";
+}
+
+// ----------------------------------------------------
+// SIMULATOR 1: Net Sec Packet Animation Runner
+// ----------------------------------------------------
+function runNetSecSim() {
+  if (vlNetSecRunning) return;
+  vlNetSecRunning = true;
+
+  const netControls = document.querySelector("#vl-net-sec .vl-controls");
+  const activeDeviceBtn = netControls.querySelector("[data-device].active-game-tab");
+  const activePacketBtn = netControls.querySelector("[data-packet].active-game-tab");
+  if (!activeDeviceBtn || !activePacketBtn) return;
+
+  const device = activeDeviceBtn.dataset.device;
+  const packetType = activePacketBtn.dataset.packet;
+
+  const packet = document.getElementById("vl-net-packet");
+  const shield = document.getElementById("vl-net-shield");
+  const alertBox = document.getElementById("vl-net-alert");
+  const explanation = document.getElementById("vl-net-explanation");
+
+  // Reset
+  packet.className = "hidden";
+  packet.style.animation = "";
+  shield.classList.add("hidden");
+  alertBox.classList.add("hidden");
+
+  // Customize packet text based on threat type
+  if (packetType === "normal") {
+    packet.innerText = "GET";
+    packet.style.background = "var(--primary)";
+  } else if (packetType === "exploit") {
+    packet.innerText = "MAL";
+    packet.style.background = "var(--danger)";
+  } else {
+    packet.innerText = "SQLi";
+    packet.style.background = "var(--warning)";
+  }
+
+  // Trigger animation start
+  setTimeout(() => {
+    packet.classList.remove("hidden");
+    
+    // Determine flow behavior path
+    if (packetType === "normal") {
+      packet.style.animation = "net-normal-flow 2.5s forwards linear";
+      explanation.innerHTML = "<strong>Normal Packet Flow:</strong> A safe web request is sent from the browser client, travels unimpeded across the network interface, passes security scans, and reaches the server successfully.";
+      
+      setTimeout(() => {
+        vlNetSecRunning = false;
+      }, 2500);
+      
+    } else if (packetType === "exploit") {
+      if (device === "ids") {
+        packet.style.animation = "net-normal-flow 2.5s forwards linear";
+        explanation.innerHTML = "<strong>IDS Behavior (Passive Detection):</strong> The malicious packet travels to the server. The Intrusion Detection System parses it off-line, detects the signature, and triggers an <strong>Alert log</strong>. Because it is passive, the threat still hits the server!";
+        
+        setTimeout(() => {
+          alertBox.classList.remove("hidden");
+          alertBox.style.animation = "alert-popup 0.4s ease forwards";
+        }, 1250); // half path
+        
+        setTimeout(() => {
+          vlNetSecRunning = false;
+        }, 2500);
+      } else {
+        // IPS or WAF blocks network exploit
+        packet.style.animation = "net-block-flow 2.5s forwards linear";
+        explanation.innerHTML = `<strong>${device.toUpperCase()} Behavior (Inline Prevention):</strong> The inline device detects the malicious exploit signature and actively drops/blocks the packet before it can reach the target server.`;
+        
+        setTimeout(() => {
+          shield.classList.remove("hidden");
+          shield.style.animation = "shield-popup 0.4s ease forwards";
+        }, 1000);
+
+        setTimeout(() => {
+          vlNetSecRunning = false;
+        }, 2500);
+      }
+    } else if (packetType === "sqli") {
+      // SQL Injection
+      if (device === "waf") {
+        packet.style.animation = "net-block-flow 2.5s forwards linear";
+        explanation.innerHTML = "<strong>WAF Behavior (Layer 7 Inspection):</strong> Web Application Firewalls inspect application layer traffic. The WAF parses the HTTP stream, identifies SQL Injection tokens (e.g. `' OR 1=1`), and drops the packet. Server database is protected.";
+        
+        setTimeout(() => {
+          shield.classList.remove("hidden");
+          shield.style.animation = "shield-popup 0.4s ease forwards";
+        }, 1000);
+        
+        setTimeout(() => {
+          vlNetSecRunning = false;
+        }, 2500);
+      } else if (device === "ips") {
+        // IPS blocks L3/L4 exploits but might miss L7 SQLi if not running deep packet inspection
+        packet.style.animation = "net-block-flow 2.5s forwards linear";
+        explanation.innerHTML = "<strong>IPS Behavior:</strong> If configured for Application Layer signature matches, the IPS will block SQLi. The packet is dropped at the security node.";
+        
+        setTimeout(() => {
+          shield.classList.remove("hidden");
+          shield.style.animation = "shield-popup 0.4s ease forwards";
+        }, 1000);
+        
+        setTimeout(() => {
+          vlNetSecRunning = false;
+        }, 2500);
+      } else {
+        // IDS alerts but L7 exploit hits server
+        packet.style.animation = "net-normal-flow 2.5s forwards linear";
+        explanation.innerHTML = "<strong>IDS Behavior:</strong> The passive IDS analyzes L7 payload signatures, triggers an alert flag, but is unable to stop the SQL Injection from executing database commands on the server.";
+        
+        setTimeout(() => {
+          alertBox.classList.remove("hidden");
+          alertBox.style.animation = "alert-popup 0.4s ease forwards";
+        }, 1250);
+        
+        setTimeout(() => {
+          vlNetSecRunning = false;
+        }, 2500);
+      }
+    }
+  }, 50);
+}
+
+// ----------------------------------------------------
+// SIMULATOR 2: Cryptographic Visualizer Runner
+// ----------------------------------------------------
+function runCryptoSim() {
+  if (vlCryptoRunning) return;
+  vlCryptoRunning = true;
+
+  const cryptoControls = document.querySelector("#vl-crypto .vl-controls");
+  const activeBtn = cryptoControls.querySelector("[data-crypto].active-game-tab");
+  if (!activeBtn) return;
+
+  const mode = activeBtn.dataset.crypto;
+  const msg = document.getElementById("vl-crypto-msg");
+  const explanation = document.getElementById("vl-crypto-explanation");
+
+  msg.className = "hidden";
+  msg.style.animation = "";
+  msg.innerHTML = '<i class="fa-solid fa-envelope"></i>';
+
+  setTimeout(() => {
+    msg.classList.remove("hidden");
+    
+    if (mode === "sym") {
+      explanation.innerHTML = "<strong>Symmetric Key Cycle:</strong> Alice encrypts the message using the Shared Key (K). The encrypted payload travels securely. Bob decrypts it using the exact same Shared Key (K). Simple and fast.";
+      msg.style.animation = "crypto-normal-flow 3s forwards linear";
+      
+      // Lock envelope mid-route
+      setTimeout(() => {
+        msg.innerHTML = '<i class="fa-solid fa-lock" style="color:var(--primary);"></i>';
+      }, 1000);
+
+      // Unlock at Bob's side
+      setTimeout(() => {
+        msg.innerHTML = '<i class="fa-solid fa-envelope-open" style="color:var(--success);"></i>';
+      }, 2900);
+
+      setTimeout(() => {
+        vlCryptoRunning = false;
+      }, 3000);
+      
+    } else {
+      // Asymmetric Key Exchange
+      explanation.innerHTML = "<strong>Asymmetric Key cycle:</strong> 1. Bob transmits his Public Key lock to Alice. Alice locks her secret inside using Bob's Public Key. Only Bob's Private Key can unlock it.";
+      
+      // Step A: Bob sends Public Key
+      msg.innerHTML = '<i class="fa-solid fa-unlock-keyhole" style="color:var(--warning);"></i>';
+      msg.style.animation = "crypto-key-exchange-flow 2.5s forwards linear";
+      
+      setTimeout(() => {
+        // Step B: Alice locks box and sends to Bob
+        explanation.innerHTML = "<strong>Asymmetric Key cycle:</strong> 2. Alice uses Bob's Public Key to encrypt. She sends the ciphertext envelope. Eve cannot decrypt it without Bob's Private Key.";
+        msg.style.animation = "";
+        
+        setTimeout(() => {
+          msg.innerHTML = '<i class="fa-solid fa-lock" style="color:var(--warning);"></i>';
+          msg.style.animation = "crypto-normal-flow 2.5s forwards linear";
+          
+          setTimeout(() => {
+            // Step C: Bob decrypts
+            explanation.innerHTML = "<strong>Asymmetric Key cycle:</strong> 3. Bob receives the package and unlocks it using his Private Key. Secure transmission complete.";
+            msg.innerHTML = '<i class="fa-solid fa-envelope-open" style="color:var(--success);"></i>';
+          }, 2400);
+
+          setTimeout(() => {
+            vlCryptoRunning = false;
+          }, 2600);
+        }, 50);
+      }, 2600);
+    }
+  }, 50);
+}
+
+// ----------------------------------------------------
+// SIMULATOR 3: MFA Challenge Flow Runner
+// ----------------------------------------------------
+function runMfaSim() {
+  if (vlMfaRunning) return;
+  vlMfaRunning = true;
+
+  const mfaControls = document.querySelector("#vl-mfa .vl-controls");
+  const activeBtn = mfaControls.querySelector("[data-mfa].active-game-tab");
+  if (!activeBtn) return;
+
+  const mode = activeBtn.dataset.mfa;
+  const packet = document.getElementById("vl-mfa-packet");
+  const status = document.getElementById("vl-mfa-status");
+  const explanation = document.getElementById("vl-mfa-explanation");
+
+  packet.className = "hidden";
+  packet.style.animation = "";
+  status.classList.add("hidden");
+
+  setTimeout(() => {
+    packet.classList.remove("hidden");
+    
+    if (mode === "pwd") {
+      packet.innerText = "PWD";
+      packet.style.animation = "net-normal-flow 2s forwards linear";
+      explanation.innerHTML = "<strong>1-Factor Auth (Something You Know):</strong> The client transmits a password hash. The server validates it. Auth is granted immediately. (Low security, susceptible to credential stuffing).";
+      
+      setTimeout(() => {
+        status.classList.remove("hidden");
+        status.innerHTML = '<i class="fa-solid fa-circle-check"></i> Auth Granted';
+        status.style.borderColor = "var(--success)";
+        status.style.color = "var(--success)";
+        status.style.background = "rgba(16,185,129,0.15)";
+        vlMfaRunning = false;
+      }, 2000);
+      
+    } else if (mode === "otp") {
+      packet.innerText = "PWD";
+      packet.style.animation = "net-normal-flow 1.5s forwards linear";
+      explanation.innerHTML = "<strong>2-Factor Auth (Password + Token):</strong> Step 1: User sends password. Step 2: Server issues an OTP challenge challenge to the user's registered OTP App.";
+      
+      setTimeout(() => {
+        // Challenge back to client
+        packet.innerText = "CHAL";
+        packet.style.animation = "crypto-key-exchange-flow 1.5s forwards linear";
+        
+        setTimeout(() => {
+          explanation.innerHTML = "<strong>2-Factor Auth:</strong> Step 3: User inputs 6-digit App OTP (Something You Have). Server verifies code match and grants access.";
+          packet.innerText = "OTP";
+          packet.style.animation = "net-normal-flow 1.5s forwards linear";
+          
+          setTimeout(() => {
+            status.classList.remove("hidden");
+            status.innerHTML = '<i class="fa-solid fa-circle-check"></i> MFA verified';
+            status.style.borderColor = "var(--success)";
+            status.style.color = "var(--success)";
+            status.style.background = "rgba(16,185,129,0.15)";
+            vlMfaRunning = false;
+          }, 1500);
+        }, 1600);
+      }, 1600);
+      
+    } else if (mode === "bio") {
+      explanation.innerHTML = "<strong>Biometric Authentication (Something You Are):</strong> User triggers fingerprint/face scanner. The local device extracts Minutiae templates and checks FRR (Type 1 error) and FAR (Type 2 error).";
+      
+      packet.classList.add("hidden");
+      // Simulate scanning delay
+      setTimeout(() => {
+        explanation.innerHTML = "<strong>Biometric Verification:</strong> Server measures templates against registration database. Crossover Error Rate (CER) establishes threshold accuracy. Access authorized.";
+        
+        packet.classList.remove("hidden");
+        packet.innerText = "BIO";
+        packet.style.animation = "net-normal-flow 1.5s forwards linear";
+        
+        setTimeout(() => {
+          status.classList.remove("hidden");
+          status.innerHTML = '<i class="fa-solid fa-fingerprint"></i> Biometric Verified';
+          status.style.borderColor = "var(--success)";
+          status.style.color = "var(--success)";
+          status.style.background = "rgba(16,185,129,0.15)";
+          vlMfaRunning = false;
+        }, 1500);
+      }, 2000);
+    }
+  }, 50);
+}
+
+// ----------------------------------------------------
+// SIMULATOR 4: BCP vs DRP Timeline Lifecycle Runner
+// ----------------------------------------------------
+function runBcpSim() {
+  if (vlBcpRunning) return;
+  vlBcpRunning = true;
+
+  const fire = document.getElementById("vl-bcp-fire");
+  const hotSite = document.getElementById("vl-bcp-hot");
+  const rtoLbl = document.getElementById("vl-bcp-rto-lbl");
+  const wrtLbl = document.getElementById("vl-bcp-wrt-lbl");
+  const fill = document.getElementById("vl-bcp-timeline-fill");
+  const explanation = document.getElementById("vl-bcp-explanation");
+
+  // Reset
+  fire.classList.add("hidden");
+  hotSite.style.opacity = "0.35";
+  rtoLbl.classList.add("hidden");
+  wrtLbl.classList.add("hidden");
+  fill.style.transition = "none";
+  fill.style.width = "0%";
+
+  setTimeout(() => {
+    // 1. Disaster triggers
+    fire.classList.remove("hidden");
+    explanation.innerHTML = "<strong>Disaster Event Triggered:</strong> Datacenter goes offline. BCP team triggers recovery plans. RTO (Recovery Time Objective) countdown begins.";
+    
+    // Start timeline fill transition (lasts 8 seconds representing 8 hours)
+    fill.style.transition = "width 8s linear";
+    fill.style.width = "100%";
+
+    // T = 2s: BCP activates Hot Site
+    setTimeout(() => {
+      hotSite.style.opacity = "1";
+      hotSite.style.borderColor = "var(--warning)";
+      explanation.innerHTML = "<strong>BCP Hot Site Activated:</strong> Team redirects user DNS to alternate site. Hot site databases sync. Business operations resume (Continuous operations achieved).";
+    }, 2000);
+
+    // T = 4s: RTO Met (DRP restores primary databases)
+    setTimeout(() => {
+      rtoLbl.classList.remove("hidden");
+      explanation.innerHTML = "<strong>RTO Met (Recovery Time Objective):</strong> Disaster Recovery team finishes rebuilding databases and servers. Downtime ends, but systems need validation.";
+    }, 4000);
+
+    // T = 6.8s: WRT Met (Systems validated and synced back)
+    setTimeout(() => {
+      wrtLbl.classList.remove("hidden");
+      fire.classList.add("hidden");
+      hotSite.style.opacity = "0.35";
+      explanation.innerHTML = "<strong>WRT Met (Work Recovery Time):</strong> System checks completed, data integrity verified. Operations fail back to primary datacenter. Fully restored before MTD limit.";
+    }, 6800);
+
+    setTimeout(() => {
+      vlBcpRunning = false;
+    }, 8000);
+  }, 50);
 }
 

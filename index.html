@@ -98,6 +98,7 @@
       <li data-tab="mindmaps"><i class="fa-solid fa-diagram-project"></i><span>Mind Maps</span></li>
       <li data-tab="games"><i class="fa-solid fa-gamepad"></i><span>Study Games</span></li>
       <li data-tab="memory"><i class="fa-solid fa-brain"></i><span>Memory Palace</span></li>
+      <li data-tab="visual-lab"><i class="fa-solid fa-flask"></i><span>Visual Lab</span></li>
       <li data-tab="flashcards"><i class="fa-solid fa-clone"></i><span>Flashcards</span></li>
       <li data-tab="planner"><i class="fa-solid fa-calendar-days"></i><span>Study Planner</span></li>
     </ul>
@@ -1372,6 +1373,193 @@
           <div class="checklist-container" id="checklist-topics">
             <!-- Populated dynamically via app.js -->
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================= -->
+    <!-- 7. VISUAL CONCEPT LAB TAB                                -->
+    <!-- ======================================================= -->
+    <section id="visual-lab" class="tab-content">
+      <header class="tab-header" style="margin-bottom: 20px;">
+        <div>
+          <h2><i class="fa-solid fa-flask" style="color: var(--secondary); margin-right: 8px;"></i> CISSP Interactive Visual Concept Lab</h2>
+          <p>Explore CSS-animated, interactive simulations of complex security mechanisms and lifecycles.</p>
+        </div>
+        <div>
+          <select id="vl-sim-select" class="form-control" style="background: rgba(255,255,255,0.05); border: 1px solid var(--card-border); color: #fff; border-radius: 20px; padding: 6px 16px; font-weight: 600; outline: none; cursor: pointer; font-size: 13px;">
+            <option value="net-sec">IDS vs IPS vs WAF Network Simulator</option>
+            <option value="crypto">Symmetric vs Asymmetric Encryption Visualizer</option>
+            <option value="mfa">MFA Challenge-Response Flow</option>
+            <option value="bcp-drp">BCP vs DRP Timeline Lifecycle</option>
+          </select>
+        </div>
+      </header>
+
+      <!-- SIMULATOR 1: IDS vs IPS vs WAF -->
+      <div id="vl-net-sec" class="card glass vl-card">
+        <div class="vl-controls" style="display: flex; gap: 14px; margin-bottom: 20px; flex-wrap: wrap; align-items: center; border-bottom: 1px solid var(--card-border); padding-bottom: 14px;">
+          <div>
+            <label style="font-size: 12px; color: var(--text-muted); display: block; margin-bottom: 4px;">Choose Target System</label>
+            <div style="display: flex; gap: 8px;">
+              <button class="btn btn-secondary btn-sm active-game-tab" data-device="ids">IDS (Detection)</button>
+              <button class="btn btn-secondary btn-sm" data-device="ips">IPS (Prevention)</button>
+              <button class="btn btn-secondary btn-sm" data-device="waf">WAF (L7 Firewall)</button>
+            </div>
+          </div>
+          <div>
+            <label style="font-size: 12px; color: var(--text-muted); display: block; margin-bottom: 4px;">Choose Traffic Packet Type</label>
+            <div style="display: flex; gap: 8px;">
+              <button class="btn btn-secondary btn-sm active-game-tab" data-packet="normal">Normal Traffic</button>
+              <button class="btn btn-secondary btn-sm" data-packet="exploit">Malicious Exploit</button>
+              <button class="btn btn-secondary btn-sm" data-packet="sqli">HTTP SQL Injection</button>
+            </div>
+          </div>
+          <button class="btn btn-primary" id="vl-net-sec-btn" style="margin-left: auto; margin-top: 14px; padding: 10px 22px; font-weight: 600;"><i class="fa-solid fa-play"></i> Send Traffic</button>
+        </div>
+        
+        <div class="vl-board" id="vl-net-board" style="position: relative; height: 350px; background: rgba(15, 23, 42, 0.4); border-radius: 12px; border: 1px solid var(--card-border); overflow: hidden; display: flex; align-items: center; justify-content: space-between; padding: 0 40px;">
+          <div class="vl-node" id="vl-net-client"><i class="fa-solid fa-laptop" style="font-size: 32px; color: var(--primary);"></i><span style="font-size: 11px; display:block; margin-top:6px;">Client Browser</span></div>
+          <div class="vl-wire" style="position: absolute; left: 100px; right: 100px; height: 2px; border-top: 2px dashed rgba(255,255,255,0.15); z-index: 1;"></div>
+          
+          <div class="vl-node" id="vl-net-device" style="position: relative; z-index: 2;"><i class="fa-solid fa-shield-halved" style="font-size: 32px; color: var(--warning);"></i><span id="vl-net-device-lbl" style="font-size: 11px; display:block; margin-top:6px;">IDS (Passive)</span></div>
+          <div class="vl-node" id="vl-net-server"><i class="fa-solid fa-server" style="font-size: 32px; color: var(--success);"></i><span style="font-size: 11px; display:block; margin-top:6px;">Target Server</span></div>
+          
+          <!-- Animated Packet -->
+          <div id="vl-net-packet" class="hidden" style="position: absolute; left: 100px; top: calc(50% - 15px); width: 30px; height: 30px; border-radius: 50%; background: var(--primary); z-index: 3; display: flex; align-items: center; justify-content: center; font-size: 11px; color:#fff; font-weight:700; box-shadow: 0 0 10px var(--primary-glow);">P</div>
+          
+          <!-- Shield blocker representation -->
+          <div id="vl-net-shield" class="hidden" style="position: absolute; left: calc(50% - 30px); top: 30px; width: 60px; height: 60px; border-radius: 50%; border: 2px solid var(--danger); background: rgba(239, 68, 68, 0.15); display:flex; align-items:center; justify-content:center; color: var(--danger); font-size: 20px; z-index: 4;"><i class="fa-solid fa-ban"></i></div>
+          
+          <!-- IDS Warning Sign -->
+          <div id="vl-net-alert" class="hidden" style="position: absolute; left: calc(50% - 75px); top: 20px; width: 150px; padding: 8px; border-radius: 8px; border: 1px solid var(--danger); background: rgba(239, 68, 68, 0.9); color: #fff; font-size: 11px; font-weight:700; text-align:center; z-index: 4; box-shadow: 0 5px 15px rgba(239,68,68,0.4);"><i class="fa-solid fa-bell-exclamation"></i> ALERT: MALICIOUS EXPLOIT LOGGED!</div>
+        </div>
+
+        <div class="vl-explanation-box card glass" style="margin-top: 16px; padding: 14px;">
+          <h4 style="margin: 0 0 6px; font-size: 13.5px; color: var(--primary);"><i class="fa-solid fa-circle-question"></i> System Rationale & Behavior</h4>
+          <p id="vl-net-explanation" style="margin: 0; font-size: 12.5px; color: var(--text-muted); line-height: 1.6;">Select a system and traffic type, then click 'Send Traffic' to play the packet flow simulation.</p>
+        </div>
+      </div>
+
+      <!-- SIMULATOR 2: Symmetric vs Asymmetric -->
+      <div id="vl-crypto" class="card glass vl-card hidden">
+        <div class="vl-controls" style="display: flex; gap: 14px; margin-bottom: 20px; flex-wrap: wrap; align-items: center; border-bottom: 1px solid var(--card-border); padding-bottom: 14px;">
+          <div>
+            <label style="font-size: 12px; color: var(--text-muted); display: block; margin-bottom: 4px;">Choose Cryptographic Model</label>
+            <div style="display: flex; gap: 8px;">
+              <button class="btn btn-secondary btn-sm active-game-tab" data-crypto="sym">Symmetric (Shared Key)</button>
+              <button class="btn btn-secondary btn-sm" data-crypto="asym">Asymmetric (Key Pair)</button>
+            </div>
+          </div>
+          <button class="btn btn-primary" id="vl-crypto-btn" style="margin-left: auto; margin-top: 14px; padding: 10px 22px; font-weight: 600;"><i class="fa-solid fa-play"></i> Encrypt & Transmit</button>
+        </div>
+
+        <div class="vl-board" id="vl-crypto-board" style="position: relative; height: 350px; background: rgba(15, 23, 42, 0.4); border-radius: 12px; border: 1px solid var(--card-border); overflow: hidden; display: flex; align-items: center; justify-content: space-between; padding: 0 60px;">
+          <div class="vl-node" id="vl-crypto-alice"><i class="fa-solid fa-user" style="font-size: 32px; color: var(--primary);"></i><span style="font-size: 11px; display:block; margin-top:6px; font-weight:600;">Sender (Alice)</span></div>
+          <div class="vl-wire" style="position: absolute; left: 120px; right: 120px; height: 2px; border-top: 2px dashed rgba(255,255,255,0.15); z-index: 1;"></div>
+          
+          <div class="vl-node" id="vl-crypto-eve" style="position: absolute; left: calc(50% - 50px); bottom: 40px; display:flex; flex-direction:column; align-items:center; z-index: 2;"><i class="fa-solid fa-user-secret" style="font-size: 32px; color: var(--danger);"></i><span style="font-size: 11px; display:block; margin-top:6px; color:var(--text-muted);">Eavesdropper (Eve)</span></div>
+          <div class="vl-node" id="vl-crypto-bob"><i class="fa-solid fa-user-check" style="font-size: 32px; color: var(--success);"></i><span style="font-size: 11px; display:block; margin-top:6px; font-weight:600;">Receiver (Bob)</span></div>
+
+          <!-- Keys representation -->
+          <div id="vl-crypto-key-sym" class="vl-key" style="position: absolute; left: calc(50% - 20px); top: 30px; display:flex; flex-direction:column; align-items:center; z-index: 3;"><i class="fa-solid fa-key" style="font-size: 24px; color: var(--primary); filter: drop-shadow(0 0 5px var(--primary-glow));"></i><span style="font-size:10px; color:var(--primary); font-weight:700; margin-top:4px;">Shared Key (K)</span></div>
+          
+          <div id="vl-crypto-key-pub" class="vl-key hidden" style="position: absolute; left: calc(50% - 80px); top: 30px; display:flex; flex-direction:column; align-items:center; z-index: 3;"><i class="fa-solid fa-unlock-keyhole" style="font-size: 24px; color: var(--warning); filter: drop-shadow(0 0 5px rgba(245,158,11,0.3));"></i><span style="font-size:9px; color:var(--warning); font-weight:700; margin-top:4px;">Bob's Public Key</span></div>
+          <div id="vl-crypto-key-priv" class="vl-key hidden" style="position: absolute; left: calc(50% + 40px); top: 30px; display:flex; flex-direction:column; align-items:center; z-index: 3;"><i class="fa-solid fa-key" style="font-size: 24px; color: var(--success); filter: drop-shadow(0 0 5px rgba(16,185,129,0.3));"></i><span style="font-size:9px; color:var(--success); font-weight:700; margin-top:4px;">Bob's Private Key</span></div>
+
+          <!-- Animated Box/Envelope -->
+          <div id="vl-crypto-msg" class="hidden" style="position: absolute; left: 120px; top: calc(50% - 20px); width: 40px; height: 40px; border-radius: 8px; border: 1px solid var(--card-border); background: rgba(255,255,255,0.05); backdrop-filter:blur(5px); z-index: 4; display: flex; align-items: center; justify-content: center; font-size: 16px; color:#fff;"><i class="fa-solid fa-envelope"></i></div>
+        </div>
+
+        <div class="vl-explanation-box card glass" style="margin-top: 16px; padding: 14px;">
+          <h4 style="margin: 0 0 6px; font-size: 13.5px; color: var(--primary);"><i class="fa-solid fa-circle-question"></i> Cryptographic Mechanics & Key Exchange</h4>
+          <p id="vl-crypto-explanation" style="margin: 0; font-size: 12.5px; color: var(--text-muted); line-height: 1.6;">Select a model and click 'Encrypt & Transmit' to visualize key usage and secure data transit.</p>
+        </div>
+      </div>
+
+      <!-- SIMULATOR 3: MFA Challenge-Response -->
+      <div id="vl-mfa" class="card glass vl-card hidden">
+        <div class="vl-controls" style="display: flex; gap: 14px; margin-bottom: 20px; flex-wrap: wrap; align-items: center; border-bottom: 1px solid var(--card-border); padding-bottom: 14px;">
+          <div>
+            <label style="font-size: 12px; color: var(--text-muted); display: block; margin-bottom: 4px;">Choose Authentication Factors</label>
+            <div style="display: flex; gap: 8px;">
+              <button class="btn btn-secondary btn-sm active-game-tab" data-mfa="pwd">1-Factor (Password Only)</button>
+              <button class="btn btn-secondary btn-sm" data-mfa="otp">2-Factor (Password + OTP App)</button>
+              <button class="btn btn-secondary btn-sm" data-mfa="bio">Biometric (Face Scan/CER)</button>
+            </div>
+          </div>
+          <button class="btn btn-primary" id="vl-mfa-btn" style="margin-left: auto; margin-top: 14px; padding: 10px 22px; font-weight: 600;"><i class="fa-solid fa-key-skeleton"></i> Authenticate</button>
+        </div>
+
+        <div class="vl-board" id="vl-mfa-board" style="position: relative; height: 350px; background: rgba(15, 23, 42, 0.4); border-radius: 12px; border: 1px solid var(--card-border); overflow: hidden; display: flex; align-items: center; justify-content: space-between; padding: 0 50px;">
+          <div class="vl-node" id="vl-mfa-user" style="display:flex; flex-direction:column; align-items:center; gap: 6px;"><i class="fa-solid fa-user-gear" style="font-size: 32px; color: var(--primary);"></i><span style="font-size: 11px;">Browser Client</span></div>
+          <div class="vl-wire" style="position: absolute; left: 110px; right: 110px; height: 2px; border-top: 2px dashed rgba(255,255,255,0.15); z-index: 1;"></div>
+          
+          <div class="vl-node" id="vl-mfa-server" style="display:flex; flex-direction:column; align-items:center; gap: 6px;"><i class="fa-solid fa-server" style="font-size: 32px; color: var(--success);"></i><span style="font-size: 11px;">Auth Gateway Server</span></div>
+          
+          <!-- Animated phone indicator (if OTP) -->
+          <div id="vl-mfa-phone" class="hidden" style="position: absolute; left: 160px; bottom: 30px; display:flex; flex-direction:column; align-items:center; z-index: 3;"><i class="fa-solid fa-mobile-screen-button" style="font-size: 26px; color: var(--warning);"></i><span style="font-size: 9px; font-weight:700; color:var(--warning); margin-top:4px;">OTP: 482 915</span></div>
+
+          <!-- Animated Biometric scanner (if Bio) -->
+          <div id="vl-mfa-scanner" class="hidden" style="position: absolute; left: 160px; bottom: 30px; display:flex; flex-direction:column; align-items:center; z-index: 3;"><i class="fa-solid fa-fingerprint" style="font-size: 26px; color: var(--primary);"></i><span style="font-size: 9px; font-weight:700; color:var(--primary); margin-top:4px;">Scanning...</span></div>
+
+          <!-- Animated Token/Response Packet -->
+          <div id="vl-mfa-packet" class="hidden" style="position: absolute; left: 110px; top: calc(50% - 15px); width: 30px; height: 30px; border-radius: 50%; background: var(--primary); display:flex; align-items:center; justify-content:center; font-size:10px; font-weight:700; color:#fff; z-index: 4;">PASS</div>
+          
+          <!-- Result status overlay -->
+          <div id="vl-mfa-status" class="hidden" style="position: absolute; left: calc(50% - 60px); top: 30px; padding: 6px 16px; border-radius: 20px; border: 1px solid var(--success); background: rgba(16, 185, 129, 0.15); color: var(--success); font-weight:700; font-size: 12px; text-transform:uppercase; z-index: 5;"><i class="fa-solid fa-circle-check"></i> Auth Granted</div>
+        </div>
+
+        <div class="vl-explanation-box card glass" style="margin-top: 16px; padding: 14px;">
+          <h4 style="margin: 0 0 6px; font-size: 13.5px; color: var(--primary);"><i class="fa-solid fa-circle-question"></i> Authentication Factor Logic</h4>
+          <p id="vl-mfa-explanation" style="margin: 0; font-size: 12.5px; color: var(--text-muted); line-height: 1.6;">Choose an authentication factor combination and click 'Authenticate' to run the verification process.</p>
+        </div>
+      </div>
+
+      <!-- SIMULATOR 4: BCP vs DRP Timeline Lifecycle -->
+      <div id="vl-bcp-drp" class="card glass vl-card hidden">
+        <div class="vl-controls" style="display: flex; gap: 14px; margin-bottom: 20px; flex-wrap: wrap; align-items: center; border-bottom: 1px solid var(--card-border); padding-bottom: 14px;">
+          <button class="btn btn-primary" id="vl-bcp-btn" style="padding: 10px 22px; font-weight: 600;"><i class="fa-solid fa-fire"></i> Trigger Disaster Event</button>
+          <div style="font-size: 12px; color: var(--text-muted); margin-left: 20px;">
+            Watch BCP Hot Site operations run concurrently while DRP rebuilds primary databases.
+          </div>
+        </div>
+
+        <div class="vl-board" id="vl-bcp-board" style="position: relative; height: 350px; background: rgba(15, 23, 42, 0.4); border-radius: 12px; border: 1px solid var(--card-border); overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; padding: 20px 40px; box-sizing: border-box;">
+          <!-- Top Row: Primary Site and Hot Site -->
+          <div style="display:flex; justify-content:space-between; width:100%; align-items:center; flex-grow: 1;">
+            <div class="vl-node" id="vl-bcp-primary" style="display:flex; flex-direction:column; align-items:center; gap:4px; z-index:2;"><i class="fa-solid fa-building" style="font-size: 28px; color: var(--success);"></i><span style="font-size: 10px;">Primary Site (Datacenter)</span></div>
+            
+            <div id="vl-bcp-fire" class="hidden" style="position: absolute; left: 40px; top: 20px; font-size: 32px; color: var(--danger); z-index: 3;"><i class="fa-solid fa-fire-flame-curved"></i></div>
+
+            <!-- BCP Hot Site Node -->
+            <div class="vl-node" id="vl-bcp-hot" style="display:flex; flex-direction:column; align-items:center; gap:4px; z-index:2; opacity: 0.35;"><i class="fa-solid fa-hotel" style="font-size: 28px; color: var(--warning);"></i><span style="font-size: 10px;">BCP Hot Site (Alternate)</span></div>
+          </div>
+
+          <!-- Bottom: Timeline bar -->
+          <div style="width: 100%; border-top: 1px solid var(--card-border); padding-top: 14px; position: relative;">
+            <div style="display:flex; justify-content:space-between; font-size:10px; color:var(--text-muted); margin-bottom: 6px;">
+              <span>Disaster (T=0)</span>
+              <span id="vl-bcp-rto-lbl" class="hidden" style="color:var(--warning); font-weight:700;">RTO Met (Downtime End)</span>
+              <span id="vl-bcp-wrt-lbl" class="hidden" style="color:var(--primary); font-weight:700;">WRT Met (Fully Restored)</span>
+              <span style="color:var(--danger); font-weight:700;">MTD Limit</span>
+            </div>
+            
+            <!-- Progress Line Bar -->
+            <div style="width:100%; height:8px; background:rgba(255,255,255,0.06); border-radius:4px; position:relative; overflow:hidden;">
+              <div id="vl-bcp-timeline-fill" style="position:absolute; left:0; top:0; height:100%; width:0%; background:var(--primary); transition: width 0.1s linear;"></div>
+              
+              <!-- RTO limit marker -->
+              <div style="position:absolute; left: 50%; top:0; width:2px; height:100%; background:var(--warning);"></div>
+              <!-- MTD limit marker -->
+              <div style="position:absolute; left: 85%; top:0; width:2px; height:100%; background:var(--danger);"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="vl-explanation-box card glass" style="margin-top: 16px; padding: 14px;">
+          <h4 style="margin: 0 0 6px; font-size: 13.5px; color: var(--primary);"><i class="fa-solid fa-circle-question"></i> BCP vs DRP Timeline Parameters</h4>
+          <p id="vl-bcp-explanation" style="margin: 0; font-size: 12.5px; color: var(--text-muted); line-height: 1.6;">Click 'Trigger Disaster Event' to watch the continuity timeline and see how BCP and DRP coordinate.</p>
         </div>
       </div>
     </section>
