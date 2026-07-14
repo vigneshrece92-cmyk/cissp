@@ -2582,12 +2582,16 @@ function setupEventListeners() {
       certmikeWrapper?.classList.add("hidden");
       if (pdfDoc) {
         renderBookPage(bookPageNum);
+      } else {
+        initBookReader();
       }
     } else if (val === "certmike") {
       conceptWrapper?.classList.add("hidden");
       certmikeWrapper?.classList.remove("hidden");
       if (certmikePdfDoc) {
         renderCertMikePage(certmikePageNum);
+      } else {
+        initCertMikeReader();
       }
     }
   });

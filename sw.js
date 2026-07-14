@@ -1,9 +1,9 @@
-const CACHE_NAME = 'cissp-exampro-v4.6'; // Bump version to bust old caches
+const CACHE_NAME = 'cissp-exampro-v4.7'; // Bump version to bust old caches
 const CORE_ASSETS = [
   '/',
   '/index.html',
-  '/styles.css?v=5.5',
-  '/app.js?v=4.6',
+  '/styles.css?v=5.6',
+  '/app.js?v=4.7',
   '/questions.js?v=2.0',
   '/cheatsheet_data.js?v=2.2',
   '/domain_content.js?v=1.0',
@@ -49,12 +49,11 @@ self.addEventListener('fetch', event => {
   if (event.request.method !== 'GET') return;
   if (url.protocol === 'chrome-extension:') return;
   
-  // Skip API calls (visitor counter, google auth) - always network
-  if (url.hostname.includes('counterapi.dev') || 
-      url.hostname.includes('accounts.google.com') ||
-      (url.hostname.includes('googleapis.com') && url.pathname.includes('gsi'))) {
+  // Skip PDF guides (which are named with .txt extensions to bypass IDM interception)
+  if (url.pathname.endsWith('.txt')) {
     return;
   }
+
 
   // Network-first for JS files (to always get updated question banks and app logic)
   if (url.pathname.endsWith('.js')) {
