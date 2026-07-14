@@ -3561,6 +3561,29 @@ let pdfDoc = null,
     bookCanvas = document.getElementById('book-canvas'),
     bookCtx = bookCanvas ? bookCanvas.getContext('2d') : null;
 
+function updatePdfProgress(progressId, overlayId, progress) {
+  const progressEl = document.getElementById(progressId);
+  if (!progressEl) return;
+  if (progress.total > 0) {
+    const percent = Math.round((progress.loaded / progress.total) * 100);
+    progressEl.innerText = `${percent}%`;
+  } else {
+    progressEl.innerText = `${Math.round(progress.loaded / 1024)} KB loaded`;
+  }
+}
+
+function hidePdfLoader(overlayId) {
+  const overlay = document.getElementById(overlayId);
+  if (overlay) overlay.classList.add("hidden");
+}
+
+function showPdfLoader(overlayId, progressId) {
+  const overlay = document.getElementById(overlayId);
+  if (overlay) overlay.classList.remove("hidden");
+  const progressEl = document.getElementById(progressId);
+  if (progressEl) progressEl.innerText = "0%";
+}
+
 let bookReaderLoadingStarted = false;
 function initBookReader() {
   if (!bookCanvas) return;
@@ -3573,7 +3596,15 @@ function initBookReader() {
   // Load PDF content using .txt extension to bypass IDM interception
   const pdfUrl = 'cissp_concept_guide.txt';
 
-  pdfjsLib.getDocument(pdfUrl).promise.then(pdfDoc_ => {
+  showPdfLoader('book-loading-overlay', 'book-loading-progress');
+
+  const loadingTask = pdfjsLib.getDocument(pdfUrl);
+  loadingTask.onProgress = function (progress) {
+    updatePdfProgress('book-loading-progress', 'book-loading-overlay', progress);
+  };
+
+  loadingTask.promise.then(pdfDoc_ => {
+    hidePdfLoader('book-loading-overlay');
     pdfDoc = pdfDoc_;
     document.getElementById('book-page-count').innerText = pdfDoc.numPages;
 
@@ -3591,6 +3622,7 @@ function initBookReader() {
     document.getElementById('book-page-num').addEventListener('change', changeBookPageInput);
     document.getElementById('book-fullscreen-btn').addEventListener('click', () => toggleReaderFullscreen('concept-reader-wrapper'));
   }).catch(error => {
+    hidePdfLoader('book-loading-overlay');
     console.warn('[Reader] PDF.js reader failed. Loading fallback.', error);
     const alertSpan = document.querySelector('#book-fallback-container .alert-box span');
     if (alertSpan) {
@@ -3947,7 +3979,15 @@ function initCertMikeReader() {
 
   const pdfUrl = 'certmike_cheat_sheet.txt';
 
-  pdfjsLib.getDocument(pdfUrl).promise.then(pdfDoc_ => {
+  showPdfLoader('certmike-loading-overlay', 'certmike-loading-progress');
+
+  const loadingTask = pdfjsLib.getDocument(pdfUrl);
+  loadingTask.onProgress = function (progress) {
+    updatePdfProgress('certmike-loading-progress', 'certmike-loading-overlay', progress);
+  };
+
+  loadingTask.promise.then(pdfDoc_ => {
+    hidePdfLoader('certmike-loading-overlay');
     certmikePdfDoc = pdfDoc_;
     document.getElementById('certmike-page-count').innerText = certmikePdfDoc.numPages;
 
@@ -3960,6 +4000,7 @@ function initCertMikeReader() {
     document.getElementById('certmike-next-btn')?.addEventListener('click', nextCertMikePage);
     document.getElementById('certmike-fullscreen-btn')?.addEventListener('click', () => toggleReaderFullscreen('certmike-reader-wrapper'));
   }).catch(error => {
+    hidePdfLoader('certmike-loading-overlay');
     console.warn('[CertMike] PDF reader failed. Loading fallback.', error);
     activateCertMikeFallback(error);
   });
@@ -4045,7 +4086,15 @@ function initMindMapsReader() {
 
   const pdfUrl = 'matheus_mindmaps.txt';
 
-  pdfjsLib.getDocument(pdfUrl).promise.then(pdfDoc_ => {
+  showPdfLoader('mindmaps-loading-overlay', 'mindmaps-loading-progress');
+
+  const loadingTask = pdfjsLib.getDocument(pdfUrl);
+  loadingTask.onProgress = function (progress) {
+    updatePdfProgress('mindmaps-loading-progress', 'mindmaps-loading-overlay', progress);
+  };
+
+  loadingTask.promise.then(pdfDoc_ => {
+    hidePdfLoader('mindmaps-loading-overlay');
     mindmapsPdfDoc = pdfDoc_;
     
     if (STATE.activeTab === 'mindmaps') {
@@ -4063,6 +4112,7 @@ function initMindMapsReader() {
       }
     });
   }).catch(error => {
+    hidePdfLoader('mindmaps-loading-overlay');
     console.warn('[MindMaps] PDF reader failed. Loading fallback.', error);
     activateMindMapsFallback(error);
   });

@@ -1,9 +1,9 @@
-const CACHE_NAME = 'cissp-exampro-v4.5'; // Bump version to bust old caches
+const CACHE_NAME = 'cissp-exampro-v4.6'; // Bump version to bust old caches
 const CORE_ASSETS = [
   '/',
   '/index.html',
-  '/styles.css?v=5.4',
-  '/app.js?v=4.5',
+  '/styles.css?v=5.5',
+  '/app.js?v=4.6',
   '/questions.js?v=2.0',
   '/cheatsheet_data.js?v=2.2',
   '/domain_content.js?v=1.0',

@@ -64,7 +64,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="styles.css?v=5.4">
+  <link rel="stylesheet" href="styles.css?v=5.5">
   <!-- PDF.js Ebook Reader Library (Deferred for performance) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js" defer></script>
   <!-- Google Identity Services (GIS) for Google Sign-In -->
@@ -857,7 +857,13 @@
             <button class="btn btn-secondary btn-sm" id="book-fullscreen-btn" title="Toggle Full Screen"><i class="fa-solid fa-expand"></i> Full Screen</button>
           </div>
         </div>
-        <div class="card glass book-viewport-card" style="height: calc(100vh - 200px); display: flex; justify-content: center; align-items: flex-start; overflow: auto; padding: 14px; border-radius: 16px;">
+        <div class="card glass book-viewport-card" style="position: relative; height: calc(100vh - 200px); display: flex; justify-content: center; align-items: flex-start; overflow: auto; padding: 14px; border-radius: 16px;">
+          <!-- Loading Overlay -->
+          <div id="book-loading-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(15, 23, 42, 0.85); z-index: 10; border-radius: 16px;">
+            <i class="fa-solid fa-spinner fa-spin" style="font-size: 36px; color: var(--primary); margin-bottom: 16px;"></i>
+            <h4 style="margin: 0 0 8px; color: #fff; font-size: 15px;">Loading Concept Guide...</h4>
+            <p id="book-loading-progress" style="margin: 0; font-size: 14px; color: var(--text-muted); font-weight: 700;">0%</p>
+          </div>
           <canvas id="book-canvas" style="box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4); background: #fff; display: block; border-radius: 4px; max-width: 100%;"></canvas>
           <div id="book-fallback-container" class="hidden" style="width: 100%; height: 100%; display: flex; flex-direction: column;">
             <div class="alert-box" style="background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.2); padding: 12px; border-radius: 8px; font-size: 13px; color: var(--warning); margin-bottom: 12px; display: flex; align-items: center; gap: 10px;">
@@ -879,7 +885,13 @@
             <button class="btn btn-secondary btn-sm" id="certmike-fullscreen-btn" title="Toggle Full Screen"><i class="fa-solid fa-expand"></i> Full Screen</button>
           </div>
         </div>
-        <div class="reader-viewport card glass" style="display: flex; justify-content: center; align-items: center; padding: 14px; overflow: auto; min-height: 550px; background: rgba(30, 41, 59, 0.3); border-color: rgba(255,255,255,0.06); border-radius: 16px; height: calc(100vh - 200px);">
+        <div class="reader-viewport card glass" style="position: relative; display: flex; justify-content: center; align-items: center; padding: 14px; overflow: auto; min-height: 550px; background: rgba(30, 41, 59, 0.3); border-color: rgba(255,255,255,0.06); border-radius: 16px; height: calc(100vh - 200px);">
+          <!-- Loading Overlay -->
+          <div id="certmike-loading-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(15, 23, 42, 0.85); z-index: 10; border-radius: 16px;">
+            <i class="fa-solid fa-spinner fa-spin" style="font-size: 36px; color: var(--primary); margin-bottom: 16px;"></i>
+            <h4 style="margin: 0 0 8px; color: #fff; font-size: 15px;">Loading CertMike Guide...</h4>
+            <p id="certmike-loading-progress" style="margin: 0; font-size: 14px; color: var(--text-muted); font-weight: 700;">0%</p>
+          </div>
           <canvas id="certmike-canvas" style="box-shadow: 0 8px 32px rgba(0,0,0,0.6); max-width: 100%; border-radius: 8px; display: block; border: 1px solid rgba(255,255,255,0.08);"></canvas>
           <div id="certmike-fallback-container" class="hidden" style="text-align: center; padding: 40px; color: var(--text-muted);">
             <i class="fa-solid fa-circle-exclamation" style="font-size: 40px; color: var(--warning); margin-bottom: 15px; display: block;"></i>
@@ -928,7 +940,13 @@
           </div>
         </div>
         
-        <div class="reader-viewport card glass" style="display: flex; justify-content: center; align-items: center; padding: 20px; overflow: auto; min-height: 600px; background: rgba(30, 41, 59, 0.3); border-color: rgba(255,255,255,0.06); border-radius: 16px;">
+        <div class="reader-viewport card glass" style="position: relative; display: flex; justify-content: center; align-items: center; padding: 20px; overflow: auto; min-height: 600px; background: rgba(30, 41, 59, 0.3); border-color: rgba(255,255,255,0.06); border-radius: 16px;">
+          <!-- Loading Overlay -->
+          <div id="mindmaps-loading-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(15, 23, 42, 0.85); z-index: 10; border-radius: 16px;">
+            <i class="fa-solid fa-spinner fa-spin" style="font-size: 36px; color: var(--primary); margin-bottom: 16px;"></i>
+            <h4 style="margin: 0 0 8px; color: #fff; font-size: 15px;">Loading Mind Maps...</h4>
+            <p id="mindmaps-loading-progress" style="margin: 0; font-size: 14px; color: var(--text-muted); font-weight: 700;">0%</p>
+          </div>
           <canvas id="mindmaps-canvas" style="box-shadow: 0 8px 32px rgba(0,0,0,0.6); max-width: 100%; border-radius: 8px; display: block; border: 1px solid rgba(255,255,255,0.08);"></canvas>
           <div id="mindmaps-fallback-container" class="hidden" style="text-align: center; padding: 40px; color: var(--text-muted);">
             <i class="fa-solid fa-circle-exclamation" style="font-size: 40px; color: var(--warning); margin-bottom: 15px; display: block;"></i>
@@ -1888,7 +1906,7 @@
   <!-- Expanded Domain Content (Deferred for performance) -->
   <script src="domain_content.js?v=1.0" defer></script>
   <!-- Application Logic (Deferred for performance) -->
-  <script src="app.js?v=4.5" defer></script>
+  <script src="app.js?v=4.6" defer></script>
   <!-- Auto Cache-Buster & SW Cleanup -->
   <script>
     if ('serviceWorker' in navigator) {
