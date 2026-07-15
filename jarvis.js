@@ -604,3 +604,143 @@ function buildJarvisUI() {
 
 // ── Init ──────────────────────────────────────────────────────────
 document.addEventListener("DOMContentLoaded", buildJarvisUI);
+
+// -- Init ----------------------------------------------------------
+// (Updated: also init full-page tab)
+
+// -------------------------------------------------------------------
+// FULL-PAGE JARVIS TAB FUNCTIONS (targets #jarvis-fp-messages)
+// -------------------------------------------------------------------
+
+let fpLoading = false;
+let fpVoiceListening = false;
+let fpVoiceRec = null;
+
+function fpEl(id) { return document.getElementById(id); }
+function fpScrollBottom() {
+  const c = fpEl("jarvis-fp-messages");
+  if (c) setTimeout(() => { c.scrollTop = c.scrollHeight; }, 30);
+}
+function fpAppendMsg(role, text) {
+  const c = fpEl("jarvis-fp-messages");
+  if (!c) return;
+  const isUser = role === "user";
+  const div = document.createElement("div");
+  div.className = `msg ${isUser ? "user" : "jarvis-msg"}`;
+  div.innerHTML = `<div class="msg-avatar"><i class="fa-solid fa-${isUser ? "user" : "atom"}"></i></div><div class="msg-bubble">${renderMarkdown(text)}</div>`;
+  c.appendChild(div);
+  fpScrollBottom();
+}
+function fpCreateStreamBubble() {
+  const c = fpEl("jarvis-fp-messages");
+  const id = "fp-stream-" + Date.now();
+  const div = document.createElement("div");
+  div.className = "msg jarvis-msg";
+  div.innerHTML = `<div class="msg-avatar"><i class="fa-solid fa-atom"></i></div><div class="msg-bubble" id="${id}"></div>`;
+  c.appendChild(div); fpScrollBottom();
+  return id;
+}
+function fpShowTyping() {
+  const id = "fp-typing-" + Date.now();
+  const c = fpEl("jarvis-fp-messages");
+  if (!c) return id;
+  const div = document.createElement("div");
+  div.id = id; div.className = "jarvis-typing";
+  div.innerHTML = `<div class="msg-avatar" style="width:36px;height:36px;border-radius:50%;background:radial-gradient(circle,#a5f3fc,#06b6d4);display:flex;align-items:center;justify-content:center;font-size:15px;color:#fff;"><i class="fa-solid fa-atom"></i></div><div class="typing-dots"><span></span><span></span><span></span></div><span style="font-size:12px;color:rgba(165,243,252,0.6);">JARVIS is thinking...</span>`;
+  c.appendChild(div); fpScrollBottom();
+  return id;
+}
+function fpRemoveTyping(id) { const el = fpEl(id); if (el) el.remove(); }
+function fpSetLoading(v) { fpLoading = v; const btn = fpEl("jarvis-fp-send-btn"); if (btn) btn.disabled = v; }
+function fpShowWelcome() {
+  setTimeout(() => {
+    const c = fpEl("jarvis-fp-messages");
+    if (!c || c.children.length > 0) return;
+    fpAppendMsg("jarvis-msg", `Hey! ?? Welcome to **JARVIS** � your full-screen CISSP study companion!\n\nI have all **8 CISSP domains** loaded. Ask me anything, enable **?? Manager Mode** for CISO perspective, or hit **?? Quiz Me** to test yourself!\n\n**Pro tip yaar:** CISSP always wants the *managerial* answer, not the most technical one.\n\nToh shuru karte hain? ??`);
+  }, 400);
+}
+function fpSend(text) {
+  const input = fpEl("jarvis-fp-input");
+  if (input) { input.value = text; fpResize(input); }
+  fpSendMsg();
+}
+async function fpSendMsg() {
+  const input = fpEl("jarvis-fp-input");
+  if (!input) return;
+  const text = input.value.trim();
+  if (!text || fpLoading) return;
+  input.value = ""; input.style.height = "46px";
+  fpAppendMsg("user", text);
+  jarvisSessionHistory.push({ role: "user", content: text });
+  const typId = fpShowTyping();
+  fpSetLoading(true);
+  let fullReply = "";
+  try {
+    const messages = [{ role: "system", content: JARVIS_SYSTEM }, ...jarvisSessionHistory.slice(-8), { role: "user", content: buildJarvisPrompt(text) }];
+    fpRemoveTyping(typId);
+    const bubbleId = fpCreateStreamBubble();
+    const el = fpEl(bubbleId);
+    for await (const token of streamGroq(messages)) {
+      fullReply += token;
+      el.innerHTML = renderMarkdown(fullReply);
+      fpScrollBottom();
+    }
+    jarvisSessionHistory.push({ role: "assistant", content: fullReply });
+  } catch (e) {
+    fpRemoveTyping(typId);
+    fpAppendMsg("jarvis-msg", `?? **Error:** ${e.message}`);
+  }
+  fpSetLoading(false);
+}
+function fpClear() {
+  const c = fpEl("jarvis-fp-messages");
+  if (c) c.innerHTML = "";
+  jarvisSessionHistory = [];
+  fpShowWelcome();
+}
+async function fpQuiz() {
+  const domainEl = fpEl("jarvis-fp-domain");
+  const domain = domainEl ? domainEl.value || "Security and Risk Management" : "Security and Risk Management";
+  fpAppendMsg("user", `?? Quiz me on: ${domain}`);
+  const typId = fpShowTyping(); fpSetLoading(true);
+  try {
+    const prompt = `Generate ONE CISSP multiple choice question about: "${domain}". Output ONLY valid JSON:\n{"question":"...","options":{"A":"...","B":"...","C":"...","D":"..."},"correct":"A","explanation":"2-3 simple sentences.","tip":"One memory tip."}`;
+    const resp = await fetch(JARVIS_API_ENDPOINT, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ messages: [{ role: "system", content: "Generate CISSP questions as JSON only." }, { role: "user", content: prompt }], max_tokens: 500, temperature: 0.85 }) });
+    const data = await resp.json();
+    const raw = (data.choices?.[0]?.message?.content || "").trim();
+    const match = raw.match(/\{[\s\S]*\}/);
+    if (!match) throw new Error("No JSON in response");
+    fpRemoveTyping(typId);
+    fpRenderQuiz(JSON.parse(match[0]));
+  } catch (e) { fpRemoveTyping(typId); fpAppendMsg("jarvis-msg", `?? Quiz failed: ${e.message}`); }
+  fpSetLoading(false);
+}
+function fpRenderQuiz(quiz) {
+  const c = fpEl("jarvis-fp-messages"); if (!c) return;
+  const uid = "fp-q-" + Date.now();
+  const div = document.createElement("div"); div.className = "msg jarvis-msg";
+  const opts = Object.keys(quiz.options).map(k => `<button class="quiz-option-btn" id="${uid}-${k}" onclick="fpCheckAnswer('${uid}','${k}','${quiz.correct}','${encodeURIComponent(quiz.explanation)}','${encodeURIComponent(quiz.tip||'')}')"><strong>${k}.</strong> ${quiz.options[k]}</button>`).join("");
+  div.innerHTML = `<div class="msg-avatar"><i class="fa-solid fa-atom"></i></div><div class="jarvis-quiz-card" style="max-width:80%"><div class="quiz-question">?? ${quiz.question}</div><div class="quiz-options">${opts}</div><div id="${uid}-result"></div></div>`;
+  c.appendChild(div); fpScrollBottom();
+}
+function fpCheckAnswer(uid, sel, correct, expEnc, tipEnc) {
+  ["A","B","C","D"].forEach(k => { const b=fpEl(`${uid}-${k}`); if(!b) return; b.disabled=true; if(k===correct) b.classList.add("correct"); else if(k===sel) b.classList.add("wrong"); });
+  const res = fpEl(`${uid}-result`);
+  if (res) res.innerHTML = `<div class="quiz-explanation">${sel===correct?"? <strong>Correct!</strong>":"? <strong>Wrong! Correct: "+correct+"</strong>"}<br><br>${decodeURIComponent(expEnc)}${decodeURIComponent(tipEnc)?`<br><br>?? <em>${decodeURIComponent(tipEnc)}</em>`:""}</div><button class="quick-chip" style="margin-top:12px;" onclick="fpQuiz()">Next ?</button>`;
+  fpScrollBottom();
+}
+function handleFpKey(e) { if (e.key==="Enter" && !e.shiftKey) { e.preventDefault(); fpSendMsg(); } }
+function fpResize(el) { el.style.height="46px"; el.style.height=Math.min(el.scrollHeight,140)+"px"; }
+function fpVoice() {
+  if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) { alert("Voice not supported. Use Chrome or Edge."); return; }
+  if (fpVoiceListening) { if(fpVoiceRec) fpVoiceRec.stop(); return; }
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  fpVoiceRec = new SR(); fpVoiceRec.lang="en-IN"; fpVoiceRec.continuous=false; fpVoiceRec.interimResults=true;
+  fpVoiceRec.onstart = () => { fpVoiceListening=true; const btn=fpEl("jarvis-fp-voice-btn"),ic=fpEl("jarvis-fp-mic-icon"); if(btn) btn.classList.add("listening"); if(ic) ic.className="fa-solid fa-circle-stop"; const inp=fpEl("jarvis-fp-input"); if(inp) inp.placeholder="?? Listening..."; };
+  fpVoiceRec.onresult = (e) => { const t=Array.from(e.results).map(r=>r[0].transcript).join(""); const inp=fpEl("jarvis-fp-input"); if(inp){inp.value=t;fpResize(inp);} };
+  fpVoiceRec.onend = () => { fpVoiceListening=false; const btn=fpEl("jarvis-fp-voice-btn"),ic=fpEl("jarvis-fp-mic-icon"); if(btn) btn.classList.remove("listening"); if(ic) ic.className="fa-solid fa-microphone"; const inp=fpEl("jarvis-fp-input"); if(inp){inp.placeholder="Ask JARVIS anything about CISSP..."; if(inp.value.trim()) fpSendMsg();} };
+  fpVoiceRec.onerror = () => { fpVoiceListening=false; const btn=fpEl("jarvis-fp-voice-btn"),ic=fpEl("jarvis-fp-mic-icon"); if(btn) btn.classList.remove("listening"); if(ic) ic.className="fa-solid fa-microphone"; };
+  fpVoiceRec.start();
+}
+// Also init fullpage welcome when the tab is first opened
+document.addEventListener("DOMContentLoaded", fpShowWelcome);

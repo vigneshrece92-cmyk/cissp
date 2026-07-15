@@ -101,7 +101,7 @@
       <li data-tab="memory"><i class="fa-solid fa-brain"></i><span>Memory Palace</span></li>
       <li data-tab="visual-lab"><i class="fa-solid fa-flask"></i><span>Visual Lab</span></li>
       <li data-tab="flashcards"><i class="fa-solid fa-clone"></i><span>Flashcards</span></li>
-      <li data-tab="planner"><i class="fa-solid fa-calendar-days"></i><span>Study Planner</span></li>
+      <li data-tab="planner"><i class="fa-solid fa-atom" style="color:#06b6d4;"></i><span style="color:#06b6d4;font-weight:700;">JARVIS AI</span></li>
     </ul>
     <div class="sidebar-footer" id="auth-header-container" style="display: flex; align-items: center; justify-content: flex-end;">
       <button class="theme-toggle-btn" id="theme-toggle-btn" title="Toggle Light/Dark Theme">
@@ -1356,43 +1356,88 @@
     </section>
 
     <!-- ======================================================= -->
-    <!-- 6. STUDY PLANNER TAB -->
+    <!-- 6. JARVIS AI FULL PAGE TAB -->
     <!-- ======================================================= -->
     <section id="planner" class="tab-content">
-      <header class="tab-header">
-        <div>
-          <h2>Custom Study Planner & Logger</h2>
-          <p>Plan sub-topics, log study hours, and check off milestones. Persists to browser storage.</p>
-        </div>
-      </header>
+      <div class="jarvis-fullpage-wrap">
 
-      <div class="planner-grid">
-        <!-- Log Hours Card -->
-        <div class="card glass logger-card">
-          <h3><i class="fa-solid fa-pen-nib"></i> Log Today's Study Session</h3>
-          <div class="form-group">
-            <label>Hours Spent</label>
-            <input type="number" id="log-hours" class="form-control" placeholder="e.g. 2.5" step="0.5" min="0.5">
+        <!-- Left Column: Controls -->
+        <div class="jarvis-fullpage-sidebar">
+          <div class="jarvis-fp-header">
+            <div class="jarvis-fp-orb">
+              <i class="fa-solid fa-atom"></i>
+            </div>
+            <div>
+              <div class="jarvis-fp-title">J.A.R.V.I.S</div>
+              <div class="jarvis-fp-subtitle"><span class="jarvis-status-dot"></span> Study Mode Active</div>
+            </div>
           </div>
-          <div class="form-group">
-            <label>Notes / Topic Studied</label>
-            <textarea id="log-notes" class="form-control" rows="3" placeholder="Reviewed cryptographic ciphers..."></textarea>
-          </div>
-          <button class="btn btn-primary" id="save-log-btn">Save Log Entry</button>
 
-          <h4 class="session-logs-title">Recent Study Sessions</h4>
-          <ul class="session-logs" id="session-logs-list">
-            <!-- Dynamically populated via app.js -->
-          </ul>
+          <div class="jarvis-fp-section-label">Focus Domain</div>
+          <select class="jarvis-fp-select" id="jarvis-fp-domain" onchange="jarvisDomain=this.value; document.getElementById('jarvis-domain-select') && (document.getElementById('jarvis-domain-select').value=this.value)">
+            <option value="">All 8 Domains</option>
+            <option value="Domain 1: Security and Risk Management">D1: Risk Management</option>
+            <option value="Domain 2: Asset Security">D2: Asset Security</option>
+            <option value="Domain 3: Security Architecture and Engineering">D3: Security Architecture</option>
+            <option value="Domain 4: Communication and Network Security">D4: Network Security</option>
+            <option value="Domain 5: Identity and Access Management">D5: IAM</option>
+            <option value="Domain 6: Security Assessment and Testing">D6: Assessment &amp; Testing</option>
+            <option value="Domain 7: Security Operations">D7: Security Operations</option>
+            <option value="Domain 8: Software Development Security">D8: Software Security</option>
+          </select>
+
+          <label class="jarvis-fp-toggle" id="jarvis-fp-manager-label">
+            <input type="checkbox" id="jarvis-fp-manager-chk" onchange="toggleManagerMode(this.checked); document.getElementById('manager-mode-chk') && (document.getElementById('manager-mode-chk').checked=this.checked)">
+            <span>🎯 Manager Mode</span>
+          </label>
+          <p class="jarvis-fp-toggle-hint">Think like a CISO, not an engineer</p>
+
+          <div class="jarvis-fp-section-label" style="margin-top:1.2rem;">Quick Ask</div>
+          <div class="jarvis-fp-chips">
+            <button class="jarvis-fp-chip" onclick="fpSend('What is the CIA triad? Give me a simple Indian example.')">CIA Triad</button>
+            <button class="jarvis-fp-chip" onclick="fpSend('Explain risk, threat, and vulnerability with examples.')">Risk vs Threat</button>
+            <button class="jarvis-fp-chip" onclick="fpSend('What is the difference between BCP and DRP?')">BCP vs DRP</button>
+            <button class="jarvis-fp-chip" onclick="fpSend('Explain need-to-know vs least privilege.')">Least Privilege</button>
+            <button class="jarvis-fp-chip" onclick="fpSend('What are the access control models MAC, DAC, RBAC?')">Access Control</button>
+            <button class="jarvis-fp-chip" onclick="fpSend('Explain Bell-LaPadula model simply.')">Bell-LaPadula</button>
+            <button class="jarvis-fp-chip" onclick="fpSend('What is PKI and how do digital certificates work?')">PKI &amp; Certs</button>
+            <button class="jarvis-fp-chip" onclick="fpSend('How does Kerberos authentication work?')">Kerberos</button>
+            <button class="jarvis-fp-chip" onclick="fpSend('What is the incident response lifecycle?')">Incident Response</button>
+            <button class="jarvis-fp-chip" onclick="fpSend('How should I think like a manager in the CISSP exam?')">Exam Mindset 🎯</button>
+          </div>
+
+          <button class="jarvis-fp-quiz-btn" onclick="fpQuiz()">
+            <i class="fa-solid fa-brain"></i> Quiz Me on This Domain
+          </button>
+
+          <button class="jarvis-fp-clear-btn" onclick="fpClear()">
+            <i class="fa-solid fa-rotate-left"></i> Clear Chat
+          </button>
         </div>
 
-        <!-- Topic Checklists -->
-        <div class="card glass checklist-card">
-          <h3>Progress Tracker Checklist</h3>
-          <div class="checklist-container" id="checklist-topics">
-            <!-- Populated dynamically via app.js -->
+        <!-- Right Column: Chat Area -->
+        <div class="jarvis-fullpage-chat">
+          <div class="jarvis-fp-messages" id="jarvis-fp-messages">
+            <!-- Messages rendered here -->
+          </div>
+
+          <div class="jarvis-fp-input-area">
+            <div class="jarvis-fp-input-row">
+              <button class="jarvis-fp-voice-btn" id="jarvis-fp-voice-btn" onclick="fpVoice()" title="Voice Input">
+                <i class="fa-solid fa-microphone" id="jarvis-fp-mic-icon"></i>
+              </button>
+              <textarea id="jarvis-fp-input"
+                placeholder="Ask JARVIS anything about CISSP — concepts, exam traps, domain questions..."
+                rows="1"
+                onkeydown="handleFpKey(event)"
+                oninput="fpResize(this)"></textarea>
+              <button class="jarvis-fp-send-btn" id="jarvis-fp-send-btn" onclick="fpSendMsg()">
+                <i class="fa-solid fa-paper-plane"></i> Ask JARVIS
+              </button>
+            </div>
           </div>
         </div>
+
       </div>
     </section>
 
