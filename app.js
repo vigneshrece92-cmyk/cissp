@@ -2533,6 +2533,14 @@ function loadFromLocalStorage() {
       FLASHCARDS.push(c);
     }
   });
+
+  // Load and merge custom cheatsheet terms saved from JARVIS conversations
+  const customTerms = JSON.parse(localStorage.getItem("cissp_custom_cheatsheet_terms")) || [];
+  customTerms.forEach(t => {
+    if (!CHEATSHEET_TERMS.some(ct => ct.title.toLowerCase() === t.title.toLowerCase())) {
+      CHEATSHEET_TERMS.push(t);
+    }
+  });
 }
 
 function saveToLocalStorage() {

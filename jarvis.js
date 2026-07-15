@@ -166,7 +166,7 @@ Your personality & style:
 - Use real-world Indian examples when helpful: comparing firewall rules to a housing society security guard, access control to an office ID card, BCP to a generator during power cuts, etc.
 - Structure your answers naturally: 1) Quick simple answer first, 2) A relatable analogy, 3) The CISSP/ISC2 exam angle.
 - Use these markers when relevant:
-  ⚠️ Exam Trap Alert: (for common mistakes candidates make)
+  ⚠� Exam Trap Alert: (for common mistakes candidates make)
   🎯 Think Like a Manager: (when managerial/CISO mindset matters, not technical)
   📚 Key Concept: (for important definitions)
   💡 Quick tip: (for memory tricks)
@@ -241,7 +241,7 @@ function renderMarkdown(text) {
     .replace(/\*\*(.*?)\*\*/g,"<strong>$1</strong>")
     .replace(/\*(.*?)\*/g,"<em>$1</em>")
     .replace(/`(.*?)`/g,"<code>$1</code>")
-    .replace(/⚠️ Exam Trap Alert:(.*?)(?=\n|$)/g,'<div class="jarvis-tag jarvis-tag-red">⚠️ <strong>Exam Trap Alert:</strong>$1</div>')
+    .replace(/⚠� Exam Trap Alert:(.*?)(?=\n|$)/g,'<div class="jarvis-tag jarvis-tag-red">⚠� <strong>Exam Trap Alert:</strong>$1</div>')
     .replace(/🎯 Think Like a Manager:(.*?)(?=\n|$)/g,'<div class="jarvis-tag jarvis-tag-amber">🎯 <strong>Think Like a Manager:</strong>$1</div>')
     .replace(/📚 Key Concept:(.*?)(?=\n|$)/g,'<div class="jarvis-tag jarvis-tag-cyan">📚 <strong>Key Concept:</strong>$1</div>')
     .replace(/💡 Quick tip:(.*?)(?=\n|$)/g,'<div class="jarvis-tag jarvis-tag-green">💡 <strong>Quick tip:</strong>$1</div>')
@@ -253,9 +253,19 @@ function appendMsg(role, text) {
   const isUser = role === "user";
   const div = document.createElement("div");
   div.className = `msg ${isUser ? "user" : "jarvis-msg"}`;
+  
+  let controls = "";
+  if (!isUser && !text.includes("quiz-question")) {
+    controls = `
+      <div class="jarvis-bubble-controls">
+        <button class="jarvis-bubble-btn" onclick="speakMsg(this)" title="Read Aloud"><i class="fa-solid fa-volume-high"></i> Listen</button>
+        <button class="jarvis-bubble-btn" onclick="saveNote(this)" title="Save to Cheat Sheet"><i class="fa-solid fa-floppy-disk"></i> Save Note</button>
+      </div>`;
+  }
+
   div.innerHTML = `
     <div class="msg-avatar"><i class="fa-solid fa-${isUser ? "user" : "atom"}"></i></div>
-    <div class="msg-bubble">${renderMarkdown(text)}</div>`;
+    <div class="msg-bubble">${renderMarkdown(text)}${controls}</div>`;
   c.appendChild(div);
   scrollBottom();
 }
@@ -335,7 +345,7 @@ I've got all 8 CISSP domains loaded in my brain, ready to explain anything in si
 
 Here's what I can do:
 • 💬 **Explain** any CISSP concept simply
-• ⚠️ **Warn you** about common exam traps
+• ⚠� **Warn you** about common exam traps
 • 🎯 **Manager Mode** — think like a CISO, not a techie
 • 🧠 **Quiz Me** button — test yourself on any domain
 • 🎤 **Voice input** — just speak your question!
@@ -378,11 +388,19 @@ async function sendMessage() {
       el.innerHTML = renderMarkdown(fullReply);
       scrollBottom();
     }
+    
+    // Append control buttons on finish
+    const controls = `
+      <div class="jarvis-bubble-controls">
+        <button class="jarvis-bubble-btn" onclick="speakMsg(this)" title="Read Aloud"><i class="fa-solid fa-volume-high"></i> Listen</button>
+        <button class="jarvis-bubble-btn" onclick="saveNote(this)" title="Save to Cheat Sheet"><i class="fa-solid fa-floppy-disk"></i> Save Note</button>
+      </div>`;
+    el.innerHTML += controls;
 
     jarvisSessionHistory.push({ role: "assistant", content: fullReply });
   } catch (e) {
     removeTyping(typId);
-    appendMsg("jarvis-msg", `⚠️ **Error:** ${e.message}\n\nIf this keeps happening, check the browser console for details.`);
+    appendMsg("jarvis-msg", `⚠� **Error:** ${e.message}\n\nIf this keeps happening, check the browser console for details.`);
   }
 
   setLoading(false);
@@ -478,7 +496,7 @@ Output ONLY valid JSON, no markdown:
     renderQuiz(quiz);
   } catch (e) {
     removeTyping(typId);
-    appendMsg("jarvis-msg", `⚠️ Could not generate quiz: ${e.message}`);
+    appendMsg("jarvis-msg", `⚠� Could not generate quiz: ${e.message}`);
   }
   setLoading(false);
 }
@@ -515,7 +533,7 @@ function checkAnswer(sel, correct, expEnc, tipEnc) {
   const tip = decodeURIComponent(tipEnc);
   jEl("quiz-result").innerHTML = `
     <div class="quiz-explanation">
-      ${sel === correct ? "✅ <strong>Correct! Well done!</strong>" : `❌ <strong>Wrong! Correct: ${correct}</strong>`}<br><br>
+      ${sel === correct ? "✅ <strong>Correct! Well done!</strong>" : `� <strong>Wrong! Correct: ${correct}</strong>`}<br><br>
       ${exp}${tip ? `<br><br>💡 <em>${tip}</em>` : ""}
     </div>
     <button class="quick-chip" style="margin-top:10px;" onclick="startQuiz()">Next Question →</button>`;
@@ -627,7 +645,19 @@ function fpAppendMsg(role, text) {
   const isUser = role === "user";
   const div = document.createElement("div");
   div.className = `msg ${isUser ? "user" : "jarvis-msg"}`;
-  div.innerHTML = `<div class="msg-avatar"><i class="fa-solid fa-${isUser ? "user" : "atom"}"></i></div><div class="msg-bubble">${renderMarkdown(text)}</div>`;
+  
+  let controls = "";
+  if (!isUser && !text.includes("quiz-question")) {
+    controls = `
+      <div class="jarvis-bubble-controls">
+        <button class="jarvis-bubble-btn" onclick="speakMsg(this)" title="Read Aloud"><i class="fa-solid fa-volume-high"></i> Listen</button>
+        <button class="jarvis-bubble-btn" onclick="saveNote(this)" title="Save to Cheat Sheet"><i class="fa-solid fa-floppy-disk"></i> Save Note</button>
+      </div>`;
+  }
+
+  div.innerHTML = `
+    <div class="msg-avatar"><i class="fa-solid fa-${isUser ? "user" : "atom"}"></i></div>
+    <div class="msg-bubble">${renderMarkdown(text)}${controls}</div>`;
   c.appendChild(div);
   fpScrollBottom();
 }
@@ -685,6 +715,15 @@ async function fpSendMsg() {
       el.innerHTML = renderMarkdown(fullReply);
       fpScrollBottom();
     }
+    
+    // Append control buttons on finish
+    const controls = `
+      <div class="jarvis-bubble-controls">
+        <button class="jarvis-bubble-btn" onclick="speakMsg(this)" title="Read Aloud"><i class="fa-solid fa-volume-high"></i> Listen</button>
+        <button class="jarvis-bubble-btn" onclick="saveNote(this)" title="Save to Cheat Sheet"><i class="fa-solid fa-floppy-disk"></i> Save Note</button>
+      </div>`;
+    el.innerHTML += controls;
+
     jarvisSessionHistory.push({ role: "assistant", content: fullReply });
   } catch (e) {
     fpRemoveTyping(typId);
@@ -744,3 +783,120 @@ function fpVoice() {
 }
 // Also init fullpage welcome when the tab is first opened
 document.addEventListener("DOMContentLoaded", fpShowWelcome);
+
+
+// 
+// JARVIS UPGRADE FEATURES: TTS, SAVE NOTE, DOUBLE-CLICK LOOKUP
+// 
+
+let currentUtterance = null;
+
+function speakMsg(btn) {
+  if (window.speechSynthesis.speaking) {
+    window.speechSynthesis.cancel();
+    document.querySelectorAll(".jarvis-bubble-btn i.fa-circle-stop").forEach(icon => {
+      icon.className = "fa-solid fa-volume-high";
+    });
+    if (currentUtterance && currentUtterance.btn === btn) {
+      currentUtterance = null;
+      return;
+    }
+  }
+
+  const bubble = btn.closest(".msg-bubble");
+  if (!bubble) return;
+
+  const clone = bubble.cloneNode(true);
+  const controlsEl = clone.querySelector(".jarvis-bubble-controls");
+  if (controlsEl) controlsEl.remove();
+  
+  let text = clone.innerText
+    .replace(/Exam Trap Alert:/gi, "Exam Trap Alert.")
+    .replace(/Think Like a Manager:/gi, "Think Like a Manager.")
+    .replace(/Key Concept:/gi, "Key Concept.")
+    .replace(/Quick tip:/gi, "Quick tip.")
+    .trim();
+
+  if (!text) return;
+
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.lang = "en-IN";
+  
+  const voices = window.speechSynthesis.getVoices();
+  const inVoice = voices.find(v => v.lang.includes("en-IN") || v.lang.includes("en_IN"));
+  if (inVoice) utterance.voice = inVoice;
+
+  const icon = btn.querySelector("i");
+  if (icon) icon.className = "fa-solid fa-circle-stop";
+
+  utterance.onend = () => {
+    if (icon) icon.className = "fa-solid fa-volume-high";
+    currentUtterance = null;
+  };
+  utterance.onerror = () => {
+    if (icon) icon.className = "fa-solid fa-volume-high";
+    currentUtterance = null;
+  };
+
+  currentUtterance = { utterance, btn };
+  window.speechSynthesis.speak(utterance);
+}
+
+function saveNote(btn) {
+  const bubble = btn.closest(".msg-bubble");
+  if (!bubble) return;
+
+  const clone = bubble.cloneNode(true);
+  const controlsEl = clone.querySelector(".jarvis-bubble-controls");
+  if (controlsEl) controlsEl.remove();
+  const rawText = clone.innerText.trim();
+
+  const title = prompt("Enter a title to save this explanation to your Cheat Sheet:", "JARVIS - " + rawText.split(/[\n.]/)[0].substring(0, 30));
+  if (!title) return;
+
+  const newTerm = {
+    title: title,
+    domain: parseInt(jarvisDomain.match(/\d+/) ? jarvisDomain.match(/\d+/)[0] : "1"),
+    tags: ["saved"],
+    formula: "JARVIS Study Note",
+    explanation: rawText,
+    exam_context: "Saved from your JARVIS conversations."
+  };
+
+  const customTerms = JSON.parse(localStorage.getItem("cissp_custom_cheatsheet_terms")) || [];
+  customTerms.push(newTerm);
+  localStorage.setItem("cissp_custom_cheatsheet_terms", JSON.stringify(customTerms));
+
+  if (typeof CHEATSHEET_TERMS !== "undefined") {
+    CHEATSHEET_TERMS.push(newTerm);
+  }
+
+  alert(`Note saved! Go to the "Cheat Sheet" tab to view your saved JARVIS notes.`);
+}
+
+document.addEventListener("dblclick", () => {
+  const selection = window.getSelection().toString().trim();
+  if (selection.length > 2 && selection.length < 100) {
+    const fpTab = document.getElementById("planner");
+    const isFpTabActive = fpTab && fpTab.classList.contains("active");
+
+    if (isFpTabActive) {
+      const inp = document.getElementById("jarvis-fp-input");
+      if (inp) {
+        inp.value = `Explain this: "${selection}"`;
+        if (typeof fpResize === "function") fpResize(inp);
+        if (typeof fpSendMsg === "function") fpSendMsg();
+      }
+    } else {
+      if (!jarvisOpen) {
+        if (typeof toggleJarvis === "function") toggleJarvis();
+      }
+      const inp = document.getElementById("jarvis-input");
+      if (inp) {
+        inp.value = `Explain this: "${selection}"`;
+        if (typeof autoResize === "function") autoResize(inp);
+        if (typeof sendMessage === "function") sendMessage();
+      }
+    }
+  }
+});
