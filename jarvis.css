@@ -1,0 +1,623 @@
+/* ============================================================
+   JARVIS — Arc Reactor Orb + Study Mode Panel
+   Iron Man-inspired floating AI assistant for CISSP ExamPro
+   ============================================================ */
+
+/* ── Arc Reactor Floating Button ─────────────────────────── */
+#jarvis-orb {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 35%, #a5f3fc, #06b6d4 45%, #0e7490 75%, #083344);
+  border: 2px solid rgba(6, 182, 212, 0.6);
+  box-shadow:
+    0 0 0 4px rgba(6, 182, 212, 0.15),
+    0 0 18px rgba(6, 182, 212, 0.5),
+    0 0 40px rgba(6, 182, 212, 0.25),
+    inset 0 0 12px rgba(255, 255, 255, 0.15);
+  cursor: pointer;
+  z-index: 9990;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  animation: orb-pulse 3s ease-in-out infinite;
+}
+
+#jarvis-orb:hover {
+  transform: scale(1.12);
+  box-shadow:
+    0 0 0 6px rgba(6, 182, 212, 0.2),
+    0 0 30px rgba(6, 182, 212, 0.7),
+    0 0 60px rgba(6, 182, 212, 0.35),
+    inset 0 0 18px rgba(255, 255, 255, 0.2);
+}
+
+#jarvis-orb.active {
+  background: radial-gradient(circle at 40% 35%, #fde68a, #f59e0b 45%, #b45309 75%, #451a03);
+  border-color: rgba(245, 158, 11, 0.7);
+  box-shadow:
+    0 0 0 6px rgba(245, 158, 11, 0.2),
+    0 0 30px rgba(245, 158, 11, 0.6),
+    0 0 60px rgba(245, 158, 11, 0.3),
+    inset 0 0 18px rgba(255, 255, 255, 0.15);
+  animation: orb-active 2s ease-in-out infinite;
+}
+
+.jarvis-orb-inner {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle, rgba(255,255,255,0.25), transparent);
+}
+
+.jarvis-orb-inner i {
+  font-size: 18px;
+  color: #fff;
+  filter: drop-shadow(0 0 4px rgba(255,255,255,0.8));
+}
+
+/* Orb tooltip */
+#jarvis-orb::after {
+  content: "Ask JARVIS";
+  position: absolute;
+  right: 74px;
+  background: rgba(6, 182, 212, 0.15);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(6, 182, 212, 0.3);
+  color: #a5f3fc;
+  padding: 5px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s;
+}
+#jarvis-orb:hover::after {
+  opacity: 1;
+}
+
+@keyframes orb-pulse {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(6,182,212,0.15), 0 0 18px rgba(6,182,212,0.5), 0 0 40px rgba(6,182,212,0.25), inset 0 0 12px rgba(255,255,255,0.15); }
+  50% { box-shadow: 0 0 0 8px rgba(6,182,212,0.1), 0 0 28px rgba(6,182,212,0.7), 0 0 60px rgba(6,182,212,0.35), inset 0 0 18px rgba(255,255,255,0.2); }
+}
+@keyframes orb-active {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(245,158,11,0.15), 0 0 20px rgba(245,158,11,0.5), 0 0 40px rgba(245,158,11,0.25), inset 0 0 12px rgba(255,255,255,0.15); }
+  50% { box-shadow: 0 0 0 8px rgba(245,158,11,0.1), 0 0 32px rgba(245,158,11,0.7), 0 0 65px rgba(245,158,11,0.35), inset 0 0 18px rgba(255,255,255,0.2); }
+}
+
+/* ── JARVIS Study Panel ───────────────────────────────────── */
+#jarvis-panel {
+  position: fixed;
+  bottom: 110px;
+  right: 24px;
+  width: 440px;
+  max-width: calc(100vw - 32px);
+  height: 620px;
+  max-height: calc(100vh - 130px);
+  background: rgba(8, 12, 22, 0.92);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(6, 182, 212, 0.25);
+  border-radius: 20px;
+  box-shadow:
+    0 0 0 1px rgba(6, 182, 212, 0.05),
+    0 8px 40px rgba(0, 0, 0, 0.6),
+    0 0 80px rgba(6, 182, 212, 0.08);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 9989;
+  transform: scale(0.9) translateY(20px);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+#jarvis-panel.open {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* Panel Header */
+.jarvis-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  background: linear-gradient(135deg, rgba(6,182,212,0.08), rgba(14,116,144,0.04));
+  border-bottom: 1px solid rgba(6, 182, 212, 0.12);
+  flex-shrink: 0;
+}
+
+.jarvis-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 40% 35%, #a5f3fc, #06b6d4 50%, #0e7490);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid rgba(6, 182, 212, 0.5);
+  flex-shrink: 0;
+  box-shadow: 0 0 12px rgba(6, 182, 212, 0.4);
+}
+
+.jarvis-avatar i {
+  font-size: 16px;
+  color: #fff;
+}
+
+.jarvis-avatar.thinking {
+  animation: avatar-thinking 1.5s ease-in-out infinite;
+}
+@keyframes avatar-thinking {
+  0%, 100% { box-shadow: 0 0 12px rgba(6,182,212,0.4); }
+  50% { box-shadow: 0 0 24px rgba(6,182,212,0.8), 0 0 40px rgba(6,182,212,0.3); }
+}
+
+.jarvis-header-info {
+  flex: 1;
+}
+.jarvis-header-info .jarvis-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: #a5f3fc;
+  letter-spacing: 1px;
+  line-height: 1;
+}
+.jarvis-header-info .jarvis-status {
+  font-size: 11px;
+  color: rgba(165, 243, 252, 0.6);
+  margin-top: 3px;
+}
+.jarvis-status-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10b981;
+  margin-right: 5px;
+  box-shadow: 0 0 6px #10b981;
+  animation: blink-dot 2s ease-in-out infinite;
+}
+@keyframes blink-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.jarvis-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.jarvis-action-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  border: 1px solid rgba(6, 182, 212, 0.2);
+  background: rgba(6, 182, 212, 0.06);
+  color: rgba(165, 243, 252, 0.7);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  transition: all 0.2s;
+}
+.jarvis-action-btn:hover {
+  background: rgba(6, 182, 212, 0.15);
+  color: #a5f3fc;
+  border-color: rgba(6, 182, 212, 0.4);
+}
+.jarvis-action-btn.active-btn {
+  background: rgba(6, 182, 212, 0.2);
+  color: #a5f3fc;
+  border-color: rgba(6, 182, 212, 0.5);
+}
+
+/* Panel Controls (domain filter + manager mode) */
+.jarvis-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  background: rgba(6, 182, 212, 0.03);
+  border-bottom: 1px solid rgba(6, 182, 212, 0.08);
+  flex-shrink: 0;
+  flex-wrap: wrap;
+}
+
+.jarvis-domain-select {
+  flex: 1;
+  min-width: 130px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(6,182,212,0.15);
+  border-radius: 8px;
+  color: rgba(165,243,252,0.8);
+  font-size: 11px;
+  padding: 5px 8px;
+  outline: none;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+}
+.jarvis-domain-select:focus {
+  border-color: rgba(6,182,212,0.4);
+}
+
+.manager-toggle {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  user-select: none;
+  font-size: 11px;
+  color: rgba(165,243,252,0.7);
+  white-space: nowrap;
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(6,182,212,0.12);
+  background: transparent;
+  transition: all 0.2s;
+}
+.manager-toggle:hover {
+  background: rgba(6,182,212,0.06);
+}
+.manager-toggle.active {
+  background: rgba(245,158,11,0.12);
+  border-color: rgba(245,158,11,0.3);
+  color: #fde68a;
+}
+.manager-toggle input[type="checkbox"] {
+  accent-color: #f59e0b;
+  width: 13px;
+  height: 13px;
+}
+
+/* Chat Messages Area */
+.jarvis-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  scroll-behavior: smooth;
+}
+
+.jarvis-messages::-webkit-scrollbar { width: 4px; }
+.jarvis-messages::-webkit-scrollbar-track { background: transparent; }
+.jarvis-messages::-webkit-scrollbar-thumb { background: rgba(6,182,212,0.2); border-radius: 2px; }
+
+/* Messages */
+.msg {
+  display: flex;
+  gap: 10px;
+  animation: msg-in 0.3s ease-out;
+}
+@keyframes msg-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.msg.user {
+  flex-direction: row-reverse;
+}
+
+.msg-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  margin-top: 2px;
+}
+.msg.jarvis-msg .msg-avatar {
+  background: radial-gradient(circle, #a5f3fc, #06b6d4);
+  color: #fff;
+  border: 1.5px solid rgba(6,182,212,0.4);
+}
+.msg.user .msg-avatar {
+  background: rgba(124, 58, 237, 0.2);
+  color: #a78bfa;
+  border: 1.5px solid rgba(124,58,237,0.3);
+}
+
+.msg-bubble {
+  max-width: 85%;
+  padding: 10px 14px;
+  border-radius: 14px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.msg.jarvis-msg .msg-bubble {
+  background: rgba(6, 182, 212, 0.07);
+  border: 1px solid rgba(6, 182, 212, 0.12);
+  color: rgba(241, 245, 249, 0.92);
+  border-top-left-radius: 4px;
+}
+.msg.user .msg-bubble {
+  background: rgba(124, 58, 237, 0.12);
+  border: 1px solid rgba(124, 58, 237, 0.2);
+  color: rgba(241, 245, 249, 0.9);
+  border-top-right-radius: 4px;
+}
+
+/* Source pills below Jarvis reply */
+.msg-sources {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 6px;
+}
+.source-pill {
+  font-size: 10px;
+  padding: 2px 7px;
+  border-radius: 10px;
+  background: rgba(6,182,212,0.07);
+  border: 1px solid rgba(6,182,212,0.15);
+  color: rgba(6,182,212,0.8);
+  font-family: 'Inter', sans-serif;
+}
+
+/* Typing indicator */
+.jarvis-typing {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 4px;
+  color: rgba(165,243,252,0.6);
+  font-size: 12px;
+}
+.typing-dots {
+  display: flex;
+  gap: 4px;
+}
+.typing-dots span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(6,182,212,0.6);
+  animation: dot-bounce 1.2s ease-in-out infinite;
+}
+.typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+.typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+@keyframes dot-bounce {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.5; }
+  30% { transform: translateY(-5px); opacity: 1; }
+}
+
+/* Quick action chips */
+.jarvis-quick-chips {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  padding: 8px 14px 4px;
+  flex-shrink: 0;
+  border-top: 1px solid rgba(6,182,212,0.06);
+}
+.quick-chip {
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 14px;
+  border: 1px solid rgba(6,182,212,0.2);
+  background: rgba(6,182,212,0.05);
+  color: rgba(165,243,252,0.75);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+.quick-chip:hover {
+  background: rgba(6,182,212,0.12);
+  border-color: rgba(6,182,212,0.4);
+  color: #a5f3fc;
+  transform: translateY(-1px);
+}
+
+/* Input Row */
+.jarvis-input-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  padding: 10px 14px 14px;
+  border-top: 1px solid rgba(6,182,212,0.1);
+  flex-shrink: 0;
+  background: rgba(6,182,212,0.02);
+}
+
+#jarvis-input {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(6, 182, 212, 0.2);
+  border-radius: 12px;
+  padding: 9px 13px;
+  color: rgba(241,245,249,0.92);
+  font-size: 13px;
+  font-family: 'Inter', sans-serif;
+  outline: none;
+  resize: none;
+  max-height: 100px;
+  min-height: 38px;
+  line-height: 1.5;
+  transition: border-color 0.2s;
+}
+#jarvis-input:focus {
+  border-color: rgba(6,182,212,0.45);
+}
+#jarvis-input::placeholder {
+  color: rgba(165,243,252,0.3);
+}
+
+.jarvis-send-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(135deg, #06b6d4, #0e7490);
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  transition: all 0.2s;
+  flex-shrink: 0;
+  box-shadow: 0 2px 12px rgba(6,182,212,0.3);
+}
+.jarvis-send-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 18px rgba(6,182,212,0.5);
+}
+.jarvis-send-btn:active {
+  transform: scale(0.97);
+}
+.jarvis-send-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.jarvis-voice-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  border: 1px solid rgba(6,182,212,0.25);
+  background: rgba(6,182,212,0.07);
+  color: rgba(165,243,252,0.7);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+.jarvis-voice-btn:hover {
+  background: rgba(6,182,212,0.15);
+  color: #a5f3fc;
+}
+.jarvis-voice-btn.listening {
+  background: rgba(239,68,68,0.15);
+  border-color: rgba(239,68,68,0.4);
+  color: #f87171;
+  animation: voice-pulse 1.2s ease-in-out infinite;
+}
+@keyframes voice-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(239,68,68,0.3); }
+  50% { box-shadow: 0 0 0 6px rgba(239,68,68,0); }
+}
+
+/* Quiz Mode */
+.jarvis-quiz-card {
+  background: rgba(6,182,212,0.05);
+  border: 1px solid rgba(6,182,212,0.15);
+  border-radius: 14px;
+  padding: 14px;
+  font-size: 13px;
+}
+.quiz-question {
+  color: rgba(241,245,249,0.92);
+  font-weight: 600;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+.quiz-options {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.quiz-option-btn {
+  text-align: left;
+  padding: 8px 12px;
+  border-radius: 9px;
+  border: 1px solid rgba(6,182,212,0.2);
+  background: rgba(255,255,255,0.03);
+  color: rgba(165,243,252,0.8);
+  cursor: pointer;
+  font-size: 12.5px;
+  transition: all 0.2s;
+  font-family: 'Inter', sans-serif;
+}
+.quiz-option-btn:hover { background: rgba(6,182,212,0.08); border-color: rgba(6,182,212,0.35); }
+.quiz-option-btn.correct { background: rgba(16,185,129,0.12); border-color: rgba(16,185,129,0.4); color: #6ee7b7; }
+.quiz-option-btn.wrong { background: rgba(239,68,68,0.1); border-color: rgba(239,68,68,0.35); color: #fca5a5; }
+.quiz-explanation {
+  margin-top: 10px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: rgba(245,158,11,0.08);
+  border-left: 3px solid #f59e0b;
+  color: rgba(253,230,138,0.9);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* Loading state */
+.jarvis-loading-bar {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #06b6d4, transparent);
+  background-size: 200% 100%;
+  animation: loading-shimmer 1.5s linear infinite;
+  border-radius: 1px;
+}
+@keyframes loading-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Markdown-style in bubble */
+.msg-bubble strong { color: #a5f3fc; font-weight: 700; }
+.msg-bubble em { color: #fde68a; font-style: normal; font-weight: 600; }
+.msg-bubble code {
+  background: rgba(6,182,212,0.12);
+  border: 1px solid rgba(6,182,212,0.2);
+  padding: 1px 5px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 12px;
+  color: #a5f3fc;
+}
+
+/* ── Responsive ───────────────────────────────────────────── */
+@media (max-width: 480px) {
+  #jarvis-panel {
+    right: 8px;
+    left: 8px;
+    width: auto;
+    bottom: 90px;
+  }
+  #jarvis-orb {
+    bottom: 20px;
+    right: 20px;
+    width: 56px;
+    height: 56px;
+  }
+}
+
+/* ── Inline tag callouts ──────────────────────────────────── */
+.jarvis-tag {
+  margin-top: 6px;
+  padding: 5px 10px;
+  border-radius: 7px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.jarvis-tag-red   { background: rgba(239,68,68,0.08);   border-left: 3px solid #ef4444; color: #fca5a5; }
+.jarvis-tag-amber { background: rgba(245,158,11,0.08);  border-left: 3px solid #f59e0b; color: #fde68a; }
+.jarvis-tag-cyan  { background: rgba(6,182,212,0.07);   border-left: 3px solid #06b6d4; color: rgba(165,243,252,0.9); }
+.jarvis-tag-green { background: rgba(16,185,129,0.07);  border-left: 3px solid #10b981; color: #6ee7b7; }
+
