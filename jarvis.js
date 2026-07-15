@@ -789,7 +789,7 @@ document.addEventListener("DOMContentLoaded", fpShowWelcome);
 // JARVIS UPGRADE FEATURES: TTS, SAVE NOTE, DOUBLE-CLICK LOOKUP
 // 
 
-let currentUtterance = null;
+let jarvisCurrentUtterance = null;
 
 function speakMsg(btn) {
   if (window.speechSynthesis.speaking) {
@@ -797,8 +797,8 @@ function speakMsg(btn) {
     document.querySelectorAll(".jarvis-bubble-btn i.fa-circle-stop").forEach(icon => {
       icon.className = "fa-solid fa-volume-high";
     });
-    if (currentUtterance && currentUtterance.btn === btn) {
-      currentUtterance = null;
+    if (jarvisCurrentUtterance && jarvisCurrentUtterance.btn === btn) {
+      jarvisCurrentUtterance = null;
       return;
     }
   }
@@ -831,14 +831,14 @@ function speakMsg(btn) {
 
   utterance.onend = () => {
     if (icon) icon.className = "fa-solid fa-volume-high";
-    currentUtterance = null;
+    jarvisCurrentUtterance = null;
   };
   utterance.onerror = () => {
     if (icon) icon.className = "fa-solid fa-volume-high";
-    currentUtterance = null;
+    jarvisCurrentUtterance = null;
   };
 
-  currentUtterance = { utterance, btn };
+  jarvisCurrentUtterance = { utterance, btn };
   window.speechSynthesis.speak(utterance);
 }
 
